@@ -1,272 +1,716 @@
 // =========================================
 // NEXA ENTERPRISES
 // auth.js
+// Firebase Authentication + Firestore
 // Firebase v11.9.1
 // =========================================
 
+
+// ===============================
+// IMPORTS FIREBASE AUTH
+// ===============================
+
 import {
+
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithPopup,
     signOut,
     onAuthStateChanged
+
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
-import { auth, db } from "./firebase.js";
+
+// ===============================
+// IMPORT FIREBASE CONFIG
+// ===============================
 
 import {
+
+    auth,
+    db
+
+} from "./firebase.js";
+
+
+// ===============================
+// IMPORT FIRESTORE
+// ===============================
+
+import {
+
     doc,
     getDoc,
     setDoc,
     updateDoc,
     serverTimestamp
+
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+
+
+// =========================================
+// CONTROLE PARA EVITAR LOOP
+// =========================================
+
+let authChecked = false;
+
+
+
+
+// =========================================
+// SINCRONIZA USUÁRIO COM FIRESTORE
+// =========================================
 
 async function syncUser(user){
 
-    const ref = doc(db, "users", user.uid);
 
-    const snap = await getDoc(ref);
+    try{
 
-    if(!snap.exists()){
 
-        await setDoc(ref,{
+        const userRef = doc(
+            db,
+            "users",
+            user.uid
+        );
 
-            name: user.displayName || "",
 
-            email: user.email || "",
 
-            photo: user.photoURL || "",
+        const snapshot = await getDoc(userRef);
 
-            company: "",
 
-            role: "Usuário",
 
-            plan: "Free",
+        if(!snapshot.exists()){
 
-            projects: 0,
 
-            files: 0,
+            await setDoc(userRef,{
 
-            messages: 0,
 
-            notifications: 0,
+                name:
+                user.displayName || "Usuário Nexa",
 
-            createdAt: serverTimestamp(),
 
-            lastLogin: serverTimestamp()
+                email:
+                user.email || "",
 
-        });
 
-    }else{
+                photo:
+                user.photoURL || "",
 
-        await updateDoc(ref,{
 
-            lastLogin: serverTimestamp(),
+                company:
+                "",
 
-            name: user.displayName || "",
 
-            photo: user.photoURL || ""
+                role:
+                "Usuário",
 
-        });
+
+                plan:
+                "Free",
+
+
+                projects:
+                0,
+
+
+                files:
+                0,
+
+
+                messages:
+                0,
+
+
+                notifications:
+                0,
+
+
+                createdAt:
+                serverTimestamp(),
+
+
+                lastLogin:
+                serverTimestamp()
+
+
+            });
+
+
+
+        }else{
+
+
+            await updateDoc(userRef,{
+
+
+                name:
+                user.displayName || "Usuário Nexa",
+
+
+                photo:
+                user.photoURL || "",
+
+
+                lastLogin:
+                serverTimestamp()
+
+
+            });
+
+
+        }
+
+
+
+    }catch(error){
+
+
+        console.error(
+            "Erro ao sincronizar usuário:",
+            error
+        );
+
 
     }
 
+
 }
 
-// =========================================
-// ELEMENTOS
-// =========================================
 
-const loginForm = document.getElementById("loginForm");
-const googleButton = document.getElementById("googleLogin");
-const logoutBtn = document.getElementById("logoutBtn");
-const message = document.getElementById("message");
+
+
+
 
 // =========================================
-// MENSAGENS
+// ELEMENTOS DA PÁGINA
 // =========================================
 
-function showMessage(text, type = "success") {
 
-    if (!message) return;
+const loginForm =
+document.getElementById("loginForm");
+
+
+const googleButton =
+document.getElementById("googleLogin");
+
+
+const logoutButton =
+document.getElementById("logoutBtn");
+
+
+const message =
+document.getElementById("message");
+
+
+
+
+
+
+// =========================================
+// SISTEMA DE MENSAGENS
+// =========================================
+
+
+function showMessage(
+    text,
+    type = "success"
+){
+
+
+    if(!message)
+        return;
+
+
 
     message.textContent = text;
-            message.className = `message ${type}`;
 
-        }
+
+    message.className =
+    "message";
+
+
+    message.classList.add(type);
+
+
+
+}
+
+
+
+
+
+
 
 // =========================================
-// LOGIN COM E-MAIL
+// LOGIN EMAIL E SENHA
 // =========================================
 
-if (loginForm) {
 
-    loginForm.addEventListener("submit", async (e) => {
+if(loginForm){
 
-        e.preventDefault();  
 
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
+    loginForm.addEventListener(
+    "submit",
+    async(e)=>{
 
-        try {
 
-            const credential = await signInWithEmailAndPassword(
-    auth,
-    email,
-    password
-);
+        e.preventDefault();
 
-await syncUser(credential.user);
 
-            showMessage("Login realizado com sucesso!", "success");
 
-            setTimeout(() => {
+        const email =
+        document.getElementById("email")
+        .value
+        .trim();
 
-                window.location.replace("dashboard.html");
 
-            }, 800);
 
-        } catch (error) {
+        const password =
+        document.getElementById("password")
+        .value;
+
+
+
+
+        try{
+
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+
+            showMessage(
+                "Login realizado com sucesso!",
+                "success"
+            );
+
+
+
+            setTimeout(()=>{
+
+
+                window.location.replace(
+                    "inicio.html"
+                );
+
+
+            },800);
+
+
+
+        }catch(error){
+
+
 
             console.error(error);
 
-            switch (error.code) {
+
+
+            switch(error.code){
+
+
 
                 case "auth/invalid-email":
-                    showMessage("E-mail inválido.", "error");
-                    break;
+
+
+                    showMessage(
+                        "E-mail inválido.",
+                        "error"
+                    );
+
+
+                break;
+
+
+
 
                 case "auth/invalid-credential":
+
+
                 case "auth/user-not-found":
+
+
                 case "auth/wrong-password":
-                    showMessage("E-mail ou senha incorretos.", "error");
-                    break;
+
+
+                    showMessage(
+                        "E-mail ou senha incorretos.",
+                        "error"
+                    );
+
+
+                break;
+
+
+
 
                 case "auth/too-many-requests":
-                    showMessage("Muitas tentativas. Aguarde alguns minutos.", "error");
-                    break;
+
+
+                    showMessage(
+                        "Muitas tentativas. Aguarde alguns minutos.",
+                        "error"
+                    );
+
+
+                break;
+
+
+
 
                 default:
-                    showMessage("Erro ao realizar login.", "error");
+
+
+                    showMessage(
+                        "Erro ao realizar login.",
+                        "error"
+                    );
+
 
             }
 
+
+
         }
+
+
 
     });
 
+
 }
 
+
+
+
+
+
+
 // =========================================
-// LOGIN COM GOOGLE
+// LOGIN GOOGLE
 // =========================================
 
-if (googleButton) {
 
-    googleButton.addEventListener("click", async () => {
+if(googleButton){
 
-        try {
 
-            const provider = new GoogleAuthProvider();
+    googleButton.addEventListener(
+    "click",
+    async()=>{
+
+
+        try{
+
+
+            const provider =
+            new GoogleAuthProvider();
+
+
 
             provider.setCustomParameters({
-                prompt: "select_account"
+
+                prompt:
+                "select_account"
+
             });
 
-            const result = await signInWithPopup(auth, provider);
 
-await syncUser(result.user);
 
-            showMessage("Login realizado com sucesso!", "success");
 
-            setTimeout(() => {
+            await signInWithPopup(
+                auth,
+                provider
+            );
 
-                window.location.replace("inicio.html");
 
-            }, 800);
 
-        } catch (error) {
+            showMessage(
+                "Login realizado com sucesso!",
+                "success"
+            );
+
+
+
+            setTimeout(()=>{
+
+
+                window.location.replace(
+                    "inicio.html"
+                );
+
+
+            },800);
+
+
+
+
+        }catch(error){
+
+
 
             console.error(error);
 
-            switch (error.code) {
+
+
+            switch(error.code){
+
+
 
                 case "auth/popup-closed-by-user":
-                    showMessage("Login cancelado.", "error");
-                    break;
+
+
+                    showMessage(
+                        "Login cancelado.",
+                        "error"
+                    );
+
+
+                break;
+
+
+
 
                 case "auth/popup-blocked":
-                    showMessage("O navegador bloqueou a janela do Google.", "error");
-                    break;
+
+
+                    showMessage(
+                        "O navegador bloqueou o login Google.",
+                        "error"
+                    );
+
+
+                break;
+
+
+
 
                 case "auth/cancelled-popup-request":
-                    showMessage("Aguarde alguns segundos e tente novamente.", "error");
-                    break;
+
+
+                    showMessage(
+                        "Aguarde e tente novamente.",
+                        "error"
+                    );
+
+
+                break;
+
+
+
 
                 default:
-                    showMessage("Não foi possível entrar com Google.", "error");
+
+
+                    showMessage(
+                        "Não foi possível entrar com Google.",
+                        "error"
+                    );
+
 
             }
 
+
+
         }
+
+
 
     });
 
+
 }
+
+
+
+
+
+
 
 // =========================================
 // LOGOUT
 // =========================================
 
-if (logoutBtn) {
 
-    logoutBtn.addEventListener("click", async () => {
+if(logoutButton){
 
-        try {
+
+    logoutButton.addEventListener(
+    "click",
+    async()=>{
+
+
+        try{
+
 
             await signOut(auth);
 
-            window.location.replace("index.html");
 
-        } catch (error) {
+
+            window.location.replace(
+                "index.html"
+            );
+
+
+
+        }catch(error){
+
+
 
             console.error(error);
 
-            alert("Erro ao sair da conta.");
+
+
+            showMessage(
+                "Erro ao sair da conta.",
+                "error"
+            );
+
+
 
         }
+
+
 
     });
 
+
 }
 
+
+
+
+
+
+
 // =========================================
-// VERIFICAÇÃO DE SESSÃO
+// PROTEÇÃO DE PÁGINAS
+// SEM LOOP DE REDIRECIONAMENTO
 // =========================================
 
-onAuthStateChanged(auth, (user) => {
 
-    const page = window.location.pathname.split("/").pop();
+onAuthStateChanged(
+auth,
+async(user)=>{
 
-    if (user) {
 
-        if (page === "dashboard.html" || page === "") {
+    if(authChecked)
+        return;
 
-            window.location.replace("index.html");
+
+
+    authChecked = true;
+
+
+
+    const page =
+    window.location.pathname
+    .split("/")
+    .pop()
+    .split("?")[0];
+
+
+
+
+    const protectedPages = [
+
+
+        "inicio.html",
+
+        "dashboard.html",
+
+        "suporte.html",
+
+        "perfil.html"
+
+
+    ];
+
+
+
+
+
+    const publicPages = [
+
+
+        "",
+
+        "index.html"
+
+
+    ];
+
+
+
+
+
+
+
+    if(user){
+
+
+
+        await syncUser(user);
+
+
+
+
+        if(
+            publicPages.includes(page)
+        ){
+
+
+
+            window.location.replace(
+                "inicio.html"
+            );
+
+
 
         }
 
-    } else {
 
-        if (page === "index.html") {
 
-            window.location.replace("dashboard.html");
+        return;
 
-        }
+
 
     }
 
+
+
+
+
+
+
+    if(
+        protectedPages.includes(page)
+    ){
+
+
+
+        window.location.replace(
+            "index.html"
+        );
+
+
+
+    }
+
+
+
 });
 
-console.log("Nexa Auth carregado com sucesso.");
+
+
+
+
+
+
+console.log(
+"Nexa Auth carregado com sucesso."
+);
