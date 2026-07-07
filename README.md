@@ -141,11 +141,11 @@ Como fundador e CEO, Vinicios acredita que marcas fortes são construídas com d
 
 ## 👤 Informações de contato
 
-📧: Nexaenterprises@gmail.com<br>
+📧: nexaenterprisesadm@gmail.com<br>
 📞: 11 123456789<br>
 
 Buscando uma oportunidade de prestar seus serviços pela Nexa? Mande seu curriculo para o email abaixo, responderemos assim que possivel.
-💼: Nexaenterprisessuporte@gmail.com<br>
+💼: Nexaenterprisesadm@gmail.com<br>
 
 ---
 
