@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nexa Enterprises • Login</title>
+
+<link rel="icon" href="navicon.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+<style>
+
+:root{
+
+--bg:#050714;
+--bg2:#090d1f;
+
+--card:rgba(255,255,255,.04);
+--border:rgba(255,255,255,.08);
+
+--text:#ffffff;
+--muted:#a8afc6;
+
+--blue:#00bfff;
+--purple:#8b2cff;
+--purple2:#b46cff;
+
+--radius:28px;
+
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Inter",sans-serif;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:30px;
+
+background:
+radial-gradient(circle at top left,
+rgba(0,191,255,.10),
+transparent 35%),
+
+radial-gradient(circle at top right,
+rgba(139,44,255,.18),
+transparent 40%),
+
+linear-gradient(
+180deg,
+var(--bg),
+var(--bg2));
+
+color:var(--text);
+
+overflow-x:hidden;
+
+}
+
+.message{
+    width:100%;
+    margin-bottom:18px;
+    padding:12px 16px;
+    border-radius:14px;
+    text-align:center;
+    font-size:.9rem;
+    font-weight:600;
+    display:none;
+}
+
+.message.success{
+    display:block;
+    background:rgba(34,197,94,.12);
+    border:1px solid rgba(34,197,94,.35);
+    color:#22c55e;
+}
+
+.message.error{
+    display:block;
+    background:rgba(239,68,68,.12);
+    border:1px solid rgba(239,68,68,.35);
+    color:#ff6b6b;
+}
+
+.login-box{
+
+position:relative;
+
+width:100%;
+max-width:460px;
+
+padding:45px;
+
+border-radius:32px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+overflow:hidden;
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.35),
+0 0 35px rgba(139,44,255,.10);
+
+}
+
+.login-box::before{
+
+content:"";
+
+position:absolute;
+
+top:-150px;
+right:-120px;
+
+width:260px;
+height:260px;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle,
+rgba(139,44,255,.30),
+transparent 70%);
+
+filter:blur(25px);
+
+}
+
+.login-box::after{
+
+content:"";
+
+position:absolute;
+
+left:-150px;
+bottom:-160px;
+
+width:260px;
+height:260px;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle,
+rgba(0,191,255,.20),
+transparent 70%);
+
+filter:blur(25px);
+
+}
+
+.login-content{
+
+position:relative;
+
+z-index:2;
+
+}
+
+.logo{
+
+display:flex;
+justify-content:center;
+
+margin-bottom:25px;
+
+}
+
+.logo img{
+
+width:140px;
+
+filter:
+drop-shadow(0 0 20px rgba(139,44,255,.35));
+
+}
+
+h1{
+
+text-align:center;
+
+font-size:2rem;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+color:var(--muted);
+
+margin-bottom:35px;
+
+line-height:1.6;
+
+}
+
+.input-group{
+
+margin-bottom:22px;
+
+}
+
+.input-group label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-size:.9rem;
+
+font-weight:600;
+
+color:var(--muted);
+
+}
+
+.input-group{
+
+position:relative;
+
+}
+
+.input-group input{
+
+width:100%;
+
+height:56px;
+
+padding:0 18px;
+
+border-radius:16px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:#fff;
+
+font-size:.95rem;
+
+outline:none;
+
+transition:.30s;
+
+}
+
+.input-group input:focus{
+
+border-color:var(--purple);
+
+box-shadow:
+0 0 20px rgba(139,44,255,.18);
+
+}
+
+.toggle-password{
+
+position:absolute;
+
+right:18px;
+top:44px;
+
+cursor:pointer;
+
+color:var(--muted);
+
+transition:.3s;
+
+}
+
+.toggle-password:hover{
+
+color:#fff;
+
+}
+
+.login-actions{
+
+    margin-top:18px;
+    margin-bottom:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    width:100%;
+
+    padding-top:6px;
+
+}
+
+.action-link{
+
+    font-size:.9rem;
+
+    color:var(--muted);
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    white-space:nowrap;
+
+}
+
+.action-link:hover{
+
+    color:#A855F7;
+
+}
+
+.action-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-3px;
+
+    width:0%;
+
+    height:1px;
+
+    background:#A855F7;
+
+    transition:.3s;
+
+}
+
+.action-link:hover::after{
+
+    width:100%;
+
+}
+
+.login-btn{
+
+width:100%;
+height:58px;
+
+border:none;
+
+border-radius:999px;
+
+cursor:pointer;
+
+font-size:1rem;
+font-weight:700;
+
+color:#fff;
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple));
+
+transition:.35s;
+
+box-shadow:
+0 12px 30px rgba(139,44,255,.20);
+
+}
+
+.login-btn:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 20px 45px rgba(139,44,255,.30);
+
+}
+
+.google{
+
+margin-top:18px;
+
+}
+
+.google button{
+
+width:100%;
+height:58px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+
+border-radius:999px;
+
+border:1px solid rgba(255,255,255,.08);
+
+background:rgba(255,255,255,.04);
+
+color:#fff;
+
+cursor:pointer;
+
+transition:.35s;
+
+font-size:.95rem;
+font-weight:600;
+
+}
+
+.google button:hover{
+
+transform:translateY(-4px);
+
+background:rgba(255,255,255,.06);
+
+border-color:rgba(0,191,255,.35);
+
+}
+
+.google img{
+
+width:22px;
+height:22px;
+
+object-fit:contain;
+
+flex-shrink:0;
+
+}
+
+.footer{
+
+margin-top:35px;
+
+padding-top:22px;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+display:flex;
+
+justify-content:space-between;
+
+gap:20px;
+
+font-size:.80rem;
+
+color:var(--muted);
+
+}
+
+.footer a{
+
+text-decoration:none;
+
+font-weight:700;
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple2),
+var(--purple));
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.footer a:hover{
+
+filter:brightness(1.15);
+
+}
+
+@media(max-width:650px){
+
+.login-box{
+
+padding:35px 28px;
+
+}
+
+.footer{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <div class="login-content">
+
+        <div class="logo">
+            <img src="nexalogo-removebg-preview.png" alt="Nexa Enterprises">
+        </div>
+
+        <h1>Bem-vindo</h1>
+
+        <p class="subtitle">
+            Faça login para acessar sua conta Nexa.
+        </p>
+
+        <div id="message"></div>
+
+        <form id="loginForm">
+
+            <div class="input-group">
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="seu@email.com"
+                    required
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label for="password">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Sua senha"
+                    required
+                >
+
+                <i
+                    class="fa-solid fa-eye toggle-password"
+                    id="togglePassword">
+                </i>
+
+            </div>
+
+            <div class="login-actions">
+
+    <a href="forgot.html" class="action-link">
+        Esqueci minha senha
+    </a>
+
+    <a href="register.html" class="action-link">
+        Criar conta
+    </a>
+
+            </div>
+
+            <div id="message" class="message"></div>
+
+            <button type="submit"class="login-btn">
+                Entrar na Nexa</button>
+
+            </form>
+
+        <div class="google">
+
+            <button
+                type="button"
+                id="googleLogin">
+
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+
+                <span>
+                    Entrar com Google
+                </span>
+
+            </button>
+
+        </div>
+
+        <div class="footer">
+
+            <div>
+
+                © 2026 Nexa Enterprises.<br>
+                Todos os direitos reservados.
+
+            </div>
+
+            <div>
+
+                Fundada por
+                <a
+                    href="https://contatoceonexaenterprises.carrd.co/"
+                    target="_blank">
+
+                    Vinícios Santana
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const toggle=document.getElementById("togglePassword");
+
+const password=document.getElementById("password");
+
+toggle.addEventListener("click",()=>{
+
+    if(password.type==="password"){
+
+        password.type="text";
+
+        toggle.classList.remove("fa-eye");
+
+        toggle.classList.add("fa-eye-slash");
+
+    }else{
+
+        password.type="password";
+
+        toggle.classList.remove("fa-eye-slash");
+
+        toggle.classList.add("fa-eye");
+
+    }
+
+});
+
+</script>
+
+<script type="module" src="auth.js"></script>
+
+<script>
+    import { auth } from "./firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+
+onAuthStateChanged(auth, (user) => {
+
+    if (!user) {
+        window.location.replace("index.html");
+    }
+
+});
+</script>
+
+</body>
+
+</html>

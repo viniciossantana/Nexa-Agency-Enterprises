@@ -1,0 +1,2485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nexa Enterprises • Serviços</title>
+
+<link rel="icon" href="navicon.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* ===================================
+RESET
+=================================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Inter",sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+:root{
+
+--bg:#050714;
+--bg2:#090d1f;
+
+--blue:#00bfff;
+--blue-soft:#69d9ff;
+
+--purple:#8b2cff;
+--purple-soft:#b46cff;
+
+--text:#ffffff;
+--muted:#a9b2c9;
+
+--card:rgba(255,255,255,.04);
+--border:rgba(255,255,255,.08);
+
+--radius:28px;
+}
+
+body{
+
+background:
+radial-gradient(circle at top left,rgba(0,191,255,.08),transparent 30%),
+radial-gradient(circle at top right,rgba(139,44,255,.16),transparent 35%),
+linear-gradient(180deg,#050714,#090d1f);
+
+color:white;
+overflow-x:hidden;
+}
+
+/* ===================================
+LOADER
+=================================== */
+
+.loader{
+position:fixed;
+inset:0;
+background:#050714;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:999999;
+transition:.8s;
+}
+
+.loader.hide{
+opacity:0;
+visibility:hidden;
+}
+
+.loader img{
+width:120px;
+animation:float 3s ease-in-out infinite;
+}
+
+.loader p{
+margin-top:20px;
+color:var(--muted);
+letter-spacing:2px;
+}
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+}
+
+/* ===================================
+CONTAINER
+=================================== */
+
+.container{
+width:min(92%,1250px);
+margin:auto;
+}
+
+/* ===================================
+HEADER
+=================================== */
+
+/* ==========================================
+   HEADER PREMIUM NEXA
+========================================== */
+
+.main-header{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:82px;
+
+padding:0 5%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(5,7,20,.72);
+
+backdrop-filter:blur(22px);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+z-index:9999;
+
+transition:.35s;
+}
+
+/* SCROLL */
+
+.main-header.scrolled{
+
+height:70px;
+
+background:rgba(5,7,20,.88);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.35);
+
+}
+
+/* LOGO */
+
+.logo{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+text-decoration:none;
+
+}
+
+.logo img{
+
+width:42px;
+height:42px;
+
+object-fit:contain;
+
+}
+
+.logo span{
+
+font-size:1.15rem;
+font-weight:800;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft),
+var(--purple));
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+/* MENU DESKTOP */
+
+.desktop-menu{
+
+display:flex;
+align-items:center;
+gap:34px;
+
+}
+
+.desktop-menu a{
+
+position:relative;
+
+text-decoration:none;
+
+font-weight:500;
+
+color:var(--muted);
+
+transition:.3s;
+
+}
+
+.desktop-menu a:hover{
+
+color:white;
+
+}
+
+.desktop-menu a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:-8px;
+
+width:0%;
+height:2px;
+
+border-radius:10px;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple));
+
+transition:.3s;
+
+}
+
+.desktop-menu a:hover::after{
+
+width:100%;
+
+}
+
+/* BOTÃO MENU */
+
+.menu-toggle{
+
+display:none;
+
+width:48px;
+height:48px;
+
+background:none;
+border:none;
+
+cursor:pointer;
+
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+gap:6px;
+
+z-index:10002;
+
+}
+
+.menu-toggle span{
+
+width:26px;
+height:2px;
+
+border-radius:999px;
+
+background:white;
+
+transition:.35s;
+
+}
+
+/* OVERLAY */
+
+.menu-overlay{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.55);
+
+backdrop-filter:blur(4px);
+
+opacity:0;
+visibility:hidden;
+
+transition:.35s;
+
+z-index:9997;
+
+}
+
+.menu-overlay.active{
+
+opacity:1;
+visibility:visible;
+
+}
+
+/* MENU */
+
+.mobile-menu{
+
+position:fixed;
+
+top:0;
+right:-380px;
+
+width:340px;
+max-width:90%;
+
+height:100vh;
+
+padding:30px;
+
+display:flex;
+flex-direction:column;
+
+background:#090d1f;
+
+border-left:1px solid rgba(255,255,255,.08);
+
+transition:.45s cubic-bezier(.22,.61,.36,1);
+
+z-index:9998;
+
+overflow-y:auto;
+
+}
+
+.mobile-menu.active{
+
+right:0;
+
+}
+
+/* TOPO */
+
+.mobile-top{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:40px;
+
+}
+
+.mobile-top img{
+
+width:48px;
+
+}
+
+.close-menu{
+
+background:none;
+border:none;
+
+cursor:pointer;
+
+font-size:1.8rem;
+
+color:white;
+
+}
+
+/* LINKS */
+
+.mobile-links{
+
+display:flex;
+flex-direction:column;
+
+gap:8px;
+
+}
+
+.mobile-links a{
+
+display:flex;
+align-items:center;
+
+gap:18px;
+
+padding:16px 18px;
+
+border-radius:16px;
+
+text-decoration:none;
+
+font-weight:600;
+
+color:white;
+
+transition:.3s;
+
+}
+
+.mobile-links a i{
+
+width:24px;
+
+font-size:1.1rem;
+
+color:var(--purple-soft);
+
+}
+
+.mobile-links a:hover{
+
+background:rgba(255,255,255,.05);
+
+transform:translateX(6px);
+
+}
+
+/* DIVISOR */
+
+.mobile-divider{
+
+margin:35px 0;
+
+height:1px;
+
+background:rgba(255,255,255,.08);
+
+}
+
+/* REDES */
+
+.mobile-social{
+
+display:flex;
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.mobile-social a{
+
+display:flex;
+align-items:center;
+
+gap:14px;
+
+text-decoration:none;
+
+color:var(--muted);
+
+padding:10px 0;
+
+transition:.3s;
+
+}
+
+.mobile-social a:hover{
+
+color:white;
+
+}
+
+/* BOTÃO */
+
+.mobile-button{
+
+margin-top:auto;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:55px;
+
+border-radius:18px;
+
+text-decoration:none;
+
+font-weight:700;
+
+color:white;
+
+background:linear-gradient(
+135deg,
+var(--blue),
+var(--purple));
+
+transition:.35s;
+
+}
+
+.mobile-button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 10px 25px rgba(139,44,255,.35);
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+.desktop-menu{
+
+display:none;
+
+}
+
+.menu-toggle{
+
+display:flex;
+
+}
+
+.logo span{
+
+font-size:1rem;
+
+}
+
+}
+
+/* DESKTOP */
+
+@media(min-width:901px){
+
+.mobile-menu,
+.menu-overlay{
+
+display:none;
+
+}
+
+}
+
+/* ===================================
+HERO
+=================================== */
+
+.hero{
+padding-top:180px;
+padding-bottom:120px;
+}
+
+.hero-wrap{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:80px;
+align-items:center;
+}
+
+.tag{
+
+display:inline-flex;
+
+padding:12px 18px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+margin-bottom:25px;
+}
+
+.hero h1{
+
+font-size:clamp(3rem,6vw,6rem);
+
+line-height:.95;
+
+margin-bottom:25px;
+}
+
+.hero h1 span{
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+
+font-size:1.1rem;
+
+line-height:1.8;
+
+color:var(--muted);
+
+margin-bottom:35px;
+
+max-width:650px;
+}
+
+.hero-buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+
+display:inline-flex;
+justify-content:center;
+align-items:center;
+
+padding:15px 28px;
+
+border-radius:999px;
+
+font-weight:600;
+
+text-decoration:none;
+
+transition:.3s;
+}
+
+.btn-primary{
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+color:white;
+
+box-shadow:
+0 0 30px rgba(0,191,255,.18),
+0 0 40px rgba(139,44,255,.18);
+}
+
+.btn-primary:hover{
+transform:translateY(-3px);
+}
+
+.btn-secondary{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:white;
+}
+
+span{
+background:linear-gradient(90deg,var(--blue),var(--purple));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* ===================================
+HERO VISUAL
+=================================== */
+
+.hero-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:32px;
+
+padding:40px;
+
+position:relative;
+
+overflow:hidden;
+
+backdrop-filter:blur(20px);
+}
+
+.hero-card::before{
+
+content:"";
+
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(circle at top right,
+rgba(0,191,255,.08),
+transparent 40%),
+
+radial-gradient(circle at bottom left,
+rgba(139,44,255,.15),
+transparent 50%);
+}
+
+.hero-logo{
+
+width:220px;
+
+display:block;
+
+margin:0 auto 35px;
+
+filter:drop-shadow(0 0 25px rgba(139,44,255,.6));
+
+animation:float 4s ease-in-out infinite;
+}
+
+.hero-card h3{
+font-size:2rem;
+margin-bottom:18px;
+}
+
+.hero-card p{
+color:var(--muted);
+line-height:1.8;
+}
+
+/* ===================================
+ESTATÍSTICAS
+=================================== */
+
+.stats{
+padding:20px 0 120px;
+}
+
+.stats-grid{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+}
+
+.stat-card{
+
+padding:35px;
+
+text-align:center;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:28px;
+
+transition:.35s;
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:rgba(139,44,255,.35);
+}
+
+.stat-card h2{
+
+font-size:3rem;
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.stat-card p{
+color:var(--muted);
+margin-top:12px;
+}
+
+/* ===================================
+TÍTULOS
+=================================== */
+
+.section-title{
+
+text-align:center;
+
+max-width:850px;
+
+margin:0 auto 70px;
+}
+
+.section-title span{
+
+display:inline-block;
+
+margin-bottom:14px;
+
+font-size:.9rem;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+color:var(--blue);
+}
+
+.section-title h2{
+
+font-size:clamp(2.5rem,4vw,4rem);
+
+margin-bottom:18px;
+}
+
+.section-title p{
+color:var(--muted);
+}
+
+@media(max-width:980px){
+
+.hero-wrap{
+grid-template-columns:1fr;
+}
+
+.stats-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-menu{
+display:none;
+}
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.hero{
+padding-top:160px;
+}
+
+}
+
+/* CSS DOS CARDS*/
+.services{
+padding:120px 0;
+}
+
+.service-category{
+margin-bottom:90px;
+}
+
+.category-title{
+
+font-size:2rem;
+
+margin-bottom:35px;
+
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.services-grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+}
+
+.service-card{
+
+padding:35px;
+
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.05),
+rgba(255,255,255,.02)
+);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:30px;
+
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+}
+
+.service-card::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+radial-gradient(
+circle at top right,
+rgba(139,44,255,.10),
+transparent 40%
+);
+
+opacity:0;
+
+transition:.35s;
+}
+
+.service-card:hover{
+
+transform:translateY(-10px);
+
+border-color:rgba(139,44,255,.35);
+
+box-shadow:
+0 0 35px rgba(139,44,255,.12);
+}
+
+.service-card:hover::before{
+opacity:1;
+}
+
+.service-card i{
+
+font-size:2rem;
+
+margin-bottom:20px;
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.service-card h3{
+margin-bottom:15px;
+font-size:1.25rem;
+}
+
+.service-card p{
+
+color:var(--muted);
+
+margin-bottom:25px;
+
+line-height:1.8;
+}
+
+.price{
+
+font-size:1.8rem;
+
+font-weight:800;
+
+margin-bottom:10px;
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.price-note{
+
+display:inline-block;
+
+margin-bottom:25px;
+
+padding:8px 14px;
+
+border-radius:999px;
+
+font-size:.85rem;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:var(--muted);
+}
+
+.full-nexa{
+
+background:
+linear-gradient(
+180deg,
+rgba(0,191,255,.08),
+rgba(139,44,255,.12)
+);
+
+border:1px solid rgba(139,44,255,.25);
+}
+
+.full-nexa .price{
+font-size:2.2rem;
+}
+
+@media(max-width:1100px){
+
+.services-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.services-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+
+/* ===================================
+PROCESSO NEXA
+=================================== */
+
+.process{
+padding:130px 0;
+}
+
+.process-grid{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+}
+
+.process-card{
+
+padding:35px;
+
+border-radius:28px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.35s;
+}
+
+.process-card:hover{
+
+transform:translateY(-8px);
+
+border-color:rgba(139,44,255,.35);
+}
+
+.process-number{
+
+font-size:3rem;
+font-weight:800;
+
+margin-bottom:20px;
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.process-card p{
+color:var(--muted);
+margin-top:12px;
+}
+
+@media(max-width:980px){
+
+.process-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.process-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+
+/* ===================================
+MEGA CTA
+=================================== */
+
+.mega-cta{
+padding:140px 0;
+}
+
+.mega-box{
+
+position:relative;
+
+overflow:hidden;
+
+padding:90px;
+
+text-align:center;
+
+border-radius:40px;
+
+background:
+linear-gradient(
+180deg,
+rgba(0,191,255,.06),
+rgba(139,44,255,.12)
+);
+
+border:1px solid rgba(255,255,255,.08);
+}
+
+.mega-glow{
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(139,44,255,.25),
+transparent 70%
+);
+
+top:-250px;
+right:-250px;
+}
+
+.mega-box span{
+
+color:var(--blue);
+
+font-weight:700;
+
+letter-spacing:2px;
+}
+
+.mega-box h2{
+
+font-size:clamp(2.5rem,5vw,5rem);
+
+margin:25px 0;
+}
+
+.mega-box p{
+
+max-width:750px;
+
+margin:auto auto 35px;
+
+color:var(--muted);
+
+line-height:1.8;
+}
+
+/* =========================
+FOOTER PREMIUM
+========================= */
+
+footer{
+margin-top:80px;
+padding:80px 0 30px;
+
+background:
+radial-gradient(
+circle at top center,
+rgba(139,44,255,.14),
+transparent 35%
+),
+linear-gradient(
+180deg,
+rgba(10,12,24,.95),
+rgba(5,7,18,1)
+);
+
+border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* GRID */
+
+.footer-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+gap:60px;
+align-items:start;
+margin-bottom:60px;
+}
+
+/* LOGO */
+
+.footer-brand{
+max-width:500px;
+}
+
+.footer-logo{
+font-size:2rem;
+font-weight:800;
+margin-bottom:18px;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.footer-description{
+color:var(--muted);
+line-height:1.8;
+}
+
+/* TÍTULOS */
+
+.footer-grid h4{
+font-size:1.1rem;
+font-weight:700;
+margin-bottom:20px;
+color:#fff;
+}
+
+/* LINKS */
+
+.footer-links{
+list-style:none;
+padding:0;
+margin:0;
+}
+
+.footer-links li{
+margin-bottom:14px;
+}
+
+.footer-links a{
+text-decoration:none;
+color:var(--muted);
+transition:.3s;
+}
+
+.footer-links a:hover{
+color:#fff;
+padding-left:6px;
+}
+
+/* FOOTER BOTTOM */
+
+.footer-bottom{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+
+width:100%;
+
+margin-top:30px;
+padding-top:25px;
+
+border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-bottom p{
+margin:0;
+color:var(--muted);
+}
+
+.footer-bottom > p:first-child{
+max-width:400px;
+}
+
+/* ASSINATURA */
+
+.footer-signature{
+margin-left:auto;
+text-align:right;
+}
+
+.footer-signature a{
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.footer-signature a:hover{
+filter:brightness(1.2);
+letter-spacing:.5px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:1000px){
+
+.footer-grid{
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+}
+
+@media(max-width:768px){
+
+.footer-grid{
+grid-template-columns:1fr;
+text-align:center;
+gap:35px;
+}
+
+.footer-brand{
+max-width:100%;
+}
+
+.footer-description{
+max-width:100%;
+}
+
+.footer-bottom{
+flex-direction:column;
+align-items:center;
+text-align:center;
+gap:15px;
+}
+
+.footer-signature{
+margin-left:0;
+text-align:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="loader" id="loader">
+
+<img src="nexalogo-removebg-preview.png">
+
+<p>CARREGANDO NEXA...</p>
+
+</div>
+
+<!-- ===========================
+     HEADER PREMIUM NEXA
+=========================== -->
+
+<header class="main-header" id="header">
+
+    <a href="inicio.html" class="logo">
+
+        <img src="navicon.png" alt="Nexa">
+
+        <span>Nexa Agency Enterprises</span>
+
+    </a>
+
+    <!-- MENU DESKTOP -->
+
+    <nav class="desktop-menu">
+
+        <a href="inicio.html">Início</a>
+
+        <a href="3serviços.html">Serviços</a>
+
+        <a href="2portfolio.html">Portfólio</a>
+
+        <a href="readme.html">Sobre</a>
+
+        <a href="https://typebot.co/my-typebot-lyx2eqn">NexaBot</a>
+
+    </nav>
+
+    <!-- BOTÃO MOBILE -->
+
+    <button class="menu-toggle" id="menuToggle">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+<!-- ===========================
+     OVERLAY
+=========================== -->
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- ===========================
+     MENU MOBILE
+=========================== -->
+
+<aside class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-top">
+
+        <img src="navicon.png" alt="Nexa">
+
+        <button class="close-menu" id="closeMenu">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+    <nav class="mobile-links">
+
+        <a href="inicio.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Início</span>
+
+        </a>
+
+        <a href="3serviços.html">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+            <span>Serviços</span>
+
+        </a>
+
+        <a href="2portfolio.html">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            <span>Portfólio</span>
+
+        </a>
+
+        <a href="readme.html">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Sobre</span>
+
+        </a>
+
+        <a href="https://typebot.co/my-typebot-lyx2eqn">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <span>NexaBot</span>
+
+        </a>
+
+    </nav>
+
+    <div class="mobile-divider"></div>
+
+    <div class="mobile-social">
+
+        <a href="https://wa.me/5511981332616">
+
+            <i class="fab fa-whatsapp"></i>
+
+            WhatsApp
+
+        </a>
+
+        <a href="https://www.instagram.com/agencynexaenterprises/">
+
+            <i class="fab fa-instagram"></i>
+
+            Instagram
+
+        </a>
+
+        <a href="https://www.tiktok.com/@agencynexaenterprises">
+
+            <i class="fab fa-tiktok"></i>
+
+            TikTok
+
+        </a>
+
+        <a href="https://www.youtube.com/channel/UCBvGm-pfP3e_h4zDxUQ309Q">
+
+            <i class="fab fa-youtube"></i>
+
+            YouTube
+
+        </a>
+
+    </div>
+
+    <a href="3serviços.html" class="mobile-button">
+
+        Solicitar orçamento
+
+    </a>
+
+</aside>
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-wrap">
+
+<div>
+
+<div class="tag">
+🚀 Soluções Estratégicas para Empresas
+</div>
+
+<h1>
+Estratégia.
+Tecnologia.
+<span>Resultado.</span>
+</h1>
+
+<p>
+A Nexa desenvolve soluções completas para empresas que desejam crescer com inteligência, construir autoridade e transformar presença digital em resultados reais. Cada serviço é planejado para gerar impacto, posicionamento e evolução sustentável.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#servicos" class="btn btn-primary">
+Explorar Serviços
+</a>
+
+<a href="https://wa.me/5511981332616"
+class="btn btn-secondary">
+Falar com Especialista
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-card">
+
+<img src="nexalogo-removebg-preview.png"
+class="hero-logo">
+
+<h3>
+Ecossistema Nexa
+</h3>
+
+<p>
+Marketing, branding, desenvolvimento, automação e inteligência artificial trabalhando juntos para criar uma estrutura sólida, moderna e preparada para escalar.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="container">
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<h2>15+</h2>
+<p>Serviços Especializados</p>
+</div>
+
+<div class="stat-card">
+<h2>100%</h2>
+<p>Personalizado</p>
+</div>
+
+<div class="stat-card">
+<h2>24/7</h2>
+<p>Suporte Estratégico</p>
+</div>
+
+<div class="stat-card">
+<h2>∞</h2>
+<p>Possibilidades de Crescimento</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+window.addEventListener("load",()=>{
+
+document
+.getElementById("loader")
+.classList.add("hide");
+
+});
+
+</script>
+
+<!-- ===================================
+SERVIÇOS
+=================================== -->
+
+<section class="services" id="servicos">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>NOSSAS SOLUÇÕES</span>
+
+<h2>
+Serviços desenvolvidos para gerar crescimento.
+</h2>
+
+<p>
+Cada solução foi criada para fortalecer posicionamento, aumentar autoridade e gerar resultados mensuráveis.
+</p>
+
+</div>
+
+<!-- MARKETING -->
+
+<div class="service-category">
+
+<h2 class="category-title">
+🚀 Marketing & Crescimento
+</h2>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<i class="fas fa-hashtag"></i>
+
+<h3>Social Media</h3>
+
+<p>
+Gestão estratégica de redes sociais com planejamento, posicionamento e crescimento contínuo.
+</p>
+
+<div class="price">
+A partir de R$ 750/mês
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Social%20Media"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-bullhorn"></i>
+
+<h3>Tráfego Pago</h3>
+
+<p>
+Campanhas estratégicas focadas em alcance, geração de leads e vendas.
+</p>
+
+<div class="price">
+A partir de R$ 950/mês
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Tráfego%20Pago"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-chart-line"></i>
+
+<h3>Gestão de Tráfego</h3>
+
+<p>
+Monitoramento, otimização e escalonamento inteligente de campanhas.
+</p>
+
+<div class="price">
+A partir de R$ 1.100/mês
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Gestão%20de%20Tráfego"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-search"></i>
+
+<h3>SEO</h3>
+
+<p>
+Otimização para mecanismos de busca e crescimento orgânico sustentável.
+</p>
+
+<div class="price">
+A partir de R$ 700/mês
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20SEO"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-envelope"></i>
+
+<h3>Email Marketing</h3>
+
+<p>
+Campanhas automatizadas para relacionamento, recuperação e fidelização.
+</p>
+
+<div class="price">
+A partir de R$ 450
+</div>
+
+<a   class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Email%20Marketing"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BRANDING -->
+
+<div class="service-category">
+
+<h2 class="category-title">
+🎨 Branding & Conteúdo
+</h2>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<i class="fas fa-palette"></i>
+
+<h3>Design Gráfico</h3>
+
+<p>
+Artes profissionais para campanhas, redes sociais e comunicação visual.
+</p>
+
+<div class="price">
+A partir de R$ 500
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Design%20Gráfico"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-crown"></i>
+
+<h3>Branding</h3>
+
+<p>
+Posicionamento, identidade visual e construção estratégica de marca.
+</p>
+
+<div class="price">
+A partir de R$ 1.500
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Branding"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-pen-fancy"></i>
+
+<h3>Copywriting</h3>
+
+<p>
+Textos persuasivos para anúncios, páginas de venda e campanhas.
+</p>
+
+<div class="price">
+A partir de R$ 600
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Copywriting"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-video"></i>
+
+<h3>Audiovisual</h3>
+
+<p>
+Produção e edição de vídeos institucionais, promocionais e cinematográficos.
+</p>
+
+<div class="price">
+A partir de R$ 1.200
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Audiovisual"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TECNOLOGIA -->
+
+<div class="service-category">
+
+<h2 class="category-title">
+💻 Tecnologia & Inovação
+</h2>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<i class="fas fa-code"></i>
+
+<h3>Programação Web</h3>
+
+<p>
+Sites, landing pages e sistemas modernos preparados para escalar.
+</p>
+
+<div class="price">
+A partir de R$ 2.300
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="dev.html"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-brain"></i>
+
+<h3>Marketing com IA</h3>
+
+<p>
+Inteligência artificial aplicada à automação, análise e crescimento.
+</p>
+
+<div class="price">
+A partir de R$ 1.500
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Marketing%20com%20IA"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-robot"></i>
+
+<h3>Automações Empresariais</h3>
+
+<p>
+Processos inteligentes para aumentar produtividade e reduzir custos.
+</p>
+
+<div class="price">
+A partir de R$ 2.000
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Automações%20Empresariais"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-sitemap"></i>
+
+<h3>Funis de Venda</h3>
+
+<p>
+Estrutura completa de captação, nutrição e conversão de clientes.
+</p>
+
+<div class="price">
+A partir de R$ 1.300
+</div>
+
+<a class="price-note">
+Sob Consulta
+</a>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Funis%20de%20Venda"
+class="btn btn-primary">
+Solicitar
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ESTRATÉGIA -->
+
+<div class="service-category">
+
+<h2 class="category-title">
+🧠 Estratégia
+</h2>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<i class="fas fa-chess-king"></i>
+
+<h3>Consultoria Estratégica</h3>
+
+<p>
+Diagnóstico completo da sua empresa, 
+posicionamento e plano de crescimento.
+</p>
+
+<div class="price">
+A partir de R$ 500,00
+</div>
+
+<div class="price-note">
+Valor final sob consulta
+</div>
+
+<a href="#" class="btn btn-primary">
+Solicitar Serviço
+</a>
+
+</div>
+
+
+<div class="service-card featured full-nexa">
+
+<div class="service-badge">
+MAIS COMPLETO
+</div>
+
+<i class="fas fa-crown"></i>
+
+<h3>Pacote Full Nexa</h3>
+
+<p>
+Operação completa da presença digital
+da sua marca com todos os serviços
+integrados pela equipe Nexa.
+</p>
+
+<div class="price">
+Sob Consulta
+</div>
+
+<div class="price-note">
+Projeto totalmente personalizado
+</div>
+
+<a href="#" class="btn btn-primary">
+Solicitar Proposta
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ===================================
+COMO TRABALHAMOS
+=================================== -->
+
+<section class="process">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>NOSSO PROCESSO</span>
+
+<h2>
+Metodologia baseada em estratégia.
+</h2>
+
+<p>
+Toda empresa possui objetivos diferentes.
+Por isso cada projeto passa por um processo estruturado para garantir crescimento consistente.
+</p>
+
+</div>
+
+<div class="process-grid">
+
+<div class="process-card">
+
+<div class="process-number">
+01
+</div>
+
+<h3>Diagnóstico</h3>
+
+<p>
+Estudamos sua empresa, concorrentes, público-alvo e posicionamento atual.
+</p>
+
+</div>
+
+<div class="process-card">
+
+<div class="process-number">
+02
+</div>
+
+<h3>Planejamento</h3>
+
+<p>
+Definimos objetivos, estratégias, canais e oportunidades de crescimento.
+</p>
+
+</div>
+
+<div class="process-card">
+
+<div class="process-number">
+03
+</div>
+
+<h3>Execução</h3>
+
+<p>
+Marketing, design, tecnologia e conteúdo atuando de forma integrada.
+</p>
+
+</div>
+
+<div class="process-card">
+
+<div class="process-number">
+04
+</div>
+
+<h3>Otimização</h3>
+
+<p>
+Acompanhamento contínuo de métricas, resultados e melhorias.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================
+ESTATÍSTICAS
+=================================== -->
+
+<section class="stats-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>NEXA EM NÚMEROS</span>
+
+<h2>
+Estrutura preparada para crescer.
+</h2>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<h2>15+</h2>
+<p>Serviços Especializados</p>
+</div>
+
+<div class="stat-card">
+<h2>100%</h2>
+<p>Projetos Personalizados</p>
+</div>
+
+<div class="stat-card">
+<h2>24/7</h2>
+<p>Mentalidade de Evolução</p>
+</div>
+
+<div class="stat-card">
+<h2>∞</h2>
+<p>Potencial de Crescimento</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================
+CTA FINAL
+=================================== -->
+
+<section class="mega-cta">
+
+<div class="container">
+
+<div class="mega-box">
+
+<div class="mega-glow"></div>
+
+<span>NEXA ENTERPRISES</span>
+
+<h2>
+Pronto para transformar sua marca?
+</h2>
+
+<p>
+Posicionamento, autoridade, tecnologia, branding e crescimento.
+Tudo conectado em uma única estratégia para levar sua empresa ao próximo nível.
+</p>
+
+<div class="hero-buttons">
+
+<a href="https://wa.me/5511981332616?text=Olá,%20gostaria%20de%20solicitar%20uma%20proposta"
+class="btn btn-primary">
+Solicitar Proposta
+</a>
+
+<a href="1contratação.html"
+class="btn btn-secondary">
+trabalhar na Nexa
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================
+FOOTER PREMIUM
+=================================== -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div class="footer-brand">
+
+<h3 class="footer-logo">
+Nexa Agency Enterprises
+</h3>
+
+<p class="footer-description">
+Conectando estratégia, tecnologia e criatividade para construir marcas fortes, modernas e preparadas para o futuro.
+</p>
+
+</div>
+
+<div>
+
+<h4>Navegação</h4>
+
+<ul class="footer-links">
+<li><a href="inicio.html">Início</a></li>
+<li><a href="3serviços.html">Serviços</a></li>
+<li><a href="2portfolio.html">Portfólio</a></li>
+<li><a href="readme.html">Sobre</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<h4>Serviços</h4>
+
+<ul class="footer-links">
+<li><a href="#">Marketing Digital</a></li>
+<li><a href="#">Branding</a></li>
+<li><a href="#">Programação Web</a></li>
+<li><a href="#">Consultoria</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<h4>Contato</h4>
+
+<ul class="footer-links">
+<li><a href="mailto:nexaenterprisesadm@gmail.com">Email Comercial</a></li>
+<li><a href="https://wa.me/5511981332616?text=Olá,%20gostaria%20de%20solicitar%20os%20serviços%20da%20Nexa">WhatsApp</a></li>
+<li><a href="https://www.instagram.com/agencynexaenterprises/">Instagram</a></li>
+<li><a href="https://typebot.co/my-typebot-lyx2eqn">NexaBot</a></li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>
+© 2026 Nexa Agency Enterprises.
+Todos os direitos reservados.
+</p>
+
+<p class="footer-signature">
+Fundada por
+<a href="https://contatoceonexaenterprises.carrd.co/">
+Vinícios Santana
+</a>
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* ============================
+   HEADER PREMIUM NEXA
+============================ */
+
+const header = document.querySelector(".main-header");
+
+const menu = document.getElementById("mobileMenu");
+
+const overlay = document.getElementById("menuOverlay");
+
+const openBtn = document.getElementById("menuToggle");
+
+const closeBtn = document.getElementById("closeMenu");
+
+const body = document.body;
+
+/* ABRIR */
+
+function openMenu(){
+
+menu.classList.add("active");
+
+overlay.classList.add("active");
+
+body.style.overflow="hidden";
+
+}
+
+/* FECHAR */
+
+function closeMenu(){
+
+menu.classList.remove("active");
+
+overlay.classList.remove("active");
+
+body.style.overflow="";
+
+}
+
+/* BOTÕES */
+
+openBtn.addEventListener("click",openMenu);
+
+closeBtn.addEventListener("click",closeMenu);
+
+overlay.addEventListener("click",closeMenu);
+
+/* FECHAR AO CLICAR EM UM LINK */
+
+document.querySelectorAll(".mobile-links a").forEach(link=>{
+
+link.addEventListener("click",closeMenu);
+
+});
+
+document.querySelectorAll(".mobile-social a").forEach(link=>{
+
+link.addEventListener("click",closeMenu);
+
+});
+
+/* ESC */
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape"){
+
+closeMenu();
+
+}
+
+});
+
+/* HEADER MENOR AO ROLAR */
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>40){
+
+header.classList.add("scrolled");
+
+}else{
+
+header.classList.remove("scrolled");
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

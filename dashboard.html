@@ -1,0 +1,4866 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="navicon.png" type="image/png">
+
+    <title>Nexa OS • Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    
+<style>
+
+/*=========================================================
+    GOOGLE FONT
+=========================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/*=========================================================
+    RESET
+=========================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Space Grotesk',sans-serif;
+
+    background:#07070A;
+
+    color:#FFF;
+
+    overflow-x:hidden;
+
+    min-height:100vh;
+
+    position:relative;
+
+}
+
+/*=========================================================
+    SCROLLBAR
+=========================================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0B0B10;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#8B5CF6;
+
+    border-radius:30px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#A855F7;
+
+}
+
+/*=========================================================
+    ROOT
+=========================================================*/
+
+:root{
+
+    --background:#07070A;
+
+    --background2:#0E0E14;
+
+    --sidebar:#171726;
+
+    --card:#111119;
+
+    --border:rgba(255,255,255,.08);
+
+    --glass:rgba(255,255,255,.05);
+
+    --white:#FFFFFF;
+
+    --text:#B5B5C3;
+
+    --purple:#8B5CF6;
+
+    --purple2:#6D28D9;
+
+    --purple3:#A855F7;
+
+    --success:#38EF7D;
+
+    --warning:#FFC857;
+
+    --danger:#FF5F6D;
+
+    --shadow:
+
+    0 25px 60px rgba(0,0,0,.45);
+
+}
+
+/*=========================================================
+    BACKGROUND
+=========================================================*/
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-999;
+
+    overflow:hidden;
+
+}
+
+.bg-grid{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+    background-size:45px 45px;
+
+    opacity:.25;
+
+}
+
+.gradient-1{
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+    border-radius:50%;
+
+    background:#6D28D9;
+
+    filter:blur(220px);
+
+    opacity:.22;
+
+    top:-250px;
+
+    left:-120px;
+
+    animation:float1 18s ease-in-out infinite;
+
+}
+
+.gradient-2{
+
+    position:absolute;
+
+    width:550px;
+
+    height:550px;
+
+    border-radius:50%;
+
+    background:#A855F7;
+
+    filter:blur(220px);
+
+    opacity:.18;
+
+    right:-150px;
+
+    bottom:-200px;
+
+    animation:float2 20s ease-in-out infinite;
+
+}
+
+.bg-blur{
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:#8B5CF6;
+
+    filter:blur(180px);
+
+    opacity:.08;
+
+    left:45%;
+
+    top:30%;
+
+}
+
+.noise{
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.03;
+
+    background-image:url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+
+}
+
+/*=========================================================
+    SIDEBAR
+=========================================================*/
+
+.sidebar{
+
+    position:fixed;
+
+    left:24px;
+
+    top:24px;
+
+    bottom:24px;
+
+    width:285px;
+
+    background:rgba(18,18,28,.62);
+
+    backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    z-index:999;
+
+}
+
+.sidebar:hover{
+
+    border-color:rgba(168,85,247,.35);
+
+    box-shadow:
+
+    0 0 40px rgba(168,85,247,.12),
+
+    0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo-icon{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:18px;
+
+    background:
+
+    linear-gradient(135deg,var(--purple),var(--purple3));
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    box-shadow:
+
+    0 0 30px rgba(139,92,246,.35);
+
+}
+
+.logo h2{
+
+    font-size:22px;
+
+}
+
+.logo img{
+
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+
+}
+
+.sidebar-menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    margin-top:45px;
+
+}
+
+.sidebar-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:15px 18px;
+
+    color:var(--text);
+
+    text-decoration:none;
+
+    border-radius:16px;
+
+    transition:.28s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.sidebar-menu a::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:0;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(90deg,
+
+    rgba(139,92,246,.18),
+
+    transparent);
+
+    transition:.35s;
+
+}
+
+.sidebar-menu a:hover::before{
+
+    width:100%;
+
+}
+
+.sidebar-menu a:hover{
+
+    color:#FFF;
+
+    transform:translateX(6px);
+
+}
+
+.sidebar-menu a.active{
+
+    background:
+
+    linear-gradient(135deg,
+
+    rgba(139,92,246,.28),
+
+    rgba(168,85,247,.12));
+
+    color:#FFF;
+
+    border:1px solid rgba(168,85,247,.30);
+
+}
+
+.sidebar-menu svg{
+
+    width:21px;
+
+    height:21px;
+
+}
+
+.notification-dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#A855F7;
+
+    margin-left:auto;
+
+    box-shadow:
+
+    0 0 15px #A855F7;
+
+}
+
+.plan-card{
+
+    background:
+
+    linear-gradient(160deg,
+
+    rgba(139,92,246,.22),
+
+    rgba(255,255,255,.03));
+
+    border-radius:22px;
+
+    padding:22px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.plan-card small{
+
+    color:var(--text);
+
+}
+
+.plan-card h3{
+
+    margin-top:8px;
+
+    margin-bottom:18px;
+
+}
+
+.plan-card button{
+
+    padding:10px 14px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(59,130,246,.35);
+
+    background:rgba(59,130,246,.10);
+
+    color:#60a5fa;
+
+    font-size:.85rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-weight:600;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.plan-card button::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+
+    transition:.5s;
+
+}
+
+.plan-card button:hover{
+
+    transform:translateY(-2px);
+
+    border-color:#3b82f6;
+
+    background:rgba(59,130,246,.18);
+
+    color:#fff;
+
+}
+
+.plan-card button:hover::after{
+
+    left:100%;
+
+}
+
+.plan-card button::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+
+    transition:.3s;
+
+    font-weight:600;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.plan-card button::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+
+    transition:.5s;
+
+}
+
+.plan-card button:hover{
+
+    transform:translateY(-2px);
+
+    border-color:#3b82f6;
+
+    background:rgba(59,130,246,.18);
+
+    color:#fff;
+
+}
+
+.plan-card button:hover::after{
+
+    left:100%;
+
+}
+
+.plan-card button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+    0 0 35px rgba(168,85,247,.35);
+
+}
+
+/*=========================================================
+    MAIN
+=========================================================*/
+
+.main{
+
+    margin-left:335px;
+
+    padding:32px;
+
+}
+
+/*=========================================================
+    TOPBAR
+=========================================================*/
+
+.topbar{
+
+    height:78px;
+
+    background:rgba(18,18,28,.55);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 28px;
+
+    margin-bottom:35px;
+
+    position:sticky;
+
+    top:24px;
+
+    z-index:100;
+
+}
+
+.topbar-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.menu-button{
+
+    width:50px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.05);
+
+    color:#FFF;
+
+    transition:.25s;
+
+}
+
+.menu-button:hover{
+
+    background:rgba(139,92,246,.25);
+
+}
+
+.search-box{
+
+    width:430px;
+
+    height:50px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:0 18px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.06);
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    background:none;
+
+    border:none;
+
+    outline:none;
+
+    color:#FFF;
+
+    font-family:inherit;
+
+}
+
+.search-box input::placeholder{
+
+    color:#888;
+
+}
+
+.topbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.icon-btn{
+
+    width:50px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.05);
+
+    color:#FFF;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    position:relative;
+
+}
+
+.icon-btn:hover{
+
+    background:rgba(139,92,246,.22);
+
+}
+
+.notification-btn span{
+
+    position:absolute;
+
+    top:8px;
+
+    right:8px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#A855F7;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:10px;
+
+    font-weight:700;
+
+}
+
+.user-profile{
+    
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+
+}
+
+.user-profile img{
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid rgba(168,85,247,.35);
+
+}
+
+.user-profile h4{
+
+    font-size:15px;
+
+}
+
+.user-profile span{
+
+    color:var(--text);
+
+    font-size:13px;
+
+}
+
+/*=========================================================
+    ANIMAÇÕES BASE
+=========================================================*/
+
+@keyframes float1{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(40px);
+
+}
+
+}
+
+@keyframes float2{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-50px);
+
+}
+
+}
+
+/*=========================================================
+    HERO
+=========================================================*/
+
+.hero{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:40px;
+
+    margin-bottom:35px;
+
+}
+
+.hero-content{
+
+    flex:1;
+
+}
+
+.hero-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(139,92,246,.12);
+
+    border:1px solid rgba(139,92,246,.25);
+
+    color:#C9B4FF;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+
+}
+
+.hero h1{
+
+    font-size:48px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    margin-bottom:16px;
+
+}
+
+.hero h1 span{
+
+    color:var(--purple3);
+
+}
+
+.hero p{
+
+    max-width:650px;
+
+    color:var(--text);
+
+    line-height:1.8;
+
+    font-size:16px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:18px;
+
+    margin-top:32px;
+
+}
+
+.primary-btn,
+.secondary-btn{
+
+    height:52px;
+
+    padding:0 24px;
+
+    border:none;
+
+    border-radius:16px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.primary-btn{
+
+    color:#FFF;
+
+    background:
+
+    linear-gradient(135deg,var(--purple),var(--purple3));
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 0 35px rgba(168,85,247,.35);
+
+}
+
+.secondary-btn{
+
+    color:#FFF;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.secondary-btn:hover{
+
+    border-color:rgba(168,85,247,.35);
+
+    background:rgba(139,92,246,.12);
+
+}
+
+.hero-card{
+
+    width:330px;
+
+    background:rgba(18,18,28,.60);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.system-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:18px;
+
+    color:var(--text);
+
+}
+
+.status-online{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#38EF7D;
+
+    box-shadow:0 0 15px #38EF7D;
+
+}
+
+.hero-card h3{
+
+    font-size:28px;
+
+    margin-bottom:10px;
+
+}
+
+.hero-card p{
+
+    color:var(--text);
+
+    line-height:1.7;
+
+    margin-bottom:28px;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.06);
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    width:100%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(90deg,var(--purple),var(--purple3));
+
+    border-radius:50px;
+
+}
+
+.system-progress{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.system-progress span{
+
+    font-weight:700;
+
+}
+
+/*=========================================================
+    GRID PRINCIPAL
+=========================================================*/
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 370px;
+
+    gap:30px;
+
+    align-items:start;
+
+}
+
+/*=========================================================
+    CARDS
+=========================================================*/
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+    margin-bottom:30px;
+
+}
+
+.stat-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:rgba(18,18,28,.60);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:24px;
+
+    transition:.35s;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.card-glow{
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    background:rgba(168,85,247,.12);
+
+    filter:blur(70px);
+
+    top:-120px;
+
+    right:-80px;
+
+}
+
+.stat-card:hover{
+
+    transform:
+
+    translateY(-8px)
+
+    rotateX(5deg);
+
+    border-color:rgba(168,85,247,.25);
+
+    box-shadow:
+
+    0 0 35px rgba(168,85,247,.15),
+
+    var(--shadow);
+
+}
+
+.stat-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:26px;
+
+}
+
+.stat-icon{
+
+    width:62px;
+
+    height:62px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+    linear-gradient(135deg,var(--purple),var(--purple3));
+
+}
+
+.stat-icon svg{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+.stat-badge{
+
+    padding:7px 12px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    background:rgba(255,255,255,.06);
+
+}
+
+.positive{
+
+    color:#38EF7D;
+
+}
+
+.warning{
+
+    color:#FFC857;
+
+}
+
+.stat-content small{
+
+    color:var(--text);
+
+    display:block;
+
+    margin-bottom:10px;
+
+}
+
+.stat-content h2{
+
+    font-size:40px;
+
+    margin-bottom:8px;
+
+}
+
+.stat-content p{
+
+    color:var(--text);
+
+    font-size:14px;
+
+}
+
+/*=========================================================
+    PROJETO EM DESTAQUE
+=========================================================*/
+
+.featured-project{
+
+    margin-bottom:30px;
+
+}
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.section-header h2{
+
+    font-size:24px;
+
+}
+
+.section-header button{
+
+    border:none;
+
+    cursor:pointer;
+
+    background:none;
+
+    color:var(--purple3);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-family:inherit;
+
+    font-weight:600;
+
+}
+
+.project-card{
+
+    background:rgba(18,18,28,.60);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:35px;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.project-tag{
+
+    display:inline-block;
+
+    margin-bottom:18px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:rgba(139,92,246,.14);
+
+    color:#C9B4FF;
+
+    font-size:12px;
+
+}
+
+.project-info h2{
+
+    font-size:34px;
+
+    margin-bottom:14px;
+
+}
+
+.project-info p{
+
+    color:var(--text);
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+}
+
+.progress-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+
+}
+
+.project-footer{
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+.project-footer small{
+
+    display:block;
+
+    color:var(--text);
+
+    margin-bottom:8px;
+
+}
+
+.project-footer h4{
+
+    font-size:16px;
+
+}
+
+/*=========================================================
+    TIMELINE
+=========================================================*/
+
+.activity{
+
+    background:rgba(18,18,28,.60);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:30px;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.timeline{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.timeline-item{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.timeline-dot{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    margin-top:8px;
+
+    background:var(--purple3);
+
+    box-shadow:0 0 15px var(--purple3);
+
+}
+
+.timeline-content{
+
+    position:relative;
+
+    padding-bottom:28px;
+
+    flex:1;
+
+}
+
+.timeline-content::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-12px;
+
+    top:22px;
+
+    width:2px;
+
+    height:calc(100% + 5px);
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.timeline-item:last-child
+.timeline-content::before{
+
+    display:none;
+
+}
+
+.timeline-content span{
+
+    color:var(--text);
+
+    font-size:13px;
+
+}
+
+.timeline-content h4{
+
+    margin:8px 0;
+
+    font-size:18px;
+
+}
+
+.timeline-content p{
+
+    color:var(--text);
+
+    line-height:1.7;
+
+}
+
+/*=========================================================
+    SIDEBAR DIREITA
+=========================================================*/
+
+.dashboard-sidebar{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+.side-card{
+
+    background:rgba(18,18,28,.60);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:26px;
+
+    padding:24px;
+
+    backdrop-filter:blur(22px);
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+.side-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(168,85,247,.25);
+
+}
+
+/*=========================================================
+    AGENDA
+=========================================================*/
+
+.agenda-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.agenda-item{
+
+    display:flex;
+
+    gap:16px;
+
+    align-items:flex-start;
+
+    padding:14px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+.agenda-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.agenda-hour{
+
+    min-width:65px;
+
+    font-weight:700;
+
+    color:var(--purple3);
+
+}
+
+.agenda-info h4{
+
+    font-size:15px;
+
+    margin-bottom:6px;
+
+}
+
+.agenda-info p{
+
+    color:var(--text);
+
+    font-size:14px;
+
+}
+
+/*=========================================================
+    STATUS
+=========================================================*/
+
+.system-status-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.status-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.status-item span{
+
+    color:var(--text);
+
+}
+
+.status-online{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    align-items:center;
+
+}
+
+.status-online span{
+
+    font-size:.75rem;
+
+    padding:6px 10px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#B5B5C3;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    transition:.3s;
+
+}
+
+.status-online span::before{
+
+    content:"";
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:#3b82f6;
+
+    box-shadow:0 0 10px rgba(59,130,246,.6);
+
+}
+
+.status-online span:hover{
+
+    transform:translateY(-2px);
+
+    border-color:rgba(59,130,246,.35);
+
+    color:#fff;
+
+}
+
+.status-dot{
+
+    width:9px;
+
+    height:9px;
+
+    border-radius:50%;
+
+    background:#38EF7D;
+
+    box-shadow:0 0 15px #38EF7D;
+
+}
+
+/*=========================================================
+    NEXABOT CARD
+=========================================================*/
+
+.nexabot-card{
+
+    text-align:center;
+
+}
+
+.bot-avatar{
+
+    width:90px;
+
+    height:90px;
+
+    margin:10px auto 20px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+    background:
+
+    linear-gradient(135deg,var(--purple),var(--purple3));
+
+    box-shadow:
+
+    0 0 40px rgba(168,85,247,.35);
+
+}
+
+.nexabot-card h4{
+
+    font-size:22px;
+
+    margin-bottom:12px;
+
+}
+
+.nexabot-card p{
+
+    color:var(--text);
+
+    line-height:1.7;
+
+    margin-bottom:22px;
+
+}
+
+.quick-actions{
+
+    display:grid;
+
+    gap:12px;
+
+}
+
+.quick-actions button{
+
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.05);
+
+    color:#FFF;
+
+    font-family:inherit;
+
+    transition:.30s;
+
+}
+
+.quick-actions button:hover{
+
+    background:
+
+    linear-gradient(135deg,var(--purple),var(--purple3));
+
+}
+
+/*=========================================================
+    BOTÃO FLUTUANTE
+=========================================================*/
+
+.floating-bot{
+
+    position:fixed;
+
+    right:35px;
+
+    bottom:35px;
+
+    width:72px;
+
+    height:72px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:
+
+    linear-gradient(135deg,var(--purple),var(--purple3));
+
+    color:#FFF;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:
+
+    0 0 40px rgba(168,85,247,.45);
+
+    transition:.35s;
+
+    z-index:999;
+
+}
+
+.floating-bot svg{
+
+    width:32px;
+
+    height:32px;
+
+}
+
+.floating-bot:hover{
+
+    transform:scale(1.08) rotate(8deg);
+
+}
+
+/*=========================================================
+    CHAT
+=========================================================*/
+
+.chat-window{
+
+    position:fixed;
+
+    right:35px;
+
+    bottom:120px;
+
+    width:370px;
+
+    height:560px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    background:rgba(18,18,28,.78);
+
+    backdrop-filter:blur(28px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:var(--shadow);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(25px);
+
+    transition:.35s;
+
+    z-index:999;
+
+}
+
+.chat-window.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+.chat-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:22px;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+.chat-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.bot-mini{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+    linear-gradient(135deg,var(--purple),var(--purple3));
+
+}
+
+.chat-title h3{
+
+    font-size:17px;
+
+}
+
+.chat-title span{
+
+    color:#38EF7D;
+
+    font-size:13px;
+
+}
+
+.close-chat{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.05);
+
+    color:#FFF;
+
+    cursor:pointer;
+
+}
+
+.chat-body{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:22px;
+
+}
+
+.bot-message{
+
+    max-width:250px;
+
+    background:rgba(139,92,246,.16);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    line-height:1.8;
+
+}
+
+.chat-suggestions{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+
+    padding:0 18px 18px;
+
+}
+
+.chat-suggestions button{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.05);
+
+    color:#FFF;
+
+    font-size:13px;
+
+    transition:.30s;
+
+}
+
+.chat-suggestions button:hover{
+
+    background:rgba(139,92,246,.22);
+
+}
+
+.chat-input{
+
+    display:flex;
+
+    gap:12px;
+
+    padding:18px;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+}
+
+.chat-input input{
+
+    flex:1;
+
+    height:48px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    padding:0 16px;
+
+    background:rgba(255,255,255,.05);
+
+    color:#FFF;
+
+    font-family:inherit;
+
+}
+
+.chat-input button{
+
+    width:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    background:
+
+    linear-gradient(135deg,var(--purple),var(--purple3));
+
+    color:#FFF;
+
+}
+
+/*=========================================================
+    LOADING SCREEN
+=========================================================*/
+
+.loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#07070A;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:25px;
+
+    z-index:99999;
+
+    transition:.8s;
+
+}
+
+.loading-screen.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+.loading-logo{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    letter-spacing:8px;
+
+}
+
+.loading-text{
+
+    color:var(--text);
+
+}
+
+.loading-progress{
+
+    width:320px;
+
+    height:10px;
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.loading-fill{
+
+    width:0;
+
+    height:100%;
+
+    border-radius:30px;
+
+    background:
+
+    linear-gradient(90deg,var(--purple),var(--purple3));
+
+    animation:loading 2s forwards;
+
+}
+
+@keyframes loading{
+
+    to{
+
+        width:100%;
+
+    }
+
+}
+
+/*=========================================================
+    RESPONSIVIDADE
+=========================================================*/
+
+@media(max-width:1400px){
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard-sidebar{
+
+        display:grid;
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        width:90px;
+
+        padding:20px 14px;
+
+    }
+
+    .sidebar h2,
+    .sidebar span,
+    .plan-card{
+
+        display:none;
+
+    }
+
+    .sidebar-menu a{
+
+        justify-content:center;
+
+    }
+
+    .main{
+
+        margin-left:125px;
+
+    }
+
+    .hero{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+
+        transform:translateX(-120%);
+
+    }
+
+    .sidebar.active{
+
+        transform:translateX(0);
+
+    }
+
+    .main{
+
+        margin-left:0;
+
+        padding:18px;
+
+    }
+
+    .topbar{
+
+        padding:0 16px;
+
+    }
+
+    .search-box{
+
+        display:none;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard-sidebar{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .project-footer{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .chat-window{
+
+        width:calc(100% - 30px);
+
+        right:15px;
+
+        left:15px;
+
+        bottom:105px;
+
+    }
+
+}
+
+/*=========================================================
+    PREMIUM EFFECTS
+=========================================================*/
+
+/* Glow que acompanha o mouse */
+.mouse-glow{
+
+    position:fixed;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:radial-gradient(circle,
+        rgba(168,85,247,.14) 0%,
+        rgba(139,92,246,.08) 30%,
+        transparent 75%);
+
+    filter:blur(70px);
+
+    transform:translate(-50%,-50%);
+
+    z-index:-5;
+
+    transition:
+    transform .08s linear,
+    opacity .30s;
+
+}
+
+/*=========================================================
+    GLASS REFLECTION
+=========================================================*/
+
+.sidebar::after,
+.topbar::after,
+.stat-card::after,
+.project-card::after,
+.side-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    pointer-events:none;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.12) 0%,
+        rgba(255,255,255,.02) 25%,
+        transparent 55%
+    );
+
+    opacity:.45;
+
+}
+
+/*=========================================================
+    SHIMMER
+=========================================================*/
+
+.primary-btn,
+.plan-card button,
+.floating-bot{
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.primary-btn::before,
+.plan-card button::before,
+.floating-bot::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-140%;
+
+    width:80px;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.45),
+
+        transparent
+
+    );
+
+    transform:skewX(-25deg);
+
+}
+
+.primary-btn:hover::before,
+.plan-card button:hover::before,
+.floating-bot:hover::before{
+
+    animation:shine .9s;
+
+}
+
+@keyframes shine{
+
+    to{
+
+        left:160%;
+
+    }
+
+}
+
+/*=========================================================
+    HOVER 3D
+=========================================================*/
+
+.stat-card,
+.project-card,
+.side-card{
+
+    transform-style:preserve-3d;
+
+    perspective:1000px;
+
+}
+
+.stat-card:hover{
+
+    transform:
+
+    perspective(1000px)
+
+    rotateX(6deg)
+
+    rotateY(-6deg)
+
+    translateY(-10px)
+
+    scale(1.02);
+
+}
+
+.project-card:hover{
+
+    transform:
+
+    perspective(1000px)
+
+    rotateX(3deg)
+
+    translateY(-6px);
+
+}
+
+.side-card:hover{
+
+    transform:
+
+    perspective(1000px)
+
+    rotateY(-4deg)
+
+    translateY(-5px);
+
+}
+
+/*=========================================================
+    LINKS
+=========================================================*/
+
+a{
+
+    transition:.30s;
+
+}
+
+button{
+
+    transition:.30s;
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+/*=========================================================
+    INPUTS
+=========================================================*/
+
+input:focus{
+
+    border-color:rgba(168,85,247,.45);
+
+    box-shadow:
+
+    0 0 25px rgba(168,85,247,.18);
+
+}
+
+/*=========================================================
+    FADE
+=========================================================*/
+
+.fade-up{
+
+    opacity:0;
+
+    transform:
+
+    translateY(40px);
+
+    transition:
+
+    .8s cubic-bezier(.2,.7,.2,1);
+
+}
+
+.fade-up.show{
+
+    opacity:1;
+
+    transform:
+
+    translateY(0);
+
+}
+
+/*=========================================================
+    PULSE
+=========================================================*/
+
+.notification-dot,
+.status-dot{
+
+    animation:pulse 2.5s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        transform:scale(1.45);
+
+        opacity:.45;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/*=========================================================
+    FLOAT
+=========================================================*/
+
+.hero-card{
+
+    animation:floating 6s ease-in-out infinite;
+
+}
+
+.bot-avatar{
+
+    animation:floating 5s ease-in-out infinite;
+
+}
+
+.floating-bot{
+
+    animation:floating2 4s ease-in-out infinite;
+
+}
+
+@keyframes floating{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
+
+@keyframes floating2{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+
+/*=========================================================
+    CARD BORDER GLOW
+=========================================================*/
+
+.stat-card:hover,
+.side-card:hover,
+.project-card:hover,
+.hero-card:hover{
+
+    border-color:
+
+    rgba(168,85,247,.35);
+
+}
+
+/*=========================================================
+    SELECTION
+=========================================================*/
+
+::selection{
+
+    background:#8B5CF6;
+
+    color:#FFF;
+
+}
+
+/*=========================================================
+    PLACEHOLDER
+=========================================================*/
+
+::placeholder{
+
+    color:#7C7C8C;
+
+}
+
+/*=========================================================
+    DISABLE TAP
+=========================================================*/
+
+img,
+button,
+a{
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+/*=========================================================
+    PERFORMANCE
+=========================================================*/
+
+.stat-card,
+.side-card,
+.project-card,
+.hero-card,
+.chat-window,
+.sidebar,
+.topbar{
+
+    will-change:
+
+    transform,
+
+    opacity;
+
+}
+
+/*=========================================================
+    FINAL
+=========================================================*/
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(circle at top,
+
+    rgba(255,255,255,.03),
+
+    transparent 60%);
+
+    z-index:-4;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+    linear-gradient(
+
+        to bottom,
+
+        transparent,
+
+        rgba(0,0,0,.25)
+
+    );
+
+    z-index:-3;
+
+}
+
+html{
+
+    scroll-padding-top:100px;
+
+}
+
+/* Ripple */
+
+button{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.ripple{
+
+    position:absolute;
+
+    width:12px;
+
+    height:12px;
+
+    background:rgba(255,255,255,.45);
+
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+
+    animation:ripple .7s linear;
+
+}
+
+@keyframes ripple{
+
+    from{
+
+        opacity:.6;
+
+        width:10px;
+
+        height:10px;
+
+    }
+
+    to{
+
+        opacity:0;
+
+        width:450px;
+
+        height:450px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+        BACKGROUND
+    ====================================================== -->
+
+    <div class="background">
+
+        <div class="bg-grid"></div>
+
+        <div class="bg-gradient gradient-1"></div>
+
+        <div class="bg-gradient gradient-2"></div>
+
+        <div class="bg-blur"></div>
+
+        <div class="noise"></div>
+
+    </div>
+
+    <!-- =====================================================
+        SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    <img src="nexalogo.png" alt="">
+                </div>
+
+                <div>
+
+                    <h2>NEXA</h2>
+
+                    <span>Operating System</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a class="active" href="inicio.html">
+
+                <i data-lucide="house"></i>
+
+                <span>Inicio</span>
+
+            </a>
+
+            <a class="active" href="dashboard.html">
+
+                <i data-lucide="layout-dashboard"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+            <a href="nexabot.html">
+
+                <i data-lucide="bot"></i>
+
+                <span>NexaBot</span>
+
+            </a>
+
+            <a href="404.html">
+
+                <i data-lucide="folder-kanban"></i>
+
+                <span>Projetos</span>
+
+            </a>
+
+            <a href="404.html">
+
+                <i data-lucide="folder-open"></i>
+
+                <span>Arquivos</span>
+
+            </a>
+
+            <a href="404.html">
+
+                <i data-lucide="bell"></i>
+
+                <span>Notificações</span>
+
+                <div class="notification-dot"></div>
+
+            </a>
+
+            <a href="dashboard.html">
+
+                <i data-lucide="user-round"></i>
+
+                <span>Perfil</span>
+
+            </a>
+
+            <a href="404.html">
+
+                <i data-lucide="settings-2"></i>
+
+                <span>Configurações</span>
+
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="plan-card">
+
+                <small>Plano Atual</small>
+
+                <h3>FREE</h3>
+
+                <button>
+
+                    <i data-lucide="sparkles"></i>
+
+                    Upgrade
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- =====================================================
+        MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+        <!-- =============================================
+            TOPBAR
+        ============================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="menu-button">
+
+                    <i data-lucide="menu"></i>
+
+                </button>
+
+                <div class="search-box">
+
+                    <i data-lucide="search"></i>
+
+                    <input
+                        type="text"
+                        placeholder="Pesquisar...">
+
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="icon-btn">
+
+                    <i data-lucide="moon-star"></i>
+
+                </button>
+
+                <button class="icon-btn notification-btn">
+
+                    <i data-lucide="bell"></i>
+
+                    <span>3</span>
+
+                </button>
+
+                <div class="user-profile">
+
+                    <img
+                        id="userPhoto"
+                        src="perfil1.png"
+                        alt="Usuário">
+
+                    <div>
+
+                        <h4 id="userName">
+
+                            Carregando...
+
+                        </h4>
+
+                        <span>
+
+                            Cliente Nexa
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- =============================================
+            HERO
+        ============================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-tag">
+
+                    ✨ NEXA OS v1.0
+
+                </span>
+
+                <h1>
+
+                    Bem-vindo de volta a
+                    <span id="heroUser">
+
+                        Nexa
+
+                    </span>
+
+                </h1>
+
+                <p>
+
+                    Todos os seus projetos,
+                    arquivos, notificações
+                    e inteligência da Nexa
+                    em um único lugar.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="primary-btn">
+
+                        <i data-lucide="bot"></i>
+
+                        Abrir NexaBot
+
+                    </button>
+
+                    <button class="secondary-btn">
+
+                        <i data-lucide="folder-kanban"></i>
+
+                        Meus Projetos
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="hero-card">
+
+                <div class="system-status">
+
+                    <span class="status-online"></span>
+
+                    Sistema Operacional
+
+                </div>
+
+                <h3>
+
+                    Nexa OS
+
+                </h3>
+
+                <p>
+
+                    Todos os módulos
+                    funcionando normalmente.
+
+                </p>
+
+                <div class="system-progress">
+
+                    <div class="progress-bar">
+
+                        <div class="progress-fill"></div>
+
+                    </div>
+
+                    <span>
+
+                        100%
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =============================================
+            MÉTRICAS
+        ============================================== -->
+
+        <section class="stats-grid">
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+
+                    <i data-lucide="folder-kanban"></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+
+                        Projetos
+
+                    </small>
+
+                    <h2 id="projectsCount">
+
+                        04
+
+                    </h2>
+
+                </div>
+
+            </article>
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+
+                    <i data-lucide="files"></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+
+                        Arquivos
+
+                    </small>
+
+                    <h2 id="filesCount">
+
+                        18
+
+                    </h2>
+
+                </div>
+
+            </article>
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+
+                    <i data-lucide="bell-ring"></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+
+                        Notificações
+
+                    </small>
+
+                    <h2 id="notificationCount">
+
+                        03
+
+                    </h2>
+
+                </div>
+
+            </article>
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+
+                    <i data-lucide="bot"></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+
+                        NexaBot
+
+                    </small>
+
+                    <h2>
+
+                        Online
+
+                    </h2>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- =============================================
+            (Projeto em destaque + Timeline +
+            Painel lateral + NexaBot flutuante)
+        ============================================== -->
+
+                <!-- ==========================================
+                GRID PRINCIPAL
+        =========================================== -->
+
+        <div class="dashboard-grid">
+
+            <!-- ======================================
+                    COLUNA ESQUERDA
+            ======================================= -->
+
+            <section class="dashboard-main">
+
+                <!-- ==============================
+                        CARDS
+                =============================== -->
+
+                <section class="stats-grid">
+
+                    <article class="stat-card projects">
+
+                        <div class="card-glow"></div>
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+
+                                <i data-lucide="folder-kanban"></i>
+
+                            </div>
+
+                            <span class="stat-badge positive">
+
+                                +12%
+
+                            </span>
+
+                        </div>
+
+                        <div class="stat-content">
+
+                            <small>
+
+                                Projetos
+
+                            </small>
+
+                            <h2 id="projectsCounter">
+
+                                4
+
+                            </h2>
+
+                            <p>
+
+                                Projetos ativos
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stat-card files">
+
+                        <div class="card-glow"></div>
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+
+                                <i data-lucide="folder-open"></i>
+
+                            </div>
+
+                            <span class="stat-badge positive">
+
+                                +4
+
+                            </span>
+
+                        </div>
+
+                        <div class="stat-content">
+
+                            <small>
+
+                                Arquivos
+
+                            </small>
+
+                            <h2 id="filesCounter">
+
+                                28
+
+                            </h2>
+
+                            <p>
+
+                                Disponíveis
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stat-card messages">
+
+                        <div class="card-glow"></div>
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+
+                                <i data-lucide="messages-square"></i>
+
+                            </div>
+
+                            <span class="stat-badge">
+
+                                Novas
+
+                            </span>
+
+                        </div>
+
+                        <div class="stat-content">
+
+                            <small>
+
+                                Mensagens
+
+                            </small>
+
+                            <h2>
+
+                                12
+
+                            </h2>
+
+                            <p>
+
+                                Não lidas
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stat-card notifications">
+
+                        <div class="card-glow"></div>
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+
+                                <i data-lucide="bell-ring"></i>
+
+                            </div>
+
+                            <span class="stat-badge warning">
+
+                                Hoje
+
+                            </span>
+
+                        </div>
+
+                        <div class="stat-content">
+
+                            <small>
+
+                                Notificações
+
+                            </small>
+
+                            <h2>
+
+                                3
+
+                            </h2>
+
+                            <p>
+
+                                Pendentes
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- ==============================
+                    PROJETO EM DESTAQUE
+                =============================== -->
+
+                <section class="featured-project">
+
+                    <div class="section-header">
+
+                        <h2>
+
+                            Projeto em destaque
+
+                        </h2>
+
+                        <button>
+
+                            Abrir Projeto
+
+                            <i data-lucide="arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="project-card">
+
+                        <div class="project-info">
+
+                            <span class="project-tag">
+
+                                WEBSITE
+
+                            </span>
+
+                            <h2>
+
+                                Landing Page Nexa
+
+                            </h2>
+
+                            <p>
+
+                                Desenvolvimento da nova landing page
+                                institucional da Nexa Marketing Digital.
+
+                            </p>
+
+                        </div>
+
+                        <div class="project-progress">
+
+                            <div class="progress-header">
+
+                                <span>
+
+                                    Progresso
+
+                                </span>
+
+                                <strong>
+
+                                    72%
+
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:72%;">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="project-footer">
+
+                            <div>
+
+                                <small>
+
+                                    Status
+
+                                </small>
+
+                                <h4>
+
+                                    🟡 Em andamento
+
+                                </h4>
+
+                            </div>
+
+                            <div>
+
+                                <small>
+
+                                    Prazo
+
+                                </small>
+
+                                <h4>
+
+                                    15 Julho
+
+                                </h4>
+
+                            </div>
+
+                            <div>
+
+                                <small>
+
+                                    Responsável
+
+                                </small>
+
+                                <h4>
+
+                                    Nexa Team
+
+                                </h4>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ==============================
+                        TIMELINE
+                =============================== -->
+
+                <section class="activity">
+
+                    <div class="section-header">
+
+                        <h2>
+
+                            Atividade recente
+
+                        </h2>
+
+                    </div>
+
+                    <div class="timeline">
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-dot"></div>
+
+                            <div class="timeline-content">
+
+                                <span>
+
+                                    09:12
+
+                                </span>
+
+                                <h4>
+
+                                    Projeto atualizado
+
+                                </h4>
+
+                                <p>
+
+                                    Landing Page Nexa recebeu novas alterações.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-dot"></div>
+
+                            <div class="timeline-content">
+
+                                <span>
+
+                                    Ontem
+
+                                </span>
+
+                                <h4>
+
+                                    Logo enviada
+
+                                </h4>
+
+                                <p>
+
+                                    Os arquivos finais foram enviados ao cliente.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-dot"></div>
+
+                            <div class="timeline-content">
+
+                                <span>
+
+                                    2 dias
+
+                                </span>
+
+                                <h4>
+
+                                    Novo orçamento
+
+                                </h4>
+
+                                <p>
+
+                                    Um novo orçamento foi solicitado.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+                        <!-- ======================================
+                    COLUNA DIREITA
+            ======================================= -->
+
+            <aside class="dashboard-sidebar">
+
+                <!-- ==========================
+                        AGENDA
+                =========================== -->
+
+                <section class="side-card">
+
+                    <div class="section-header">
+
+                        <h3>
+
+                            Agenda
+
+                        </h3>
+
+                        <i data-lucide="calendar-days"></i>
+
+                    </div>
+
+                    <div class="agenda-list">
+
+                        <div class="agenda-item">
+
+                            <div class="agenda-hour">
+
+                                09:00
+
+                            </div>
+
+                            <div class="agenda-info">
+
+                                <h4>
+
+                                    Reunião com cliente
+
+                                </h4>
+
+                                <p>
+
+                                    Google Meet
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="agenda-item">
+
+                            <div class="agenda-hour">
+
+                                14:00
+
+                            </div>
+
+                            <div class="agenda-info">
+
+                                <h4>
+
+                                    Entrega da Landing Page
+
+                                </h4>
+
+                                <p>
+
+                                    Projeto Nexa
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="agenda-item">
+
+                            <div class="agenda-hour">
+
+                                18:00
+
+                            </div>
+
+                            <div class="agenda-info">
+
+                                <h4>
+
+                                    Atualização do Sistema
+
+                                </h4>
+
+                                <p>
+
+                                    Nexa OS
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ==========================
+                    STATUS DO SISTEMA
+                =========================== -->
+
+                <section class="side-card">
+
+                    <div class="section-header">
+
+                        <h3>
+
+                            Sistema
+
+                        </h3>
+
+                        <i data-lucide="activity"></i>
+
+                    </div>
+
+                    <div class="system-status-list">
+
+                        <div class="status-item">
+
+                            <span>
+
+                                Firebase
+
+                            </span>
+
+                            <div class="status-online">
+
+                                <div class="status-dot"></div>
+
+                                
+
+                            </div>
+
+                        </div>
+
+                        <div class="status-item">
+
+                            <span>
+
+                                Cloud Sync
+
+                            </span>
+
+                            <div class="status-online">
+
+                                <div class="status-dot"></div>
+
+                                
+
+                            </div>
+
+                        </div>
+
+                        <div class="status-item">
+
+                            <span>
+
+                                NexaBot
+
+                            </span>
+
+                            <div class="status-online">
+
+                                <div class="status-dot"></div>
+
+                                
+
+                            </div>
+
+                        </div>
+
+                        <div class="status-item">
+
+                            <span>
+
+                                Segurança
+
+                            </span>
+
+                            <div class="status-online">
+
+                                <div class="status-dot"></div>
+
+                                
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ==========================
+                        NEXABOT
+                =========================== -->
+
+                <section class="side-card nexabot-card">
+
+                    <div class="section-header">
+
+                        <h3>
+
+                            NexaBot
+
+                        </h3>
+
+                        <i data-lucide="bot"></i>
+
+                    </div>
+
+                    <div class="bot-avatar">
+
+                        🤖
+
+                    </div>
+
+                    <h4>
+
+                        Olá, Souzzx!
+
+                    </h4>
+
+                    <p>
+
+                        Estou pronto para ajudar com marketing,
+                        branding, sites e estratégias digitais.
+
+                    </p>
+
+                    <div class="quick-actions">
+
+                        <button>
+
+                            Criar slogan
+
+                        </button>
+
+                        <button>
+
+                            Planejar campanha
+
+                        </button>
+
+                        <button>
+
+                            Gerar ideias
+
+                        </button>
+
+                        <button>
+
+                            Novo projeto
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- ==========================================
+            BOTÃO FLUTUANTE NEXABOT
+    =========================================== -->
+
+    <button class="floating-bot">
+
+        <i data-lucide="bot"></i>
+
+    </button>
+
+    <!-- ==========================================
+            JANELA DO CHAT
+    =========================================== -->
+
+    <div class="chat-window">
+
+        <div class="chat-header">
+
+            <div class="chat-title">
+
+                <div class="bot-mini">
+
+                    🤖
+
+                </div>
+
+                <div>
+
+                    <h3>
+
+                        NexaBot
+
+                    </h3>
+
+                    <span>
+
+                        Online
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <button class="close-chat">
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </div>
+
+        <div class="chat-body">
+
+            <div class="bot-message">
+
+                Olá 👋<br><br>
+
+                Como posso ajudar hoje?
+
+            </div>
+
+        </div>
+
+        <div class="chat-suggestions">
+
+            <button>
+
+                Criar campanha
+
+            </button>
+
+            <button>
+
+                Gerar slogan
+
+            </button>
+
+            <button>
+
+                Melhorar meu site
+
+            </button>
+
+            <button>
+
+                Novo orçamento
+
+            </button>
+
+        </div>
+
+        <div class="chat-input">
+
+            <input
+                type="text"
+                placeholder="Digite uma mensagem...">
+
+            <button>
+
+                <i data-lucide="send-horizontal"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+            LOADING SCREEN
+    =========================================== -->
+
+    <div class="loading-screen">
+
+        <div class="loading-logo">
+
+            NEXA OS
+
+        </div>
+
+        <div class="loading-text">
+
+            Inicializando sistema...
+
+        </div>
+
+        <div class="loading-progress">
+
+            <div class="loading-fill"></div>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+            SCRIPTS
+    =========================================== -->
+
+    <script src="./assets/js/dashboard.js"></script>
+
+    <script>
+
+        lucide.createIcons();
+
+    </script>
+
+    <script>
+window.addEventListener("load", () => {
+
+    const loading = document.querySelector(".loading-screen");
+
+    setTimeout(() => {
+
+        loading.classList.add("hide");
+
+        setTimeout(() => {
+
+            loading.remove();
+
+        }, 800);
+
+    }, 1800);
+
+});
+</script>
+
+<script>
+/*=========================================================
+    NEXA OS
+    CORE v1.0
+=========================================================*/
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    lucide.createIcons();
+
+    NexaOS.init();
+
+});
+
+/*=========================================================
+    NEXA OS
+=========================================================*/
+
+const NexaOS = {
+
+    init(){
+
+        this.loading();
+
+        this.sidebar();
+
+        this.chat();
+
+        this.search();
+
+        this.user();
+
+        this.logout();
+
+        this.clock();
+
+    },
+
+/*=========================================================
+    LOADING
+=========================================================*/
+
+    loading(){
+
+        const screen=document.querySelector(".loading-screen");
+
+        if(!screen) return;
+
+        setTimeout(()=>{
+
+            screen.classList.add("hide");
+
+            setTimeout(()=>{
+
+                screen.remove();
+
+            },800);
+
+        },1800);
+
+    },
+
+/*=========================================================
+    SIDEBAR
+=========================================================*/
+
+    sidebar(){
+
+        const menu=document.querySelector(".menu-button");
+
+        const sidebar=document.querySelector(".sidebar");
+
+        if(!menu || !sidebar) return;
+
+        menu.addEventListener("click",()=>{
+
+            sidebar.classList.toggle("active");
+
+        });
+
+        document.addEventListener("click",(e)=>{
+
+            if(window.innerWidth>768) return;
+
+            if(sidebar.contains(e.target)) return;
+
+            if(menu.contains(e.target)) return;
+
+            sidebar.classList.remove("active");
+
+        });
+
+    },
+
+/*=========================================================
+    CHAT
+=========================================================*/
+
+    chat(){
+
+        const open=document.querySelector(".floating-bot");
+
+        const close=document.querySelector(".close-chat");
+
+        const chat=document.querySelector(".chat-window");
+
+        if(!open || !close || !chat) return;
+
+        open.addEventListener("click",()=>{
+
+            chat.classList.add("active");
+
+        });
+
+        close.addEventListener("click",()=>{
+
+            chat.classList.remove("active");
+
+        });
+
+        document.addEventListener("keydown",(e)=>{
+
+            if(e.key==="Escape"){
+
+                chat.classList.remove("active");
+
+            }
+
+        });
+
+    },
+
+/*=========================================================
+    SEARCH
+=========================================================*/
+
+    search(){
+
+        const input=document.querySelector(".search-box input");
+
+        if(!input) return;
+
+        input.addEventListener("keyup",(e)=>{
+
+            if(e.key!=="Enter") return;
+
+            const value=input.value.trim().toLowerCase();
+
+            if(value==="") return;
+
+            if(value.includes("projeto")){
+
+                window.location.href="projetos.html";
+
+                return;
+
+            }
+
+            if(value.includes("arquivo")){
+
+                window.location.href="arquivos.html";
+
+                return;
+
+            }
+
+            if(value.includes("perfil")){
+
+                window.location.href="perfil.html";
+
+                return;
+
+            }
+
+            if(value.includes("config")){
+
+                window.location.href="configuracoes.html";
+
+                return;
+
+            }
+
+            if(value.includes("bot")){
+
+                document.querySelector(".chat-window").classList.add("active");
+
+                return;
+
+            }
+
+            alert("Nenhum resultado encontrado.");
+
+        });
+
+    },
+
+/*=========================================================
+    USER
+=========================================================*/
+
+    user(){
+
+        const name=document.getElementById("userName");
+
+        const hero=document.getElementById("heroUser");
+
+        const photo=document.getElementById("userPhoto");
+
+        const savedName=localStorage.getItem("nexaName");
+
+        const savedPhoto=localStorage.getItem("nexaPhoto");
+
+        if(savedName){
+
+            if(name) name.textContent=savedName;
+
+            if(hero) hero.textContent=savedName;
+
+        }
+
+        if(savedPhoto && photo){
+
+            photo.src=savedPhoto;
+
+        }
+
+    },
+
+/*=========================================================
+    LOGOUT
+=========================================================*/
+
+    logout(){
+
+        const logout=document.querySelector(".logout");
+
+        if(!logout) return;
+
+        logout.addEventListener("click",()=>{
+
+            localStorage.clear();
+
+            window.location.href="index.html";
+
+        });
+
+    },
+
+/*=========================================================
+    CLOCK
+=========================================================*/
+
+    clock(){
+
+        const hero=document.querySelector(".hero h1");
+
+        if(!hero) return;
+
+        const hour=new Date().getHours();
+
+        let greeting="Olá";
+
+        if(hour<12){
+
+            greeting="Bom dia";
+
+        }
+
+        else if(hour<18){
+
+            greeting="Boa tarde";
+
+        }
+
+        else{
+
+            greeting="Boa noite";
+
+        }
+
+        hero.innerHTML=`
+            ${greeting},
+            <span id="heroUser">
+                ${localStorage.getItem("nexaName") || "Usuário"}
+            </span> 👋
+        `;
+
+    }
+
+};
+</script>
+
+<script>
+
+/*=========================================================
+    NEXA OS
+    EFFECTS v1.0
+=========================================================*/
+
+/*=========================================================
+    INIT
+=========================================================*/
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    NexaEffects.init();
+
+});
+
+const NexaEffects={
+
+    init(){
+
+        this.counter();
+
+        this.reveal();
+
+        this.mouseGlow();
+
+        this.hover3D();
+
+        this.ripple();
+
+        this.cardHover();
+
+    },
+
+/*=========================================================
+    CONTADORES
+=========================================================*/
+
+    counter(){
+
+        const counters=document.querySelectorAll(
+
+            "#projectsCounter,#filesCounter,.stat-content h2"
+
+        );
+
+        counters.forEach(counter=>{
+
+            const final=parseInt(counter.textContent);
+
+            if(isNaN(final)) return;
+
+            let current=0;
+
+            const speed=Math.max(10,Math.floor(120/final));
+
+            const interval=setInterval(()=>{
+
+                current++;
+
+                counter.textContent=current;
+
+                if(current>=final){
+
+                    counter.textContent=final;
+
+                    clearInterval(interval);
+
+                }
+
+            },speed);
+
+        });
+
+    },
+
+/*=========================================================
+    SCROLL REVEAL
+=========================================================*/
+
+    reveal(){
+
+        const elements=document.querySelectorAll(
+
+            ".hero,.stat-card,.featured-project,.activity,.side-card"
+
+        );
+
+        elements.forEach(el=>{
+
+            el.classList.add("fade-up");
+
+        });
+
+        const observer=new IntersectionObserver(entries=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },{
+
+            threshold:.15
+
+        });
+
+        elements.forEach(el=>observer.observe(el));
+
+    },
+
+/*=========================================================
+    LUZ DO MOUSE
+=========================================================*/
+
+    mouseGlow(){
+
+        const glow=document.createElement("div");
+
+        glow.className="mouse-glow";
+
+        document.body.appendChild(glow);
+
+        document.addEventListener("mousemove",(e)=>{
+
+            glow.style.left=e.clientX+"px";
+
+            glow.style.top=e.clientY+"px";
+
+        });
+
+    },
+
+/*=========================================================
+    HOVER 3D
+=========================================================*/
+
+    hover3D(){
+
+        const cards=document.querySelectorAll(
+
+            ".stat-card,.project-card,.side-card"
+
+        );
+
+        cards.forEach(card=>{
+
+            card.addEventListener("mousemove",(e)=>{
+
+                const rect=card.getBoundingClientRect();
+
+                const x=e.clientX-rect.left;
+
+                const y=e.clientY-rect.top;
+
+                const rotateY=((x/rect.width)-.5)*14;
+
+                const rotateX=((y/rect.height)-.5)*-14;
+
+                card.style.transform=
+
+                `perspective(1000px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-8px)`;
+
+            });
+
+            card.addEventListener("mouseleave",()=>{
+
+                card.style.transform="";
+
+            });
+
+        });
+
+    },
+
+/*=========================================================
+    RIPPLE
+=========================================================*/
+
+    ripple(){
+
+        document.querySelectorAll("button").forEach(button=>{
+
+            button.addEventListener("click",(e)=>{
+
+                const ripple=document.createElement("span");
+
+                ripple.className="ripple";
+
+                const rect=button.getBoundingClientRect();
+
+                ripple.style.left=(e.clientX-rect.left)+"px";
+
+                ripple.style.top=(e.clientY-rect.top)+"px";
+
+                button.appendChild(ripple);
+
+                setTimeout(()=>{
+
+                    ripple.remove();
+
+                },700);
+
+            });
+
+        });
+
+    },
+
+/*=========================================================
+    HOVER CARDS
+=========================================================*/
+
+    cardHover(){
+
+        document.querySelectorAll(".stat-card").forEach(card=>{
+
+            card.addEventListener("mouseenter",()=>{
+
+                card.style.transition=".15s";
+
+            });
+
+        });
+
+    }
+
+};
+
+</script>
+
+<script type="module">
+
+import { auth, db } from "./firebase.js";
+
+import {
+
+    onAuthStateChanged,
+
+    signOut
+
+} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+
+import {
+
+    doc,
+
+    getDoc
+
+} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+onAuthStateChanged(auth, async(user)=>{
+
+    if(!user){
+
+        location.href="index.html";
+
+        return;
+
+    }
+
+    loadUser(user);
+
+});
+
+async function loadUser(user){
+
+    const ref=doc(db,"users",user.uid);
+
+    const snap=await getDoc(ref);
+
+    if(snap.exists()){
+
+        const data=snap.data();
+
+        document.getElementById("userName").textContent=data.name;
+
+        document.getElementById("heroUser").textContent=data.name;
+
+        document.getElementById("userPhoto").src=data.photo;
+
+    }
+
+}
+
+const logout=document.querySelector(".logout");
+
+logout.addEventListener("click",async()=>{
+
+    await signOut(auth);
+
+    location.href="index.html";
+
+});
+</script>
+
+</body>
+
+</html>

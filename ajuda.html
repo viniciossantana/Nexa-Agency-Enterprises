@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nexa Enterprises • Central de Ajuda</title>
+
+<link rel="icon" href="navicon.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+<style>
+
+:root{
+
+--bg:#050714;
+--bg2:#090d1f;
+
+--card:rgba(255,255,255,.05);
+--border:rgba(255,255,255,.08);
+
+--text:#ffffff;
+--muted:#a8afc6;
+
+--blue:#00bfff;
+--purple:#8b2cff;
+--purple2:#b46cff;
+
+--radius:22px;
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Inter",sans-serif;
+}
+
+body{
+
+background:
+radial-gradient(circle at top left,
+rgba(0,191,255,.10),
+transparent 35%),
+
+radial-gradient(circle at top right,
+rgba(139,44,255,.18),
+transparent 40%),
+
+linear-gradient(180deg,var(--bg),var(--bg2));
+
+color:#fff;
+
+overflow-x:hidden;
+
+}
+
+.container{
+
+width:min(1400px,92%);
+margin:auto;
+
+}
+
+/* HEADER */
+
+header{
+
+position:sticky;
+top:0;
+
+z-index:1000;
+
+backdrop-filter:blur(18px);
+
+background:rgba(5,7,20,.65);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+.nav{
+
+height:82px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+.logo{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+text-decoration:none;
+color:#fff;
+
+font-size:1.3rem;
+font-weight:700;
+
+}
+
+.logo img{
+
+width:48px;
+
+}
+
+nav{
+
+display:flex;
+gap:35px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:var(--muted);
+
+transition:.3s;
+
+font-weight:500;
+
+}
+
+nav a:hover{
+
+color:#fff;
+
+}
+
+.header-buttons{
+
+display:flex;
+gap:15px;
+
+}
+
+.header-buttons a{
+
+padding:12px 22px;
+
+border-radius:999px;
+
+text-decoration:none;
+
+color:#fff;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.35s;
+
+}
+
+.header-buttons a:hover{
+
+background:linear-gradient(135deg,var(--blue),var(--purple));
+
+}
+
+/* HERO */
+
+.hero{
+
+padding:120px 0 90px;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:3.6rem;
+
+margin-bottom:18px;
+
+}
+
+.hero p{
+
+color:var(--muted);
+
+font-size:1.1rem;
+
+max-width:700px;
+
+margin:auto;
+
+line-height:1.8;
+
+margin-bottom:40px;
+
+}
+
+/* PESQUISA */
+
+.search{
+
+max-width:700px;
+
+margin:auto;
+
+position:relative;
+
+}
+
+.search input{
+
+width:100%;
+
+height:68px;
+
+padding:0 65px 0 28px;
+
+border:none;
+
+outline:none;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:#fff;
+
+font-size:1rem;
+
+transition:.35s;
+
+}
+
+.search input:focus{
+
+border-color:var(--purple);
+
+box-shadow:
+0 0 25px rgba(139,44,255,.25);
+
+}
+
+.search i{
+
+position:absolute;
+
+right:26px;
+top:50%;
+
+transform:translateY(-50%);
+
+font-size:20px;
+
+color:var(--muted);
+
+}
+
+/* CATEGORIAS */
+
+.categories{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(230px,1fr));
+
+gap:28px;
+
+padding:60px 0;
+
+}
+
+.card{
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:24px;
+
+padding:35px;
+
+backdrop-filter:blur(16px);
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+border-color:rgba(0,191,255,.35);
+
+box-shadow:
+0 15px 40px rgba(0,191,255,.12);
+
+}
+
+.card i{
+
+font-size:2rem;
+
+margin-bottom:22px;
+
+background:linear-gradient(135deg,var(--blue),var(--purple));
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.card h3{
+
+margin-bottom:12px;
+
+font-size:1.25rem;
+
+}
+
+.card p{
+
+color:var(--muted);
+
+line-height:1.7;
+
+}
+
+/* ================= TÍTULOS ================= */
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:50px;
+
+}
+
+.section-title h2{
+
+font-size:2.4rem;
+
+margin-bottom:15px;
+
+}
+
+.section-title p{
+
+color:var(--muted);
+
+}
+
+/* ================= FAQ ================= */
+
+.faq-section{
+
+padding:100px 0;
+
+}
+
+.faq{
+
+max-width:900px;
+
+margin:auto;
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.faq-item{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:18px;
+
+overflow:hidden;
+
+}
+
+.faq-question{
+
+width:100%;
+
+background:none;
+
+border:none;
+
+padding:22px 25px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+cursor:pointer;
+
+font-size:1rem;
+
+font-weight:600;
+
+color:#fff;
+
+}
+
+.faq-answer{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:.35s;
+
+}
+
+.faq-answer p{
+
+padding:0 25px 22px;
+
+line-height:1.8;
+
+color:var(--muted);
+
+}
+
+.faq-item.active .faq-answer{
+
+max-height:300px;
+
+}
+
+.faq-item.active i{
+
+transform:rotate(45deg);
+
+}
+
+/* ================= STATUS ================= */
+
+.status{
+
+padding:90px 0;
+
+}
+
+.status-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.status-card{
+
+padding:30px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+}
+
+.dot{
+
+display:inline-block;
+
+width:12px;
+
+height:12px;
+
+border-radius:50%;
+
+margin-bottom:20px;
+
+}
+
+.online{
+
+background:#00ff7f;
+
+box-shadow:0 0 15px #00ff7f;
+
+}
+
+/* ================= CONTATO ================= */
+
+.support{
+
+padding:100px 0;
+
+}
+
+.support-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:30px;
+
+}
+
+.support-card{
+
+padding:35px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+transition:.35s;
+
+}
+
+.support-card:hover{
+
+transform:translateY(-8px);
+
+border-color:rgba(0,191,255,.35);
+
+}
+
+.support-card i{
+
+font-size:2.5rem;
+
+margin-bottom:20px;
+
+background:linear-gradient(135deg,var(--blue),var(--purple));
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.support-card h3{
+
+margin-bottom:15px;
+
+}
+
+.support-card p{
+
+color:var(--muted);
+
+line-height:1.7;
+
+margin-bottom:25px;
+
+}
+
+.support-card a{
+
+display:inline-block;
+
+padding:12px 24px;
+
+border-radius:999px;
+
+text-decoration:none;
+
+color:#fff;
+
+background:linear-gradient(135deg,var(--blue),var(--purple));
+
+}
+
+/* ==========================================
+   FAQ
+========================================== */
+
+.faq-section{
+    margin-top:90px;
+}
+
+.faq-list{
+    margin-top:35px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.faq-list details{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.faq-list details:hover{
+    border-color:rgba(0,191,255,.25);
+    box-shadow:0 0 25px rgba(0,191,255,.08);
+}
+
+.faq-list summary{
+    list-style:none;
+    cursor:pointer;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px 25px;
+
+    font-size:1rem;
+    font-weight:600;
+}
+
+.faq-list summary::-webkit-details-marker{
+    display:none;
+}
+
+.faq-list summary i{
+    transition:.3s;
+    color:var(--blue);
+}
+
+.faq-list details p{
+    padding:0 25px 22px;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+
+/* ==========================================
+   CONTATO
+========================================== */
+
+.contact-section{
+    margin-top:90px;
+}
+
+.contact-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:24px;
+
+    margin-top:35px;
+
+}
+
+.contact-card{
+
+    text-decoration:none;
+
+    color:#fff;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    padding:35px;
+
+    transition:.35s;
+
+    text-align:center;
+
+}
+
+.contact-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(0,191,255,.30);
+
+    box-shadow:
+    0 15px 35px rgba(0,191,255,.12);
+
+}
+
+.contact-card i{
+
+    font-size:2rem;
+
+    margin-bottom:20px;
+
+    color:var(--blue);
+
+}
+
+.contact-card h3{
+
+    margin-bottom:12px;
+
+}
+
+.contact-card p{
+
+    color:var(--muted);
+
+    line-height:1.6;
+
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
+
+    margin-top:120px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding:70px 0 30px;
+
+}
+
+.footer-content{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    gap:50px;
+
+}
+
+.footer-logo{
+
+    width:170px;
+
+    margin-bottom:20px;
+
+}
+
+.footer-content p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+}
+
+.footer-content h4{
+
+    margin-bottom:18px;
+
+    font-size:1.05rem;
+
+}
+
+.footer-content a{
+
+    display:block;
+
+    margin-bottom:12px;
+
+    color:var(--muted);
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.footer-content a:hover{
+
+    color:#fff;
+
+    transform:translateX(5px);
+
+}
+
+.footer-bottom{
+
+    margin-top:55px;
+
+    padding-top:25px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:.9rem;
+
+}
+
+
+/* ==========================================
+   RESPONSIVO
+========================================== */
+
+@media(max-width:900px){
+
+.footer-content{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.footer-logo{
+
+margin:auto auto 20px;
+
+}
+
+}
+
+@media(max-width:700px){
+
+.contact-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.faq-list summary{
+
+font-size:.95rem;
+padding:20px;
+
+}
+
+.faq-list details p{
+
+padding:0 20px 20px;
+
+}
+
+footer{
+
+padding:60px 0 25px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="inicio.html" class="logo">
+
+<img src="nexalogo-removebg-preview.png">
+
+<span>Nexa</span>
+
+</a>
+
+<nav>
+
+<a href="inicio.html">Início</a>
+
+<a href="#">Central</a>
+
+<a href="#">Contato</a>
+
+</nav>
+
+<div class="header-buttons">
+
+<a href="inicio.html">
+
+<i class="fa-solid fa-house"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<h1>Como podemos ajudar?</h1>
+
+<p>
+Encontre respostas rápidas, tire dúvidas, acompanhe o status dos serviços e fale com nossa equipe de suporte.
+</p>
+
+<div class="search">
+
+<input
+type="text"
+placeholder="Pesquisar dúvidas...">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="container categories">
+
+<div class="card">
+
+<i class="fa-solid fa-user"></i>
+
+<h3>Minha Conta</h3>
+
+<p>
+Gerencie seus dados, senha, e-mail e informações da conta.
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-lock"></i>
+
+<h3>Login e Segurança</h3>
+
+<p>
+Problemas para entrar? Aprenda a recuperar sua conta.
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-bell"></i>
+
+<h3>Notificações</h3>
+
+<p>
+Configure alertas e personalize sua experiência.
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-circle-question"></i>
+
+<h3>Perguntas Frequentes</h3>
+
+<p>
+As dúvidas mais comuns respondidas em um só lugar.
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= FAQ ================= -->
+
+<section class="faq-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Perguntas Frequentes</h2>
+
+<p>
+As dúvidas mais comuns respondidas pela equipe Nexa.
+</p>
+
+</div>
+
+<div class="faq">
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+<span>Como alterar minha senha?</span>
+
+<i class="fa-solid fa-plus"></i>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Acesse Configurações → Segurança → Alterar senha.
+Após confirmar sua identidade, escolha uma nova senha.
+</p>
+
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+<span>Esqueci minha senha.</span>
+
+<i class="fa-solid fa-plus"></i>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Na tela de login clique em
+<b>Esqueci minha senha</b>
+e siga as instruções enviadas para seu e-mail.
+</p>
+
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+<span>Como entrar usando minha conta Google?</span>
+
+<i class="fa-solid fa-plus"></i>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Clique em <b>Entrar com Google</b> na tela de login
+e selecione a conta desejada.
+</p>
+
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+<span>Posso alterar meu endereço de e-mail?</span>
+
+<i class="fa-solid fa-plus"></i>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Sim. Vá em Minha Conta e atualize seu endereço de e-mail.
+Dependendo da alteração será solicitada uma nova verificação.
+</p>
+
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+<span>Como excluir minha conta?</span>
+
+<i class="fa-solid fa-plus"></i>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Entre em Configurações → Conta → Excluir conta.
+Esta ação é permanente.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= STATUS ================= -->
+
+<section class="status">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Status dos Serviços</h2>
+
+<p>
+Acompanhe a disponibilidade da plataforma Nexa.
+</p>
+
+</div>
+
+<div class="status-grid">
+
+<div class="status-card">
+
+<span class="dot online"></span>
+
+<h3>Website</h3>
+
+<p>Operacional</p>
+
+</div>
+
+<div class="status-card">
+
+<span class="dot online"></span>
+
+<h3>Login</h3>
+
+<p>Operacional</p>
+
+</div>
+
+<div class="status-card">
+
+<span class="dot online"></span>
+
+<h3>Banco de Dados</h3>
+
+<p>Operacional</p>
+
+</div>
+
+<div class="status-card">
+
+<span class="dot online"></span>
+
+<h3>API</h3>
+
+<p>Operacional</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CONTATO ================= -->
+
+<section class="support">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Ainda precisa de ajuda?</h2>
+
+<p>
+Nossa equipe está pronta para atender você.
+</p>
+
+</div>
+
+<div class="support-grid">
+
+<div class="support-card">
+
+<i class="fa-solid fa-comments"></i>
+
+<h3>Chat</h3>
+
+<p>
+Converse em tempo real com nossa equipe.
+</p>
+
+<a href="#">
+Iniciar conversa
+</a>
+
+</div>
+
+<div class="support-card">
+
+<i class="fa-solid fa-envelope"></i>
+
+<h3>E-mail</h3>
+
+<p>
+Resposta em até 24 horas úteis.
+</p>
+
+<a href="mailto:suporte@nexa.com">
+suporte@nexa.com
+</a>
+
+</div>
+
+<div class="support-card">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+<h3>WhatsApp</h3>
+
+<p>
+Atendimento rápido durante o horário comercial.
+</p>
+
+<a href="#">
+Conversar agora
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+        <!-- FAQ -->
+
+        <section class="faq-section">
+
+            <div class="section-title">
+                <span>Central de Respostas</span>
+                <h2>Perguntas Frequentes</h2>
+                <p>
+                    As dúvidas mais comuns respondidas rapidamente.
+                </p>
+            </div>
+
+            <div class="faq-list">
+
+                <details>
+                    <summary>
+                        Esqueci minha senha
+                        <i class="fa-solid fa-plus"></i>
+                    </summary>
+
+                    <p>
+                        Clique em <strong>"Esqueci minha senha"</strong>
+                        na tela de login e siga as instruções enviadas
+                        para seu e-mail.
+                    </p>
+
+                </details>
+
+                <details>
+
+                    <summary>
+
+                        Como alterar meu e-mail?
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </summary>
+
+                    <p>
+
+                        Entre em Configurações →
+                        Conta →
+                        Alterar e-mail.
+
+                    </p>
+
+                </details>
+
+                <details>
+
+                    <summary>
+
+                        Minha conta foi bloqueada
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </summary>
+
+                    <p>
+
+                        Após muitas tentativas incorretas o Firebase
+                        bloqueia temporariamente o login.
+                        Aguarde alguns minutos e tente novamente.
+
+                    </p>
+
+                </details>
+
+                <details>
+
+                    <summary>
+
+                        Como falar com a equipe Nexa?
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </summary>
+
+                    <p>
+
+                        Utilize um dos canais abaixo.
+                        Nossa equipe normalmente responde
+                        em até 24 horas úteis.
+
+                    </p>
+
+                </details>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTATO -->
+
+        <section class="contact-section">
+
+            <div class="section-title">
+
+                <span>Contato</span>
+
+                <h2>Fale com nossa equipe</h2>
+
+                <p>
+                    Estamos sempre disponíveis para ajudar.
+                </p>
+
+            </div>
+
+            <div class="contact-grid">
+
+                <a href="mailto:suporte@nexaenterprises.com" class="contact-card">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <h3>E-mail</h3>
+
+                    <p>
+                        suporte@nexaenterprises.com
+                    </p>
+
+                </a>
+
+                <a href="https://wa.me/5500000000000" target="_blank" class="contact-card">
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    <h3>WhatsApp</h3>
+
+                    <p>
+                        Atendimento rápido
+                    </p>
+
+                </a>
+
+                <a href="https://discord.gg/" target="_blank" class="contact-card">
+
+                    <i class="fa-brands fa-discord"></i>
+
+                    <h3>Discord</h3>
+
+                    <p>
+
+                        Comunidade Nexa
+
+                    </p>
+
+                </a>
+
+                <a href="https://contatoceonexaenterprises.carrd.co/" target="_blank" class="contact-card">
+
+                    <i class="fa-solid fa-user-tie"></i>
+
+                    <h3>Fundador</h3>
+
+                    <p>
+
+                        Vinícios Santana
+
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+
+                <img src="nexalogo-removebg-preview.png"
+                     class="footer-logo">
+
+                <p>
+
+                    A Nexa Enterprises une estratégia,
+                    tecnologia e inovação para criar
+                    soluções digitais modernas.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>Ajuda</h4>
+
+                <a href="#">Central de Suporte</a>
+                <a href="#">Perguntas Frequentes</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+
+            </div>
+
+            <div>
+
+                <h4>Empresa</h4>
+
+                <a href="inicio.html">Início</a>
+                <a href="#">Equipe</a>
+                <a href="#">Projetos</a>
+                <a href="#">Contato</a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © 2026 Nexa Enterprises • Todos os direitos reservados.
+
+        </div>
+
+    </footer>
+
+
+<script>
+
+const faq=document.querySelectorAll("details");
+
+faq.forEach(item=>{
+
+item.addEventListener("toggle",()=>{
+
+const icon=item.querySelector("i");
+
+if(item.open){
+
+icon.classList.remove("fa-plus");
+icon.classList.add("fa-minus");
+
+}else{
+
+icon.classList.remove("fa-minus");
+icon.classList.add("fa-plus");
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

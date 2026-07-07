@@ -1,0 +1,2501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nexa Enterprises • Portfólio</title>
+
+<link rel="icon" href="navicon.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+:root{
+--bg:#050714;
+--bg2:#090d1f;
+
+--blue:#00bfff;
+--purple:#8b2cff;
+--purple-soft:#b46cff;
+
+--text:#ffffff;
+--muted:#a8afc6;
+
+--card:rgba(255,255,255,.04);
+--border:rgba(255,255,255,.08);
+
+--radius:26px;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Inter",sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:
+radial-gradient(circle at top left,rgba(0,191,255,.08),transparent 30%),
+radial-gradient(circle at top right,rgba(139,44,255,.18),transparent 35%),
+linear-gradient(180deg,#050714,#090d1f);
+
+color:white;
+overflow-x:hidden;
+}
+
+.container{
+width:min(92%,1300px);
+margin:auto;
+}
+
+/* HEADER */
+
+/* ==========================================
+   HEADER PREMIUM NEXA
+========================================== */
+
+.main-header{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:82px;
+
+padding:0 5%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(5,7,20,.72);
+
+backdrop-filter:blur(22px);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+z-index:9999;
+
+transition:.35s;
+}
+
+/* SCROLL */
+
+.main-header.scrolled{
+
+height:70px;
+
+background:rgba(5,7,20,.88);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.35);
+
+}
+
+/* LOGO */
+
+.logo{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+text-decoration:none;
+
+}
+
+.logo img{
+
+width:42px;
+height:42px;
+
+object-fit:contain;
+
+}
+
+.logo span{
+
+font-size:1.15rem;
+font-weight:800;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft),
+var(--purple));
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+/* MENU DESKTOP */
+
+.desktop-menu{
+
+display:flex;
+align-items:center;
+gap:34px;
+
+}
+
+.desktop-menu a{
+
+position:relative;
+
+text-decoration:none;
+
+font-weight:500;
+
+color:var(--muted);
+
+transition:.3s;
+
+}
+
+.desktop-menu a:hover{
+
+color:white;
+
+}
+
+.desktop-menu a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:-8px;
+
+width:0%;
+height:2px;
+
+border-radius:10px;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple));
+
+transition:.3s;
+
+}
+
+.desktop-menu a:hover::after{
+
+width:100%;
+
+}
+
+/* BOTÃO MENU */
+
+.menu-toggle{
+
+display:none;
+
+width:48px;
+height:48px;
+
+background:none;
+border:none;
+
+cursor:pointer;
+
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+gap:6px;
+
+z-index:10002;
+
+}
+
+.menu-toggle span{
+
+width:26px;
+height:2px;
+
+border-radius:999px;
+
+background:white;
+
+transition:.35s;
+
+}
+
+/* OVERLAY */
+
+.menu-overlay{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.55);
+
+backdrop-filter:blur(4px);
+
+opacity:0;
+visibility:hidden;
+
+transition:.35s;
+
+z-index:9997;
+
+}
+
+.menu-overlay.active{
+
+opacity:1;
+visibility:visible;
+
+}
+
+/* MENU */
+
+.mobile-menu{
+
+position:fixed;
+
+top:0;
+right:-380px;
+
+width:340px;
+max-width:90%;
+
+height:100vh;
+
+padding:30px;
+
+display:flex;
+flex-direction:column;
+
+background:#090d1f;
+
+border-left:1px solid rgba(255,255,255,.08);
+
+transition:.45s cubic-bezier(.22,.61,.36,1);
+
+z-index:9998;
+
+overflow-y:auto;
+
+}
+
+.mobile-menu.active{
+
+right:0;
+
+}
+
+/* TOPO */
+
+.mobile-top{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:40px;
+
+}
+
+.mobile-top img{
+
+width:48px;
+
+}
+
+.close-menu{
+
+background:none;
+border:none;
+
+cursor:pointer;
+
+font-size:1.8rem;
+
+color:white;
+
+}
+
+/* LINKS */
+
+.mobile-links{
+
+display:flex;
+flex-direction:column;
+
+gap:8px;
+
+}
+
+.mobile-links a{
+
+display:flex;
+align-items:center;
+
+gap:18px;
+
+padding:16px 18px;
+
+border-radius:16px;
+
+text-decoration:none;
+
+font-weight:600;
+
+color:white;
+
+transition:.3s;
+
+}
+
+.mobile-links a i{
+
+width:24px;
+
+font-size:1.1rem;
+
+color:var(--purple-soft);
+
+}
+
+.mobile-links a:hover{
+
+background:rgba(255,255,255,.05);
+
+transform:translateX(6px);
+
+}
+
+/* DIVISOR */
+
+.mobile-divider{
+
+margin:35px 0;
+
+height:1px;
+
+background:rgba(255,255,255,.08);
+
+}
+
+/* REDES */
+
+.mobile-social{
+
+display:flex;
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.mobile-social a{
+
+display:flex;
+align-items:center;
+
+gap:14px;
+
+text-decoration:none;
+
+color:var(--muted);
+
+padding:10px 0;
+
+transition:.3s;
+
+}
+
+.mobile-social a:hover{
+
+color:white;
+
+}
+
+/* BOTÃO */
+
+.mobile-button{
+
+margin-top:auto;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:55px;
+
+border-radius:18px;
+
+text-decoration:none;
+
+font-weight:700;
+
+color:white;
+
+background:linear-gradient(
+135deg,
+var(--blue),
+var(--purple));
+
+transition:.35s;
+
+}
+
+.mobile-button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 10px 25px rgba(139,44,255,.35);
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+.desktop-menu{
+
+display:none;
+
+}
+
+.menu-toggle{
+
+display:flex;
+
+}
+
+.logo span{
+
+font-size:1rem;
+
+}
+
+}
+
+/* DESKTOP */
+
+@media(min-width:901px){
+
+.mobile-menu,
+.menu-overlay{
+
+display:none;
+
+}
+
+}
+
+/* HERO */
+
+.hero{
+padding-top:190px;
+padding-bottom:130px;
+}
+
+.hero-content{
+text-align:center;
+max-width:950px;
+margin:auto;
+}
+
+.hero-tag{
+
+display:inline-flex;
+
+padding:12px 18px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+margin-bottom:30px;
+}
+
+.hero h1{
+
+font-size:clamp(3rem,6vw,6rem);
+
+line-height:.95;
+
+margin-bottom:30px;
+}
+
+.hero h1 span{
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+
+font-size:1.08rem;
+line-height:1.9;
+color:var(--muted);
+
+max-width:800px;
+margin:auto;
+}
+
+.hero-logo{
+
+width:180px;
+
+margin:0 auto 40px;
+display:block;
+
+filter:
+drop-shadow(0 0 30px rgba(139,44,255,.5));
+
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+}
+
+/* ESTATISTICAS */
+
+.stats{
+padding:0 0 120px;
+}
+
+.stats-grid{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+}
+
+.stat-card{
+
+padding:35px;
+
+text-align:center;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:25px;
+
+transition:.35s;
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:
+rgba(139,44,255,.4);
+}
+
+.stat-card h2{
+
+font-size:2.5rem;
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.stat-card p{
+margin-top:10px;
+color:var(--muted);
+}
+
+/* INTRO */
+
+.portfolio-intro{
+padding:120px 0;
+}
+
+.section-title{
+
+text-align:center;
+max-width:850px;
+margin:auto;
+}
+
+.section-title span{
+
+display:inline-block;
+
+margin-bottom:15px;
+
+font-size:.9rem;
+font-weight:700;
+letter-spacing:2px;
+
+color:var(--blue);
+}
+
+.section-title h2{
+
+font-size:clamp(2.5rem,5vw,4rem);
+
+margin-bottom:20px;
+}
+
+.section-title p{
+
+color:var(--muted);
+line-height:1.8;
+}
+
+@media(max-width:980px){
+
+.stats-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-menu{
+display:none;
+}
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.hero{
+padding-top:170px;
+}
+
+}
+
+.portfolio-section{
+padding:120px 0;
+}
+
+.portfolio-grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:70px;
+
+}
+
+.portfolio-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:28px;
+
+overflow:hidden;
+
+transition:.35s;
+
+backdrop-filter:blur(12px);
+
+}
+
+.portfolio-card:hover{
+
+transform:translateY(-10px);
+
+border-color:rgba(139,44,255,.5);
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.35),
+0 0 30px rgba(139,44,255,.15);
+
+}
+
+.portfolio-image{
+height:260px;
+overflow:hidden;
+}
+
+.portfolio-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.portfolio-logo{
+height:220px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:30px;
+
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.03),
+rgba(255,255,255,.01)
+);
+
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.portfolio-logo img{
+width:auto;
+height:110px;
+max-width:85%;
+
+object-fit:contain;
+}
+
+.portfolio-card:hover img{
+    transform:none;
+}
+
+.portfolio-content{
+padding:28px;
+}
+
+.portfolio-content h3{
+
+font-size:1.35rem;
+margin-bottom:15px;
+
+}
+
+.portfolio-content p{
+
+color:var(--muted);
+
+line-height:1.8;
+
+margin-bottom:20px;
+}
+
+.project-tags{
+
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+
+margin-bottom:24px;
+}
+
+.project-tags span{
+
+padding:8px 14px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+font-size:.82rem;
+}
+
+.visit-btn{
+
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:14px 22px;
+
+border-radius:999px;
+
+text-decoration:none;
+font-weight:600;
+color:white;
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+}
+
+.visit-btn:hover{
+opacity:.9;
+}
+
+@media(max-width:1100px){
+
+.portfolio-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.portfolio-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ===========================
+   FOOTER PREMIUM NEXA
+=========================== */
+
+footer{
+    margin-top:100px;
+    padding:80px 0 35px;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at top center, rgba(139,44,255,.15), transparent 40%),
+        linear-gradient(180deg,#090d1f,#050714);
+
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+footer::before{
+    content:"";
+    position:absolute;
+    top:-180px;
+    left:50%;
+    transform:translateX(-50%);
+    width:500px;
+    height:500px;
+
+    background:radial-gradient(circle,
+    rgba(139,44,255,.18),
+    transparent 70%);
+
+    filter:blur(60px);
+    pointer-events:none;
+}
+
+/* TÍTULO */
+
+.footer-social-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.footer-social-title h3{
+    font-size:clamp(2rem,4vw,2.8rem);
+    margin-bottom:12px;
+    font-weight:800;
+
+    background:linear-gradient(
+    90deg,
+    var(--blue),
+    var(--purple-soft),
+    var(--purple));
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.footer-social-title p{
+    color:var(--muted);
+    max-width:620px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* LISTA */
+
+.social-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+    max-width:760px;
+    margin:0 auto;
+}
+
+/* CARD */
+
+.social-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px 28px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    backdrop-filter:blur(18px);
+
+    transition:.35s;
+}
+
+.social-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:rgba(139,44,255,.4);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.35),
+    0 0 25px rgba(139,44,255,.15);
+}
+
+/* ESQUERDA */
+
+.social-left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.social-left i{
+    font-size:1.8rem;
+
+    background:linear-gradient(
+    135deg,
+    var(--blue),
+    var(--purple));
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.social-info h4{
+    margin-bottom:5px;
+    font-size:1.05rem;
+}
+
+.social-info p{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+/* BOTÃO */
+
+.social-card a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:12px 24px;
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:600;
+
+    background:linear-gradient(
+    135deg,
+    var(--blue),
+    var(--purple));
+
+    transition:.3s;
+}
+
+.social-card a:hover{
+    transform:scale(1.05);
+}
+
+/* CORES INDIVIDUAIS */
+
+.social-card.whatsapp:hover{
+    border-color:#25D366;
+}
+
+.social-card.instagram:hover{
+    border-color:#E1306C;
+}
+
+.social-card.tiktok:hover{
+    border-color:#00F2EA;
+}
+
+.social-card.discord:hover{
+    border-color:#5865F2;
+}
+
+.social-card.youtube:hover{
+    border-color:#FF0000;
+}
+
+/* FOOTER BOTTOM */
+
+.footer-bottom{
+
+    margin-top:55px;
+    padding-top:25px;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    flex-wrap:wrap;
+    gap:15px;
+
+    color:var(--muted);
+    font-size:.92rem;
+}
+
+.footer-signature span a{
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    background:linear-gradient(
+    90deg,
+    var(--blue),
+    var(--purple-soft),
+    var(--purple));
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    transition:.3s;
+}
+
+.footer-signature span a:hover{
+    filter:brightness(1.2);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .social-card{
+        flex-direction:column;
+        text-align:center;
+        gap:20px;
+    }
+
+    .social-left{
+        flex-direction:column;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        text-align:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===========================
+     HEADER PREMIUM NEXA
+=========================== -->
+
+<header class="main-header" id="header">
+
+    <a href="inicio.html" class="logo">
+
+        <img src="navicon.png" alt="Nexa">
+
+        <span>Nexa Agency Enterprises</span>
+
+    </a>
+
+    <!-- MENU DESKTOP -->
+
+    <nav class="desktop-menu">
+
+        <a href="inicio.html">Início</a>
+
+        <a href="3serviços.html">Serviços</a>
+
+        <a href="2portfolio.html">Portfólio</a>
+
+        <a href="readme.html">Sobre</a>
+
+        <a href="https://typebot.co/my-typebot-lyx2eqn">NexaBot</a>
+
+    </nav>
+
+    <!-- BOTÃO MOBILE -->
+
+    <button class="menu-toggle" id="menuToggle">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+<!-- ===========================
+     OVERLAY
+=========================== -->
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- ===========================
+     MENU MOBILE
+=========================== -->
+
+<aside class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-top">
+
+        <img src="navicon.png" alt="Nexa">
+
+        <button class="close-menu" id="closeMenu">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+    <nav class="mobile-links">
+
+        <a href="inicio.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Início</span>
+
+        </a>
+
+        <a href="3serviços.html">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+            <span>Serviços</span>
+
+        </a>
+
+        <a href="2portfolio.html">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            <span>Portfólio</span>
+
+        </a>
+
+        <a href="readme.html">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Sobre</span>
+
+        </a>
+
+        <a href="https://typebot.co/my-typebot-lyx2eqn">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <span>NexaBot</span>
+
+        </a>
+
+    </nav>
+
+    <div class="mobile-divider"></div>
+
+    <div class="mobile-social">
+
+        <a href="https://wa.me/5511981332616">
+
+            <i class="fab fa-whatsapp"></i>
+
+            WhatsApp
+
+        </a>
+
+        <a href="https://www.instagram.com/agencynexaenterprises/">
+
+            <i class="fab fa-instagram"></i>
+
+            Instagram
+
+        </a>
+
+        <a href="https://www.tiktok.com/@agencynexaenterprises">
+
+            <i class="fab fa-tiktok"></i>
+
+            TikTok
+
+        </a>
+
+        <a href="https://www.youtube.com/channel/UCBvGm-pfP3e_h4zDxUQ309Q">
+
+            <i class="fab fa-youtube"></i>
+
+            YouTube
+
+        </a>
+
+    </div>
+
+    <a href="3serviços.html" class="mobile-button">
+
+        Solicitar orçamento
+
+    </a>
+
+</aside>
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content">
+
+<img src="nexalogo-removebg-preview.png" class="hero-logo">
+
+<div class="hero-tag">
+🚀 Portfólio Oficial Nexa
+</div>
+
+<h1>
+Projetos que geram
+<span>impacto real.</span>
+</h1>
+
+<p>
+Cada projeto apresentado abaixo representa
+estratégia, criatividade, tecnologia e visão.
+Não criamos apenas sites, marcas ou campanhas.
+Criamos experiências digitais capazes de transmitir
+autoridade, posicionamento e crescimento.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="container">
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<h2>50+</h2>
+<p>Projetos Desenvolvidos</p>
+</div>
+
+<div class="stat-card">
+<h2>100%</h2>
+<p>Personalizados</p>
+</div>
+
+<div class="stat-card">
+<h2>24/7</h2>
+<p>Inovação Contínua</p>
+</div>
+
+<div class="stat-card">
+<h2>NEXA</h2>
+<p>Visão de Futuro</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="portfolio-intro">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>PORTFÓLIO</span>
+
+<h2>
+Conheça alguns dos projetos
+que passaram pela Nexa.
+</h2>
+
+<p>
+Sites institucionais, landing pages,
+branding, design visual, audiovisual,
+identidade de marca e muito mais.
+Cada projeto possui objetivos únicos,
+mas todos compartilham o mesmo padrão:
+excelência, consistência e resultado.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     SITES & SISTEMAS
+========================= -->
+
+<section class="portfolio-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>💻 SITES & DESENVOLVIMENTO</span>
+
+<h2>
+Projetos desenvolvidos para gerar presença,
+autoridade e experiência.
+</h2>
+
+<p>
+Cada site desenvolvido pela Nexa é construído
+com foco em identidade visual, performance,
+experiência do usuário e posicionamento.
+</p>
+
+</div>
+
+<div class="portfolio-grid">
+
+<!-- NEXA -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="nexalogo.png" alt="Nexa Enterprises">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Nexa Enterprises</h3>
+
+<p>
+Site institucional oficial da Nexa,
+desenvolvido para representar a marca,
+os serviços e o posicionamento da empresa.
+</p>
+
+<div class="project-tags">
+<span>Marketing</span>
+<span>Branding</span>
+<span>Institucional</span>
+</div>
+
+<a href="inicio.html" class="visit-btn">
+Visitar Projeto
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+</div>
+
+</div>
+
+<!-- PATRICIA NAILS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="patricianailslogo.jpeg" alt="Patricia Nails">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Patricia Nails</h3>
+
+<p>
+Landing page premium voltada para
+apresentação de serviços, galeria
+de trabalhos e captação de clientes.
+</p>
+
+<div class="project-tags">
+<span>Beleza</span>
+<span>Landing Page</span>
+<span>Conversão</span>
+</div>
+
+<a href="patricianails.html" class="visit-btn">
+Visitar Projeto
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+</div>
+
+</div>
+
+<!-- STRINGS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="stringslogo.png" alt="Strings">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Strings</h3>
+
+<p>
+Biblioteca digital de cifras cristãs
+com sistema de busca, navegação rápida
+e experiência moderna.
+</p>
+
+<div class="project-tags">
+<span>Música</span>
+<span>Sistema</span>
+<span>Cifras</span>
+</div>
+
+<a href="strings.html" class="visit-btn">
+Visitar Projeto
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+</div>
+
+</div>
+
+<!-- BEHOLD SOUNDS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="beholdlogo.png" alt="Behold Sounds">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Behold Sounds</h3>
+
+<p>
+Site oficial do ministério musical
+voltado para lançamentos, identidade
+visual e divulgação artística.
+</p>
+
+<div class="project-tags">
+<span>Louvor</span>
+<span>Ministério</span>
+<span>Música</span>
+</div>
+
+<a href="beholdsounds.html" class="visit-btn">
+Visitar Projeto
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+</div>
+
+</div>
+
+<!-- IAMD -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="iamdlogo.jpg" alt="IAMD">
+</div>
+
+<div class="portfolio-content">
+
+<h3>IAMD</h3>
+
+<p>
+Portal institucional da Igreja Apostólica
+Manancial de Deus com páginas ministeriais,
+projetos missionários e identidade moderna.
+</p>
+
+<div class="project-tags">
+<span>Igreja</span>
+<span>Institucional</span>
+<span>Missões</span>
+</div>
+
+<a href="iamd.html" class="visit-btn">
+Visitar Projeto
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+</div>
+
+</div>
+
+<!-- MUAY THAI -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="muaithaylogo.jpg" alt="Muay Thai">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Academia Muay Thai</h3>
+
+<p>
+Projeto web desenvolvido para captação de alunos,
+apresentação da equipe e planos.
+</p>
+
+<div class="project-tags">
+<span>Ensino</span>
+<span>Artes Marciais</span>
+<span>Saúde</span>
+</div>
+
+<a href="muaythai.html" class="visit-btn">
+Visitar Projeto
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     DESIGN VISUAL
+========================= -->
+
+<section class="portfolio-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>🎨 DESIGN VISUAL</span>
+
+<h2>
+Identidade, criatividade e impacto visual.
+</h2>
+
+<p>
+O design é o primeiro contato entre uma marca e seu público.
+Por isso desenvolvemos peças visuais que comunicam valor,
+profissionalismo e posicionamento.
+</p>
+
+</div>
+
+<div class="portfolio-grid">
+
+<!-- IDENTIDADE VISUAL -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/identidade-visual.jpg" alt="Identidade Visual">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Identidades Visuais</h3>
+
+<p>
+Criação completa de identidade visual,
+paleta de cores, tipografia, aplicações
+e manual da marca.
+</p>
+
+<div class="project-tags">
+<span>Branding</span>
+<span>Logo</span>
+<span>Manual</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- SOCIAL MEDIA -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/socialmedia.jpg" alt="Social Media">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Artes para Redes Sociais</h3>
+
+<p>
+Posts estratégicos desenvolvidos para
+fortalecer posicionamento, engajamento
+e autoridade digital.
+</p>
+
+<div class="project-tags">
+<span>Instagram</span>
+<span>Facebook</span>
+<span>Social Media</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- BANNERS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/banner.jpg" alt="Banner">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Banners Publicitários</h3>
+
+<p>
+Peças promocionais criadas para campanhas,
+eventos, lançamentos e divulgação de produtos.
+</p>
+
+<div class="project-tags">
+<span>Marketing</span>
+<span>Campanhas</span>
+<span>Ads</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- FLYERS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/flyer.jpg" alt="Flyers">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Flyers & Panfletos</h3>
+
+<p>
+Materiais gráficos desenvolvidos para
+divulgação física e digital com foco
+em conversão e alcance.
+</p>
+
+<div class="project-tags">
+<span>Flyer</span>
+<span>Promoção</span>
+<span>Eventos</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- CRIATIVOS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/criativos.jpg" alt="Criativos">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Criativos para Tráfego Pago</h3>
+
+<p>
+Artes otimizadas para campanhas de anúncios
+com foco em CTR, retenção e conversão.
+</p>
+
+<div class="project-tags">
+<span>Meta Ads</span>
+<span>Google Ads</span>
+<span>Conversão</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- LOGOS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/logos.jpg" alt="Logotipos">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Logotipos</h3>
+
+<p>
+Desenvolvimento de logos modernas,
+memoráveis e alinhadas ao posicionamento
+estratégico da marca.
+</p>
+
+<div class="project-tags">
+<span>Logo</span>
+<span>Marca</span>
+<span>Design</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     AUDIOVISUAL
+========================= -->
+
+<section class="portfolio-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>🎥 AUDIOVISUAL</span>
+
+<h2>
+Conteúdo que prende atenção e gera conexão.
+</h2>
+
+<p>
+Vídeos profissionais possuem o poder de transmitir
+emoção, autoridade e credibilidade em poucos segundos.
+A Nexa utiliza audiovisual estratégico para fortalecer marcas.
+</p>
+
+</div>
+
+<div class="portfolio-grid">
+
+<!-- REELS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/reels.jpg" alt="Reels">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Reels Estratégicos</h3>
+
+<p>
+Conteúdos curtos desenvolvidos para aumentar
+alcance, retenção e reconhecimento da marca.
+</p>
+
+<div class="project-tags">
+<span>Instagram</span>
+<span>Reels</span>
+<span>Alcance</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- INSTITUCIONAL -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/institucional.jpg" alt="Institucional">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Vídeos Institucionais</h3>
+
+<p>
+Produções voltadas para apresentação
+profissional da empresa, marca ou projeto.
+</p>
+
+<div class="project-tags">
+<span>Institucional</span>
+<span>Branding</span>
+<span>Autoridade</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- MOTION -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/motion.jpg" alt="Motion Design">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Motion Design</h3>
+
+<p>
+Animações modernas para apresentações,
+redes sociais e campanhas digitais.
+</p>
+
+<div class="project-tags">
+<span>Animação</span>
+<span>Motion</span>
+<span>Criatividade</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- SHORTS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/shorts.jpg" alt="Shorts">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Shorts & TikToks</h3>
+
+<p>
+Conteúdo vertical otimizado para retenção,
+engajamento e crescimento orgânico.
+</p>
+
+<div class="project-tags">
+<span>TikTok</span>
+<span>Shorts</span>
+<span>Viralização</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- EVENTOS -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/eventos.jpg" alt="Eventos">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Cobertura de Eventos</h3>
+
+<p>
+Captação profissional de eventos,
+cultos, conferências e ações corporativas.
+</p>
+
+<div class="project-tags">
+<span>Eventos</span>
+<span>Captação</span>
+<span>Produção</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- FOTOGRAFIA -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/fotografia.jpg" alt="Fotografia">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Fotografia Comercial</h3>
+
+<p>
+Ensaios e fotografias estratégicas para
+fortalecer a presença visual das marcas.
+</p>
+
+<div class="project-tags">
+<span>Fotografia</span>
+<span>Branding</span>
+<span>Profissional</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     BRANDING & POSICIONAMENTO
+========================= -->
+
+<section class="portfolio-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>🧠 BRANDING & POSICIONAMENTO</span>
+
+<h2>
+Marcas fortes não surgem por acaso.
+</h2>
+
+<p>
+O branding da Nexa é construído para gerar percepção,
+autoridade e reconhecimento. Cada elemento possui propósito.
+</p>
+
+</div>
+
+<div class="portfolio-grid">
+
+<!-- REBRANDING -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/rebranding.jpg" alt="Rebranding">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Projetos de Rebranding</h3>
+
+<p>
+Reposicionamento completo de marcas que precisavam
+de uma nova percepção no mercado.
+</p>
+
+<div class="project-tags">
+<span>Branding</span>
+<span>Reposicionamento</span>
+<span>Estratégia</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- POSICIONAMENTO -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/posicionamento.jpg" alt="Posicionamento">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Posicionamento Estratégico</h3>
+
+<p>
+Definição de comunicação, identidade
+e diferenciação competitiva.
+</p>
+
+<div class="project-tags">
+<span>Autoridade</span>
+<span>Mercado</span>
+<span>Marca</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- NAMING -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+<img src="portfolio/naming.jpg" alt="Naming">
+</div>
+
+<div class="portfolio-content">
+
+<h3>Naming Empresarial</h3>
+
+<p>
+Criação de nomes comerciais alinhados
+ao propósito e ao posicionamento da empresa.
+</p>
+
+<div class="project-tags">
+<span>Naming</span>
+<span>Marca</span>
+<span>Estratégia</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     DEPOIMENTOS
+========================= -->
+
+<section class="portfolio-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>⭐ DEPOIMENTOS</span>
+
+<h2>
+Resultados que falam por si.
+</h2>
+
+<p>
+Cada projeto representa uma parceria construída com estratégia,
+compromisso e foco em resultados reais.
+</p>
+
+</div>
+
+<div class="portfolio-grid">
+
+<!-- DEPOIMENTO 1 -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-content">
+
+<h3>Patricia Nails</h3>
+
+<p>
+"A Nexa transformou completamente minha presença digital.
+O site ficou exatamente como imaginei e meus clientes elogiam
+o profissionalismo todos os dias."
+</p>
+
+<div class="project-tags">
+<span>★★★★★</span>
+<span>Landing Page</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- DEPOIMENTO 2 -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-content">
+
+<h3>Behold Sounds</h3>
+
+<p>
+"O projeto transmitiu exatamente a identidade do nosso ministério.
+Visual moderno, organizado e extremamente profissional."
+</p>
+
+<div class="project-tags">
+<span>★★★★★</span>
+<span>Site Oficial</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- DEPOIMENTO 3 -->
+
+<div class="portfolio-card">
+
+<div class="portfolio-content">
+
+<h3>IAMD</h3>
+
+<p>
+"O portal ficou muito acima das expectativas.
+Agora temos uma presença digital que representa nossa igreja."
+</p>
+
+<div class="project-tags">
+<span>★★★★★</span>
+<span>Institucional</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     CTA FINAL
+========================= -->
+
+<section class="portfolio-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>🚀 VAMOS CONSTRUIR O PRÓXIMO?</span>
+
+<h2>
+Seu projeto pode ser o próximo
+case da Nexa.
+</h2>
+
+<p>
+Se você procura estratégia, design,
+tecnologia e posicionamento para levar
+sua marca a outro nível, estamos prontos
+para construir isso junto com você.
+</p>
+
+<br><br>
+
+<a href="3serviços.html" class="visit-btn">
+Solicitar Orçamento
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="container">
+
+<div class="footer-social-title">
+
+<h3>Conecte-se com a Nexa</h3>
+
+<p>
+Escolha seu canal preferido e faça parte do nosso ecossistema digital.
+</p>
+
+</div>
+
+<div class="social-list">
+
+<!-- WHATSAPP -->
+
+<div class="social-card whatsapp">
+
+<div class="social-left">
+
+<i class="fab fa-whatsapp"></i>
+
+<div class="social-info">
+
+<h4>WhatsApp</h4>
+
+<p>Atendimento comercial e suporte.</p>
+
+</div>
+
+</div>
+
+<a href="https://wa.me/5511981332616?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank">
+Conversar
+</a>
+
+</div>
+
+<!-- INSTAGRAM -->
+
+<div class="social-card instagram">
+
+<div class="social-left">
+
+<i class="fab fa-instagram"></i>
+
+<div class="social-info">
+
+<h4>Instagram</h4>
+
+<p>Conheça nossos bastidores e projetos.</p>
+
+</div>
+
+</div>
+
+<a href="https://www.instagram.com/agencynexaenterprises/" target="_blank">
+Acessar
+</a>
+
+</div>
+
+      <!-- NexaBot -->
+      <div class="social-card nexabot">
+        <div class="social-left">
+          <i class="fas fa-robot"></i>
+          <div class="social-info">
+            <h4>NexaBot</h4>
+            <p>Atendimento automatizado e eficiente</p>
+          </div>
+        </div>
+        <a href="https://typebot.co/my-typebot-lyx2eqn" target="_blank">Acessar</a>
+        </div>
+
+<!-- DISCORD -->
+
+<div class="social-card discord">
+
+<div class="social-left">
+
+<i class="fab fa-discord"></i>
+
+<div class="social-info">
+
+<h4>Discord</h4>
+
+<p>Comunidade oficial Nexa.</p>
+
+</div>
+
+</div>
+
+<a href="https://discord.gg/v5ty46pFwY" target="_blank">
+Entrar
+</a>
+
+</div>
+
+<!-- YOUTUBE -->
+
+<div class="social-card youtube">
+
+<div class="social-left">
+
+<i class="fab fa-youtube"></i>
+
+<div class="social-info">
+
+<h4>YouTube</h4>
+
+<p>Conteúdo completo sobre marketing, branding e tecnologia.</p>
+
+</div>
+
+</div>
+
+<a href="https://www.youtube.com/channel/UCBvGm-pfP3e_h4zDxUQ309Q" target="_blank">
+Assistir
+</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>
+© 2026 Nexa Agency Enterprises • Todos os direitos reservados.
+</p>
+
+<p class="footer-signature">
+
+Fundada por
+
+<span>
+
+<a href="https://contatoceonexaenterprises.carrd.co/" target="_blank">
+Vinícios Santana
+</a>
+
+</span>
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* ============================
+   HEADER PREMIUM NEXA
+============================ */
+
+const header = document.querySelector(".main-header");
+
+const menu = document.getElementById("mobileMenu");
+
+const overlay = document.getElementById("menuOverlay");
+
+const openBtn = document.getElementById("menuToggle");
+
+const closeBtn = document.getElementById("closeMenu");
+
+const body = document.body;
+
+/* ABRIR */
+
+function openMenu(){
+
+menu.classList.add("active");
+
+overlay.classList.add("active");
+
+body.style.overflow="hidden";
+
+}
+
+/* FECHAR */
+
+function closeMenu(){
+
+menu.classList.remove("active");
+
+overlay.classList.remove("active");
+
+body.style.overflow="";
+
+}
+
+/* BOTÕES */
+
+openBtn.addEventListener("click",openMenu);
+
+closeBtn.addEventListener("click",closeMenu);
+
+overlay.addEventListener("click",closeMenu);
+
+/* FECHAR AO CLICAR EM UM LINK */
+
+document.querySelectorAll(".mobile-links a").forEach(link=>{
+
+link.addEventListener("click",closeMenu);
+
+});
+
+document.querySelectorAll(".mobile-social a").forEach(link=>{
+
+link.addEventListener("click",closeMenu);
+
+});
+
+/* ESC */
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape"){
+
+closeMenu();
+
+}
+
+});
+
+/* HEADER MENOR AO ROLAR */
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>40){
+
+header.classList.add("scrolled");
+
+}else{
+
+header.classList.remove("scrolled");
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

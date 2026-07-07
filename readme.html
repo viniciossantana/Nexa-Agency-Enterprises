@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sobre • Nexa Agency Enterprises</title>
+
+<link rel="icon" href="navicon.png" type="image/png">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+:root{
+--bg:#050714;
+--bg2:#090d1f;
+
+--blue:#00bfff;
+--purple:#8b2cff;
+--purple-soft:#b46cff;
+
+--text:#ffffff;
+--muted:#a8afc6;
+
+--card:rgba(255,255,255,.04);
+--border:rgba(255,255,255,.08);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Inter",sans-serif;
+}
+
+body{
+background:
+radial-gradient(circle at top left,rgba(0,191,255,.08),transparent 30%),
+radial-gradient(circle at top right,rgba(139,44,255,.18),transparent 35%),
+linear-gradient(180deg,#050714,#090d1f);
+
+color:#fff;
+line-height:1.7;
+overflow-x:hidden;
+}
+
+.container{
+width:min(92%,1100px);
+margin:auto;
+padding:80px 0;
+}
+
+.back-btn{
+position:fixed;
+top:30px;
+left:30px;
+
+display:flex;
+align-items:center;
+gap:10px;
+
+padding:14px 22px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+color:#fff;
+text-decoration:none;
+font-weight:600;
+
+z-index:999;
+
+transition:.3s;
+}
+
+.back-btn:hover{
+transform:translateY(-3px);
+
+background:linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+border-color:transparent;
+
+box-shadow:
+0 0 25px rgba(0,191,255,.25),
+0 0 35px rgba(139,44,255,.25);
+}
+
+.back-btn i{
+font-size:.9rem;
+}
+
+@media(max-width:768px){
+
+.back-btn{
+top:20px;
+left:20px;
+padding:12px 18px;
+font-size:.9rem;
+}
+
+}
+
+/* HEADER SIMPLE */
+header{
+text-align:center;
+padding:60px 0 20px;
+}
+
+header img{
+width:160px;
+margin-bottom:20px;
+filter:drop-shadow(0 0 25px rgba(139,44,255,.6));
+}
+
+header h1{
+font-size:2.5rem;
+margin-bottom:10px;
+}
+
+header h1 span{
+background:linear-gradient(90deg,var(--blue),var(--purple));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* SEÇÕES */
+section{
+margin-top:70px;
+}
+
+section .social-list{
+max-width:100%;
+margin-top:30px;
+}
+
+.whatsapp-icon{
+color:#25D366;
+font-size:1.3rem;
+-webkit-text-fill-color:#25D366 !important;
+background:none !important;
+}
+
+.whatsapp .social-left{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+.whatsapp .social-info{
+display:flex;
+flex-direction:column;
+}
+
+.whatsapp .social-info h4{
+margin:0;
+font-size:1rem;
+}
+
+.whatsapp .social-info p{
+margin:0;
+color:var(--muted);
+}
+
+section .social-card{
+width:100%;
+}
+
+h2{
+font-size:1.8rem;
+margin-bottom:20px;
+}
+
+h3{
+margin-top:25px;
+margin-bottom:10px;
+}
+
+p{
+color:var(--muted);
+margin-bottom:15px;
+}
+
+p span{
+background:linear-gradient(90deg,var(--blue),var(--purple));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* LISTA */
+ul{
+margin-left:20px;
+color:var(--muted);
+}
+
+li{
+margin-bottom:8px;
+}
+
+/* FUNDADOR LAYOUT */
+.founder{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:60px;
+align-items:center;
+margin-top:80px;
+}
+
+.founder img{
+width:100%;
+border-radius:25px;
+border:1px solid var(--border);
+box-shadow:0 0 40px rgba(139,44,255,.15);
+}
+
+.badge{
+display:inline-block;
+padding:8px 14px;
+border-radius:999px;
+background:rgba(255,255,255,.05);
+border:1px solid var(--border);
+margin-bottom:15px;
+font-size:.85rem;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:60px 0 30px;
+border-top:1px solid rgba(255,255,255,.08);
+margin-top:100px;
+color:var(--muted);
+}
+
+footer strong{
+color:#fff;
+}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+
+.founder{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <a href="inicio.html" class="back-btn">
+    <i class="fas fa-arrow-left"></i>
+    Voltar ao Início
+</a>
+
+<header>
+
+<img src="./nexalogo-removebg-preview.png" alt="Logo Nexa">
+
+<h1><span>Nexa</span> • Conectando estratégia a resultado</h1>
+
+<p>A transformação digital começa com direção, não com pressa.</p>
+
+</header>
+
+<div class="container">
+
+<!-- VISÃO GERAL -->
+<section>
+
+<h2>📌 • Visão Geral</h2>
+
+<p>
+A <span><strong>Nexa Enterprises</strong></span> é uma empresa de marketing digital orientada por estratégia, dados e tecnologia.
+Atuamos no desenvolvimento, posicionamento e crescimento de marcas que buscam relevância, autoridade e resultados consistentes no ambiente digital.
+</p>
+
+<p>
+Cada ação nasce de análise, planejamento e execução consciente.
+</p>
+
+<p>
+No cenário digital atual, visibilidade sem direção gera desperdício.
+A Nexa transforma presença digital em crescimento estruturado.
+</p>
+
+<p>
+Marketing não é custo, é  <span>investimento!</span>
+</p>
+
+</section>
+
+<!-- MISSÃO VISÃO VALORES -->
+<section>
+
+<h2>🎯 • Missão, Visão e Valores</h2>
+
+<h3>Missão</h3>
+<p>Conectar marcas a resultados reais por meio de estratégias digitais inteligentes, criativas e sustentáveis.</p>
+
+<h3>Visão</h3>
+<p>Ser referência em marketing digital estratégico, reconhecida pela clareza, consistência e impacto gerado nas marcas.</p>
+
+<h3>Valores</h3>
+
+<ul>
+<li>Estratégia antes da execução</li>
+<li>Clareza acima de modismos</li>
+<li>Dados como base de decisão</li>
+<li>Criatividade com propósito</li>
+<li>Consistência e profissionalismo</li>
+<li>Evolução contínua</li>
+</ul>
+
+</section>
+
+<!-- SERVIÇOS -->
+<section>
+
+<h2>🛠️ • Serviços Oferecidos</h2>
+
+<p>Social Media Estratégico <span>•</span> gestão de redes com posicionamento e autoridade.</p>
+<p>Design Estratégico <span>•</span> identidade visual alinhada à estratégia da marca.</p>
+<p>Filmmaker & Fotografia <span>•</span> produção audiovisual profissional.</p>
+<p>Copywriting <span>•</span> escrita persuasiva focada em vendas.</p>
+<p>Tráfego Pago <span>•</span> campanhas orientadas por dados e ROI.</p>
+<p>Estratégia Digital <span>•</span> planejamento completo de posicionamento.</p>
+<p>IA no Marketing <span>•</span> automação e otimização de performance.</p>
+
+</section>
+
+<!-- METODOLOGIA -->
+<section>
+
+<h2>🧠 • Metodologia</h2>
+
+<p>Nosso processo é estruturado em quatro pilares:</p>
+
+<p><strong>1. Diagnóstico</strong> <span>•</span> análise completa do negócio.</p>
+<p><strong>2. Planejamento</strong> <span>•</span> definição de posicionamento e estratégia.</p>
+<p><strong>3. Execução</strong> <span>•</span> integração de conteúdo, design e tráfego.</p>
+<p><strong>4. Otimização</strong> <span>•</span> melhoria contínua baseada em dados.</p>
+
+<p>Nada é feito no escuro. Tudo é mensurado.</p>
+
+</section>
+
+<!-- IDENTIDADE -->
+<section>
+
+<h2>🎨 • Identidade Visual</h2>
+
+<p>
+A identidade da Nexa transmite:
+profissionalismo, tecnologia, autoridade e consistência.
+</p>
+
+</section>
+
+<!-- FUNDADOR -->
+<section class="founder">
+
+<div>
+
+<span class="badge">👤 Fundador & CEO</span>
+
+<h2>Vinicios Santana</h2>
+
+<p>
+A Nexa nasce da visão de Vinicios Santana, fundador e CEO da empresa.
+</p>
+
+<p>
+Marketing não é sobre aparecer, mas é sobre direcionar.
+</p>
+
+<p>
+A empresa foi criada para atender marcas que buscam clareza, autoridade e resultados mensuráveis.
+</p>
+
+<p>
+Cada projeto carrega envolvimento direto de liderança estratégica.
+</p>
+
+<p>
+Mais do que serviços, a Nexa entrega parceria estratégica completa.
+</p>
+
+<ul>
+<li>Planejamento estratégico</li>
+<li>Execução integrada</li>
+<li>Performance orientada por dados</li>
+<li>IA e tecnologia aplicada</li>
+<li>Visão de longo prazo</li>
+</ul>
+
+</div>
+
+<div>
+
+<img src="dev.jpeg" alt="Fundador Nexa">
+
+</div>
+
+</section>
+
+<!-- CONTATO -->
+<section>
+
+<h2>📞 • Informações de contato</h2>
+
+<p>📧 Nexaenterprisesadm@gmail.com</p>
+<div class="social-card whatsapp">
+
+    <div class="social-left">
+
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+
+        <div class="social-info">
+            <p>+55 11 98133-2616    </p>
+        </div>
+
+    </div>
+
+</div>
+<p>💼 Nexaenterprisessuporte@gmail.com</p>
+
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+<p><strong>© 2026 • NEXA</strong></p>
+<p>Fundada para conectar marcas a crescimento real.</p>
+
+</footer>
+
+</body>
+</html>

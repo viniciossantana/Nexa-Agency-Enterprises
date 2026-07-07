@@ -1,0 +1,4425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nexa Agency Enterprises</title>
+
+<link rel="icon" href="navicon.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+<style>
+
+:root{
+--bg:#050714;
+--bg2:#090d1f;
+
+--blue:#00bfff;
+--purple:#8b2cff;
+--purple-soft:#b46cff;
+
+--text:#ffffff;
+--muted:#a8afc6;
+
+--card:rgba(255,255,255,.04);
+--border:rgba(255,255,255,.08);
+
+--radius:26px;    
+--text:#FFFFFF;
+--muted:#A8AFC6;
+--heading:#FFFFFF;
+
+}
+
+body.light-theme{
+
+        --bg:#F4F7FC;
+    --bg2:#E9EEF8;
+
+    --blue:#0EA5E9;
+    --purple:#2563EB;
+    --purple-soft:#60A5FA;
+
+    --text:#1E293B;
+    --heading:#0F172A;
+    --muted:#64748B;
+
+    --card:rgba(255,255,255,.92);
+    --border:rgba(15,23,42,.08);
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Inter",sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:
+radial-gradient(circle at top left,rgba(0,191,255,.08),transparent 30%),
+radial-gradient(circle at top right,rgba(139,44,255,.18),transparent 35%),
+linear-gradient(180deg,#050714,#090d1f);
+
+color:var(--text);
+overflow-x:hidden;
+background:
+linear-gradient(
+180deg,
+var(--bg),
+var(--bg2));
+
+transition:
+background .35s,
+color .35s;
+}
+
+
+
+.container{
+width:min(92%,1200px);
+margin:auto;
+}
+
+/* ==========================================
+   HEADER PREMIUM NEXA
+========================================== */
+
+.main-header{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:82px;
+
+padding:0 5%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(5,7,20,.72);
+
+backdrop-filter:blur(22px);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+z-index:9999;
+
+transition:.35s;
+}
+
+/* SCROLL */
+
+.main-header.scrolled{
+
+height:70px;
+
+background:rgba(5,7,20,.88);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.35);
+
+}
+
+/* LOGO */
+
+.logo{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+text-decoration:none;
+
+}
+
+.logo img{
+
+width:42px;
+height:42px;
+
+object-fit:contain;
+
+}
+
+.logo span{
+
+font-size:1.15rem;
+font-weight:800;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft),
+var(--purple));
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+/* MENU DESKTOP */
+
+.desktop-menu{
+
+display:flex;
+align-items:center;
+gap:34px;
+
+}
+
+.desktop-menu a{
+
+position:relative;
+
+text-decoration:none;
+
+font-weight:500;
+
+color:var(--muted);
+
+transition:.3s;
+
+}
+
+.desktop-menu a:hover{
+
+color:var(--text);
+
+}
+
+.desktop-menu a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:-8px;
+
+width:0%;
+height:2px;
+
+border-radius:10px;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple));
+
+transition:.3s;
+
+}
+
+.desktop-menu a:hover::after{
+
+width:100%;
+
+}
+
+/* BOTÃO MENU */
+
+.menu-toggle{
+
+display:none;
+
+width:48px;
+height:48px;
+
+background:none;
+border:none;
+
+cursor:pointer;
+
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+gap:6px;
+
+z-index:10002;
+
+}
+
+.menu-toggle span{
+
+width:26px;
+height:2px;
+
+border-radius:999px;
+
+background:white;
+
+transition:.35s;
+
+}
+
+/*  HERO */
+
+/*=========================================
+HERO
+=========================================*/
+
+.hero{
+    position:relative;
+    overflow:hidden;
+
+    padding:170px 0 120px;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    top:-250px;
+    right:-180px;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+        rgba(139,44,255,.25),
+        transparent 70%);
+    filter:blur(70px);
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    bottom:-220px;
+    left:-220px;
+    width:550px;
+    height:550px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+        rgba(0,191,255,.18),
+        transparent 70%);
+    filter:blur(70px);
+}
+
+.hero-wrap{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:70px;
+
+    align-items:center;
+}
+
+.tag{
+    display:inline-flex;
+    align-items:center;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:var(--text);;
+
+    font-size:.9rem;
+    font-weight:600;
+
+    margin-bottom:30px;
+
+    backdrop-filter:blur(12px);
+}
+
+.hero h1{
+    font-size:clamp(3rem,6vw,5.5rem);
+    line-height:1;
+    margin-bottom:28px;
+}
+
+.hero h1 span{
+    background:linear-gradient(
+        90deg,
+        var(--blue),
+        var(--purple-soft),
+        var(--purple));
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero> .container>div:first-child p,
+.hero-wrap>div:first-child p{
+
+    max-width:640px;
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    font-size:1.08rem;
+
+    margin-bottom:40px;
+}
+
+.hero-actions{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:17px 34px;
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.35s;
+}
+
+.btn-primary{
+    color:var(--text);
+
+    background:linear-gradient(
+        135deg,
+        var(--blue),
+        var(--purple));
+
+    box-shadow:
+        0 0 30px rgba(139,44,255,.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+}
+
+.btn-secondary{
+
+    color:var(--text);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(10px);
+}
+
+.btn-secondary:hover{
+
+    border-color:var(--purple);
+
+    background:rgba(255,255,255,.08);
+
+    transform:translateY(-4px);
+}
+
+/* ================= LOGOUT ================= */
+
+.logout-btn{
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+
+width:100px;
+height:35px;
+
+border:none;
+border-radius:999px;
+
+cursor:pointer;
+
+font-size:.95rem;
+font-weight:700;
+
+color:var(--text);
+
+background:
+linear-gradient(
+135deg,
+#ff4d4d,
+#d90429
+);
+
+box-shadow:
+0 12px 30px rgba(217,4,41,.20);
+
+transition:.35s ease;
+
+}
+
+.logout-btn:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 20px 45px rgba(217,4,41,.35);
+
+background:
+linear-gradient(
+135deg,
+#ff5f5f,
+#ff003c
+);
+
+}
+
+.logout-btn:active{
+
+transform:scale(.97);
+
+}
+
+.logout-btn i{
+
+font-size:1rem;
+
+transition:.35s;
+
+}
+
+.logout-btn:hover i{
+
+transform:translateX(3px);
+
+}
+
+/* CARD */
+
+.hero-card{
+
+    position:relative;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:34px;
+
+    padding:55px 45px;
+
+    text-align:center;
+
+    backdrop-filter:blur(18px);
+
+    overflow:hidden;
+}
+
+.hero-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.03),
+        transparent);
+
+    pointer-events:none;
+}
+
+.hero-logo{
+
+    display:block;
+
+    width:190px;
+    max-width:100%;
+    height:auto;
+
+    margin:0 auto 35px;
+
+    filter:drop-shadow(0 0 35px rgba(139,44,255,.45));
+
+    animation:float 4s ease-in-out infinite;
+}
+
+.hero-card h2{
+
+    font-size:2rem;
+
+    margin-bottom:20px;
+}
+
+.hero-card p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:980px){
+
+    .hero{
+        padding:150px 0 90px;
+    }
+
+    .hero-wrap{
+        grid-template-columns:1fr;
+        gap:50px;
+        text-align:center;
+    }
+
+    .hero> .container>div:first-child p,
+    .hero-wrap>div:first-child p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-actions{
+        justify-content:center;
+    }
+
+    .hero-card{
+        padding:40px 30px;
+    }
+
+    .hero-logo{
+        width:150px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding:130px 0 70px;
+    }
+
+    .hero h1{
+        font-size:2.8rem;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .hero-actions{
+        flex-direction:column;
+    }
+
+}
+
+/* OVERLAY */
+
+.menu-overlay{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.55);
+
+backdrop-filter:blur(4px);
+
+opacity:0;
+visibility:hidden;
+
+transition:.35s;
+
+z-index:9997;
+
+}
+
+.menu-overlay.active{
+
+opacity:1;
+visibility:visible;
+
+}
+
+/* MENU */
+
+.mobile-menu{
+
+position:fixed;
+
+top:0;
+right:-380px;
+
+width:340px;
+max-width:90%;
+
+height:100vh;
+
+padding:30px;
+
+display:flex;
+flex-direction:column;
+
+background:#090d1f;
+
+border-left:1px solid rgba(255,255,255,.08);
+
+transition:.45s cubic-bezier(.22,.61,.36,1);
+
+z-index:9998;
+
+overflow-y:auto;
+
+}
+
+.mobile-menu.active{
+
+right:0;
+
+}
+
+/* TOPO */
+
+.mobile-top{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:40px;
+
+}
+
+.mobile-top img{
+
+width:48px;
+
+}
+
+.close-menu{
+
+background:none;
+border:none;
+
+cursor:pointer;
+
+font-size:1.8rem;
+
+color:var(--text);
+
+}
+
+/* LINKS */
+
+.mobile-links{
+
+display:flex;
+flex-direction:column;
+
+gap:8px;
+
+}
+
+.mobile-links a{
+
+display:flex;
+align-items:center;
+
+gap:18px;
+
+padding:16px 18px;
+
+border-radius:16px;
+
+text-decoration:none;
+
+font-weight:600;
+
+color:var(--text);
+
+transition:.3s;
+
+}
+
+.mobile-links a i{
+
+width:24px;
+
+font-size:1.1rem;
+
+color:var(--purple-soft);
+
+}
+
+.mobile-links a:hover{
+
+background:rgba(255,255,255,.05);
+
+transform:translateX(6px);
+
+}
+
+/* DIVISOR */
+
+.mobile-divider{
+
+margin:35px 0;
+
+height:1px;
+
+background:rgba(255,255,255,.08);
+
+}
+
+/* REDES */
+
+.mobile-social{
+
+display:flex;
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.mobile-social a{
+
+display:flex;
+align-items:center;
+
+gap:14px;
+
+text-decoration:none;
+
+color:var(--muted);
+
+padding:10px 0;
+
+transition:.3s;
+
+}
+
+.mobile-social a:hover{
+
+color:var(--text);
+
+}
+
+/* BOTÃO */
+
+.mobile-button{
+
+margin-top:auto;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:55px;
+
+border-radius:18px;
+
+text-decoration:none;
+
+font-weight:700;
+
+color:var(--text);
+
+background:linear-gradient(
+135deg,
+var(--blue),
+var(--purple));
+
+transition:.35s;
+
+}
+
+.mobile-button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 10px 25px rgba(139,44,255,.35);
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+.desktop-menu{
+
+display:none;
+
+}
+
+.menu-toggle{
+
+display:flex;
+
+}
+
+.logo span{
+
+font-size:1rem;
+
+}
+
+}
+
+/* DESKTOP */
+
+@media(min-width:901px){
+
+.mobile-menu,
+.menu-overlay{
+
+display:none;
+
+}
+
+}
+
+/*=========================================
+STACK & TECNOLOGIAS
+=========================================*/
+
+.tech-section{
+
+    padding:140px 0;
+    position:relative;
+    overflow:hidden;
+
+}
+
+.tech-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    top:-300px;
+    right:-250px;
+
+    background:radial-gradient(circle,
+    rgba(139,44,255,.14),
+    transparent 70%);
+
+    filter:blur(80px);
+
+    pointer-events:none;
+
+}
+
+.tech-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    bottom:-320px;
+    left:-260px;
+
+    background:radial-gradient(circle,
+    rgba(0,191,255,.10),
+    transparent 70%);
+
+    filter:blur(80px);
+
+    pointer-events:none;
+
+}
+
+.tech-section .title{
+
+    font-size:clamp(2.8rem,5vw,4.4rem);
+
+    text-align:center;
+
+    margin-bottom:22px;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+
+    position:relative;
+    z-index:2;
+
+}
+
+.tech-section .title::after{
+
+    content:"";
+
+    width:110px;
+    height:4px;
+
+    border-radius:999px;
+
+    margin:22px auto 0;
+
+    display:block;
+
+    background:linear-gradient(
+    90deg,
+    var(--blue),
+    var(--purple));
+
+}
+
+.tech-sub{
+
+    max-width:760px;
+
+    margin:0 auto 75px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:1.08rem;
+
+    line-height:1.9;
+
+    position:relative;
+    z-index:2;
+
+}
+
+.tech-grid{
+
+    width:min(92%,1300px);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:28px;
+
+    position:relative;
+    z-index:2;
+
+}
+
+.tech-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:38px 30px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    transition:.45s;
+
+    text-align:center;
+
+}
+
+.tech-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:0;
+
+    transition:.45s;
+
+    background:
+
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,.03),
+    transparent);
+
+}
+
+.tech-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-1px;
+
+    border-radius:30px;
+
+    padding:1px;
+
+    background:linear-gradient(
+    135deg,
+    rgba(0,191,255,.55),
+    rgba(139,44,255,.55));
+
+    -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    opacity:0;
+
+    transition:.45s;
+
+}
+
+.tech-card:hover{
+
+    transform:
+    translateY(-12px)
+    scale(1.02);
+
+    box-shadow:
+
+    0 25px 50px rgba(0,0,0,.45),
+
+    0 0 35px rgba(139,44,255,.22);
+
+}
+
+.tech-card:hover::before,
+.tech-card:hover::after{
+
+    opacity:1;
+
+}
+
+.tech-card img{
+
+    width:70px;
+    height:70px;
+
+    object-fit:contain;
+
+    margin-bottom:24px;
+
+    filter:
+
+    drop-shadow(0 0 12px rgba(139,44,255,.22));
+
+    transition:.45s;
+
+}
+
+.tech-card:hover img{
+
+    transform:
+    rotate(-6deg)
+    scale(1.12);
+
+}
+
+.tech-card h3{
+
+    font-size:1.45rem;
+
+    margin-bottom:16px;
+
+    font-weight:700;
+
+}
+
+.tech-card p{
+
+    color:var(--muted);
+
+    line-height:1.85;
+
+    font-size:.98rem;
+
+}
+
+/*=========================================
+RESPONSIVO
+=========================================*/
+
+@media(max-width:1200px){
+
+    .tech-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .tech-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .tech-section{
+
+        padding:100px 0;
+
+    }
+
+    .tech-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .tech-card{
+
+        padding:34px 26px;
+
+    }
+
+    .tech-section .title{
+
+        font-size:2.5rem;
+
+    }
+
+    .tech-sub{
+
+        margin-bottom:55px;
+
+        font-size:1rem;
+
+    }
+
+}
+
+/* ================= TITULOS ================= */
+
+.section-title{
+text-align:center;
+max-width:750px;
+margin:0 auto 60px;
+}
+
+.section-title span{
+display:inline-block;
+margin-bottom:12px;
+color:var(--blue);
+font-size:.9rem;
+font-weight:700;
+letter-spacing:2px;
+}
+
+.section-title h2{
+font-size:clamp(2.3rem,4vw,4rem);
+margin-bottom:15px;
+}
+
+.section-title p{
+color:var(--muted);
+}
+
+/* ================= ESTATISTICAS ================= */
+
+.stats-section{
+padding:40px 0 100px;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.stat-card{
+padding:30px;
+text-align:center;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:25px;
+
+transition:.35s;
+}
+
+.stat-card:hover{
+transform:translateY(-8px);
+border-color:rgba(139,44,255,.4);
+}
+
+.stat-card h3{
+font-size:2rem;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.stat-card p{
+color:var(--muted);
+margin-top:10px;
+}
+
+/* ================= BENEFICIOS ================= */
+
+.benefits{
+padding:100px 0;
+}
+
+.cards-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.card{
+padding:35px;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:28px;
+
+text-align:center;
+
+transition:.35s;
+}
+
+.card:hover{
+transform:
+translateY(-8px)
+rotateX(4deg);
+}
+
+.card i{
+font-size:2.3rem;
+
+margin-bottom:20px;
+
+background:linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.card h3{
+margin-bottom:12px;
+}
+
+.card p{
+color:var(--muted);
+}
+
+/* ================= SERVICOS ================= */
+
+.services{
+padding:100px 0;
+}
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.service-card{
+padding:30px;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:25px;
+
+transition:.35s;
+}
+
+.service-card:hover{
+transform:translateY(-8px);
+
+box-shadow:
+0 0 25px rgba(139,44,255,.15);
+}
+
+.service-card i{
+font-size:2rem;
+
+margin-bottom:18px;
+
+background:linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.service-card h3{
+margin-bottom:12px;
+}
+
+.service-card p{
+color:var(--muted);
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media(max-width:980px){
+
+.stats-grid,
+.cards-grid,
+.services-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.stats-grid,
+.cards-grid,
+.services-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ================= AUTORIDADE ================= */
+
+.authority{
+padding:120px 0;
+}
+
+.authority-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.authority-card{
+padding:35px;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:28px;
+
+transition:.35s;
+}
+
+.authority-card:hover{
+transform:translateY(-10px);
+
+box-shadow:
+0 0 30px rgba(139,44,255,.15);
+}
+
+.authority-card h3{
+margin-bottom:15px;
+font-size:1.4rem;
+}
+
+.authority-card p{
+color:var(--muted);
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline{
+padding:120px 0;
+}
+
+.timeline-wrapper{
+max-width:800px;
+margin:auto;
+position:relative;
+}
+
+.timeline-wrapper::before{
+content:"";
+
+position:absolute;
+
+left:20px;
+top:0;
+
+width:2px;
+height:100%;
+
+background:
+linear-gradient(
+180deg,
+var(--blue),
+var(--purple)
+);
+}
+
+.timeline-item{
+display:flex;
+gap:30px;
+margin-bottom:50px;
+position:relative;
+}
+
+.timeline-dot{
+width:40px;
+height:40px;
+
+border-radius:50%;
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+flex-shrink:0;
+
+box-shadow:
+0 0 20px rgba(139,44,255,.4);
+}
+
+.timeline-content{
+padding:25px;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:20px;
+
+width:100%;
+}
+
+.timeline-content p{
+color:var(--muted);
+}
+
+/* ================= SHOWCASE ================= */
+
+.showcase{
+padding:120px 0;
+}
+
+.showcase-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.showcase-content span{
+color:var(--blue);
+font-weight:700;
+}
+
+.showcase-content h2{
+font-size:3rem;
+margin:20px 0;
+}
+
+.showcase-content p{
+color:var(--muted);
+margin-bottom:30px;
+}
+
+.mockup-window{
+background:#0f1325;
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:25px;
+
+padding:20px;
+
+box-shadow:
+0 0 40px rgba(139,44,255,.15);
+}
+
+.mockup-top{
+display:flex;
+gap:8px;
+margin-bottom:20px;
+}
+
+.mockup-top span{
+width:12px;
+height:12px;
+border-radius:50%;
+background:var(--purple);
+}
+
+.mockup-screen{
+display:grid;
+gap:15px;
+}
+
+.screen-card{
+height:90px;
+
+border-radius:16px;
+
+background:
+linear-gradient(
+135deg,
+rgba(0,191,255,.1),
+rgba(139,44,255,.15)
+);
+
+border:1px solid rgba(255,255,255,.08);
+}
+
+/* ================= CTA FINAL ================= */
+
+.final-cta{
+padding:140px 0;
+text-align:center;
+}
+
+.final-cta h2{
+font-size:clamp(2.5rem,5vw,4rem);
+margin-bottom:20px;
+}
+
+.final-cta p{
+max-width:700px;
+margin:auto;
+color:var(--muted);
+margin-bottom:40px;
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media(max-width:980px){
+
+.authority-grid{
+grid-template-columns:1fr;
+}
+
+.showcase-box{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.timeline-item{
+gap:15px;
+}
+
+.timeline-dot{
+width:25px;
+height:25px;
+}
+
+.showcase-content h2{
+font-size:2rem;
+}
+
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+padding:120px 0;
+}
+
+.features-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+.feature-card{
+padding:35px;
+
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.05),
+rgba(255,255,255,.02)
+);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:28px;
+
+transition:.35s;
+}
+
+.feature-card:hover{
+transform:translateY(-8px);
+
+border-color:rgba(139,44,255,.4);
+
+box-shadow:
+0 0 30px rgba(139,44,255,.18);
+}
+
+.feature-card i{
+font-size:2rem;
+
+margin-bottom:20px;
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.feature-card h3{
+margin-bottom:12px;
+}
+
+.feature-card p{
+color:var(--muted);
+}
+
+/* ================= STATS ================= */
+
+.stats{
+padding:120px 0;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.stat-box{
+padding:40px 20px;
+
+text-align:center;
+
+border-radius:24px;
+
+background:
+linear-gradient(
+180deg,
+rgba(0,191,255,.04),
+rgba(139,44,255,.08)
+);
+
+border:1px solid rgba(255,255,255,.08);
+}
+
+.stat-box h2{
+font-size:3rem;
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.stat-box p{
+color:var(--muted);
+margin-top:10px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:980px){
+
+.features-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.stats-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.features-grid,
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ================= WHY NEXA ================= */
+
+.why-nexa{
+padding:140px 0;
+}
+
+.why-grid{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:60px;
+align-items:center;
+}
+
+.why-content{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.why-item{
+display:flex;
+gap:25px;
+align-items:flex-start;
+
+padding:25px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:24px;
+
+transition:.35s;
+}
+
+.why-item:hover{
+transform:translateX(10px);
+
+border-color:rgba(139,44,255,.35);
+}
+
+.why-number{
+font-size:2rem;
+font-weight:800;
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.why-item p{
+color:var(--muted);
+margin-top:8px;
+}
+
+/* ================= VISUAL CARD ================= */
+
+.why-visual{
+display:flex;
+justify-content:center;
+}
+
+.innovation-card{
+
+position:relative;
+
+overflow:hidden;
+
+padding:45px;
+
+border-radius:35px;
+
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.05),
+rgba(255,255,255,.02)
+);
+
+border:1px solid rgba(255,255,255,.08);
+
+max-width:500px;
+}
+
+.innovation-glow{
+
+position:absolute;
+
+width:250px;
+height:250px;
+
+background:
+radial-gradient(
+circle,
+rgba(139,44,255,.35),
+transparent 70%
+);
+
+top:-100px;
+right:-100px;
+}
+
+.badge{
+display:inline-flex;
+
+padding:10px 16px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+margin-bottom:20px;
+}
+
+.innovation-card h3{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+.innovation-card p{
+color:var(--muted);
+margin-bottom:30px;
+}
+
+.innovation-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.innovation-stats div{
+padding:18px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,.03);
+
+text-align:center;
+}
+
+.innovation-stats strong{
+display:block;
+margin-bottom:5px;
+}
+
+.innovation-stats small{
+color:var(--muted);
+}
+
+/* ================= QUOTE ================= */
+
+.quote-section{
+padding:120px 0;
+}
+
+.quote-box{
+
+text-align:center;
+
+padding:80px 40px;
+
+border-radius:35px;
+
+background:
+linear-gradient(
+180deg,
+rgba(0,191,255,.05),
+rgba(139,44,255,.08)
+);
+
+border:1px solid rgba(255,255,255,.08);
+}
+
+.quote-box h2{
+
+font-size:clamp(2rem,4vw,3.5rem);
+
+line-height:1.2;
+
+max-width:900px;
+
+margin:auto;
+}
+
+.quote-box p{
+
+margin-top:25px;
+
+color:var(--muted);
+
+font-size:1.1rem;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:980px){
+
+.why-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.innovation-stats{
+grid-template-columns:1fr;
+}
+
+.quote-box{
+padding:50px 25px;
+}
+
+}
+
+/* ================= CASES ================= */
+
+.cases{
+padding:140px 0;
+}
+
+.cases-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.case-card{
+
+padding:35px;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.05),
+rgba(255,255,255,.02)
+);
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.35s;
+}
+
+.case-card:hover{
+
+transform:translateY(-10px);
+
+border-color:rgba(139,44,255,.4);
+
+box-shadow:
+0 0 30px rgba(139,44,255,.15);
+}
+
+.case-number{
+
+font-size:4rem;
+font-weight:800;
+
+margin-bottom:20px;
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.case-card p{
+color:var(--muted);
+margin-top:10px;
+}
+
+/* ================= NUMBERS ================= */
+
+.numbers{
+padding:100px 0;
+}
+
+.numbers-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.number-box{
+
+padding:50px;
+
+text-align:center;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+180deg,
+rgba(0,191,255,.04),
+rgba(139,44,255,.08)
+);
+
+border:1px solid rgba(255,255,255,.08);
+}
+
+.number-box h2{
+
+font-size:4rem;
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.number-box p{
+margin-top:15px;
+color:var(--muted);
+}
+
+/* ================= EXPERIENCE ================= */
+
+.experience{
+padding:140px 0;
+}
+
+.experience-box{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+align-items:center;
+}
+
+.experience-content span{
+color:var(--blue);
+font-weight:700;
+}
+
+.experience-content h2{
+
+font-size:clamp(2.5rem,4vw,4rem);
+
+margin:20px 0;
+}
+
+.experience-content p{
+
+color:var(--muted);
+
+margin-bottom:30px;
+}
+
+.experience-visual{
+
+display:grid;
+
+gap:20px;
+}
+
+.glass-card{
+
+padding:30px;
+
+border-radius:28px;
+
+backdrop-filter:blur(20px);
+
+background:
+rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.35s;
+}
+
+.glass-card:hover{
+
+transform:translateX(10px);
+
+border-color:rgba(139,44,255,.35);
+}
+
+.glass-card h3{
+margin-bottom:8px;
+}
+
+.glass-card p{
+color:var(--muted);
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media(max-width:980px){
+
+.cases-grid,
+.numbers-grid,
+.experience-box{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ================= FAQ ================= */
+
+.faq{
+padding:140px 0;
+}
+
+.faq-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+}
+
+.faq-card{
+
+padding:30px;
+
+background:
+rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:25px;
+
+transition:.35s;
+}
+
+.faq-card:hover{
+transform:translateY(-8px);
+border-color:rgba(139,44,255,.35);
+}
+
+.faq-card h3{
+margin-bottom:15px;
+}
+
+.faq-card p{
+color:var(--muted);
+}
+
+/* ================= CTA FINAL ================= */
+
+.mega-cta{
+padding:140px 0;
+}
+
+.mega-box{
+
+position:relative;
+
+overflow:hidden;
+
+padding:80px;
+
+text-align:center;
+
+border-radius:40px;
+
+background:
+linear-gradient(
+180deg,
+rgba(0,191,255,.06),
+rgba(139,44,255,.10)
+);
+
+border:1px solid rgba(255,255,255,.08);
+}
+
+.mega-glow{
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(139,44,255,.25),
+transparent 70%
+);
+
+top:-250px;
+right:-250px;
+}
+
+.mega-box span{
+color:var(--blue);
+font-weight:700;
+letter-spacing:2px;
+}
+
+.mega-box h2{
+
+font-size:clamp(2.5rem,5vw,5rem);
+
+margin:25px 0;
+}
+
+.mega-box p{
+
+max-width:750px;
+
+margin:auto auto 35px;
+
+color:var(--muted);
+}
+
+/* ================= FOOTER PREMIUM ================= */
+footer{
+margin-top:60px;
+padding:70px 0 30px;
+background:
+radial-gradient(circle at top center, rgba(139,44,255,.14), transparent 35%),
+linear-gradient(180deg, rgba(10,12,24,.95), rgba(5,7,18,1));
+border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-social-title{
+text-align:center;
+margin-bottom:40px;
+}
+
+.footer-social-title h3{
+font-size:2rem;
+margin-bottom:10px;
+}
+
+.footer-social-title p{
+color:var(--muted);
+}
+
+/* SOCIAL */
+.social-list{
+display:flex;
+flex-direction:column;
+gap:20px;
+max-width:700px;
+margin:0 auto;
+}
+
+.social-card{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px 28px;
+border-radius:22px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+transition:.3s;
+}
+
+.social-card:hover{
+transform:translateY(-4px);
+}
+
+/* ICON PADRÃO */
+.social-left{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+.social-left i{
+font-size:1.6rem;
+background:linear-gradient(135deg,var(--blue),var(--purple));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+transition:.3s;
+}
+
+/* BOTÃO */
+.social-card a{
+padding:12px 20px;
+border-radius:999px;
+background:linear-gradient(135deg,var(--blue),var(--purple));
+color:#fff;
+text-decoration:none;
+font-weight:600;
+}
+
+/* HOVER INTELIGENTE FINAL */
+.social-card.whatsapp:hover{ border-color:#25D366; }
+.social-card.whatsapp:hover i{ -webkit-text-fill-color:#25D366; background:none; }
+
+.social-card.instagram:hover{ border-color:#E1306C; }
+.social-card.instagram:hover i{ -webkit-text-fill-color:#E1306C; background:none; }
+
+.social-card.tiktok:hover{ border-color:#00f2ea; }
+.social-card.tiktok:hover i{ -webkit-text-fill-color:#00f2ea; background:none; }
+
+.social-card.discord:hover{ border-color:#5865F2; }
+.social-card.discord:hover i{ -webkit-text-fill-color:#5865F2; background:none; }
+
+.social-card.youtube:hover{ border-color:#FF0000; }
+.social-card.youtube:hover i{ -webkit-text-fill-color:#FF0000; background:none; }
+
+/* ASSINATURA DO FUNDADOR */
+.footer-bottom{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+
+width:100%;
+
+margin-top:50px;
+padding-top:25px;
+
+border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-bottom p{
+margin:0;
+}
+
+.footer-bottom > p:first-child{
+max-width:300px;
+text-align:left;
+}
+
+.footer-signature{
+text-align:right;
+margin-left:auto;
+}
+
+.footer-signature a{
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.footer-signature a:hover{
+filter:brightness(1.2);
+letter-spacing:.5px;
+}
+
+footer .container{
+width:100%;
+max-width:1400px;
+margin:0 auto;
+padding:0 40px;
+}   
+
+@media(max-width:768px){
+
+.footer-bottom{
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+min-height:auto;
+}
+
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+gap:60px;
+align-items:start;
+margin-top:70px;
+}
+
+.footer-brand{
+max-width:500px;
+}
+
+.footer-logo{
+font-size:2.2rem;
+font-weight:800;
+line-height:1.1;
+margin-bottom:18px;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.footer-description{
+color:var(--muted);
+font-size:1rem;
+line-height:1.8;
+max-width:420px;
+}
+
+.footer-grid h4{
+font-size:1.15rem;
+font-weight:700;
+margin-bottom:22px;
+color:#fff;
+}
+
+.footer-links{
+list-style:none;
+padding:0;
+margin:0;
+}
+
+.footer-links li{
+margin-bottom:14px;
+}
+
+.footer-links a{
+text-decoration:none;
+color:var(--muted);
+font-size:.95rem;
+transition:.3s;
+}
+
+.footer-links a:hover{
+color:#fff;
+padding-left:6px;
+}
+
+@media(max-width:900px){
+
+.footer-grid{
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+}
+
+@media(max-width:768px){
+
+.footer-grid{
+grid-template-columns:1fr;
+gap:35px;
+text-align:center;
+}
+
+.footer-brand{
+max-width:100%;
+}
+
+.footer-description{
+max-width:100%;
+}
+
+}
+
+/* ================= LOADING SCREEN ================= */
+
+#loader{
+position:fixed;
+inset:0;
+width:100%;
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:#050714;
+
+z-index:999999;
+
+transition:1s ease;
+}
+
+#loader.hidden{
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+}
+
+.loader-bg{
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(circle at center,
+rgba(139,44,255,.25),
+transparent 50%),
+
+radial-gradient(circle at top,
+rgba(0,191,255,.18),
+transparent 40%);
+}
+
+.loader-content{
+position:relative;
+text-align:center;
+z-index:2;
+}
+
+.loader-content img{
+width:180px;
+
+filter:
+drop-shadow(0 0 25px rgba(139,44,255,.7))
+drop-shadow(0 0 50px rgba(0,191,255,.4));
+
+animation:loaderFloat 3s ease-in-out infinite;
+}
+
+.loader-content h2{
+margin-top:25px;
+font-size:2rem;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.loader-content p{
+margin-top:20px;
+color:var(--muted);
+letter-spacing:2px;
+font-size:.95rem;
+}
+
+.loader-line{
+width:280px;
+height:5px;
+
+background:rgba(255,255,255,.08);
+
+border-radius:999px;
+
+overflow:hidden;
+
+margin:25px auto 0;
+}
+
+.loader-line span{
+display:block;
+width:0%;
+height:100%;
+
+background:linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+border-radius:999px;
+
+animation:loadingBar 2.8s ease forwards;
+}
+
+@keyframes loadingBar{
+
+0%{
+width:0%;
+}
+
+100%{
+width:100%;
+}
+
+}
+
+@keyframes loaderFloat{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+}
+
+/* ================= SETTINGS ================= */
+
+.settings{
+
+position:relative;
+display:inline-block;
+
+}
+
+.settings-btn{
+
+width:48px;
+height:48px;
+
+border:none;
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:#fff;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+.settings-btn:hover{
+
+background:rgba(255,255,255,.10);
+
+transform:rotate(45deg);
+
+}
+
+.settings-menu{
+
+position:absolute;
+
+top:60px;
+right:0;
+
+width:260px;
+
+background:rgba(15,18,35,.98);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:18px;
+
+padding:10px;
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.35);
+
+z-index:9999;
+
+/* ESCONDIDO */
+
+display:none;
+
+}
+
+.settings-menu.active{
+
+display:block;
+
+animation:fadeMenu .25s ease;
+
+}
+
+.settings-menu a{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+padding:12px 15px;
+
+border-radius:12px;
+
+color:#fff;
+
+text-decoration:none;
+
+transition:.25s;
+
+}
+
+.settings-menu a:hover{
+
+background:rgba(255,255,255,.07);
+
+}
+
+.settings-menu hr{
+
+border:none;
+
+height:1px;
+
+background:rgba(255,255,255,.08);
+
+margin:8px 0;
+
+}
+
+.logout{
+
+color:#ff6b6b !important;
+
+}
+
+.logout:hover{
+
+background:rgba(255,0,0,.08) !important;
+
+}
+
+@keyframes fadeMenu{
+
+from{
+
+opacity:0;
+transform:translateY(-10px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <!-- LOADING SCREEN -->
+
+<div id="loader">
+
+<div class="loader-bg"></div>
+
+<div class="loader-content">
+
+<img src="nexalogo-removebg-preview.png" alt="Nexa Logo">
+
+<h2>Nexa Agency Enterprises</h2>
+
+<div class="loader-line">
+<span></span>
+</div>
+
+<p>Inicializando Ecossistema Digital...</p>
+
+</div>
+
+</div>
+
+<!-- ===========================
+     HEADER PREMIUM NEXA
+=========================== -->
+
+<header class="main-header" id="header">
+
+    <a href="inicio.html" class="logo">
+
+        <img src="navicon.png" alt="Nexa">
+
+        <span>Nexa Agency Enterprises</span>
+
+    </a>
+
+    <!-- MENU DESKTOP -->
+
+    <nav class="desktop-menu">
+
+        <a href="inicio.html">Início</a>
+        <a href="3serviços.html">Serviços</a>
+        <a href="2portfolio.html">Portfólio</a>
+        <a href="readme.html">Sobre</a>
+        <a href="https://typebot.co/my-typebot-lyx2eqn">NexaBot</a>
+        <div class="settings">
+
+    <button id="settingsBtn" class="settings-btn">
+        <i class="fa-solid fa-gear"></i>
+    </button>
+
+    <div id="settingsMenu" class="settings-menu">
+
+        <a href="dashboard.html">
+            <i class="fa-solid fa-user"></i>
+            Minha conta
+        </a>
+
+        <a href="404.html">
+            <i class="fa-solid fa-bell"></i>
+            Notificações
+        </a>
+
+        <a href="mudar-tema.html" id="themeToggle">
+            <i class="fa-solid fa-paintbrush"></i>
+            Tema
+        </a>
+
+        <a href="404.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Histórico
+        </a>
+
+        <a href="404.html">
+            <i class="fa-solid fa-star"></i>
+            Favoritos
+        </a>
+
+        <a href="ajuda.html">
+            <i class="fa-solid fa-circle-question"></i>
+            Ajuda
+        </a>
+
+        <hr>
+
+        <a href="index.html">
+            <i class="fa-solid fa-right-left"></i>
+            Trocar conta
+        </a>
+
+        <a href="index.html">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Login
+        </a>
+
+        <a href="index.html" id="logoutBtn" class="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Sair
+        </a>
+
+    </div>
+
+</div>
+
+    </nav>
+
+    <!-- BOTÃO MOBILE -->
+
+    <button class="menu-toggle" id="menuToggle">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+<!-- ===========================
+     OVERLAY
+=========================== -->
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- ===========================
+     MENU MOBILE
+=========================== -->
+
+<aside class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-top">
+
+        <img src="navicon.png" alt="Nexa">
+
+        <button class="close-menu" id="closeMenu">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+    <nav class="mobile-links">
+
+        <a href="inicio.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Início</span>
+
+        </a>
+
+        <a href="3serviços.html">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+            <span>Serviços</span>
+
+        </a>
+
+        <a href="2portfolio.html">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            <span>Portfólio</span>
+
+        </a>
+
+        <a href="readme.html">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Sobre</span>
+
+        </a>
+
+        <button id="logoutBtn" class="logout-btn">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    <span>Sair</span>
+</button>
+
+        <a href="https://typebot.co/my-typebot-lyx2eqn">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <span>NexaBot</span>
+
+        </a>
+
+    </nav>
+
+    <div class="mobile-divider"></div>
+
+    <div class="mobile-social">
+
+        <a href="https://wa.me/5511981332616">
+
+            <i class="fab fa-whatsapp"></i>
+
+            WhatsApp
+
+        </a>
+
+        <a href="https://www.instagram.com/agencynexaenterprises/">
+
+            <i class="fab fa-instagram"></i>
+
+            Instagram
+
+        </a>
+
+        <a href="https://www.tiktok.com/@agencynexaenterprises">
+
+            <i class="fab fa-tiktok"></i>
+
+            TikTok
+
+        </a>
+
+        <a href="https://www.youtube.com/channel/UCBvGm-pfP3e_h4zDxUQ309Q">
+
+            <i class="fab fa-youtube"></i>
+
+            YouTube
+
+        </a>
+
+    </div>
+
+    <a href="3serviços.html" class="mobile-button">
+
+        Solicitar orçamento
+
+    </a>
+
+</aside>
+
+<section class="hero">
+
+<div class="container hero-wrap">
+
+<div>
+
+<div class="tag">
+⚡ Plataforma criativa para empresas do futuro
+</div>
+
+<h1>
+Construa algo
+<span>extraordinário.</span>
+</h1>
+
+<p>
+A Nexa une branding, marketing, tecnologia e estratégia
+para transformar ideias em marcas memoráveis.
+Não criamos apenas presença digital.
+Criamos autoridade.
+</p>
+
+<div class="hero-actions">
+
+<a href="3serviços.html" class="btn btn-primary">
+Explorar Agora
+</a>
+
+<a href="readme.html" class="btn btn-secondary">
+Conheça a Nexa
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-card">
+
+<img src="nexalogo-removebg-preview.png" class="hero-logo">
+
+<h2>
+Visão. Estratégia. Impacto.
+</h2>
+
+<p>
+Uma presença digital moderna,
+forte e construída para destacar sua marca
+em um mercado cada vez mais competitivo.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ESTATÍSTICAS ================= -->
+
+<section class="stats-section">
+
+<div class="container">
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<h3>+50</h3>
+<p>Projetos Planejados</p>
+</div>
+
+<div class="stat-card">
+<h3>24/7</h3>
+<p>Suporte Estratégico</p>
+</div>
+
+<div class="stat-card">
+<h3>100%</h3>
+<p>Foco em Crescimento</p>
+</div>
+
+<div class="stat-card">
+<h3>NEXT</h3>
+<p>Mentalidade de Evolução</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= BENEFÍCIOS ================= -->
+
+<section class="benefits">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>NEXA EXPERIENCE</span>
+
+<h2>
+Muito além de uma agência.
+</h2>
+
+<p>
+Criamos ecossistemas digitais capazes de posicionar marcas,
+gerar autoridade e acelerar resultados.
+</p>
+
+</div>
+
+<div class="cards-grid">
+
+<div class="card">
+
+<i class="fas fa-bolt"></i>
+
+<h3>Execução Rápida</h3>
+
+<p>
+Projetos construídos com velocidade,
+organização e foco em resultado.
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-brain"></i>
+
+<h3>Estratégia Inteligente</h3>
+
+<p>
+Cada ação possui um propósito.
+Nada é criado apenas por estética.
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-crown"></i>
+
+<h3>Posicionamento Premium</h3>
+
+<p>
+Sua marca precisa parecer valiosa
+antes mesmo da primeira conversa.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SERVIÇOS ================= -->
+
+<section class="services">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>O QUE FAZEMOS</span>
+
+<h2>
+Serviços que impulsionam marcas.
+</h2>
+
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+
+<i class="fas fa-palette"></i>
+
+<h3>Design</h3>
+
+<p>
+Identidade visual moderna e memorável.
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-bullhorn"></i>
+
+<h3>Marketing</h3>
+
+<p>
+Posicionamento, tráfego e crescimento.
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-code"></i>
+
+<h3>Desenvolvimento</h3>
+
+<p>
+Sites premium rápidos e responsivos.
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i class="fas fa-robot"></i>
+
+<h3>Automação</h3>
+
+<p>
+Bots, integrações e processos inteligentes.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= AUTORIDADE ================= -->
+
+<section class="authority">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>NOSSA VISÃO</span>
+
+<h2>
+A Nexa não nasceu para seguir tendências.
+Nasceu para criá-las.
+</h2>
+
+<p>
+Enquanto muitas empresas tentam parecer profissionais,
+nós construímos estruturas capazes de transmitir autoridade,
+confiança e posicionamento desde o primeiro clique.
+</p>
+
+</div>
+
+<div class="authority-grid">
+
+<div class="authority-card">
+
+<h3>Missão</h3>
+
+<p>
+Transformar ideias em marcas memoráveis através de design,
+marketing e tecnologia.
+</p>
+
+</div>
+
+<div class="authority-card">
+
+<h3>Visão</h3>
+
+<p>
+Ser referência em inovação digital,
+criando experiências que geram impacto real.
+</p>
+
+</div>
+
+<div class="authority-card">
+
+<h3>Valores</h3>
+
+<p>
+Excelência, criatividade, inovação,
+transparência e crescimento contínuo.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= TIMELINE ================= -->
+
+<section class="timeline">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>JORNADA</span>
+
+<h2>
+Construindo o futuro passo a passo.
+</h2>
+
+</div>
+
+<div class="timeline-wrapper">
+
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>Fundação</h3>
+<p>Nascimento da Nexa Agency Enterprises.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>Expansão</h3>
+<p>Ampliação dos serviços e fortalecimento da identidade.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>Ecossistema Nexa</h3>
+<p>Integração de branding, marketing, automação e tecnologia.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<h3>Próximo Nível</h3>
+<p>Escala, inovação e crescimento contínuo.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= MOCKUP ================= -->
+
+<section class="showcase">
+
+<div class="container">
+
+<div class="showcase-box">
+
+<div class="showcase-content">
+
+<span>PLATAFORMA NEXA</span>
+
+<h2>
+Uma empresa moderna merece uma presença moderna.
+</h2>
+
+<p>
+Estratégia, branding, automação, marketing e desenvolvimento.
+Tudo conectado em um único ecossistema digital.
+</p>
+
+<a href="3serviços.html" class="btn btn-primary">
+Conhecer Serviços
+</a>
+
+</div>
+
+<div class="showcase-mockup">
+
+<div class="mockup-window">
+
+<div class="mockup-top">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="mockup-screen">
+
+<div class="screen-card"></div>
+<div class="screen-card"></div>
+<div class="screen-card"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+
+<section class="final-cta">
+
+<div class="container">
+
+<h2>
+Pronto para construir algo extraordinário?
+</h2>
+
+<p>
+A Nexa está preparada para transformar sua visão
+em uma presença digital forte, moderna e memorável.
+</p>
+
+<div class="hero-actions">
+
+<a href="3serviços.html" class="btn btn-primary">
+Começar Agora
+</a>
+
+<a href="trabalhe-conosco.html" class="btn btn-secondary">
+Trabalhe Conosco
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= DIFERENCIAIS ================= -->
+
+<section class="features">
+
+<div class="container">
+
+<div class="section-title">
+<span>DIFERENCIAIS</span>
+
+<h2>
+Mais que uma agência.
+Um ecossistema digital.
+</h2>
+
+<p>
+Cada projeto é desenvolvido para gerar percepção de valor,
+autoridade e crescimento sustentável.
+</p>
+
+</div>
+
+<div class="features-grid">
+
+<div class="feature-card">
+<i class="fas fa-bolt"></i>
+<h3>Execução Rápida</h3>
+<p>
+Processos otimizados para transformar ideias em realidade.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-chart-line"></i>
+<h3>Estratégia</h3>
+<p>
+Tudo é construído com foco em crescimento e posicionamento.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-layer-group"></i>
+<h3>Branding</h3>
+<p>
+Marcas memoráveis criam resultados memoráveis.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-robot"></i>
+<h3>Automação</h3>
+<p>
+Tecnologia aplicada para aumentar produtividade.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-code"></i>
+<h3>Desenvolvimento</h3>
+<p>
+Sites modernos, rápidos e preparados para escalar.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-shield-alt"></i>
+<h3>Confiabilidade</h3>
+<p>
+Estruturas sólidas para projetos de longo prazo.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= TECH SECTION ================= -->
+
+<section class="tech-section">
+  <h2 class="title">Stack & Tecnologias</h2>
+
+  <p class="tech-sub">
+    Não seguimos tendência. Usamos tecnologia que resolve, escala e sustenta crescimento.
+  </p>
+
+  <div class="tech-grid">
+
+    <div class="tech-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+      <h3>HTML5</h3>
+      <p>Estrutura profissional, funcional e acessível. Interface especializada em alta</p>
+    </div>
+
+    <div class="tech-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+      <h3>CSS3</h3>
+      <p>Interface refinada, responsiva e com identidade visual forte.</p>
+    </div>
+
+    <div class="tech-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+      <h3>JavaScript</h3>
+      <p>Interatividade real. Experiência que prende e converte.</p>
+    </div>
+
+    <div class="tech-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+      <h3>React</h3>
+      <p>Aplicações modernas, rápidas e escaláveis.</p>
+    </div>
+
+    <div class="tech-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg">
+      <h3>Node.js</h3>
+      <p>Backend eficiente para sistemas robustos e integrações.</p>
+    </div>
+
+    <div class="tech-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg">
+      <h3>Firebase</h3>
+      <p>Infraestrutura ágil para projetos rápidos e escaláveis.</p>
+    </div>
+
+    <div class="tech-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg">
+      <h3>APIs</h3>
+      <p>Integração entre sistemas. Tudo conversando, tudo fluindo.</p>
+    </div>
+
+    <div class="tech-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png">
+      <h3>Automação</h3>
+      <p>Processos inteligentes que economizam tempo e aumentam lucro.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= ESTATÍSTICAS ================= -->
+
+<section class="stats">
+
+<div class="container">
+
+<div class="stats-grid">
+
+<div class="stat-box">
+<h2>100%</h2>
+<p>Projetos personalizados</p>
+</div>
+
+<div class="stat-box">
+<h2>24/7</h2>
+<p>Visibilidade digital</p>
+</div>
+
+<div class="stat-box">
+<h2>∞</h2>
+<p>Possibilidades de crescimento</p>
+</div>
+
+<div class="stat-box">
+<h2>Nexa</h2>
+<p>Visão que gera execução</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= WHY NEXA ================= -->
+
+<section class="why-nexa">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>POR QUE NEXA?</span>
+
+<h2>
+Sua marca merece mais do que presença.
+Merece influência.
+</h2>
+
+<p>
+A diferença entre uma empresa comum e uma marca memorável
+está na forma como ela se apresenta ao mundo.
+</p>
+
+</div>
+
+<div class="why-grid">
+
+<div class="why-content">
+
+<div class="why-item">
+
+<div class="why-number">01</div>
+
+<div>
+
+<h3>Posicionamento Estratégico</h3>
+
+<p>
+Não criamos apenas layouts.
+Criamos percepção de valor.
+</p>
+
+</div>
+
+</div>
+
+<div class="why-item">
+
+<div class="why-number">02</div>
+
+<div>
+
+<h3>Visual Premium</h3>
+
+<p>
+Interfaces modernas que transmitem confiança
+antes mesmo do primeiro contato.
+</p>
+
+</div>
+
+</div>
+
+<div class="why-item">
+
+<div class="why-number">03</div>
+
+<div>
+
+<h3>Tecnologia Atual</h3>
+
+<p>
+Projetos desenvolvidos com foco em performance,
+responsividade e escalabilidade.
+</p>
+
+</div>
+
+</div>
+
+<div class="why-item">
+
+<div class="why-number">04</div>
+
+<div>
+
+<h3>Visão de Longo Prazo</h3>
+
+<p>
+Pensamos na construção da marca,
+não apenas no próximo post.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="why-visual">
+
+<div class="innovation-card">
+
+<div class="innovation-glow"></div>
+
+<span class="badge">
+🚀 NEXT GENERATION
+</span>
+
+<h3>
+Criando empresas preparadas para o amanhã.
+</h3>
+
+<p>
+Design, branding, automação,
+marketing e desenvolvimento
+integrados em uma única estrutura.
+</p>
+
+<div class="innovation-stats">
+
+<div>
+<strong>Moderno</strong>
+<small>Design</small>
+</div>
+
+<div>
+<strong>Escalável</strong>
+<small>Estrutura</small>
+</div>
+
+<div>
+<strong>Premium</strong>
+<small>Experiência</small>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= QUOTE ================= -->
+
+<section class="quote-section">
+
+<div class="container">
+
+<div class="quote-box">
+
+<h2>
+"Grandes marcas não competem por atenção.
+Elas dominam a percepção."
+</h2>
+
+<p>
+Nexa Agency Enterprises
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CASES ================= -->
+
+<section class="cases">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>RESULTADOS</span>
+
+<h2>
+Projetos criados para gerar impacto.
+</h2>
+
+<p>
+Cada marca possui uma história.
+Nosso trabalho é garantir que ela seja vista.
+</p>
+
+</div>
+
+<div class="cases-grid">
+
+<div class="case-card">
+
+<div class="case-number">01</div>
+
+<h3>Branding Premium</h3>
+
+<p>
+Identidades modernas capazes de transmitir
+autoridade e profissionalismo.
+</p>
+
+</div>
+
+<div class="case-card">
+
+<div class="case-number">02</div>
+
+<h3>Presença Digital</h3>
+
+<p>
+Estruturas criadas para transformar visitantes
+em clientes.
+</p>
+
+</div>
+
+<div class="case-card">
+
+<div class="case-number">03</div>
+
+<h3>Escalabilidade</h3>
+
+<p>
+Projetos preparados para crescer junto com a marca.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= SHOW NUMBERS ================= -->
+
+<section class="numbers">
+
+<div class="container">
+
+<div class="numbers-grid">
+
+<div class="number-box">
+
+<h2>+100%</h2>
+
+<p>
+Compromisso com qualidade.
+</p>
+
+</div>
+
+<div class="number-box">
+
+<h2>24/7</h2>
+
+<p>
+Marca ativa e relevante.
+</p>
+
+</div>
+
+<div class="number-box">
+
+<h2>∞</h2>
+
+<p>
+Potencial de crescimento.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CLIENT EXPERIENCE ================= -->
+
+<section class="experience">
+
+<div class="container">
+
+<div class="experience-box">
+
+<div class="experience-content">
+
+<span>EXPERIÊNCIA NEXA</span>
+
+<h2>
+Não entregamos apenas design.
+Entregamos percepção.
+</h2>
+
+<p>
+Quando uma marca parece profissional,
+ela é tratada como profissional.
+Essa é a diferença.
+</p>
+
+<a href="3serviços.html" class="btn btn-primary">
+Explorar Serviços
+</a>
+
+</div>
+
+<div class="experience-visual">
+
+<div class="glass-card">
+<h3>NEXA</h3>
+<p>Future Digital Ecosystem</p>
+</div>
+
+<div class="glass-card">
+<h3>BRANDING</h3>
+<p>Posicionamento Premium</p>
+</div>
+
+<div class="glass-card">
+<h3>TECH</h3>
+<p>Sites e Automações</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+  <div class="container">
+
+    <div class="footer-social-title">
+      <h3>Conecte-se com a Nexa</h3>
+      <p>Escolha seu canal e entre no nosso ecossistema digital.</p>
+    </div>
+
+    <div class="social-list">
+
+      <!-- WHATSAPP -->
+      <div class="social-card whatsapp">
+        <div class="social-left">
+          <i class="fab fa-whatsapp"></i>
+          <div class="social-info">
+            <h4>WhatsApp</h4>
+            <p>Fale direto com a Nexa</p>
+          </div>
+        </div>
+        <a href="https://wa.me/5511981332616?text=Olá,%20Gostaria%20de%20contratar%20os%20serviços%20da%20Nexa" target="_blank">Conversar</a>
+      </div>
+
+      <!-- INSTAGRAM -->
+      <div class="social-card instagram">
+        <div class="social-left">
+          <i class="fab fa-instagram"></i>
+          <div class="social-info">
+            <h4>Instagram</h4>
+            <p>Branding e posicionamento</p>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/agencynexaenterprises/" target="_blank">Acessar</a>
+      </div>
+
+      <!-- NexaBot -->
+      <div class="social-card nexabot">
+        <div class="social-left">
+          <i class="fas fa-robot"></i>
+          <div class="social-info">
+            <h4>NexaBot</h4>
+            <p>Atendimento automatizado e eficiente</p>
+          </div>
+        </div>
+        <a href="https://typebot.co/my-typebot-lyx2eqn" target="_blank">Acessar</a>
+        </div>
+
+      <!-- DISCORD -->
+      <div class="social-card discord">
+        <div class="social-left">
+          <i class="fab fa-discord"></i>
+          <div class="social-info">
+            <h4>Discord</h4>
+            <p>Comunidade e networking</p>
+          </div>
+        </div>
+        <a href="https://discord.gg/v5ty46pFwY" target="_blank">Entrar</a>
+      </div>
+
+      <!-- YOUTUBE -->
+      <div class="social-card youtube">
+        <div class="social-left">
+          <i class="fab fa-youtube"></i>
+          <div class="social-info">
+            <h4>YouTube</h4>
+            <p>Conteúdo completo e estratégico</p>
+          </div>
+        </div>
+        <a href="https://www.youtube.com/channel/UCBvGm-pfP3e_h4zDxUQ309Q" target="_blank">Acessar</a>
+      </div>
+
+    </div>
+
+<!-- COLUNAS -->
+<div class="footer-grid">
+
+<div class="footer-brand">
+
+<h3 class="footer-logo">
+Nexa Agency Enterprises
+</h3>
+
+<p class="footer-description">
+Construindo experiências digitais modernas,
+estratégicas e preparadas para o futuro.
+</p>
+
+</div>
+
+<div>
+
+<h4>Navegação</h4>
+
+<ul class="footer-links">
+<li><a href="inicio.html">Início</a></li>
+<li><a href="3serviços.html">Serviços</a></li>
+<li><a href="2portfolio.html">Portfólio</a></li>
+<li><a href="trabalhe-conosco.html">Carreiras</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<h4>Empresa</h4>
+
+<ul class="footer-links">
+<li><a href="readme.html">Sobre</a></li>
+<li><a href="#">Visão</a></li>
+<li><a href="#">Missão</a></li>
+<li><a href="#">Contato</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<h4>Comunidade</h4>
+
+<ul class="footer-links">
+<li><a href="https://discord.gg/v5ty46pFwY">Discord</a></li>
+<li><a href="https://www.instagram.com/agencynexaenterprises/">Instagram</a></li>
+<li><a href="https://www.tiktok.com/@agencynexaenterprises">TikTok</a></li>
+<li><a href="https://www.youtube.com/channel/UCBvGm-pfP3e_h4zDxUQ309Q">YouTube</a></li>
+</ul>
+
+</div>
+
+</div> <!-- FECHA footer-grid -->
+
+<div class="footer-bottom">
+
+<p>
+© 2026 Nexa Agency Enterprises.
+Todos os direitos reservados.
+</p>
+
+<p class="footer-signature">
+Fundada por
+<a href="https://contatoceonexaenterprises.carrd.co/">
+Vinícios Santana
+</a>
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+document
+.getElementById("loader")
+.classList.add("hidden");
+
+},2800);
+
+});
+
+</script>
+
+<script>
+
+/* ============================
+   HEADER PREMIUM NEXA
+============================ */
+
+const header = document.querySelector(".main-header");
+
+const menu = document.getElementById("mobileMenu");
+
+const overlay = document.getElementById("menuOverlay");
+
+const openBtn = document.getElementById("menuToggle");
+
+const closeBtn = document.getElementById("closeMenu");
+
+const body = document.body;
+
+/* ABRIR */
+
+function openMenu(){
+
+menu.classList.add("active");
+
+overlay.classList.add("active");
+
+body.style.overflow="hidden";
+
+}
+
+/* FECHAR */
+
+function closeMenu(){
+
+menu.classList.remove("active");
+
+overlay.classList.remove("active");
+
+body.style.overflow="";
+
+}
+
+/* BOTÕES */
+
+openBtn.addEventListener("click",openMenu);
+
+closeBtn.addEventListener("click",closeMenu);
+
+overlay.addEventListener("click",closeMenu);
+
+/* FECHAR AO CLICAR EM UM LINK */
+
+document.querySelectorAll(".mobile-links a").forEach(link=>{
+
+link.addEventListener("click",closeMenu);
+
+});
+
+document.querySelectorAll(".mobile-social a").forEach(link=>{
+
+link.addEventListener("click",closeMenu);
+
+});
+
+/* ESC */
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape"){
+
+closeMenu();
+
+}
+
+});
+
+/* HEADER MENOR AO ROLAR */
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>40){
+
+header.classList.add("scrolled");
+
+}else{
+
+header.classList.remove("scrolled");
+
+}
+
+});
+
+</script>
+
+<script>import { signOut } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+
+function logout(){
+
+    signOut(auth).then(() => {
+
+        window.location.replace("index.html");
+
+    });
+
+}
+</script>
+
+<script type="module" src="auth.js"></script>
+
+<script>
+
+const settingsBtn = document.getElementById("settingsBtn");
+const settingsMenu = document.getElementById("settingsMenu");
+
+settingsBtn.onclick = function(e){
+
+    e.stopPropagation();
+
+    settingsMenu.classList.toggle("active");
+
+}
+
+document.onclick = function(){
+
+    settingsMenu.classList.remove("active");
+
+}
+
+settingsMenu.onclick = function(e){
+
+    e.stopPropagation();
+
+}
+
+</script>
+
+<script>
+    const themeToggle = document.getElementById("themeToggle");
+
+// Carrega o tema salvo
+if(localStorage.getItem("theme") === "light"){
+
+    document.body.classList.add("light-theme");
+
+}
+
+themeToggle.addEventListener("click", e=>{
+
+    e.preventDefault();
+
+    document.body.classList.toggle("light-theme");
+
+    localStorage.setItem(
+
+        "theme",
+
+        document.body.classList.contains("light-theme")
+        ? "light"
+        : "dark"
+
+    );
+
+});
+
+const icon = document.getElementById("themeIcon");
+
+function atualizarIcone(){
+
+    if(document.body.classList.contains("light-theme")){
+
+        icon.className = "fa-solid fa-sun";
+
+    }else{
+
+        icon.className = "fa-solid fa-moon";
+
+    }
+
+}
+
+atualizarIcone();
+
+themeToggle.addEventListener("click", e=>{
+
+    e.preventDefault();
+
+    document.body.classList.toggle("light-theme");
+
+    atualizarIcone();
+
+    localStorage.setItem(
+
+        "theme",
+
+        document.body.classList.contains("light-theme")
+        ? "light"
+        : "dark"
+
+    );
+
+});
+</script>
+
+</body>
+</html>

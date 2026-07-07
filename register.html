@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="navicon.png" type="image/png">
+
+<title>Nexa • Criar Conta</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+
+<style>
+
+/*=========================================================
+NEXA REGISTER
+v1.0
+=========================================================*/
+
+:root{
+
+    --bg:#050714;
+    --bg2:#090d1f;
+
+    --card:rgba(255,255,255,.04);
+    --border:rgba(255,255,255,.08);
+
+    --text:#ffffff;
+    --muted:#a8afc6;
+
+    /* 🔵 NOVA PALETA AZUL */
+    --blue:#00bfff;
+    --blue2:#3b82f6;
+    --blue3:#60a5fa;
+
+    --radius:28px;
+
+    --success:#22C55E;
+    --danger:#EF4444;
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+    min-height:100vh;
+
+}
+
+/*=========================================================
+BACKGROUND
+=========================================================*/
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-5;
+
+}
+
+.grid{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+    background-size:45px 45px;
+
+    mask-image:radial-gradient(circle,black 20%,transparent 90%);
+
+}
+
+.gradient{
+
+    position:absolute;
+
+    width:700px;
+
+    height:700px;
+
+    border-radius:50%;
+
+    filter:blur(130px);
+
+    opacity:.30;
+
+}
+
+.gradient-1{
+
+    top:-250px;
+
+    left:-200px;
+
+    background:#00bfff;
+
+}
+
+.gradient-2{
+
+    bottom:-280px;
+
+    right:-180px;
+
+    background:#3b82f6;
+
+}
+
+.blur{
+
+    position:absolute;
+
+    inset:0;
+
+    backdrop-filter:blur(120px);
+
+}
+
+/*=========================================================
+CONTAINER
+=========================================================*/
+
+.container{
+
+    width:min(1400px,92%);
+
+    margin:auto;
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1.1fr .9fr;
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+/*=========================================================
+LEFT PANEL
+=========================================================*/
+
+.left-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:45px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logo-icon{
+
+    width:68px;
+
+    height:68px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:1.5rem;
+
+    font-weight:700;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--blue2),
+        var(--blue)
+    );
+
+    box-shadow:
+
+    0 0 45px rgba(139,92,246,.35);
+
+}
+
+.logo-icon img{
+
+    width:85px;
+    height:85px;
+
+    border-radius: 20px;
+}
+
+.logo h2{
+
+    font-size:2rem;
+
+    letter-spacing:2px;
+
+}
+
+.logo span{
+
+    color:var(--muted);
+
+}
+
+.hero{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.badge{
+
+    width:max-content;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:rgba(59,130,246,.12);
+
+border:1px solid rgba(59,130,246,.25);
+
+color:#cfe6ff;
+
+    border:1px solid rgba(139,92,246,.30);
+
+    color:#D8C5FF;
+
+    font-size:.85rem;
+
+}
+
+.hero h1{
+
+    font-size:3.4rem;
+
+    line-height:1.08;
+
+    max-width:640px;
+
+}
+
+.hero p{
+
+    font-size:1.05rem;
+
+    line-height:1.9;
+
+    color:var(--muted);
+
+    max-width:560px;
+
+}
+
+/*=========================================================
+FEATURES
+=========================================================*/
+
+.feature-list{
+
+    display:grid;
+
+    gap:18px;
+
+}
+
+.feature{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(18px);
+
+    transition:.35s;
+
+}
+
+.feature i{
+
+    font-size:1.2rem;
+
+    color:#9F7AEA;
+
+}
+
+.feature:hover{
+
+    transform:translateX(10px);
+
+    border-color:rgba(139,92,246,.35);
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.35);
+
+}
+
+/*=========================================================
+REGISTER CARD
+=========================================================*/
+
+.register-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    background:rgba(18,18,28,.68);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(30px);
+
+    box-shadow:
+0 30px 70px rgba(0,0,0,.45),
+0 0 35px rgba(0,191,255,.10);
+
+}
+
+.register-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(255,255,255,.08),
+
+        transparent 35%
+
+    );
+
+    pointer-events:none;
+
+}
+
+/*=========================================================
+REGISTER FORM (TITLE)
+=========================================================*/
+
+.card-header{
+
+    margin-bottom:35px;
+
+}
+
+.card-header h2{
+
+    font-size:2rem;
+
+    margin-bottom:8px;
+
+    letter-spacing:1px;
+
+}
+
+.card-header p{
+
+    color:var(--muted);
+
+    font-size:.95rem;
+
+}
+
+/*=========================================================
+FORM
+=========================================================*/
+
+#registerForm{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/*=========================================================
+INPUT GROUP
+=========================================================*/
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.input-group label{
+
+    font-size:.85rem;
+
+    color:var(--muted);
+
+    letter-spacing:.5px;
+
+}
+
+/*=========================================================
+INPUT BOX
+=========================================================*/
+
+.input-box{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 16px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+
+}
+
+.input-box i{
+
+    color:#9F7AEA;
+
+    font-size:1.1rem;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    color:var(--text);
+
+    font-size:1rem;
+
+}
+
+.input-box:focus-within{
+
+    border-color:rgba(59,130,246,.45);
+
+    box-shadow:0 0 25px rgba(59,130,246,.18);
+
+    transform:translateY(-1px);
+
+}
+
+/*=========================================================
+BUTTONS
+=========================================================*/
+
+.register-button{
+
+    margin-top:10px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,var(--blue),var(--blue2));
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 15px 40px rgba(139,92,246,.25);
+
+}
+
+.register-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 25px 60px rgba(139,92,246,.35);
+
+}
+
+.register-button:active{
+
+    transform:scale(.98);
+
+}
+
+/*=========================================================
+DIVIDER
+=========================================================*/
+
+.divider{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin:15px 0;
+
+    color:var(--muted);
+
+    font-size:.85rem;
+
+}
+
+.divider::before,
+.divider::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/*=========================================================
+GOOGLE BUTTON
+=========================================================*/
+
+.google-button{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:11px 14px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:.9rem;
+
+}
+
+.google-button:hover{
+
+    border-color:rgba(0,191,255,.35);
+
+}
+
+.google-button img{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/*=========================================================
+MESSAGE
+=========================================================*/
+
+.message{
+
+    margin-top:12px;
+
+    font-size:.9rem;
+
+    padding:10px 12px;
+
+    border-radius:12px;
+
+    display:none;
+
+}
+
+.message.success{
+
+    display:block;
+
+    background:rgba(34,197,94,.12);
+
+    border:1px solid rgba(34,197,94,.25);
+
+    color:#4ade80;
+
+}
+
+.message.error{
+
+    display:block;
+
+    background:rgba(239,68,68,.12);
+
+    border:1px solid rgba(239,68,68,.25);
+
+    color:#f87171;
+
+}
+
+/*=========================================================
+LOGIN LINK
+=========================================================*/
+
+.login-link{
+
+    margin-top:15px;
+
+    font-size:.9rem;
+
+    color:var(--muted);
+
+    text-align:center;
+
+}
+
+.login-link a{
+
+    color:var(--primary3);
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.login-link a:hover{
+
+    text-decoration:underline;
+
+}
+
+/*=========================================================
+HOVER DEPTH (CARD FEEL)
+=========================================================*/
+
+.register-card{
+
+    transform:translateY(0);
+
+    transition:transform .4s ease, box-shadow .4s ease;
+
+}
+
+.register-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+
+    0 40px 90px rgba(0,0,0,.55);
+
+}
+
+/*=========================================================
+SMOOTH FADE IN
+=========================================================*/
+
+.container{
+
+    animation:fadeIn .8s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*=========================================================
+GLOW AMBIENT EFFECT
+=========================================================*/
+
+.register-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    background:radial-gradient(
+
+        circle at top left,
+
+        rgba(139,92,246,.15),
+
+        transparent 60%
+
+    );
+
+    z-index:-1;
+
+    filter:blur(40px);
+
+}
+
+/*=========================================================
+RESPONSIVE TABLET
+=========================================================*/
+
+@media (max-width: 1024px){
+
+    .container{
+
+        grid-template-columns:1fr;
+
+        gap:40px;
+
+        padding:60px 0;
+
+    }
+
+    .hero h1{
+
+        font-size:2.8rem;
+
+    }
+
+    .register-card{
+
+        padding:35px;
+
+    }
+
+}
+
+/*=========================================================
+RESPONSIVE MOBILE
+=========================================================*/
+
+@media (max-width: 600px){
+
+    .hero h1{
+
+        font-size:2.2rem;
+
+    }
+
+    .logo h2{
+
+        font-size:1.6rem;
+
+    }
+
+    .register-card{
+
+        padding:25px;
+
+        border-radius:22px;
+
+    }
+
+    .feature{
+
+        padding:14px 16px;
+
+    }
+
+    .input-box{
+
+        padding:12px 14px;
+
+    }
+
+    .register-button,
+
+    .google-button{
+
+        padding:13px;
+
+    }
+
+}
+
+/*=========================================================
+SCROLL BAR (CLEAN)
+=========================================================*/
+
+::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:rgba(139,92,246,.35);
+
+    border-radius:10px;
+
+}
+
+/*=========================================================
+TEXT SELECTION
+=========================================================*/
+
+::selection{
+
+    background:rgba(139,92,246,.35);
+
+    color:white;
+
+}
+
+/*=========================================================
+FINAL POLISH
+=========================================================*/
+
+body{
+
+    -webkit-font-smoothing:antialiased;
+
+    -moz-osx-font-smoothing:grayscale;
+
+}
+
+input,button{
+
+    font-family:inherit;
+
+}
+
+button{
+
+    user-select:none;
+
+}
+    .register-card{
+
+        position:relative;
+
+        overflow:hidden;
+
+        border-radius:16px;
+
+        background:rgba(255,255,255,.04);
+
+        box-shadow:
+        0 12px 30px rgba(0,0,0,.15),
+        0 0 15px rgba(139,92,246,.10);
+
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<!--=========================================
+BACKGROUND
+==========================================-->
+
+<div class="background">
+
+    <div class="grid"></div>
+
+    <div class="gradient gradient-1"></div>
+
+    <div class="gradient gradient-2"></div>
+
+    <div class="blur"></div>
+
+</div>
+
+<!--=========================================
+CONTAINER
+==========================================-->
+
+<div class="container">
+
+    <!--==============================
+    PAINEL ESQUERDO
+    ==============================-->
+
+    <section class="left-panel">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+
+                <img src="nexalogo.png" alt="">
+
+            </div>
+
+            <div>
+
+                <h2>
+
+                    NEXA
+
+                </h2>
+
+                <span>
+
+                    Enterprises
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="hero">
+
+            <span class="badge">
+
+                Plataforma Inteligente
+
+            </span>
+
+            <h1>
+
+                Crie sua conta e comece a transformar ideias em resultados.
+
+            </h1>
+
+            <p>
+
+                Gerencie projetos, clientes, arquivos, automações e utilize o NexaBot em um único painel moderno.
+
+            </p>
+
+        </div>
+
+        <div class="feature-list">
+
+            <div class="feature">
+
+                <i class="icon lucide-check-circle"></i>
+
+                Dashboard Inteligente
+
+            </div>
+
+            <div class="feature">
+
+                <i class="icon lucide-check-circle"></i>
+
+                Projetos ilimitados*
+
+            </div>
+
+            <div class="feature">
+
+                <i class="icon lucide-check-circle"></i>
+
+                IA integrada (NexaBot)
+
+            </div>
+
+            <div class="feature">
+
+                <i class="icon lucide-check-circle"></i>
+
+                Cloud Storage
+
+            </div>
+
+            <div class="feature">
+
+                <i class="icon lucide-check-circle"></i>
+
+                Atualizações em tempo real
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--==============================
+    FORMULÁRIO
+    ==============================-->
+
+    <section class="register-card">
+
+        <div class="card-header">
+
+            <h2>
+
+                Criar Conta
+
+            </h2>
+
+            <p>
+
+                Preencha as informações abaixo.
+
+            </p>
+
+        </div>
+
+        <form id="registerForm">
+
+            <div class="input-group">
+
+                <label>
+
+                    Nome completo
+
+                </label>
+
+                <div class="input-box">
+
+                    <i class="lucide-user"></i>
+
+                    <input
+                    id="name"
+                    type="text"
+                    placeholder="Seu nome">
+
+                </div>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+
+                    Empresa
+
+                </label>
+
+                <div class="input-box">
+
+                    <i class="lucide-building-2"></i>
+
+                    <input
+                    id="company"
+                    type="text"
+                    placeholder="Opcional">
+
+                </div>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+
+                    Email
+
+                </label>
+
+                <div class="input-box">
+
+                    <i class="lucide-mail"></i>
+
+                    <input
+                    id="email"
+                    type="email"
+                    placeholder="email@empresa.com">
+
+                </div>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+
+                    Senha
+
+                </label>
+
+                <div class="input-box">
+
+                    <i class="lucide-lock"></i>
+
+                    <input
+                    id="password"
+                    type="password"
+                    placeholder="********">
+
+                </div>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+
+                    Confirmar senha
+
+                </label>
+
+                <div class="input-box">
+
+                    <i class="lucide-shield-check"></i>
+
+                    <input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="********">
+
+                </div>
+
+            </div>
+
+            <button
+            class="register-button"
+            type="submit">
+
+                Criar Conta
+
+            </button>
+
+        </form>
+
+        <div class="divider">
+
+            <span>
+
+                ou
+
+            </span>
+
+        </div>
+
+        <button
+        id="googleRegister"
+        class="google-button">
+
+            <img
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+
+            Continuar com Google
+
+        </button>
+
+        <div
+        id="message"
+        class="message">
+
+        </div>
+
+        <div class="login-link">
+
+            Já possui conta?
+
+            <a href="index.html">
+
+                Entrar
+
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script type="module" src="./register.js"></script>
+
+</body>
+
+</html>

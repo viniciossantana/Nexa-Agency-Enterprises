@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>404 • SYSTEM ERROR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#050714;
+    --blue:#00bfff;
+    --purple:#8b2cff;
+    --purple2:#b46cff;
+    --muted:#a8afc6;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Inter",sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(circle at top left, rgba(0,191,255,.15), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(139,44,255,.25), transparent 45%),
+        linear-gradient(180deg,#050714,#090d1f);
+    color:#fff;
+    overflow:hidden;
+}
+
+/* efeito de "falha de sinal" no fundo */
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.02) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    opacity:.3;
+    pointer-events:none;
+    animation:scan 6s linear infinite;
+}
+
+@keyframes scan{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(20px);}
+}
+
+/* CONTAINER */
+.box{
+    text-align:center;
+    max-width:600px;
+    padding:50px 35px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 0 40px rgba(139,44,255,.15);
+
+    position:relative;
+    animation:shake 4s infinite;
+}
+
+/* GLITCH PRINCIPAL 404 */
+.box h1{
+    font-size:8rem;
+    font-weight:800;
+    position:relative;
+
+    color:#fff;
+
+    text-shadow:
+        3px 0 #00bfff,
+        -3px 0 #8b2cff;
+
+    animation:glitch 1.2s infinite;
+}
+
+/* camadas do glitch */
+.box h1::before,
+.box h1::after{
+    content:"404";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    overflow:hidden;
+}
+
+.box h1::before{
+    color:#00bfff;
+    transform:translateX(-3px);
+    animation:glitchTop 1.2s infinite;
+}
+
+.box h1::after{
+    color:#8b2cff;
+    transform:translateX(3px);
+    animation:glitchBottom 1.2s infinite;
+}
+
+@keyframes glitch{
+    0%{transform:translate(0);}
+    20%{transform:translate(-2px,2px);}
+    40%{transform:translate(2px,-2px);}
+    60%{transform:translate(-1px,1px);}
+    80%{transform:translate(1px,-1px);}
+    100%{transform:translate(0);}
+}
+
+@keyframes glitchTop{
+    0%{clip-path:inset(0 0 80% 0);}
+    50%{clip-path:inset(0 0 30% 0);}
+    100%{clip-path:inset(0 0 70% 0);}
+}
+
+@keyframes glitchBottom{
+    0%{clip-path:inset(70% 0 0 0);}
+    50%{clip-path:inset(40% 0 0 0);}
+    100%{clip-path:inset(60% 0 0 0);}
+}
+
+/* textos */
+.box h2{
+    font-size:1.6rem;
+    margin-bottom:12px;
+}
+
+.box p{
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.box p span{
+    background:linear-gradient(90deg,#00bfff,#8b2cff,#b46cff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-weight:700;
+}
+
+/* botão */
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:999px;
+
+    text-decoration:none;
+    font-weight:700;
+
+    color:#fff;
+    background:linear-gradient(135deg,#00bfff,#8b2cff);
+
+    box-shadow:0 15px 35px rgba(139,44,255,.25);
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 45px rgba(139,44,255,.35);
+}
+
+/* leve tremor geral */
+@keyframes shake{
+    0%,100%{transform:translate(0);}
+    50%{transform:translate(0.5px,-0.5px);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>404</h1>
+
+    <h2>PÁGINA EM CONSTRUÇÃO</h2>
+
+    <p>
+        A <span>Equipe Nexa</span> está reconstruindo os módulos dessa página.
+        Arquivos instáveis detectados.
+        O site estará disponivel <span>em breve</span>
+    </p>
+
+    <a class="btn" href="inicio.html">
+        Restaurar sistema
+    </a>
+
+</div>
+
+</body>
+</html>
