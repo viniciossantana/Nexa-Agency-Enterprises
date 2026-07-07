@@ -4,6 +4,12 @@
 // Firebase v11.9.1
 // =========================================
 
+import {
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup
+} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+
 import { auth, db } from "./firebase.js";
 
 import {
@@ -84,15 +90,9 @@ function showMessage(text, type = "success") {
     if (!message) return;
 
     message.textContent = text;
-    message.className = `message ${type}`;
+            message.className = `message ${type}`;
 
-}
-
-// =========================================
-// PERSISTÊNCIA
-// =========================================
-
-await setPersistence(auth, browserLocalPersistence);
+        }
 
 // =========================================
 // LOGIN COM E-MAIL
@@ -103,6 +103,8 @@ if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
 
         e.preventDefault();
+
+await setPersistence(auth, browserLocalPersistence);    
 
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
