@@ -7,7 +7,9 @@
 import {
     signInWithEmailAndPassword,
     GoogleAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    signOut,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
 import { auth, db } from "./firebase.js";
@@ -102,8 +104,7 @@ if (loginForm) {
 
     loginForm.addEventListener("submit", async (e) => {
 
-        e.preventDefault();
-  
+        e.preventDefault();  
 
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
