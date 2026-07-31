@@ -38,6 +38,22 @@
 --muted:#A8AFC6;
 --heading:#FFFFFF;
 
+    /* ... variáveis atuais ... */
+
+    --footer-bg:#040611;
+    --footer-border:rgba(255,255,255,.08);
+
+    --footer-title:#ffffff;
+    --footer-text:#a8afc6;
+
+    --footer-link:#a8afc6;
+    --footer-link-hover:#00bfff;
+
+    --footer-icon-bg:rgba(255,255,255,.05);
+    --footer-icon-color:#ffffff;
+
+    --footer-bottom-border:rgba(255,255,255,.08);
+
 }
 
 body.light-theme{
@@ -55,6 +71,20 @@ body.light-theme{
 
     --card:rgba(255,255,255,.92);
     --border:rgba(15,23,42,.08);
+
+    --footer-bg:#f7f9fc;
+    --footer-border:rgba(20,30,60,.10);
+
+    --footer-title:#111827;
+    --footer-text:#667085;
+
+    --footer-link:#667085;
+    --footer-link-hover:#7c3aed;
+
+    --footer-icon-bg:rgba(20,30,60,.06);
+    --footer-icon-color:#111827;
+
+    --footer-bottom-border:rgba(20,30,60,.10);
 
 }
 
@@ -508,24 +538,46 @@ transform:translateX(3px);
 
 /* CARD */
 
+/* =========================
+   HERO CARD
+   TEMA AUTOMÁTICO
+========================= */
+
 .hero-card{
 
     position:relative;
 
-    background:rgba(255,255,255,.04);
+    width:100%;
+    max-width:430px;
 
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:34px;
-
-    padding:55px 45px;
+    padding:45px 38px;
 
     text-align:center;
 
+    background:var(--hero-card-bg);
+
+    border:1px solid var(--hero-card-border);
+
+    border-radius:30px;
+
+    box-shadow:var(--hero-card-shadow);
+
     backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
     overflow:hidden;
+
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        transform .35s ease;
+
 }
+
+/* =========================
+   BRILHO SUPERIOR
+========================= */
 
 .hero-card::before{
 
@@ -533,107 +585,214 @@ transform:translateX(3px);
 
     position:absolute;
 
-    inset:0;
+    width:240px;
+    height:240px;
 
-    background:linear-gradient(
-        180deg,
-        rgba(255,255,255,.03),
-        transparent);
+    top:-120px;
+    right:-100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,44,255,.16),
+            transparent 70%
+        );
+
+    filter:blur(25px);
 
     pointer-events:none;
+
 }
 
-.hero-logo{
+/* =========================
+   BRILHO INFERIOR
+========================= */
+
+.hero-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    bottom:-130px;
+    left:-100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,191,255,.12),
+            transparent 70%
+        );
+
+    filter:blur(25px);
+
+    pointer-events:none;
+
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.hero-card .hero-logo{
+
+    position:relative;
+
+    z-index:2;
 
     display:block;
 
-    width:190px;
+    width:150px;
+
     max-width:100%;
+
     height:auto;
 
-    margin:0 auto 35px;
+    margin:0 auto 28px;
 
-    filter:drop-shadow(0 0 35px rgba(139,44,255,.45));
+    filter:drop-shadow(
+        0 8px 20px
+        var(--hero-logo-shadow)
+    );
 
     animation:float 4s ease-in-out infinite;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+
 }
+
+/* =========================
+   TÍTULO
+========================= */
 
 .hero-card h2{
 
-    font-size:2rem;
+    position:relative;
 
-    margin-bottom:20px;
+    z-index:2;
+
+    margin:0 0 16px;
+
+    color:var(--hero-card-title);
+
+    font-size:1.55rem;
+
+    line-height:1.25;
+
+    font-weight:750;
+
+    letter-spacing:-.5px;
+
 }
+
+/* =========================
+   TEXTO
+========================= */
 
 .hero-card p{
 
-    color:var(--muted);
+    position:relative;
+
+    z-index:2;
+
+    max-width:350px;
+
+    margin:0 auto;
+
+    color:var(--hero-card-text);
+
+    font-size:.98rem;
 
     line-height:1.8;
+
 }
+
+/* =========================
+   HOVER
+========================= */
+
+.hero-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--hero-card-hover-border);
+
+    box-shadow:var(--hero-card-hover-shadow);
+
+}
+
+.hero-card:hover .hero-logo{
+
+    transform:translateY(-5px) scale(1.03);
+
+    filter:drop-shadow(
+        0 12px 25px
+        var(--hero-logo-hover-shadow)
+    );
+
+}
+
+/* =========================
+   ANIMAÇÃO
+========================= */
 
 @keyframes float{
 
     0%,100%{
+
         transform:translateY(0);
+
     }
 
     50%{
+
         transform:translateY(-10px);
+
     }
 
 }
 
-/* MOBILE */
+/* =========================
+   RESPONSIVO
+========================= */
 
-@media(max-width:980px){
-
-    .hero{
-        padding:150px 0 90px;
-    }
-
-    .hero-wrap{
-        grid-template-columns:1fr;
-        gap:50px;
-        text-align:center;
-    }
-
-    .hero> .container>div:first-child p,
-    .hero-wrap>div:first-child p{
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .hero-actions{
-        justify-content:center;
-    }
+@media(max-width:768px){
 
     .hero-card{
-        padding:40px 30px;
+
+        max-width:100%;
+
+        padding:38px 28px;
+
+        border-radius:26px;
+
     }
 
-    .hero-logo{
-        width:150px;
+    .hero-card .hero-logo{
+
+        width:125px;
+
+        margin-bottom:22px;
+
     }
 
-}
+    .hero-card h2{
 
-@media(max-width:600px){
+        font-size:1.35rem;
 
-    .hero{
-        padding:130px 0 70px;
     }
 
-    .hero h1{
-        font-size:2.8rem;
-    }
+    .hero-card p{
 
-    .btn{
-        width:100%;
-    }
+        font-size:.92rem;
 
-    .hero-actions{
-        flex-direction:column;
+        line-height:1.7;
+
     }
 
 }
@@ -2340,250 +2499,695 @@ color:var(--muted);
 }
 
 /* ================= FOOTER PREMIUM ================= */
+
+/* ==================================================
+   FOOTER • NEXA ENTERPRISES
+   TEMA AUTOMÁTICO
+================================================== */
+
 footer{
-margin-top:60px;
-padding:70px 0 30px;
-background:
-radial-gradient(circle at top center, rgba(139,44,255,.14), transparent 35%),
-linear-gradient(180deg, rgba(10,12,24,.95), rgba(5,7,18,1));
-border-top:1px solid rgba(255,255,255,.06);
+
+    margin-top:60px;
+
+    padding:70px 0 30px;
+
+    background:var(--footer-bg);
+
+    border-top:1px solid var(--footer-border);
+
+    color:var(--footer-text);
+
+    transition:
+        background .35s ease,
+        border-color .35s ease,
+        color .35s ease;
+
 }
 
+/* ==================================================
+   CONTAINER
+================================================== */
+
+footer .container{
+
+    width:100%;
+
+    max-width:1400px;
+
+    margin:0 auto;
+
+    padding:0 40px;
+
+}
+
+/* ==================================================
+   TÍTULO SOCIAL
+================================================== */
+
 .footer-social-title{
-text-align:center;
-margin-bottom:40px;
+
+    text-align:center;
+
+    margin-bottom:40px;
+
 }
 
 .footer-social-title h3{
-font-size:2rem;
-margin-bottom:10px;
+
+    margin-bottom:10px;
+
+    color:var(--footer-title);
+
+    font-size:2rem;
+
+    transition:color .35s ease;
+
 }
 
 .footer-social-title p{
-color:var(--muted);
+
+    color:var(--footer-text);
+
+    transition:color .35s ease;
+
 }
 
-/* SOCIAL */
+/* ==================================================
+   REDES SOCIAIS
+================================================== */
+
 .social-list{
-display:flex;
-flex-direction:column;
-gap:20px;
-max-width:700px;
-margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    max-width:700px;
+
+    margin:0 auto;
+
 }
+
+/* ==================================================
+   CARD SOCIAL
+================================================== */
 
 .social-card{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:22px 28px;
-border-radius:22px;
-background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.08);
-transition:.3s;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:22px 28px;
+
+    border-radius:22px;
+
+    background:var(--footer-card-bg);
+
+    border:1px solid var(--footer-card-border);
+
+    transition:
+        transform .3s ease,
+        background .35s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
 }
 
 .social-card:hover{
-transform:translateY(-4px);
+
+    transform:translateY(-4px);
+
 }
 
-/* ICON PADRÃO */
+/* ==================================================
+   LADO ESQUERDO
+================================================== */
+
 .social-left{
-display:flex;
-align-items:center;
-gap:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
 }
+
+.social-left span{
+
+    color:var(--footer-title);
+
+    transition:color .35s ease;
+
+}
+
+/* ==================================================
+   ÍCONE
+================================================== */
 
 .social-left i{
-font-size:1.6rem;
-background:linear-gradient(135deg,var(--blue),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-transition:.3s;
+
+    font-size:1.6rem;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--purple)
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    transition:
+        color .3s ease,
+        background .3s ease,
+        transform .3s ease;
+
 }
 
-/* BOTÃO */
+/* ==================================================
+   BOTÃO SOCIAL
+================================================== */
+
 .social-card a{
-padding:12px 20px;
-border-radius:999px;
-background:linear-gradient(135deg,var(--blue),var(--purple));
-color:#fff;
-text-decoration:none;
-font-weight:600;
-}
 
-/* HOVER INTELIGENTE FINAL */
-.social-card.whatsapp:hover{ border-color:#25D366; }
-.social-card.whatsapp:hover i{ -webkit-text-fill-color:#25D366; background:none; }
+    display:inline-flex;
 
-.social-card.instagram:hover{ border-color:#E1306C; }
-.social-card.instagram:hover i{ -webkit-text-fill-color:#E1306C; background:none; }
+    align-items:center;
 
-.social-card.tiktok:hover{ border-color:#00f2ea; }
-.social-card.tiktok:hover i{ -webkit-text-fill-color:#00f2ea; background:none; }
+    justify-content:center;
 
-.social-card.discord:hover{ border-color:#5865F2; }
-.social-card.discord:hover i{ -webkit-text-fill-color:#5865F2; background:none; }
+    padding:12px 20px;
 
-.social-card.youtube:hover{ border-color:#FF0000; }
-.social-card.youtube:hover i{ -webkit-text-fill-color:#FF0000; background:none; }
+    border-radius:999px;
 
-/* ASSINATURA DO FUNDADOR */
-.footer-bottom{
-display:flex;
-justify-content:space-between;
-align-items:flex-end;
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--purple)
+        );
 
-width:100%;
+    color:#ffffff;
 
-margin-top:50px;
-padding-top:25px;
+    text-decoration:none;
 
-border-top:1px solid rgba(255,255,255,.06);
-}
+    font-weight:600;
 
-.footer-bottom p{
-margin:0;
-}
-
-.footer-bottom > p:first-child{
-max-width:300px;
-text-align:left;
-}
-
-.footer-signature{
-text-align:right;
-margin-left:auto;
-}
-
-.footer-signature a{
-background:linear-gradient(
-90deg,
-var(--blue),
-var(--purple-soft),
-var(--purple)
-);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-text-decoration:none;
-font-weight:600;
-transition:.3s;
-}
-
-.footer-signature a:hover{
-filter:brightness(1.2);
-letter-spacing:.5px;
-}
-
-footer .container{
-width:100%;
-max-width:1400px;
-margin:0 auto;
-padding:0 40px;
-}   
-
-@media(max-width:768px){
-
-.footer-bottom{
-display:flex;
-flex-direction:column;
-align-items:center;
-text-align:center;
-min-height:auto;
-}
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
 
 }
+
+.social-card a:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 22px
+        rgba(139,44,255,.22);
+
+}
+
+/* ==================================================
+   HOVERS INDIVIDUAIS
+================================================== */
+
+.social-card.whatsapp:hover{
+
+    border-color:#25D366;
+
+    box-shadow:
+        0 10px 30px
+        rgba(37,211,102,.08);
+
+}
+
+.social-card.whatsapp:hover i{
+
+    -webkit-text-fill-color:#25D366;
+
+    background:none;
+
+}
+
+.social-card.instagram:hover{
+
+    border-color:#E1306C;
+
+    box-shadow:
+        0 10px 30px
+        rgba(225,48,108,.08);
+
+}
+
+.social-card.instagram:hover i{
+
+    -webkit-text-fill-color:#E1306C;
+
+    background:none;
+
+}
+
+.social-card.nexabot:hover{
+
+    border-color:#8B2CFF;
+
+    box-shadow:
+        0 10px 30px
+        rgba(139,44,255,.08);
+
+}
+
+.social-card.nexabot:hover i{
+
+    -webkit-text-fill-color:#8B2CFF;
+
+    background:none;
+
+}
+
+.social-card.tiktok:hover{
+
+    border-color:#00f2ea;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,242,234,.08);
+
+}
+
+.social-card.tiktok:hover i{
+
+    -webkit-text-fill-color:#00f2ea;
+
+    background:none;
+
+}
+
+.social-card.discord:hover{
+
+    border-color:#3241e2;
+
+    box-shadow:
+        0 10px 30px
+        rgba(88,101,242,.08);
+
+}
+
+.social-card.discord:hover i{
+
+    -webkit-text-fill-color:#3241e2;
+
+    background:none;
+
+}
+
+.social-card.youtube:hover{
+
+    border-color:#FF0000;
+
+    box-shadow:
+        0 10px 30px
+        rgba(255,0,0,.08);
+
+}
+
+.social-card.youtube:hover i{
+
+    -webkit-text-fill-color:#FF0000;
+
+    background:none;
+
+}
+
+/* ==================================================
+   FOOTER GRID
+================================================== */
 
 .footer-grid{
-display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:60px;
-align-items:start;
-margin-top:70px;
+
+    display:grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
+
+    gap:60px;
+
+    align-items:start;
+
+    margin-top:70px;
+
 }
 
+/* ==================================================
+   MARCA
+================================================== */
+
 .footer-brand{
-max-width:500px;
+
+    max-width:500px;
+
 }
 
 .footer-logo{
-font-size:2.2rem;
-font-weight:800;
-line-height:1.1;
-margin-bottom:18px;
 
-background:linear-gradient(
-90deg,
-var(--blue),
-var(--purple)
-);
+    font-size:2.2rem;
 
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+    font-weight:800;
+
+    line-height:1.1;
+
+    margin-bottom:18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--purple)
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
 }
 
 .footer-description{
-color:var(--muted);
-font-size:1rem;
-line-height:1.8;
-max-width:420px;
+
+    color:var(--footer-text);
+
+    font-size:1rem;
+
+    line-height:1.8;
+
+    max-width:420px;
+
+    transition:color .35s ease;
+
 }
+
+/* ==================================================
+   TÍTULOS DAS COLUNAS
+================================================== */
 
 .footer-grid h4{
-font-size:1.15rem;
-font-weight:700;
-margin-bottom:22px;
-color:#fff;
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    margin-bottom:22px;
+
+    color:var(--footer-title);
+
+    transition:color .35s ease;
+
 }
 
+/* ==================================================
+   LINKS
+================================================== */
+
 .footer-links{
-list-style:none;
-padding:0;
-margin:0;
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
 }
 
 .footer-links li{
-margin-bottom:14px;
+
+    margin-bottom:14px;
+
 }
 
 .footer-links a{
-text-decoration:none;
-color:var(--muted);
-font-size:.95rem;
-transition:.3s;
+
+    text-decoration:none;
+
+    color:var(--footer-link);
+
+    font-size:.95rem;
+
+    transition:
+        color .3s ease,
+        padding-left .3s ease;
+
 }
 
 .footer-links a:hover{
-color:#fff;
-padding-left:6px;
+
+    color:var(--footer-link-hover);
+
+    padding-left:6px;
+
 }
+
+/* ==================================================
+   ASSINATURA / COPYRIGHT
+================================================== */
+
+.footer-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    width:100%;
+
+    margin-top:50px;
+
+    padding-top:25px;
+
+    border-top:1px solid var(--footer-border);
+
+    transition:border-color .35s ease;
+
+}
+
+.footer-bottom p{
+
+    margin:0;
+
+    color:var(--footer-text);
+
+    transition:color .35s ease;
+
+}
+
+.footer-bottom > p:first-child{
+
+    max-width:300px;
+
+    text-align:left;
+
+}
+
+.footer-signature{
+
+    text-align:right;
+
+    margin-left:auto;
+
+    color:var(--footer-text);
+
+}
+
+.footer-signature a{
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--purple-soft),
+            var(--purple)
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:
+        filter .3s ease,
+        letter-spacing .3s ease;
+
+}
+
+.footer-signature a:hover{
+
+    filter:brightness(1.2);
+
+    letter-spacing:.5px;
+
+}
+
+/* ==================================================
+   RESPONSIVO • 900PX
+================================================== */
 
 @media(max-width:900px){
 
-.footer-grid{
-grid-template-columns:1fr 1fr;
-gap:40px;
-}
+    .footer-grid{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:40px;
+
+    }
 
 }
+
+/* ==================================================
+   RESPONSIVO • 768PX
+================================================== */
 
 @media(max-width:768px){
 
-.footer-grid{
-grid-template-columns:1fr;
-gap:35px;
-text-align:center;
+    footer{
+
+        margin-top:50px;
+
+        padding-top:60px;
+
+    }
+
+    footer .container{
+
+        padding:0 24px;
+
+    }
+
+    .social-card{
+
+        padding:20px;
+
+    }
+
+    .social-left{
+
+        gap:14px;
+
+    }
+
+    .social-left i{
+
+        font-size:1.4rem;
+
+    }
+
+    .social-card a{
+
+        padding:10px 16px;
+
+        font-size:.9rem;
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+        text-align:center;
+
+    }
+
+    .footer-brand{
+
+        max-width:100%;
+
+    }
+
+    .footer-description{
+
+        max-width:100%;
+
+        margin:0 auto;
+
+    }
+
+    .footer-links a:hover{
+
+        padding-left:0;
+
+    }
+
+    .footer-bottom{
+
+        flex-direction:column;
+
+        align-items:center;
+
+        text-align:center;
+
+        gap:15px;
+
+    }
+
+    .footer-bottom > p:first-child{
+
+        max-width:100%;
+
+        text-align:center;
+
+    }
+
+    .footer-signature{
+
+        margin-left:0;
+
+        text-align:center;
+
+    }
+
 }
 
-.footer-brand{
-max-width:100%;
-}
+/* ==================================================
+   RESPONSIVO • 500PX
+================================================== */
 
-.footer-description{
-max-width:100%;
-}
+@media(max-width:500px){
+
+    .social-card{
+
+        flex-direction:column;
+
+        gap:18px;
+
+        text-align:center;
+
+    }
+
+    .social-left{
+
+        justify-content:center;
+
+    }
+
+    .social-card a{
+
+        width:100%;
+
+    }
 
 }
 
@@ -2914,7 +3518,7 @@ transform:translateY(0);
         <a href="3serviços.html">Serviços</a>
         <a href="2portfolio.html">Portfólio</a>
         <a href="readme.html">Sobre</a>
-        <a href="https://typebot.co/my-typebot-lyx2eqn">NexaBot</a>
+        <a href="https://typebot.co/my-typebot-wx7b666">NexaBot</a>
         <div class="settings">
 
     <button id="settingsBtn" class="settings-btn">
@@ -3051,7 +3655,7 @@ transform:translateY(0);
     <span>Sair</span>
 </button>
 
-        <a href="https://typebot.co/my-typebot-lyx2eqn">
+        <a href="https://typebot.co/my-typebot-wx7b666">
 
             <i class="fa-solid fa-robot"></i>
 
@@ -3148,7 +3752,7 @@ Conheça a Nexa
 <img src="nexalogo-removebg-preview.png" class="hero-logo">
 
 <h2>
-Visão. Estratégia. Impacto.
+Visão • Estratégia • Impacto
 </h2>
 
 <p>
@@ -4312,19 +4916,6 @@ header.classList.remove("scrolled");
 
 </script>
 
-<script>import { signOut } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
-
-function logout(){
-
-    signOut(auth).then(() => {
-
-        window.location.replace("index.html");
-
-    });
-
-}
-</script>
-
 <script type="module" src="auth.js"></script>
 
 <script>
@@ -4420,6 +5011,8 @@ themeToggle.addEventListener("click", e=>{
 
 });
 </script>
+
+<script type="module" src="dashboard.js"></script>
 
 </body>
 </html>
