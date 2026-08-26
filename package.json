@@ -1,0 +1,14 @@
+{
+  "name": "nexa-ia",
+  "version": "1.0.0",
+  "description": "IAnexa - Inteligência Artificial da Nexa Agency Enterprises",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "openai": "^5.19.1"
+  }
+}
