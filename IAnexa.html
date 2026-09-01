@@ -1,1377 +1,2509 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NEXA IA</title>
+<title>Nexa IA • Nexa Agency Enterprises</title>
 
-    <meta name="description" content="NEXA — Inteligência Artificial da Nexa Agency Enterprises">
+<link rel="icon" href="navicon.png" type="image/png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="NEXA — Inteligência Artificial da Nexa Agency Enterprises">
 
-    <style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* ==============================
-           RESET
-        ============================== */
+<style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        :root {
-            --bg: #07070b;
-            --bg-secondary: #0d0d14;
-            --sidebar : #0a0a10;
+:root {
+    --bg: #07070b;
+    --bg-secondary: #0d0d14;
+    --sidebar: #09090f;
 
-            --card: rgba(17, 17, 27, 0.82);
-            --card-hover: rgba(23, 23, 35, 0.92);
+    --card: rgba(17,17,27,0.82);
+    --card-hover: rgba(25,25,38,0.95);
 
-            --purple: #9d00ff;
-            --purple-light: #bd5cff;
-            --blue: #00d4ff;
+    --purple: #9d00ff;
+    --purple-light: #bd5cff;
+    --blue: #00d4ff;
 
-            --text: #ffffff;
-            --text-secondary: #a9a9b8;
-            --text-muted: #6e6e7d;
+    --text: #ffffff;
+    --text-secondary: #a9a9b8;
+    --text-muted: #6f6f80;
 
-            --border: rgba(255, 255, 255, 0.08);
+    --border: rgba(255,255,255,0.08);
 
-            --radius: 18px;
-            --sidebar-width: 270px;
-        }
+    --danger: #ff5367;
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-        }
+    --radius: 18px;
+}
 
-        body {
-            font-family: "Inter", sans-serif;
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
 
-            background:
-                radial-gradient(
-                    circle at 50% -10%,
-                    rgba(157, 0, 255, 0.16),
-                    transparent 38%
-                ),
-                var(--bg);
+body {
+    font-family: "Inter", sans-serif;
 
-            color: var(--text);
+    background:
+        radial-gradient(
+            circle at 55% -10%,
+            rgba(157,0,255,0.16),
+            transparent 38%
+        ),
+        var(--bg);
 
-            overflow: hidden;
-        }
+    color: var(--text);
 
-        button,
-        textarea,
-        input {
-            font-family: inherit;
-        }
+    overflow: hidden;
+}
 
-        button {
-            border: none;
-        }
+button,
+textarea,
+input {
+    font-family: inherit;
+}
 
-        /* ==============================
-           APP
-        ============================== */
+/* ==========================================
+   APP
+========================================== */
 
-        .nexa-app {
-            width: 100%;
-            height: 100vh;
+.nexa-app {
+    width: 100%;
+    height: 100vh;
 
-            display: flex;
-            overflow: hidden;
-        }
+    display: flex;
+}
 
-        /* ==============================
-           SIDEBAR
-        ============================== */
+/* ==========================================
+   SIDEBAR
+========================================== */
 
-        .sidebar {
-            width: var(--sidebar-width);
-            height: 100vh;
+.sidebar {
+    width: 270px;
+    height: 100vh;
 
-            flex-shrink: 0;
+    flex-shrink: 0;
 
-            display: flex;
-            flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(12, 12, 19, 0.98),
-                    rgba(7, 7, 12, 0.98)
-                );
+    background:
+        linear-gradient(
+            180deg,
+            rgba(12,12,19,0.98),
+            rgba(7,7,11,0.98)
+        );
 
-            border-right: 1px solid var(--border);
+    border-right: 1px solid var(--border);
 
-            z-index: 100;
+    position: relative;
+    z-index: 20;
+}
 
-            transition:
-                transform 0.3s ease;
-        }
+.sidebar-header {
+    height: 72px;
 
-        .sidebar-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    display: flex;
+    align-items: center;
 
-        /* ==============================
-           SIDEBAR HEADER
-        ============================== */
+    padding: 0 18px;
 
-        .sidebar-header {
-            padding: 20px 18px;
+    border-bottom: 1px solid var(--border);
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
 
-            border-bottom: 1px solid var(--border);
-        }
+.sidebar-logo {
+    width: 38px;
+    height: 38px;
 
-        .sidebar-brand {
-            display: flex;
-            align-items: center;
-            gap: 11px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .sidebar-logo {
-            width: 37px;
-            height: 37px;
+    border-radius: 12px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--blue)
+        );
 
-            border-radius: 11px;
+    box-shadow:
+        0 0 25px rgba(157,0,255,0.28);
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--purple),
-                    var(--blue)
-                );
+    font-size: 16px;
+    font-weight: 800;
+}
 
-            box-shadow:
-                0 0 25px rgba(157, 0, 255, 0.25);
+.sidebar-brand-text {
+    display: flex;
+    flex-direction: column;
+}
 
-            font-size: 16px;
-            font-weight: 800;
-        }
+.sidebar-brand-text strong {
+    font-size: 14px;
+    letter-spacing: -0.2px;
+}
 
-        .sidebar-brand-text {
-            display: flex;
-            flex-direction: column;
-        }
+.sidebar-brand-text span {
+    margin-top: 2px;
 
-        .sidebar-brand-text strong {
-            font-size: 14px;
-            font-weight: 700;
-        }
+    color: var(--text-muted);
 
-        .sidebar-brand-text span {
-            margin-top: 2px;
+    font-size: 10px;
+}
 
-            color: var(--text-muted);
+/* ==========================================
+   NOVA CONVERSA
+========================================== */
 
-            font-size: 10px;
-        }
+.new-chat {
+    margin: 17px 14px 12px;
 
-        /* ==============================
-           NEW CHAT
-        ============================== */
+    height: 44px;
 
-        .new-chat-wrapper {
-            padding: 18px 14px 12px;
-        }
+    border: 1px solid rgba(157,0,255,0.22);
 
-        .new-chat {
-            width: 100%;
+    border-radius: 13px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(157,0,255,0.13),
+            rgba(0,212,255,0.05)
+        );
 
-            padding: 12px 15px;
+    color: white;
 
-            border-radius: 12px;
+    display: flex;
+    align-items: center;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(157, 0, 255, 0.95),
-                    rgba(106, 0, 210, 0.95)
-                );
+    gap: 10px;
 
-            color: white;
+    padding: 0 14px;
 
-            font-size: 13px;
-            font-weight: 600;
+    cursor: pointer;
 
-            cursor: pointer;
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+}
 
-            transition:
-                transform 0.2s,
-                box-shadow 0.2s;
-        }
+.new-chat:hover {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(157,0,255,0.23),
+            rgba(0,212,255,0.08)
+        );
 
-        .new-chat:hover {
-            transform: translateY(-1px);
+    border-color: rgba(157,0,255,0.42);
 
-            box-shadow:
-                0 8px 25px rgba(157, 0, 255, 0.25);
-        }
+    transform: translateY(-1px);
+}
 
-        .new-chat-icon {
-            font-size: 18px;
-            line-height: 1;
-        }
+.new-chat-icon {
+    font-size: 20px;
+}
 
-        /* ==============================
-           SIDEBAR SECTION
-        ============================== */
+.new-chat span {
+    font-size: 12px;
+    font-weight: 600;
+}
 
-        .sidebar-section {
-            padding: 15px 14px 8px;
-        }
+/* ==========================================
+   PESQUISA
+========================================== */
 
-        .sidebar-section-title {
-            padding: 0 8px 9px;
+.sidebar-search {
+    padding: 0 14px 12px;
+}
 
-            color: var(--text-muted);
+.search-box {
+    height: 38px;
 
-            font-size: 10px;
-            font-weight: 700;
+    display: flex;
+    align-items: center;
 
-            text-transform: uppercase;
+    gap: 8px;
 
-            letter-spacing: 0.8px;
-        }
+    padding: 0 11px;
 
-        /* ==============================
-           CHAT LIST
-        ============================== */
+    border-radius: 11px;
 
-        .chat-list {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
+    background: rgba(255,255,255,0.035);
 
-            overflow-y: auto;
-        }
+    border: 1px solid var(--border);
 
-        .chat-item {
-            width: 100%;
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+}
 
-            display: flex;
-            align-items: center;
+.search-box:focus-within {
+    border-color: rgba(157,0,255,0.35);
 
-            gap: 10px;
+    background: rgba(157,0,255,0.045);
+}
 
-            padding: 10px 11px;
+.search-icon {
+    color: var(--text-muted);
 
-            border-radius: 11px;
+    font-size: 15px;
+}
 
-            background: transparent;
+.search-box input {
+    width: 100%;
 
-            color: var(--text-secondary);
+    border: none;
+    outline: none;
 
-            text-align: left;
+    background: transparent;
 
-            cursor: pointer;
+    color: white;
 
-            transition:
-                background 0.2s,
-                color 0.2s;
-        }
+    font-size: 11px;
+}
 
-        .chat-item:hover {
-            background: rgba(255, 255, 255, 0.045);
-            color: var(--text);
-        }
+.search-box input::placeholder {
+    color: #5e5e6d;
+}
 
-        .chat-item.active {
-            background:
-                rgba(157, 0, 255, 0.10);
+/* ==========================================
+   HISTÓRICO
+========================================== */
 
-            color: white;
-        }
+.history-title {
+    padding: 5px 18px 9px;
 
-        .chat-item-icon {
-            width: 28px;
-            height: 28px;
+    color: #666678;
 
-            flex-shrink: 0;
+    font-size: 10px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    text-transform: uppercase;
 
-            border-radius: 8px;
+    letter-spacing: 0.8px;
 
-            background: rgba(255, 255, 255, 0.045);
+    font-weight: 700;
+}
 
-            font-size: 13px;
-        }
+.history {
+    flex: 1;
 
-        .chat-item.active .chat-item-icon {
-            background:
-                rgba(157, 0, 255, 0.18);
+    overflow-y: auto;
 
-            color: var(--purple-light);
-        }
+    padding: 0 9px 12px;
+}
 
-        .chat-item-info {
-            min-width: 0;
+.history::-webkit-scrollbar {
+    width: 4px;
+}
 
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
+.history::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
 
-        .chat-item-title {
-            overflow: hidden;
+    border-radius: 10px;
+}
 
-            text-overflow: ellipsis;
-            white-space: nowrap;
+.history-empty {
+    color: #555564;
 
-            font-size: 12px;
-            font-weight: 500;
-        }
+    text-align: center;
 
-        .chat-item-time {
-            color: var(--text-muted);
+    padding: 25px 15px;
 
-            font-size: 9px;
-        }
+    font-size: 11px;
 
-        /* ==============================
-           SIDEBAR EMPTY
-        ============================== */
+    line-height: 1.6;
+}
 
-        .empty-chats {
-            padding: 15px 10px;
+/* ==========================================
+   ITEM DO HISTÓRICO
+========================================== */
 
-            color: var(--text-muted);
+.history-item {
+    width: 100%;
 
-            text-align: center;
+    min-height: 43px;
 
-            font-size: 11px;
+    display: flex;
+    align-items: center;
 
-            line-height: 1.6;
-        }
+    gap: 9px;
 
-        /* ==============================
-           SIDEBAR BOTTOM
-        ============================== */
+    padding: 8px 42px 8px 10px;
 
-        .sidebar-bottom {
-            margin-top: auto;
+    margin-bottom: 3px;
 
-            padding: 12px 14px;
+    border-radius: 10px;
 
-            border-top: 1px solid var(--border);
-        }
+    background: transparent;
 
-        .sidebar-option {
-            width: 100%;
+    border: 1px solid transparent;
 
-            display: flex;
-            align-items: center;
+    color: #a7a7b5;
 
-            gap: 11px;
+    cursor: pointer;
 
-            padding: 11px;
+    text-align: left;
 
-            border-radius: 10px;
+    position: relative;
 
-            background: transparent;
+    transition:
+        background 0.2s,
+        color 0.2s,
+        border-color 0.2s;
+}
 
-            color: var(--text-secondary);
+.history-item:hover {
+    background: rgba(255,255,255,0.045);
 
-            cursor: pointer;
+    color: white;
+}
 
-            text-align: left;
+.history-item.active {
+    background: rgba(157,0,255,0.1);
 
-            font-size: 12px;
+    border-color: rgba(157,0,255,0.13);
 
-            transition:
-                background 0.2s,
-                color 0.2s;
-        }
+    color: white;
+}
 
-        .sidebar-option:hover {
-            background: rgba(255,255,255,0.045);
+.history-icon {
+    width: 24px;
 
-            color: white;
-        }
+    flex-shrink: 0;
 
-        .sidebar-option-icon {
-            width: 25px;
+    color: #777789;
 
-            display: flex;
-            justify-content: center;
+    font-size: 13px;
 
-            font-size: 15px;
-        }
+    text-align: center;
+}
 
-        /* ==============================
-           USER
-        ============================== */
+.history-item.active .history-icon {
+    color: var(--purple-light);
+}
 
-        .user-profile {
-            margin-top: 8px;
+.history-name {
+    overflow: hidden;
 
-            padding: 10px;
+    white-space: nowrap;
 
-            display: flex;
-            align-items: center;
+    text-overflow: ellipsis;
 
-            gap: 10px;
+    font-size: 11px;
+}
 
-            border-radius: 12px;
+/* ==========================================
+   TRÊS PONTINHOS
+========================================== */
 
-            background:
-                rgba(255,255,255,0.025);
+.history-menu-button {
+    position: absolute;
 
-            border: 1px solid rgba(255,255,255,0.04);
-        }
+    right: 7px;
+    top: 50%;
 
-        .user-avatar {
-            width: 31px;
-            height: 31px;
+    transform: translateY(-50%);
 
-            border-radius: 50%;
+    width: 30px;
+    height: 30px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #7c3aed,
-                    #0891b2
-                );
+    border: none;
 
-            font-size: 11px;
-            font-weight: 700;
-        }
+    border-radius: 8px;
 
-        .user-avatar img {
-            width: 100%;
-            height: 100%;
+    background: transparent;
 
-            border-radius: 50%;
+    color: #737383;
 
-            object-fit: cover;
-        }
+    cursor: pointer;
 
-        .user-info {
-            min-width: 0;
+    opacity: 0;
 
-            display: flex;
-            flex-direction: column;
+    transition:
+        opacity 0.18s ease,
+        background 0.18s ease,
+        color 0.18s ease;
+}
 
-            gap: 2px;
-        }
+.history-item:hover .history-menu-button,
+.history-menu-button.open {
+    opacity: 1;
+}
 
-        .user-info strong {
-            overflow: hidden;
+.history-menu-button:hover,
+.history-menu-button.open {
+    background: rgba(255,255,255,0.08);
 
-            text-overflow: ellipsis;
-            white-space: nowrap;
+    color: white;
+}
 
-            font-size: 11px;
-        }
+.history-menu-button span {
+    font-size: 10px;
 
-        .user-info span {
-            color: var(--text-muted);
+    line-height: 1;
 
-            font-size: 9px;
-        }
+    transform: translateY(-2px);
+}
 
-        /* ==============================
-           MAIN
-        ============================== */
+/* ==========================================
+   MENU DA CONVERSA
+========================================== */
 
-        .main-area {
-            min-width: 0;
+.conversation-menu {
+    position: absolute;
 
-            flex: 1;
+    right: 7px;
 
-            height: 100vh;
+    top: calc(100% - 4px);
 
-            display: flex;
-            flex-direction: column;
-        }
+    min-width: 145px;
 
-        /* ==============================
-           HEADER
-        ============================== */
+    padding: 5px;
 
-        .nexa-header {
-            height: 72px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28,28,40,0.98),
+            rgba(13,13,20,0.98)
+        );
 
-            flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.09);
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    border-radius: 11px;
 
-            padding: 0 28px;
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.5);
 
-            border-bottom: 1px solid var(--border);
+    z-index: 100;
 
-            background:
-                rgba(7, 7, 11, 0.78);
+    display: none;
 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+    animation: menuIn 0.15s ease;
+}
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.conversation-menu.active {
+    display: block;
+}
 
-        .mobile-menu {
-            display: none;
+@keyframes menuIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
 
-            width: 38px;
-            height: 38px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-            border-radius: 10px;
+.conversation-menu button {
+    width: 100%;
 
-            background: rgba(255,255,255,0.04);
+    height: 35px;
 
-            color: white;
+    display: flex;
+    align-items: center;
 
-            cursor: pointer;
+    gap: 9px;
 
-            font-size: 18px;
-        }
+    padding: 0 10px;
 
-        .header-title {
-            display: flex;
-            flex-direction: column;
-        }
+    border: none;
 
-        .header-title strong {
-            font-size: 15px;
-            font-weight: 700;
-        }
+    border-radius: 8px;
 
-        .header-title span {
-            margin-top: 2px;
+    background: transparent;
 
-            color: var(--text-secondary);
+    color: #c5c5d0;
 
-            font-size: 10px;
-        }
+    font-size: 11px;
 
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+    cursor: pointer;
 
-            color: #a9a9b8;
+    text-align: left;
 
-            font-size: 12px;
-        }
+    transition:
+        background 0.18s,
+        color 0.18s;
+}
 
-        .status-dot {
-            width: 7px;
-            height: 7px;
+.conversation-menu button:hover {
+    background: rgba(255,255,255,0.06);
 
-            border-radius: 50%;
+    color: white;
+}
 
-            background: #47e88b;
+.conversation-menu button.delete:hover {
+    background: rgba(255,83,103,0.1);
 
-            box-shadow:
-                0 0 10px rgba(71, 232, 139, 0.8);
-        }
+    color: var(--danger);
+}
 
-        /* ==============================
-           CHAT AREA
-        ============================== */
+.conversation-menu svg {
+    width: 15px;
+    height: 15px;
 
-        .chat-area {
-            flex: 1;
+    flex-shrink: 0;
+}
 
-            width: 100%;
-            max-width: 920px;
+/* ==========================================
+   SIDEBAR FOOTER
+========================================== */
 
-            margin: 0 auto;
+.sidebar-footer {
+    border-top: 1px solid var(--border);
 
-            display: flex;
-            flex-direction: column;
+    padding: 10px;
+}
 
-            overflow: hidden;
-        }
+.sidebar-option {
+    width: 100%;
 
-        .messages {
-            flex: 1;
+    height: 40px;
 
-            overflow-y: auto;
+    display: flex;
+    align-items: center;
 
-            padding: 50px 24px 30px;
+    gap: 11px;
 
-            scrollbar-width: thin;
+    padding: 0 11px;
 
-            scrollbar-color:
-                rgba(255,255,255,0.12)
-                transparent;
-        }
+    border: none;
 
-        .messages::-webkit-scrollbar {
-            width: 5px;
-        }
+    background: transparent;
 
-        .messages::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.12);
+    border-radius: 10px;
 
-            border-radius: 20px;
-        }
+    color: #9696a6;
 
-        /* ==============================
-           WELCOME
-        ============================== */
+    cursor: pointer;
 
-        .welcome {
-            min-height: 100%;
+    text-align: left;
 
-            display: flex;
-            flex-direction: column;
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
 
-            align-items: center;
-            justify-content: center;
+.sidebar-option:hover {
+    background: rgba(255,255,255,0.045);
 
-            text-align: center;
+    color: white;
+}
 
-            padding: 30px 15px 80px;
-        }
+.sidebar-option-icon {
+    width: 20px;
 
-        .welcome-icon {
-            width: 68px;
-            height: 68px;
+    text-align: center;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    font-size: 15px;
+}
 
-            margin-bottom: 22px;
+.sidebar-option span {
+    font-size: 11px;
+}
 
-            border-radius: 22px;
+.profile-mini {
+    margin-top: 6px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(157, 0, 255, 0.2),
-                    rgba(0, 212, 255, 0.12)
-                );
+    padding: 9px 10px;
 
-            border: 1px solid rgba(157, 0, 255, 0.22);
+    display: flex;
+    align-items: center;
 
-            box-shadow:
-                0 0 40px rgba(157, 0, 255, 0.12);
+    gap: 9px;
 
-            font-size: 28px;
-        }
+    border-top: 1px solid rgba(255,255,255,0.05);
 
-        .welcome h1 {
-            font-size: clamp(30px, 5vw, 48px);
+    padding-top: 12px;
+}
 
-            font-weight: 800;
+.profile-avatar {
+    width: 31px;
+    height: 31px;
 
-            letter-spacing: -1.8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #c98aff,
-                    #72e8ff
-                );
+    border-radius: 50%;
 
-            -webkit-background-clip: text;
-            background-clip: text;
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            #5200a9
+        );
 
-            color: transparent;
+    font-size: 11px;
 
-            margin-bottom: 12px;
-        }
+    font-weight: 700;
+}
 
-        .welcome p {
-            max-width: 540px;
+.profile-info {
+    display: flex;
+    flex-direction: column;
 
-            color: var(--text-secondary);
+    min-width: 0;
+}
 
-            font-size: 14px;
+.profile-info strong {
+    font-size: 10px;
 
-            line-height: 1.7;
-        }
+    overflow: hidden;
 
-        /* ==============================
-           MESSAGE
-        ============================== */
+    text-overflow: ellipsis;
 
-        .message {
-            display: flex;
+    white-space: nowrap;
+}
 
-            width: 100%;
+.profile-info span {
+    margin-top: 2px;
 
-            margin-bottom: 26px;
-        }
+    color: #606070;
 
-        .message.user {
-            justify-content: flex-end;
-        }
+    font-size: 9px;
+}
 
-        .message.ai {
-            justify-content: flex-start;
-        }
+/* ==========================================
+   MAIN
+========================================== */
 
-        .message-content {
-            max-width: min(720px, 82%);
+.main-area {
+    flex: 1;
 
-            padding: 14px 17px;
+    min-width: 0;
 
-            border-radius: 17px;
+    height: 100vh;
 
-            font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
 
-            line-height: 1.65;
+/* ==========================================
+   HEADER
+========================================== */
 
-            white-space: pre-wrap;
+.nexa-header {
+    height: 72px;
 
-            word-break: break-word;
-        }
+    flex-shrink: 0;
 
-        .message.user .message-content {
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(157, 0, 255, 0.85),
-                    rgba(111, 0, 190, 0.85)
-                );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-            border-bottom-right-radius: 5px;
+    padding: 0 25px;
 
-            box-shadow:
-                0 8px 30px rgba(157, 0, 255, 0.12);
-        }
+    border-bottom: 1px solid var(--border);
 
-        .message.ai .message-content {
-            background: rgba(255,255,255,0.045);
+    background: rgba(7,7,11,0.76);
 
-            border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
 
-            border-bottom-left-radius: 5px;
+    -webkit-backdrop-filter: blur(20px);
+}
 
-            color: #e8e8ee;
-        }
+.mobile-menu {
+    display: none;
 
-        /* ==============================
-           TYPING
-        ============================== */
+    width: 38px;
+    height: 38px;
 
-        .typing {
-            display: flex;
+    border: 1px solid var(--border);
 
-            align-items: center;
+    background: rgba(255,255,255,0.04);
 
-            gap: 5px;
+    color: white;
 
-            padding: 5px 2px;
-        }
+    border-radius: 10px;
 
-        .typing span {
-            width: 6px;
-            height: 6px;
+    cursor: pointer;
+}
 
-            border-radius: 50%;
+.header-title {
+    display: flex;
+    align-items: center;
 
-            background: #a9a9b8;
+    gap: 10px;
+}
 
-            animation:
-                typing 1.2s infinite ease-in-out;
-        }
+.header-title-icon {
+    width: 31px;
+    height: 31px;
 
-        .typing span:nth-child(2) {
-            animation-delay: 0.15s;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .typing span:nth-child(3) {
-            animation-delay: 0.3s;
-        }
+    border-radius: 9px;
 
-        @keyframes typing {
+    background: rgba(157,0,255,0.12);
 
-            0%,
-            60%,
-            100% {
-                transform: translateY(0);
-                opacity: 0.35;
-            }
+    color: var(--purple-light);
 
-            30% {
-                transform: translateY(-4px);
-                opacity: 1;
-            }
-        }
+    font-size: 14px;
+}
 
-        /* ==============================
-           INPUT
-        ============================== */
+.header-title-text {
+    display: flex;
+    flex-direction: column;
+}
 
-        .input-wrapper {
-            width: 100%;
+.header-title-text strong {
+    font-size: 13px;
+}
 
-            padding: 15px 24px 25px;
-        }
+.header-title-text span {
+    margin-top: 2px;
 
-        .input-box {
-            width: 100%;
+    color: #666677;
 
-            display: flex;
+    font-size: 9px;
+}
 
-            align-items: flex-end;
+.status {
+    display: flex;
+    align-items: center;
 
-            gap: 10px;
+    gap: 7px;
 
-            padding: 10px;
+    color: #8f8f9f;
 
-            background:
-                rgba(18, 18, 27, 0.9);
+    font-size: 10px;
+}
 
-            border: 1px solid var(--border);
+.status-dot {
+    width: 7px;
+    height: 7px;
 
-            border-radius: 20px;
+    border-radius: 50%;
 
-            box-shadow:
-                0 20px 50px rgba(0,0,0,0.25);
+    background: #47e88b;
 
-            backdrop-filter: blur(18px);
+    box-shadow:
+        0 0 10px rgba(71,232,139,0.8);
+}
 
-            transition:
-                border-color 0.2s,
-                box-shadow 0.2s;
-        }
+/* ==========================================
+   CHAT
+========================================== */
 
-        .input-box:focus-within {
-            border-color:
-                rgba(157, 0, 255, 0.42);
+.chat-area {
+    flex: 1;
 
-            box-shadow:
-                0 0 0 3px
-                rgba(157, 0, 255, 0.07),
-                0 20px 50px
-                rgba(0,0,0,0.25);
-        }
+    width: 100%;
 
-        #messageInput {
-            flex: 1;
+    max-width: 920px;
 
-            min-height: 44px;
-            max-height: 150px;
+    margin: 0 auto;
 
-            resize: none;
+    display: flex;
+    flex-direction: column;
 
-            border: none;
-            outline: none;
+    overflow: hidden;
+}
 
-            background: transparent;
+.messages {
+    flex: 1;
 
-            color: var(--text);
+    overflow-y: auto;
 
-            font-size: 14px;
+    padding: 35px 24px 25px;
 
-            line-height: 1.5;
+    scrollbar-width: thin;
 
-            padding: 12px 8px;
+    scrollbar-color:
+        rgba(255,255,255,0.12)
+        transparent;
+}
 
-            scrollbar-width: thin;
-        }
+.messages::-webkit-scrollbar {
+    width: 5px;
+}
 
-        #messageInput::placeholder {
-            color: #71717f;
-        }
+.messages::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.12);
 
-        .send-button {
-            width: 44px;
-            height: 44px;
+    border-radius: 20px;
+}
 
-            flex-shrink: 0;
+/* ==========================================
+   WELCOME
+========================================== */
 
-            border-radius: 14px;
+.welcome {
+    min-height: 100%;
 
-            display: flex;
+    display: flex;
+    flex-direction: column;
 
-            align-items: center;
-            justify-content: center;
+    align-items: center;
+    justify-content: center;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--purple),
-                    #6500d4
-                );
+    text-align: center;
 
-            color: white;
+    padding: 20px 15px 70px;
+}
 
-            cursor: pointer;
+.welcome-icon {
+    width: 72px;
+    height: 72px;
 
-            font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            transition:
-                transform 0.2s,
-                opacity 0.2s,
-                box-shadow 0.2s;
-        }
+    margin-bottom: 22px;
 
-        .send-button:hover {
-            transform: translateY(-2px);
+    background: transparent;
+    border: none;
+    box-shadow: none;
 
-            box-shadow:
-                0 8px 25px
-                rgba(157, 0, 255, 0.28);
-        }
+    position: relative;
+}
 
-        .send-button:active {
-            transform: scale(0.95);
-        }
+.welcome-icon img {
+    width: 120px;
+    height: 120px;
 
-        .send-button:disabled {
-            opacity: 0.45;
+    object-fit: contain;
 
-            cursor: not-allowed;
+    display: block;
 
-            transform: none;
+    filter:
+        drop-shadow(0 0 5px rgba(47, 0, 255, 0.18))
+        drop-shadow(0 0 12px rgba(109, 0, 252, 0.356));
 
-            box-shadow: none;
-        }
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
 
-        .send-button svg {
-            width: 19px;
-            height: 19px;
-        }
+.welcome-icon:hover img {
+    transform: scale(1.04);
 
-        .disclaimer {
-            text-align: center;
+     filter:
+        drop-shadow(0 0 5px rgba(47, 0, 255, 0.18))
+        drop-shadow(0 0 12px rgba(109, 0, 252, 0.356));
+}
 
-            color: #5f5f6c;
+.welcome h1 {
+    font-size: clamp(30px,5vw,46px);
 
-            font-size: 10px;
+    font-weight: 800;
 
-            margin-top: 10px;
-        }
+    letter-spacing: -1.8px;
 
-        /* ==============================
-           OVERLAY MOBILE
-        ============================== */
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #c98aff,
+            #72e8ff
+        );
 
-        .sidebar-overlay {
-            display: none;
+    -webkit-background-clip: text;
 
-            position: fixed;
+    background-clip: text;
 
-            inset: 0;
+    color: transparent;
 
-            background: rgba(0,0,0,0.55);
+    margin-bottom: 12px;
+}
 
-            backdrop-filter: blur(3px);
+.welcome p {
+    max-width: 550px;
 
-            z-index: 90;
-        }
+    color: var(--text-secondary);
 
-        /* ==============================
-           MOBILE
-        ============================== */
+    font-size: 13px;
 
-        @media (max-width: 850px) {
+    line-height: 1.7;
+}
 
-            .sidebar {
-                position: fixed;
+/* ==========================================
+   QUICK OPTIONS
+========================================== */
 
-                left: 0;
-                top: 0;
+.quick-options {
+    width: min(650px,100%);
 
-                transform: translateX(-100%);
+    display: grid;
 
-                box-shadow:
-                    20px 0 60px
-                    rgba(0,0,0,0.4);
-            }
+    grid-template-columns: repeat(2,1fr);
 
-            .sidebar.open {
-                transform: translateX(0);
-            }
+    gap: 10px;
 
-            .sidebar-overlay.active {
-                display: block;
-            }
+    margin-top: 28px;
+}
 
-            .mobile-menu {
-                display: flex;
+.quick-option {
+    padding: 15px;
 
-                align-items: center;
-                justify-content: center;
-            }
+    text-align: left;
 
-            .nexa-header {
-                height: 64px;
+    border-radius: 14px;
 
-                padding: 0 16px;
-            }
+    border: 1px solid var(--border);
 
-            .status {
-                font-size: 11px;
-            }
+    background: rgba(255,255,255,0.035);
 
-            .messages {
-                padding: 25px 15px 20px;
-            }
+    color: white;
 
-            .welcome {
-                padding: 20px 10px 60px;
-            }
+    cursor: pointer;
 
-            .welcome-icon {
-                width: 58px;
-                height: 58px;
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        border-color 0.2s;
+}
 
-                border-radius: 18px;
+.quick-option:hover {
+    transform: translateY(-2px);
 
-                font-size: 24px;
-            }
+    background: rgba(157,0,255,0.08);
 
-            .welcome h1 {
-                font-size: 34px;
+    border-color: rgba(157,0,255,0.3);
+}
 
-                letter-spacing: -1.2px;
-            }
+.quick-option strong {
+    display: block;
 
-            .welcome p {
-                font-size: 13px;
-            }
+    font-size: 12px;
 
-            .message {
-                margin-bottom: 18px;
-            }
+    margin-bottom: 5px;
+}
 
-            .message-content {
-                max-width: 88%;
+.quick-option span {
+    color: #777789;
 
-                font-size: 13.5px;
+    font-size: 10px;
 
-                padding: 12px 14px;
-            }
+    line-height: 1.5;
+}
 
-            .input-wrapper {
-                padding:
-                    10px
-                    12px
-                    17px;
-            }
+/* ==========================================
+   MENSAGENS
+========================================== */
 
-            .input-box {
-                padding: 8px;
+.message {
+    display: flex;
 
-                border-radius: 17px;
-            }
+    width: 100%;
 
-            #messageInput {
-                font-size: 14px;
+    margin-bottom: 23px;
+}
 
-                min-height: 42px;
-            }
+.message.user {
+    justify-content: flex-end;
+}
 
-            .send-button {
-                width: 42px;
-                height: 42px;
+.message.ai {
+    justify-content: flex-start;
+}
 
-                border-radius: 13px;
-            }
+.message-content {
+    max-width: min(720px,82%);
 
-            .disclaimer {
-                font-size: 9px;
-            }
-        }
+    padding: 13px 16px;
 
-        @media (max-width: 500px) {
+    border-radius: 16px;
 
-            .header-title span {
-                display: none;
-            }
+    font-size: 13px;
 
-            .header-title strong {
-                font-size: 14px;
-            }
+    line-height: 1.65;
 
-            .status {
-                font-size: 0;
-            }
+    white-space: pre-wrap;
 
-            .status-dot {
-                width: 8px;
-                height: 8px;
-            }
+    word-break: break-word;
+}
 
-        }
+.message.user .message-content {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(157,0,255,0.88),
+            rgba(111,0,190,0.88)
+        );
 
-    </style>
+    border-bottom-right-radius: 5px;
+
+    box-shadow:
+        0 8px 30px rgba(157,0,255,0.12);
+}
+
+.message.ai .message-content {
+    background: rgba(255,255,255,0.045);
+
+    border: 1px solid var(--border);
+
+    border-bottom-left-radius: 5px;
+
+    color: #e8e8ee;
+}
+
+/* ==========================================
+   OPÇÕES DA IA
+========================================== */
+
+.ai-options {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 12px;
+
+    max-width: 520px;
+}
+
+.ai-option {
+    padding: 11px 14px;
+
+    border-radius: 11px;
+
+    border: 1px solid rgba(157,0,255,0.18);
+
+    background: rgba(157,0,255,0.06);
+
+    color: #e7e7ef;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    font-size: 11px;
+
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+}
+
+.ai-option:hover {
+    background: rgba(157,0,255,0.14);
+
+    border-color: rgba(157,0,255,0.35);
+
+    transform: translateX(3px);
+}
+
+/* ==========================================
+   INPUT
+========================================== */
+
+.input-wrapper {
+    width: 100%;
+
+    padding: 10px 24px 22px;
+}
+
+.input-box {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-end;
+
+    gap: 9px;
+
+    padding: 9px;
+
+    background: rgba(18,18,27,0.9);
+
+    border: 1px solid var(--border);
+
+    border-radius: 19px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.25);
+
+    backdrop-filter: blur(18px);
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.input-box:focus-within {
+    border-color: rgba(157,0,255,0.42);
+
+    box-shadow:
+        0 0 0 3px rgba(157,0,255,0.07),
+        0 20px 50px rgba(0,0,0,0.25);
+}
+
+#messageInput {
+    flex: 1;
+
+    min-height: 43px;
+
+    max-height: 150px;
+
+    resize: none;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    padding: 12px 8px;
+}
+
+#messageInput::placeholder {
+    color: #71717f;
+}
+
+.send-button {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            #6500d4
+        );
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition:
+        transform 0.2s,
+        opacity 0.2s,
+        box-shadow 0.2s;
+}
+
+.send-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(157,0,255,0.28);
+}
+
+.send-button:active {
+    transform: scale(0.95);
+}
+
+.send-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+.disclaimer {
+    text-align: center;
+
+    color: #5f5f6c;
+
+    font-size: 9px;
+
+    margin-top: 8px;
+}
+
+/* ==========================================
+   MODAL
+========================================== */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,0.7);
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    width: min(430px,100%);
+
+    background:
+        linear-gradient(
+            145deg,
+            #15151f,
+            #0c0c12
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 23px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.55);
+
+    animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.modal-header h2 {
+    font-size: 16px;
+}
+
+.modal-close {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,0.05);
+
+    color: #aaa;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.modal-content {
+    color: #aaa;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+.setting {
+    padding: 13px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.setting:last-child {
+    border-bottom: none;
+}
+
+.setting strong {
+    display: block;
+
+    color: white;
+
+    font-size: 11px;
+}
+
+.setting span {
+    display: block;
+
+    color: #666678;
+
+    font-size: 9px;
+
+    margin-top: 3px;
+}
+
+.toggle {
+    width: 35px;
+    height: 20px;
+
+    border-radius: 20px;
+
+    background: var(--purple);
+
+    position: relative;
+}
+
+.toggle::after {
+    content: "";
+
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    right: 3px;
+    top: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+}
+
+/* ==========================================
+   MODAL DE EXCLUSÃO
+========================================== */
+
+.delete-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,0.68);
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.delete-modal-content {
+    width: 100%;
+
+    max-width: 380px;
+
+    padding: 26px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,35,0.98),
+            rgba(12,12,19,0.98)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5);
+
+    text-align: center;
+
+    animation: deleteModalIn 0.2s ease;
+}
+
+@keyframes deleteModalIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.delete-modal-icon {
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: rgba(255,83,103,0.1);
+
+    border: 1px solid rgba(255,83,103,0.16);
+
+    color: var(--danger);
+}
+
+.delete-modal-icon svg {
+    width: 23px;
+    height: 23px;
+}
+
+.delete-modal-content h3 {
+    margin-bottom: 8px;
+
+    color: #fff;
+
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+.delete-modal-content p {
+    margin-bottom: 22px;
+
+    color: #9494a3;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+.delete-modal-actions {
+    display: flex;
+
+    gap: 10px;
+}
+
+.delete-modal-actions button {
+    flex: 1;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        opacity 0.2s;
+}
+
+.delete-modal-actions button:hover {
+    transform: translateY(-1px);
+}
+
+.delete-cancel {
+    background: rgba(255,255,255,0.07);
+
+    color: #ddd;
+}
+
+.delete-confirm {
+    background: var(--danger);
+
+    color: white;
+}
+
+.delete-confirm:hover {
+    opacity: 0.9;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+.sidebar-overlay {
+    display: none;
+}
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        position: fixed;
+
+        left: 0;
+        top: 0;
+
+        transform: translateX(-100%);
+
+        transition:
+            transform 0.25s ease;
+
+        box-shadow:
+            20px 0 60px rgba(0,0,0,0.4);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 15;
+
+        background: rgba(0,0,0,0.55);
+
+        display: none;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nexa-header {
+        padding: 0 15px;
+
+        gap: 12px;
+    }
+
+    .header-title {
+        flex: 1;
+    }
+
+    .chat-area {
+        max-width: none;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .messages {
+        padding: 22px 14px 20px;
+    }
+
+    .welcome {
+        padding: 15px 8px 55px;
+    }
+
+    .welcome-icon {
+        width: 58px;
+        height: 58px;
+
+        border-radius: 18px;
+
+        font-size: 24px;
+    }
+
+    .welcome h1 {
+        font-size: 31px;
+    }
+
+    .welcome p {
+        font-size: 12px;
+    }
+
+    .quick-options {
+        grid-template-columns: 1fr;
+    }
+
+    .message-content {
+        max-width: 90%;
+
+        font-size: 12.5px;
+    }
+
+    .input-wrapper {
+        padding: 8px 12px 15px;
+    }
+
+    .status {
+        display: none;
+    }
+
+    .header-title-text strong {
+        font-size: 12px;
+    }
+
+    .history-menu-button {
+        opacity: 1;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="nexa-app">
 
-    <!-- ==============================
-         SIDEBAR
-    ============================== -->
+<!-- ==========================================
+     SIDEBAR
+========================================== -->
 
-    <aside class="sidebar" id="sidebar">
+<aside class="sidebar" id="sidebar">
 
-        <div class="sidebar-header">
+    <div class="sidebar-header">
 
-            <div class="sidebar-brand">
+        <div class="sidebar-brand">
 
-                <div class="sidebar-logo">
-                    <img src="navicon.png" alt="">
-                </div>
+            <div class="sidebar-logo">
+                N
+            </div>
 
-                <div class="sidebar-brand-text">
+            <div class="sidebar-brand-text">
 
-                    <strong>NEXA</strong>
+                <strong>NEXA IA</strong>
 
-                    <span>
-                        Intelligence System
-                    </span>
-
-                </div>
+                <span>
+                    Inteligência Artificial
+                </span>
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- NOVA CONVERSA -->
+    <button
+        class="new-chat"
+        id="newChatButton"
+        type="button"
+    >
 
-        <div class="new-chat-wrapper">
+        <span class="new-chat-icon">
+            ＋
+        </span>
 
-            <button
-                class="new-chat"
-                id="newChatButton"
+        <span>
+            Nova conversa
+        </span>
+
+    </button>
+
+    <div class="sidebar-search">
+
+        <div class="search-box">
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+            <input
+                type="text"
+                id="searchHistory"
+                placeholder="Pesquisar conversas..."
+                autocomplete="off"
             >
 
-                <span class="new-chat-icon">
-                    +
-                </span>
-
-                Nova conversa
-
-            </button>
-
         </div>
 
+    </div>
 
-        <!-- CHATS -->
-
-        <div class="sidebar-section">
-
-            <div class="sidebar-section-title">
-                Conversas
-            </div>
-
-            <div
-                class="chat-list"
-                id="chatList"
-            >
-
-                <div class="empty-chats" id="emptyChats">
-
-                    Suas conversas aparecerão aqui.
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PARTE INFERIOR -->
-
-        <div class="sidebar-bottom">
-
-            <button class="sidebar-option">
-
-                <span class="sidebar-option-icon">
-                    ⚙
-                </span>
-
-                Configurações
-
-            </button>
-
-
-            <button class="sidebar-option">
-
-                <span class="sidebar-option-icon">
-                    ?
-                </span>
-
-                Ajuda
-
-            </button>
-
-
-            <div class="user-profile">
-
-                <div class="user-avatar">
-                    <img src="perfil2.png" alt="">
-                </div>
-
-                <div class="user-info">
-
-                    <strong>
-                        Usuário NEXA
-                    </strong>
-
-                    <span>
-                        Conta pessoal
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </aside>
-
-
-    <!-- OVERLAY MOBILE -->
+    <div class="history-title">
+        Histórico
+    </div>
 
     <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-    ></div>
+        class="history"
+        id="history"
+    >
 
+        <div
+            class="history-empty"
+            id="historyEmpty"
+        >
+            Suas conversas aparecerão aqui.
+        </div>
 
-    <!-- ==============================
-         MAIN
-    ============================== -->
+    </div>
 
-    <div class="main-area">
+    <div class="sidebar-footer">
 
-        <!-- HEADER -->
+        <button
+            class="sidebar-option"
+            id="profileButton"
+            type="button"
+        >
 
-        <header class="nexa-header">
+            <span class="sidebar-option-icon">
+                ♙
+            </span>
 
-            <div class="header-left">
+            <span>
+                Perfil
+            </span>
 
-                <button
-                    class="mobile-menu"
-                    id="mobileMenu"
-                    aria-label="Abrir menu"
-                >
-                    ☰
-                </button>
+        </button>
 
+        <button
+            class="sidebar-option"
+            id="settingsButton"
+            type="button"
+        >
 
-                <div class="header-title">
+            <span class="sidebar-option-icon">
+                ⚙
+            </span>
 
-                    <strong>
-                        IAnexa
-                    </strong>
+            <span>
+                Configurações
+            </span>
 
-                    <span>
-                        Inteligência Artificial da Nexa Agency Enterprises
-                    </span>
+        </button>
 
-                </div>
+        <button
+            class="sidebar-option"
+            id="helpButton"
+            type="button"
+        >
+
+            <span class="sidebar-option-icon">
+                ?
+            </span>
+
+            <span>
+                Ajuda
+            </span>
+
+        </button>
+
+        <div class="profile-mini">
+
+            <div class="profile-avatar">
+                N
+            </div>
+
+            <div class="profile-info">
+
+                <strong>
+                    Nexa Agency
+                </strong>
+
+                <span>
+                    Conta NEXA IA
+                </span>
 
             </div>
 
+        </div>
 
-            <div class="status">
+    </div>
 
-                <span class="status-dot"></span>
+</aside>
 
-                Online
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
 
-            </div>
+<!-- ==========================================
+     MAIN
+========================================== -->
 
-        </header>
+<main class="main-area">
 
+<header class="nexa-header">
 
-        <!-- ==============================
-             CHAT
-        ============================== -->
+    <button
+        class="mobile-menu"
+        id="mobileMenu"
+        type="button"
+        aria-label="Abrir menu"
+    >
+        ☰
+    </button>
 
-        <main class="chat-area">
+    <div class="header-title">
 
-            <div
-                class="messages"
-                id="messages"
+        <div class="header-title-icon">
+            ✦
+        </div>
+
+        <div class="header-title-text">
+
+            <strong>
+                NEXA IA
+            </strong>
+
+            <span>
+                Assistente inteligente da Nexa
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        Online
+
+    </div>
+
+</header>
+
+<!-- ==========================================
+     CHAT
+========================================== -->
+
+<section class="chat-area">
+
+<div
+    class="messages"
+    id="messages"
+>
+
+<section
+    class="welcome"
+    id="welcome"
+>
+
+    <div class="welcome-icon">
+        <img src="navicon.png" alt="">
+    </div>
+
+    <h1>
+        Olá, eu sou a NEXA.
+    </h1>
+
+    <p>
+        Sua inteligência artificial da Nexa Agency Enterprises.
+        Escolha uma opção abaixo ou escreva sua própria pergunta.
+    </p>
+
+    <div class="quick-options">
+
+        <button
+            class="quick-option"
+            data-path="tecnologia"
+            type="button"
+        >
+
+            <strong>
+                💻 Tecnologia
+            </strong>
+
+            <span>
+                Programação, sistemas, sites e tecnologia.
+            </span>
+
+        </button>
+
+        <button
+            class="quick-option"
+            data-path="ia"
+            type="button"
+        >
+
+            <strong>
+                🤖 Inteligência Artificial
+            </strong>
+
+            <span>
+                IA, automações, agentes e soluções inteligentes.
+            </span>
+
+        </button>
+
+        <button
+            class="quick-option"
+            data-path="nexa"
+            type="button"
+        >
+
+            <strong>
+                🚀 Conhecer a Nexa
+            </strong>
+
+            <span>
+                Saiba mais sobre a empresa e suas soluções.
+            </span>
+
+        </button>
+
+        <button
+            class="quick-option"
+            data-path="marketing"
+            type="button"
+        >
+
+            <strong>
+                📈 Marketing
+            </strong>
+
+            <span>
+                Estratégia, branding, conteúdo e crescimento.
+            </span>
+
+        </button>
+
+        <button
+            class="quick-option"
+            data-path="criatividade"
+            type="button"
+        >
+
+            <strong>
+                🎨 Criatividade
+            </strong>
+
+            <span>
+                Música, escrita, ideias e criação.
+            </span>
+
+        </button>
+
+        <button
+            class="quick-option"
+            data-path="ajuda"
+            type="button"
+        >
+
+            <strong>
+                💡 Preciso de ajuda
+            </strong>
+
+            <span>
+                Não sei exatamente por onde começar.
+            </span>
+
+        </button>
+
+    </div>
+
+</section>
+
+</div>
+
+<!-- ==========================================
+     INPUT
+========================================== -->
+
+<div class="input-wrapper">
+
+    <div class="input-box">
+
+        <textarea
+            id="messageInput"
+            placeholder="Digite sua mensagem..."
+            rows="1"
+            autocomplete="off"
+        ></textarea>
+
+        <button
+            class="send-button"
+            id="sendButton"
+            type="button"
+            aria-label="Enviar mensagem"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
             >
 
-                <section
-                    class="welcome"
-                    id="welcome"
+                <path d="M22 2L11 13"></path>
+
+                <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+
+            </svg>
+
+        </button>
+
+    </div>
+
+    <div class="disclaimer">
+        A NEXA pode cometer erros. Verifique informações importantes.
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<!-- ==========================================
+     MODAL
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="modalOverlay"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Configurações
+            </h2>
+
+            <button
+                class="modal-close"
+                id="modalClose"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            class="modal-content"
+            id="modalContent"
+        ></div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ==========================================
+   ELEMENTOS
+========================================== */
+
+const messages =
+    document.getElementById("messages");
+
+const messageInput =
+    document.getElementById("messageInput");
+
+const sendButton =
+    document.getElementById("sendButton");
+
+const history =
+    document.getElementById("history");
+
+const newChatButton =
+    document.getElementById("newChatButton");
+
+const searchHistory =
+    document.getElementById("searchHistory");
+
+const sidebar =
+    document.getElementById("sidebar");
+
+const sidebarOverlay =
+    document.getElementById("sidebarOverlay");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+const modalOverlay =
+    document.getElementById("modalOverlay");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalContent =
+    document.getElementById("modalContent");
+
+const modalClose =
+    document.getElementById("modalClose");
+
+/* ==========================================
+   ESTADO
+========================================== */
+
+let currentConversation = null;
+
+let conversations = [];
+
+try {
+
+    conversations =
+        JSON.parse(
+            localStorage.getItem(
+                "nexa_conversations"
+            ) || "[]"
+        );
+
+    if (!Array.isArray(conversations)) {
+        conversations = [];
+    }
+
+} catch (erro) {
+
+    console.error(
+        "Erro ao carregar histórico:",
+        erro
+    );
+
+    conversations = [];
+}
+
+/* ==========================================
+   ID
+========================================== */
+
+function generateId() {
+
+    return (
+        Date.now().toString() +
+        Math.random()
+            .toString(16)
+            .slice(2)
+    );
+
+}
+
+/* ==========================================
+   SALVAR
+========================================== */
+
+function saveConversations() {
+
+    try {
+
+        localStorage.setItem(
+            "nexa_conversations",
+            JSON.stringify(conversations)
+        );
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao salvar conversas:",
+            erro
+        );
+
+    }
+
+}
+
+/* ==========================================
+   NOVA CONVERSA
+========================================== */
+
+function createConversation() {
+
+    const conversation = {
+
+        id: generateId(),
+
+        title: "Nova conversa",
+
+        messages: [],
+
+        createdAt: Date.now()
+
+    };
+
+    conversations.unshift(
+        conversation
+    );
+
+    currentConversation =
+        conversation.id;
+
+    saveConversations();
+
+    renderHistory();
+
+    resetChat();
+
+}
+
+/* ==========================================
+   RESET CHAT
+========================================== */
+
+function resetChat() {
+
+    messages.innerHTML = "";
+
+    const welcome =
+        document.createElement("section");
+
+    welcome.className = "welcome";
+
+    welcome.id = "welcome";
+
+    welcome.innerHTML = `
+
+        <div class="welcome-icon">
+            ✦
+        </div>
+
+        <h1>
+            Olá, eu sou a NEXA.
+        </h1>
+
+        <p>
+            Sua inteligência artificial da Nexa Agency Enterprises.
+            Escolha uma opção abaixo ou escreva sua própria pergunta.
+        </p>
+
+        <div class="quick-options">
+
+            <button
+                class="quick-option"
+                data-path="tecnologia"
+                type="button"
+            >
+                <strong>💻 Tecnologia</strong>
+                <span>
+                    Programação, sistemas, sites e tecnologia.
+                </span>
+            </button>
+
+            <button
+                class="quick-option"
+                data-path="ia"
+                type="button"
+            >
+                <strong>🤖 Inteligência Artificial</strong>
+                <span>
+                    IA, automações, agentes e soluções inteligentes.
+                </span>
+            </button>
+
+            <button
+                class="quick-option"
+                data-path="nexa"
+                type="button"
+            >
+                <strong>🚀 Conhecer a Nexa</strong>
+                <span>
+                    Saiba mais sobre a empresa e suas soluções.
+                </span>
+            </button>
+
+            <button
+                class="quick-option"
+                data-path="marketing"
+                type="button"
+            >
+                <strong>📈 Marketing</strong>
+                <span>
+                    Estratégia, branding, conteúdo e crescimento.
+                </span>
+            </button>
+
+            <button
+                class="quick-option"
+                data-path="criatividade"
+                type="button"
+            >
+                <strong>🎨 Criatividade</strong>
+                <span>
+                    Música, escrita, ideias e criação.
+                </span>
+            </button>
+
+            <button
+                class="quick-option"
+                data-path="ajuda"
+                type="button"
+            >
+                <strong>💡 Preciso de ajuda</strong>
+                <span>
+                    Não sei exatamente por onde começar.
+                </span>
+            </button>
+
+        </div>
+    `;
+
+    messages.appendChild(
+        welcome
+    );
+
+    bindQuickOptions();
+
+}
+
+/* ==========================================
+   ESCAPAR HTML
+========================================== */
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        String(text);
+
+    return div.innerHTML;
+
+}
+
+/* ==========================================
+   HISTÓRICO
+========================================== */
+
+function renderHistory(
+    filter = ""
+) {
+
+    history.innerHTML = "";
+
+    const termo =
+        filter
+            .trim()
+            .toLowerCase();
+
+    const filtered =
+        conversations.filter(
+            conversation => {
+
+                const title =
+                    String(
+                        conversation.title || ""
+                    ).toLowerCase();
+
+                return title.includes(
+                    termo
+                );
+
+            }
+        );
+
+    if (!filtered.length) {
+
+        const empty =
+            document.createElement("div");
+
+        empty.className =
+            "history-empty";
+
+        empty.textContent =
+            termo
+                ? "Nenhuma conversa encontrada."
+                : "Suas conversas aparecerão aqui.";
+
+        history.appendChild(
+            empty
+        );
+
+        return;
+
+    }
+
+    filtered.forEach(
+        conversation => {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "history-item" +
+                (
+                    conversation.id ===
+                    currentConversation
+                        ? " active"
+                        : ""
+                );
+
+            item.dataset.id =
+                conversation.id;
+
+            item.innerHTML = `
+
+                <span class="history-icon">
+                    💬
+                </span>
+
+                <span class="history-name">
+                    ${escapeHtml(
+                        conversation.title ||
+                        "Nova conversa"
+                    )}
+                </span>
+
+                <button
+                    class="history-menu-button"
+                    type="button"
+                    aria-label="Opções da conversa"
                 >
+                    <span>•••</span>
+                </button>
 
-                    <div class="welcome-icon">
-                        ✦
-                    </div>
-
-                    <h1>
-                        Olá, eu sou a Nexa IA.
-                    </h1>
-
-                    <p>
-                        Sua inteligência artificial para ideias,
-                        tecnologia, programação, criatividade,
-                        estratégia e muito mais.
-                        Como posso ajudar você hoje?
-                    </p>
-
-                </section>
-
-            </div>
-
-
-            <!-- INPUT -->
-
-            <div class="input-wrapper">
-
-                <div class="input-box">
-
-                    <textarea
-                        id="messageInput"
-                        placeholder="Pergunte alguma coisa..."
-                        rows="1"
-                        autocomplete="off"
-                    ></textarea>
-
+                <div class="conversation-menu">
 
                     <button
-                        class="send-button"
-                        id="sendButton"
                         type="button"
-                        aria-label="Enviar mensagem"
+                        class="delete"
                     >
 
                         <svg
@@ -1383,581 +2515,1846 @@
                             stroke-linejoin="round"
                         >
 
-                            <path d="M22 2L11 13"></path>
+                            <polyline
+                                points="3 6 5 6 21 6"
+                            ></polyline>
 
                             <path
-                                d="M22 2L15 22L11 13L2 9L22 2Z"
+                                d="M19 6L18 21H6L5 6"
+                            ></path>
+
+                            <path
+                                d="M10 11V17"
+                            ></path>
+
+                            <path
+                                d="M14 11V17"
+                            ></path>
+
+                            <path
+                                d="M9 6V3H15V6"
                             ></path>
 
                         </svg>
 
+                        Excluir
+
                     </button>
 
                 </div>
+            `;
 
+            const menuButton =
+                item.querySelector(
+                    ".history-menu-button"
+                );
 
-                <div class="disclaimer">
+            const menu =
+                item.querySelector(
+                    ".conversation-menu"
+                );
 
-                    A IAnexa pode cometer erros.
-                    Verifique informações importantes.
+            const deleteButton =
+                item.querySelector(
+                    ".delete"
+                );
 
-                </div>
+            item.addEventListener(
+                "click",
+                event => {
 
-            </div>
+                    if (
+                        event.target.closest(
+                            ".history-menu-button"
+                        ) ||
+                        event.target.closest(
+                            ".conversation-menu"
+                        )
+                    ) {
+                        return;
+                    }
 
-        </main>
+                    loadConversation(
+                        conversation.id
+                    );
 
-    </div>
+                }
+            );
 
-</div>
+            menuButton.addEventListener(
+                "click",
+                event => {
 
+                    event.stopPropagation();
 
-<script>
+                    document
+                        .querySelectorAll(
+                            ".conversation-menu.active"
+                        )
+                        .forEach(
+                            otherMenu => {
 
-    /* ==============================
-       ELEMENTOS
-    ============================== */
+                                if (
+                                    otherMenu !== menu
+                                ) {
 
-    const messages =
-        document.getElementById("messages");
+                                    otherMenu.classList.remove(
+                                        "active"
+                                    );
 
-    const welcome =
-        document.getElementById("welcome");
+                                    const otherButton =
+                                        otherMenu
+                                            .parentElement
+                                            .querySelector(
+                                                ".history-menu-button"
+                                            );
 
-    const messageInput =
-        document.getElementById("messageInput");
+                                    if (otherButton) {
 
-    const sendButton =
-        document.getElementById("sendButton");
+                                        otherButton.classList.remove(
+                                            "open"
+                                        );
 
-    const chatList =
-        document.getElementById("chatList");
+                                    }
 
-    const emptyChats =
-        document.getElementById("emptyChats");
+                                }
 
-    const newChatButton =
-        document.getElementById("newChatButton");
+                            }
+                        );
 
-    const sidebar =
-        document.getElementById("sidebar");
+                    const aberto =
+                        menu.classList.toggle(
+                            "active"
+                        );
 
-    const mobileMenu =
-        document.getElementById("mobileMenu");
+                    menuButton.classList.toggle(
+                        "open",
+                        aberto
+                    );
 
-    const sidebarOverlay =
-        document.getElementById("sidebarOverlay");
+                }
+            );
 
+            deleteButton.addEventListener(
+                "click",
+                event => {
 
-    /* ==============================
-       SIDEBAR MOBILE
-    ============================== */
+                    event.stopPropagation();
 
-    function openSidebar() {
+                    menu.classList.remove(
+                        "active"
+                    );
 
-        sidebar.classList.add("open");
+                    menuButton.classList.remove(
+                        "open"
+                    );
 
-        sidebarOverlay.classList.add("active");
+                    abrirConfirmacaoExclusao(
+                        conversation.id
+                    );
 
-    }
+                }
+            );
 
+            history.appendChild(
+                item
+            );
 
-    function closeSidebar() {
-
-        sidebar.classList.remove("open");
-
-        sidebarOverlay.classList.remove("active");
-
-    }
-
-
-    mobileMenu.addEventListener(
-        "click",
-        openSidebar
+        }
     );
 
+}
 
-    sidebarOverlay.addEventListener(
-        "click",
-        closeSidebar
-    );
+/* ==========================================
+   FECHAR MENUS AO CLICAR FORA
+========================================== */
 
+document.addEventListener(
+    "click",
+    event => {
 
-    /* ==============================
-       ADICIONAR CHAT NA SIDEBAR
-    ============================== */
+        if (
+            !event.target.closest(
+                ".history-item"
+            )
+        ) {
 
-    function addChatToSidebar(text) {
+            document
+                .querySelectorAll(
+                    ".conversation-menu.active"
+                )
+                .forEach(
+                    menu => {
 
-        if (emptyChats) {
-            emptyChats.remove();
+                        menu.classList.remove(
+                            "active"
+                        );
+
+                        const button =
+                            menu.parentElement
+                                .querySelector(
+                                    ".history-menu-button"
+                                );
+
+                        if (button) {
+
+                            button.classList.remove(
+                                "open"
+                            );
+
+                        }
+
+                    }
+                );
+
         }
 
-        const item =
-            document.createElement("button");
+    }
+);
 
-        item.className = "chat-item active";
+/* ==========================================
+   CARREGAR CONVERSA
+========================================== */
 
-        item.innerHTML = `
+function loadConversation(id) {
 
-            <span class="chat-item-icon">
-                ✦
-            </span>
+    const conversation =
+        conversations.find(
+            item =>
+                item.id === id
+        );
 
-            <span class="chat-item-info">
+    if (!conversation) {
+        return;
+    }
 
-                <span class="chat-item-title">
-                    ${escapeHTML(text)}
-                </span>
+    currentConversation =
+        id;
 
-                <span class="chat-item-time">
-                    Agora
-                </span>
+    messages.innerHTML = "";
 
-            </span>
+    if (
+        Array.isArray(
+            conversation.messages
+        )
+    ) {
 
-        `;
+        conversation.messages.forEach(
+            message => {
 
-        chatList.prepend(item);
-
-        const items =
-            chatList.querySelectorAll(".chat-item");
-
-        items.forEach(chat => {
-
-            chat.classList.remove("active");
-
-        });
-
-        item.classList.add("active");
-
-        item.addEventListener(
-            "click",
-            () => {
-
-                items.forEach(chat => {
-
-                    chat.classList.remove("active");
-
-                });
-
-                item.classList.add("active");
-
-                closeSidebar();
+                addMessage(
+                    message.text,
+                    message.type,
+                    false
+                );
 
             }
         );
 
     }
 
+    if (
+        !conversation.messages ||
+        conversation.messages.length === 0
+    ) {
 
-    /* ==============================
-       ESCAPAR HTML
-    ============================== */
-
-    function escapeHTML(text) {
-
-        const div =
-            document.createElement("div");
-
-        div.textContent = text;
-
-        return div.innerHTML;
+        resetChat();
 
     }
 
+    renderHistory();
 
-    /* ==============================
-       NOVA CONVERSA
-    ============================== */
+    closeSidebar();
 
-    newChatButton.addEventListener(
+    scrollToBottom();
+
+}
+
+/* ==========================================
+   ADICIONAR MENSAGEM
+========================================== */
+
+function addMessage(
+    text,
+    type,
+    save = true
+) {
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        `message ${type}`;
+
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "message-content";
+
+    content.textContent =
+        text;
+
+    message.appendChild(
+        content
+    );
+
+    messages.appendChild(
+        message
+    );
+
+    if (
+        save &&
+        currentConversation
+    ) {
+
+        const conversation =
+            conversations.find(
+                item =>
+                    item.id ===
+                    currentConversation
+            );
+
+        if (conversation) {
+
+            if (
+                !Array.isArray(
+                    conversation.messages
+                )
+            ) {
+
+                conversation.messages = [];
+
+            }
+
+            conversation.messages.push({
+
+                text: text,
+
+                type: type,
+
+                time: Date.now()
+
+            });
+
+            if (
+                type === "user" &&
+                conversation.title ===
+                    "Nova conversa"
+            ) {
+
+                conversation.title =
+                    text.length > 30
+                        ? text.substring(0,30) + "..."
+                        : text;
+
+            }
+
+            saveConversations();
+
+            renderHistory();
+
+        }
+
+    }
+
+    scrollToBottom();
+
+    return message;
+
+}
+
+/* ==========================================
+   SCROLL
+========================================== */
+
+function scrollToBottom() {
+
+    messages.scrollTo({
+
+        top:
+            messages.scrollHeight,
+
+        behavior:
+            "smooth"
+
+    });
+
+}
+
+/* ==========================================
+   CAMINHOS
+========================================== */
+
+const paths = {
+
+    tecnologia: {
+
+        question:
+            "Perfeito. O que você quer resolver na área de tecnologia?",
+
+        options: [
+
+            {
+                text:
+                    "🌐 Criar um site",
+
+                response:
+                    "Posso te ajudar a estruturar um site completo: arquitetura, HTML, CSS, JavaScript, responsividade, identidade visual e funcionalidades."
+            },
+
+            {
+                text:
+                    "💻 Programação",
+
+                response:
+                    "Boa. Podemos trabalhar com HTML, CSS, JavaScript, Node.js, bancos de dados, APIs, Firebase e arquitetura de sistemas."
+            },
+
+            {
+                text:
+                    "🖥️ Sistema ou plataforma",
+
+                response:
+                    "Nesse caso, o ideal é começar definindo objetivo, usuários, funcionalidades, autenticação, banco de dados e arquitetura. Depois construímos por etapas."
+            },
+
+            {
+                text:
+                    "🔧 Resolver um erro",
+
+                response:
+                    "Mande o erro exatamente como aparece no terminal ou navegador. Se possível, envie também o trecho do código relacionado. Assim conseguimos atacar a causa, não apenas o sintoma."
+            }
+
+        ]
+
+    },
+
+    ia: {
+
+        question:
+            "Excelente. Qual área de Inteligência Artificial interessa mais a você?",
+
+        options: [
+
+            {
+                text:
+                    "🤖 Criar uma IA",
+
+                response:
+                    "Podemos estruturar uma IA própria com interface, backend, modelo, memória, banco de dados e regras de comportamento."
+            },
+
+            {
+                text:
+                    "⚙️ Automação",
+
+                response:
+                    "Automação é onde a IA começa a ficar realmente interessante: atendimento, classificação, geração de conteúdo, análise de dados e processos internos."
+            },
+
+            {
+                text:
+                    "🧠 Agentes de IA",
+
+                response:
+                    "Agentes podem receber objetivos, utilizar ferramentas, consultar dados e executar etapas de um processo. A arquitetura precisa ser bem definida para evitar resultados inconsistentes."
+            },
+
+            {
+                text:
+                    "💡 Aprender sobre IA",
+
+                response:
+                    "Posso explicar IA desde os fundamentos até APIs, LLMs, embeddings, RAG, agentes, fine-tuning e arquitetura de aplicações."
+            }
+
+        ]
+
+    },
+
+    nexa: {
+
+        question:
+            "Claro. O que você deseja conhecer sobre a Nexa?",
+
+        options: [
+
+            {
+                text:
+                    "🚀 O que é a Nexa?",
+
+                response:
+                    "A Nexa Agency Enterprises é uma empresa voltada para tecnologia, inteligência artificial, marketing, soluções digitais e desenvolvimento de projetos."
+            },
+
+            {
+                text:
+                    "🤖 Soluções de IA",
+
+                response:
+                    "A Nexa pode desenvolver soluções de inteligência artificial especializadas para diferentes necessidades, desde assistentes até sistemas integrados."
+            },
+
+            {
+                text:
+                    "📈 Marketing e estratégia",
+
+                response:
+                    "A proposta é ir além de simplesmente publicar conteúdo. Estratégia, posicionamento, identidade, comunicação e tecnologia precisam trabalhar juntos."
+            },
+
+            {
+                text:
+                    "💼 Quero falar com a Nexa",
+
+                response:
+                    "Perfeito. Para falar diretamente com a equipe da Nexa, utilize o canal oficial de atendimento disponibilizado pela empresa."
+            }
+
+        ]
+
+    },
+
+    marketing: {
+
+        question:
+            "Marketing pode significar muita coisa. Qual caminho você quer seguir?",
+
+        options: [
+
+            {
+                text:
+                    "📱 Redes sociais",
+
+                response:
+                    "Uma estratégia de redes sociais começa pelo posicionamento. Depois vêm conteúdo, frequência, identidade visual, distribuição e análise de resultados."
+            },
+
+            {
+                text:
+                    "🎯 Estratégia",
+
+                response:
+                    "Estratégia significa saber para quem você vende, qual problema resolve, por que alguém deveria escolher você e como comunicar isso com clareza."
+            },
+
+            {
+                text:
+                    "✨ Branding",
+
+                response:
+                    "Branding é construir percepção. Logo é apenas uma peça. Marca envolve posicionamento, identidade, linguagem, experiência e consistência."
+            },
+
+            {
+                text:
+                    "📊 Crescimento",
+
+                response:
+                    "Para crescer de forma consistente, precisamos entender aquisição, conversão, retenção, oferta, público e métricas."
+            }
+
+        ]
+
+    },
+
+    criatividade: {
+
+        question:
+            "Bora criar. Qual área criativa você quer explorar?",
+
+        options: [
+
+            {
+                text:
+                    "🎵 Música",
+
+                response:
+                    "Posso ajudar com composição, estrutura musical, harmonia, letras, conceitos, arranjos e desenvolvimento de ideias."
+            },
+
+            {
+                text:
+                    "✍️ Escrita",
+
+                response:
+                    "Podemos trabalhar narrativa, poesia, textos institucionais, roteiros, conceitos e desenvolvimento de ideias."
+            },
+
+            {
+                text:
+                    "🎨 Design",
+
+                response:
+                    "Podemos construir conceitos visuais, identidade de marca, paleta, tipografia, composição e direção criativa."
+            },
+
+            {
+                text:
+                    "💡 Brainstorm",
+
+                response:
+                    "Manda a ideia, mesmo que esteja bagunçada. A gente desmonta, encontra o núcleo interessante e transforma aquilo em algo concreto."
+            }
+
+        ]
+
+    },
+
+    ajuda: {
+
+        question:
+            "Sem problema. Vamos descobrir juntos. O que você precisa fazer?",
+
+        options: [
+
+            {
+                text:
+                    "💻 Algo relacionado a computador",
+
+                response:
+                    "Ótimo. Explique o que você está tentando fazer e o que aconteceu. Se houver uma mensagem de erro, copie exatamente."
+            },
+
+            {
+                text:
+                    "📚 Quero estudar",
+
+                response:
+                    "Posso montar explicações, resumos, exercícios, perguntas e planos de estudo de acordo com o assunto."
+            },
+
+            {
+                text:
+                    "🚀 Quero criar um projeto",
+
+                response:
+                    "Excelente. Me diga a ideia e podemos transformar em objetivo, funcionalidades, estrutura, tecnologias e etapas de desenvolvimento."
+            },
+
+            {
+                text:
+                    "❓ Não sei explicar",
+
+                response:
+                    "Tudo bem. Comece contando o que você quer alcançar. Não precisa saber os termos técnicos — eu ajudo a organizar o problema."
+            }
+
+        ]
+
+    }
+
+};
+
+/* ==========================================
+   MOSTRAR CAMINHO
+========================================== */
+
+function showPath(
+    pathName
+) {
+
+    const path =
+        paths[pathName];
+
+    if (!path) {
+        return;
+    }
+
+    if (!currentConversation) {
+        createConversation();
+    }
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message ai";
+
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "message-content";
+
+    const question =
+        document.createElement("div");
+
+    question.textContent =
+        path.question;
+
+    content.appendChild(
+        question
+    );
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "ai-options";
+
+    path.options.forEach(
+        option => {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "ai-option";
+
+            button.type =
+                "button";
+
+            button.textContent =
+                option.text;
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    addMessage(
+                        option.text,
+                        "user"
+                    );
+
+                    button.disabled =
+                        true;
+
+                    setTimeout(
+                        () => {
+
+                            addMessage(
+                                option.response,
+                                "ai"
+                            );
+
+                            addBackButton();
+
+                        },
+                        250
+                    );
+
+                }
+            );
+
+            wrapper.appendChild(
+                button
+            );
+
+        }
+    );
+
+    content.appendChild(
+        wrapper
+    );
+
+    message.appendChild(
+        content
+    );
+
+    messages.appendChild(
+        message
+    );
+
+    scrollToBottom();
+
+}
+
+/* ==========================================
+   BOTÃO VOLTAR
+========================================== */
+
+function addBackButton() {
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message ai";
+
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "message-content";
+
+    content.textContent =
+        "Posso continuar te ajudando. Escolha outro caminho:";
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "ai-options";
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "ai-option";
+
+    button.type =
+        "button";
+
+    button.textContent =
+        "↩ Voltar para o menu principal";
+
+    button.addEventListener(
         "click",
         () => {
 
-            messages.innerHTML = `
+            addMessage(
+                "↩ Voltar para o menu principal",
+                "user"
+            );
 
-                <section
-                    class="welcome"
-                    id="welcome"
-                >
+            setTimeout(
+                () => {
 
-                    <div class="welcome-icon">
-                        ✦
-                    </div>
+                    showMainOptions();
 
-                    <h1>
-                        Olá, eu sou a IAnexa.
-                    </h1>
-
-                    <p>
-                        Sua inteligência artificial para ideias,
-                        tecnologia, programação, criatividade,
-                        estratégia e muito mais.
-                        Como posso ajudar você hoje?
-                    </p>
-
-                </section>
-
-            `;
-
-            messageInput.value = "";
-
-            messageInput.style.height =
-                "auto";
-
-            messageInput.focus();
-
-            closeSidebar();
+                },
+                250
+            );
 
         }
     );
 
+    wrapper.appendChild(
+        button
+    );
 
-    /* ==============================
-       ADICIONAR MENSAGEM
-    ============================== */
+    content.appendChild(
+        wrapper
+    );
 
-    function addMessage(text, type) {
+    message.appendChild(
+        content
+    );
 
-        const message =
-            document.createElement("div");
+    messages.appendChild(
+        message
+    );
 
-        message.className =
-            `message ${type}`;
+    scrollToBottom();
 
-        const content =
-            document.createElement("div");
+}
 
-        content.className =
-            "message-content";
+/* ==========================================
+   MENU PRINCIPAL
+========================================== */
 
-        content.textContent =
-            text;
+function showMainOptions() {
 
-        message.appendChild(content);
+    const message =
+        document.createElement("div");
 
-        messages.appendChild(message);
+    message.className =
+        "message ai";
 
-        scrollToBottom();
+    const content =
+        document.createElement("div");
 
-        return message;
+    content.className =
+        "message-content";
 
-    }
+    content.textContent =
+        "Claro. O que você deseja fazer agora?";
 
+    const wrapper =
+        document.createElement("div");
 
-    /* ==============================
-       DIGITANDO
-    ============================== */
+    wrapper.className =
+        "ai-options";
 
-    function addTyping() {
+    const options = [
 
-        const message =
-            document.createElement("div");
+        [
+            "💻 Tecnologia",
+            "tecnologia"
+        ],
 
-        message.className =
-            "message ai";
+        [
+            "🤖 Inteligência Artificial",
+            "ia"
+        ],
 
-        message.id =
-            "typingMessage";
+        [
+            "🚀 Conhecer a Nexa",
+            "nexa"
+        ],
 
-        message.innerHTML = `
+        [
+            "📈 Marketing",
+            "marketing"
+        ],
 
-            <div class="message-content">
+        [
+            "🎨 Criatividade",
+            "criatividade"
+        ],
 
-                <div class="typing">
+        [
+            "💡 Preciso de ajuda",
+            "ajuda"
+        ]
 
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    ];
 
-                </div>
+    options.forEach(
+        ([text,path]) => {
 
-            </div>
+            const button =
+                document.createElement("button");
 
-        `;
+            button.className =
+                "ai-option";
 
-        messages.appendChild(message);
+            button.type =
+                "button";
 
-        scrollToBottom();
+            button.textContent =
+                text;
 
-    }
+            button.addEventListener(
+                "click",
+                () => {
 
+                    addMessage(
+                        text,
+                        "user"
+                    );
 
-    function removeTyping() {
+                    setTimeout(
+                        () => {
 
-        const typing =
-            document.getElementById(
-                "typingMessage"
+                            showPath(
+                                path
+                            );
+
+                        },
+                        250
+                    );
+
+                }
             );
 
-        if (typing) {
-            typing.remove();
-        }
-
-    }
-
-
-    /* ==============================
-       SCROLL
-    ============================== */
-
-    function scrollToBottom() {
-
-        messages.scrollTo({
-
-            top:
-                messages.scrollHeight,
-
-            behavior:
-                "smooth"
-
-        });
-
-    }
-
-
-    /* ==============================
-       AUTO RESIZE
-    ============================== */
-
-    messageInput.addEventListener(
-        "input",
-        () => {
-
-            messageInput.style.height =
-                "auto";
-
-            messageInput.style.height =
-                Math.min(
-                    messageInput.scrollHeight,
-                    150
-                ) + "px";
+            wrapper.appendChild(
+                button
+            );
 
         }
     );
 
+    content.appendChild(
+        wrapper
+    );
 
-    /* ==============================
-       ENVIAR MENSAGEM
-    ============================== */
+    message.appendChild(
+        content
+    );
 
-    async function sendMessage() {
+    messages.appendChild(
+        message
+    );
 
-        const mensagem =
-            messageInput.value.trim();
+    scrollToBottom();
 
-        if (!mensagem) {
-            return;
-        }
+}
 
+/* ==========================================
+   TEXTO LIVRE
+========================================== */
 
-        /* REMOVE WELCOME */
+function handleFreeMessage(
+    text
+) {
 
-        const currentWelcome =
-            document.getElementById(
-                "welcome"
-            );
+    const lower =
+        text.toLowerCase();
 
-        if (currentWelcome) {
-            currentWelcome.remove();
-        }
-
-
-        /* MENSAGEM DO USUÁRIO */
+    if (
+        lower.includes("tecnologia") ||
+        lower.includes("programação") ||
+        lower.includes("programacao") ||
+        lower.includes("site") ||
+        lower.includes("código") ||
+        lower.includes("codigo") ||
+        lower.includes("javascript") ||
+        lower.includes("html") ||
+        lower.includes("css")
+    ) {
 
         addMessage(
-            mensagem,
-            "user"
+            "Entendi. Vamos seguir pelo caminho de Tecnologia.",
+            "ai"
         );
 
+        setTimeout(
+            () => {
 
-        /* CRIAR CHAT */
+                showPath(
+                    "tecnologia"
+                );
 
-        addChatToSidebar(
-            mensagem
+            },
+            250
         );
 
+        return;
+    }
 
-        /* LIMPAR INPUT */
+    if (
+        lower.includes("inteligência artificial") ||
+        lower.includes("inteligencia artificial") ||
+        lower === "ia" ||
+        lower.includes("chatbot") ||
+        lower.includes("automação") ||
+        lower.includes("automacao") ||
+        lower.includes("agente de ia")
+    ) {
 
-        messageInput.value = "";
+        addMessage(
+            "Perfeito. Vamos falar de Inteligência Artificial.",
+            "ai"
+        );
+
+        setTimeout(
+            () => {
+
+                showPath(
+                    "ia"
+                );
+
+            },
+            250
+        );
+
+        return;
+    }
+
+    if (
+        lower.includes("nexa") ||
+        lower.includes("empresa") ||
+        lower.includes("agência") ||
+        lower.includes("agencia")
+    ) {
+
+        addMessage(
+            "Claro. Vamos falar sobre a Nexa.",
+            "ai"
+        );
+
+        setTimeout(
+            () => {
+
+                showPath(
+                    "nexa"
+                );
+
+            },
+            250
+        );
+
+        return;
+    }
+
+    if (
+        lower.includes("marketing") ||
+        lower.includes("branding") ||
+        lower.includes("instagram") ||
+        lower.includes("social media") ||
+        lower.includes("redes sociais")
+    ) {
+
+        addMessage(
+            "Vamos seguir pelo caminho de Marketing.",
+            "ai"
+        );
+
+        setTimeout(
+            () => {
+
+                showPath(
+                    "marketing"
+                );
+
+            },
+            250
+        );
+
+        return;
+    }
+
+    if (
+        lower.includes("música") ||
+        lower.includes("musica") ||
+        lower.includes("composição") ||
+        lower.includes("composicao") ||
+        lower.includes("letra") ||
+        lower.includes("design") ||
+        lower.includes("criatividade") ||
+        lower.includes("brainstorm")
+    ) {
+
+        addMessage(
+            "Boa. Vamos para o caminho criativo.",
+            "ai"
+        );
+
+        setTimeout(
+            () => {
+
+                showPath(
+                    "criatividade"
+                );
+
+            },
+            250
+        );
+
+        return;
+    }
+
+    addMessage(
+        "Entendi sua mensagem. Ainda estou trabalhando com caminhos específicos de atendimento. Escolha uma das categorias abaixo para eu te direcionar melhor.",
+        "ai"
+    );
+
+    setTimeout(
+        () => {
+
+            showMainOptions();
+
+        },
+        250
+    );
+
+}
+
+/* ==========================================
+   ENVIAR
+========================================== */
+
+function sendMessage() {
+
+    const text =
+        messageInput.value.trim();
+
+    if (!text) {
+        return;
+    }
+
+    if (!currentConversation) {
+        createConversation();
+    }
+
+    addMessage(
+        text,
+        "user"
+    );
+
+    messageInput.value =
+        "";
+
+    messageInput.style.height =
+        "auto";
+
+    setTimeout(
+        () => {
+
+            handleFreeMessage(
+                text
+            );
+
+        },
+        300
+    );
+
+}
+
+/* ==========================================
+   QUICK OPTIONS
+========================================== */
+
+function bindQuickOptions() {
+
+    document
+        .querySelectorAll(
+            ".quick-option"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const path =
+                            button.dataset.path;
+
+                        const strong =
+                            button.querySelector(
+                                "strong"
+                            );
+
+                        const text =
+                            strong
+                                ? strong.textContent
+                                : button.textContent;
+
+                        if (!currentConversation) {
+                            createConversation();
+                        }
+
+                        addMessage(
+                            text,
+                            "user"
+                        );
+
+                        setTimeout(
+                            () => {
+
+                                showPath(
+                                    path
+                                );
+
+                            },
+                            250
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+/* ==========================================
+   NOVA CONVERSA
+========================================== */
+
+newChatButton.addEventListener(
+    "click",
+    () => {
+
+        createConversation();
+
+        closeSidebar();
+
+    }
+);
+
+/* ==========================================
+   ENTER
+========================================== */
+
+sendButton.addEventListener(
+    "click",
+    sendMessage
+);
+
+messageInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey
+        ) {
+
+            event.preventDefault();
+
+            sendMessage();
+
+        }
+
+    }
+);
+
+/* ==========================================
+   AUTO RESIZE
+========================================== */
+
+messageInput.addEventListener(
+    "input",
+    () => {
 
         messageInput.style.height =
             "auto";
 
+        messageInput.style.height =
+            Math.min(
+                messageInput.scrollHeight,
+                150
+            ) + "px";
 
-        /* BLOQUEAR */
+    }
+);
 
-        sendButton.disabled =
-            true;
+/* ==========================================
+   PESQUISA
+========================================== */
 
-        messageInput.disabled =
-            true;
+searchHistory.addEventListener(
+    "input",
+    () => {
 
+        renderHistory(
+            searchHistory.value
+        );
 
-        /* DIGITANDO */
+    }
+);
 
-        addTyping();
+searchHistory.addEventListener(
+    "keydown",
+    event => {
 
+        if (
+            event.key === "Escape"
+        ) {
 
-        try {
+            searchHistory.value =
+                "";
 
-            console.log(
-                "📤 Enviando:",
-                mensagem
-            );
+            renderHistory();
 
-
-            const resposta =
-                await fetch(
-                    "/api/chat",
-                    {
-                        method: "POST",
-
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
-
-                        body:
-                            JSON.stringify({
-                                mensagem:
-                                    mensagem
-                            })
-                    }
-                );
-
-
-            console.log(
-                "📡 Status:",
-                resposta.status
-            );
-
-
-            let dados;
-
-            try {
-
-                dados =
-                    await resposta.json();
-
-            } catch {
-
-                throw new Error(
-                    "O servidor retornou uma resposta inválida."
-                );
-
-            }
-
-
-            if (!resposta.ok) {
-
-                throw new Error(
-
-                    dados.detalhes ||
-                    dados.erro ||
-                    "Erro no servidor."
-
-                );
-
-            }
-
-
-            if (!dados.sucesso) {
-
-                throw new Error(
-
-                    dados.erro ||
-                    "A IAnexa não conseguiu responder."
-
-                );
-
-            }
-
-
-            removeTyping();
-
-
-            addMessage(
-                dados.resposta,
-                "ai"
-            );
-
-
-        } catch (erro) {
-
-            console.error(
-                "❌ Erro:",
-                erro
-            );
-
-
-            removeTyping();
-
-
-            addMessage(
-
-                "Não consegui processar sua mensagem.\n\n" +
-                erro.message,
-
-                "ai"
-
-            );
-
-        } finally {
-
-            sendButton.disabled =
-                false;
-
-            messageInput.disabled =
-                false;
-
-            messageInput.focus();
+            searchHistory.blur();
 
         }
 
     }
+);
 
+/* ==========================================
+   EXCLUSÃO
+========================================== */
 
-    /* ==============================
-       BOTÃO
-    ============================== */
+function abrirConfirmacaoExclusao(
+    conversaId
+) {
 
-    sendButton.addEventListener(
-        "click",
-        sendMessage
+    const conversation =
+        conversations.find(
+            item =>
+                item.id ===
+                conversaId
+        );
+
+    if (!conversation) {
+        return;
+    }
+
+    const modal =
+        document.createElement("div");
+
+    modal.className =
+        "delete-modal";
+
+    modal.innerHTML = `
+
+        <div class="delete-modal-content">
+
+            <div class="delete-modal-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <polyline
+                        points="3 6 5 6 21 6"
+                    ></polyline>
+
+                    <path
+                        d="M19 6L18 21H6L5 6"
+                    ></path>
+
+                    <path
+                        d="M10 11V17"
+                    ></path>
+
+                    <path
+                        d="M14 11V17"
+                    ></path>
+
+                    <path
+                        d="M9 6V3H15V6"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+            <h3>
+                Excluir conversa?
+            </h3>
+
+            <p>
+                A conversa
+                <strong>
+                    "${escapeHtml(
+                        conversation.title ||
+                        "Nova conversa"
+                    )}"
+                </strong>
+                será removida do seu histórico.
+                Essa ação não poderá ser desfeita.
+            </p>
+
+            <div class="delete-modal-actions">
+
+                <button
+                    type="button"
+                    class="delete-cancel"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    class="delete-confirm"
+                >
+                    Excluir
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(
+        modal
     );
 
+    const cancel =
+        modal.querySelector(
+            ".delete-cancel"
+        );
 
-    /* ==============================
-       ENTER
-    ============================== */
+    const confirm =
+        modal.querySelector(
+            ".delete-confirm"
+        );
 
-    messageInput.addEventListener(
-        "keydown",
-        (event) => {
+    cancel.addEventListener(
+        "click",
+        () => {
+
+            modal.remove();
+
+        }
+    );
+
+    confirm.addEventListener(
+        "click",
+        () => {
+
+            excluirConversa(
+                conversaId
+            );
+
+            modal.remove();
+
+        }
+    );
+
+    modal.addEventListener(
+        "click",
+        event => {
 
             if (
-                event.key === "Enter" &&
-                !event.shiftKey
+                event.target ===
+                modal
             ) {
 
-                event.preventDefault();
-
-                sendMessage();
+                modal.remove();
 
             }
 
         }
     );
 
+}
 
-    /* ==============================
-       FOCO
-    ============================== */
+function excluirConversa(
+    conversaId
+) {
 
-    messageInput.focus();
+    const index =
+        conversations.findIndex(
+            conversation =>
+                conversation.id ===
+                conversaId
+        );
+
+    if (index === -1) {
+        return;
+    }
+
+    const eraAtual =
+        currentConversation ===
+        conversaId;
+
+    conversations.splice(
+        index,
+        1
+    );
+
+    saveConversations();
+
+    if (eraAtual) {
+
+        currentConversation =
+            null;
+
+        resetChat();
+
+    }
+
+    renderHistory();
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+mobileMenu.addEventListener(
+    "click",
+    () => {
+
+        sidebar.classList.add(
+            "open"
+        );
+
+        sidebarOverlay.classList.add(
+            "active"
+        );
+
+    }
+);
+
+sidebarOverlay.addEventListener(
+    "click",
+    closeSidebar
+);
+
+function closeSidebar() {
+
+    sidebar.classList.remove(
+        "open"
+    );
+
+    sidebarOverlay.classList.remove(
+        "active"
+    );
+
+}
+
+/* ==========================================
+   MODAL
+========================================== */
+
+function openModal(
+    title,
+    content
+) {
+
+    modalTitle.textContent =
+        title;
+
+    modalContent.innerHTML =
+        content;
+
+    modalOverlay.classList.add(
+        "active"
+    );
+
+}
+
+function closeModal() {
+
+    modalOverlay.classList.remove(
+        "active"
+    );
+
+}
+
+modalClose.addEventListener(
+    "click",
+    closeModal
+);
+
+modalOverlay.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            modalOverlay
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+/* ==========================================
+   PERFIL
+========================================== */
+
+document
+    .getElementById(
+        "profileButton"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            openModal(
+                "Perfil",
+                `
+
+                <div class="setting">
+
+                    <div>
+
+                        <strong>
+                            Nexa Agency
+                        </strong>
+
+                        <span>
+                            Conta da NEXA IA
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="setting">
+
+                    <div>
+
+                        <strong>
+                            Status
+                        </strong>
+
+                        <span>
+                            Assistente ativo
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="setting">
+
+                    <div>
+
+                        <strong>
+                            Plano
+                        </strong>
+
+                        <span>
+                            NEXA IA
+                        </span>
+
+                    </div>
+
+                </div>
+
+                `
+            );
+
+        }
+    );
+
+/* ==========================================
+   CONFIGURAÇÕES
+========================================== */
+
+document
+    .getElementById(
+        "settingsButton"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            openModal(
+                "Configurações",
+                `
+
+                <div class="setting">
+
+                    <div>
+
+                        <strong>
+                            Tema
+                        </strong>
+
+                        <span>
+                            Interface escura da NEXA
+                        </span>
+
+                    </div>
+
+                    <div class="toggle"></div>
+
+                </div>
+
+                <div class="setting">
+
+                    <div>
+
+                        <strong>
+                            Histórico
+                        </strong>
+
+                        <span>
+                            Conversas salvas neste navegador
+                        </span>
+
+                    </div>
+
+                    <div class="toggle"></div>
+
+                </div>
+
+                <div class="setting">
+
+                    <div>
+
+                        <strong>
+                            Respostas automáticas
+                        </strong>
+
+                        <span>
+                            Sistema de caminhos da NEXA
+                        </span>
+
+                    </div>
+
+                    <div class="toggle"></div>
+
+                </div>
+
+                `
+            );
+
+        }
+    );
+
+/* ==========================================
+   AJUDA
+========================================== */
+
+document
+    .getElementById(
+        "helpButton"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            openModal(
+                "Ajuda",
+                `
+
+                <p>
+                    Bem-vindo à NEXA IA.
+                </p>
+
+                <br>
+
+                <p>
+                    Você pode escolher uma categoria
+                    na tela inicial ou simplesmente
+                    escrever sua pergunta.
+                </p>
+
+                <br>
+
+                <p>
+                    O sistema identifica alguns assuntos
+                    automaticamente e direciona você para
+                    caminhos específicos.
+                </p>
+
+                <br>
+
+                <p>
+                    Suas conversas ficam salvas
+                    neste navegador.
+                </p>
+
+                <br>
+
+                <p>
+                    Para excluir uma conversa,
+                    passe o mouse sobre ela no histórico
+                    e clique nos três pontinhos.
+                </p>
+
+                `
+            );
+
+        }
+    );
+
+/* ==========================================
+   ESC FECHA MODAIS
+========================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeModal();
+
+            document
+                .querySelectorAll(
+                    ".conversation-menu.active"
+                )
+                .forEach(
+                    menu => {
+
+                        menu.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+        }
+
+    }
+);
+
+/* ==========================================
+   INICIALIZAÇÃO
+========================================== */
+
+renderHistory();
+
+bindQuickOptions();
+
+messageInput.focus();
 
 </script>
 
