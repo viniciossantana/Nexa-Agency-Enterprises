@@ -18,9 +18,96 @@
 
 <style>
 
-/* ===================================
-RESET
-=================================== */
+/* ==========================================
+   VARIÁVEIS NEXA
+========================================== */
+
+:root{
+--bg:#050714;
+--bg2:#090d1f;
+
+--blue:#00bfff;
+--purple:#8b2cff;
+--purple-soft:#b46cff;
+
+--text:#ffffff;
+--muted:#a8afc6;
+--heading:#ffffff;
+
+--card:rgba(255,255,255,.04);
+--border:rgba(255,255,255,.08);
+
+--radius:26px;
+
+--footer-bg:#040611;
+--footer-border:rgba(255,255,255,.08);
+
+--footer-title:#ffffff;
+--footer-text:#a8afc6;
+
+--footer-link:#a8afc6;
+--footer-link-hover:#00bfff;
+
+--footer-icon-bg:rgba(255,255,255,.05);
+--footer-icon-color:#ffffff;
+
+--footer-bottom-border:rgba(255,255,255,.08);
+
+--hero-card-bg:rgba(255,255,255,.04);
+--hero-card-border:rgba(255,255,255,.08);
+--hero-card-shadow:0 25px 70px rgba(0,0,0,.25);
+--hero-card-title:#ffffff;
+--hero-card-text:#a8afc6;
+--hero-card-hover-border:rgba(139,44,255,.35);
+--hero-card-hover-shadow:0 30px 80px rgba(139,44,255,.16);
+--hero-logo-shadow:rgba(139,44,255,.35);
+--hero-logo-hover-shadow:rgba(139,44,255,.55);
+}
+
+body.light-theme{
+--bg:#F4F7FC;
+--bg2:#E9EEF8;
+
+--blue:#0EA5E9;
+--purple:#2563EB;
+--purple-soft:#60A5FA;
+
+--text:#1E293B;
+--heading:#0F172A;
+--muted:#64748B;
+
+--card:rgba(255,255,255,.92);
+--border:rgba(15,23,42,.08);
+
+--footer-bg:#f7f9fc;
+--footer-border:rgba(20,30,60,.10);
+
+--footer-title:#111827;
+--footer-text:#667085;
+
+--footer-link:#667085;
+--footer-link-hover:#7c3aed;
+
+--footer-icon-bg:rgba(20,30,60,.06);
+--footer-icon-color:#111827;
+
+--footer-bottom-border:rgba(20,30,60,.10);
+
+--hero-card-bg:rgba(255,255,255,.92);
+--hero-card-border:rgba(15,23,42,.08);
+--hero-card-shadow:0 25px 70px rgba(20,30,60,.12);
+--hero-card-title:#0F172A;
+--hero-card-text:#64748B;
+--hero-card-hover-border:rgba(37,99,235,.25);
+--hero-card-hover-shadow:0 30px 80px rgba(37,99,235,.14);
+--hero-logo-shadow:rgba(37,99,235,.20);
+--hero-logo-hover-shadow:rgba(37,99,235,.35);
+}
+
+
+/* ==========================================
+   RESET
+========================================== */
 
 *{
 margin:0;
@@ -33,100 +120,170 @@ html{
 scroll-behavior:smooth;
 }
 
-:root{
-
---bg:#050714;
---bg2:#090d1f;
-
---blue:#00bfff;
---blue-soft:#69d9ff;
-
---purple:#8b2cff;
---purple-soft:#b46cff;
-
---text:#ffffff;
---muted:#a9b2c9;
-
---card:rgba(255,255,255,.04);
---border:rgba(255,255,255,.08);
-
---radius:28px;
-}
-
 body{
-
 background:
-radial-gradient(circle at top left,rgba(0,191,255,.08),transparent 30%),
-radial-gradient(circle at top right,rgba(139,44,255,.16),transparent 35%),
-linear-gradient(180deg,#050714,#090d1f);
+linear-gradient(
+180deg,
+var(--bg),
+var(--bg2));
 
-color:white;
+color:var(--text);
 overflow-x:hidden;
+
+transition:
+background .35s,
+color .35s;
 }
 
-/* ===================================
-LOADER
-=================================== */
 
-.loader{
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.container{
+width:min(92%,1200px);
+margin:auto;
+}
+
+
+/* ==========================================
+   LOADER
+========================================== */
+
+#loader{
 position:fixed;
 inset:0;
-background:#050714;
+width:100%;
+height:100vh;
+
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
+
+background:#050714;
+
 z-index:999999;
-transition:.8s;
+
+transition:1s ease;
 }
 
-.loader.hide{
+#loader.hidden{
 opacity:0;
 visibility:hidden;
+pointer-events:none;
 }
 
-.loader img{
-width:120px;
-animation:float 3s ease-in-out infinite;
+.loader-bg{
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(
+circle at center,
+rgba(139,44,255,.25),
+transparent 50%
+),
+radial-gradient(
+circle at top,
+rgba(0,191,255,.18),
+transparent 40%
+);
 }
 
-.loader p{
+.loader-content{
+position:relative;
+text-align:center;
+z-index:2;
+}
+
+.loader-content img{
+width:180px;
+
+filter:
+drop-shadow(0 0 25px rgba(139,44,255,.7))
+drop-shadow(0 0 50px rgba(0,191,255,.4));
+
+animation:loaderFloat 3s ease-in-out infinite;
+}
+
+.loader-content h2{
+margin-top:25px;
+font-size:2rem;
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple-soft),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.loader-content p{
 margin-top:20px;
 color:var(--muted);
 letter-spacing:2px;
+font-size:.95rem;
 }
 
-@keyframes float{
+.loader-line{
+width:280px;
+height:5px;
 
+background:rgba(255,255,255,.08);
+
+border-radius:999px;
+overflow:hidden;
+
+margin:25px auto 0;
+}
+
+.loader-line span{
+display:block;
+width:0%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+border-radius:999px;
+
+animation:loadingBar 2.8s ease forwards;
+}
+
+@keyframes loadingBar{
+0%{
+width:0%;
+}
+
+100%{
+width:100%;
+}
+}
+
+@keyframes loaderFloat{
 0%,100%{
 transform:translateY(0);
 }
 
 50%{
-transform:translateY(-12px);
+transform:translateY(-15px);
+}
 }
 
-}
-
-/* ===================================
-CONTAINER
-=================================== */
-
-.container{
-width:min(92%,1250px);
-margin:auto;
-}
-
-/* ===================================
-HEADER
-=================================== */
 
 /* ==========================================
    HEADER PREMIUM NEXA
 ========================================== */
 
 .main-header{
-
 position:fixed;
 top:0;
 left:0;
@@ -143,6 +300,7 @@ align-items:center;
 background:rgba(5,7,20,.72);
 
 backdrop-filter:blur(22px);
+-webkit-backdrop-filter:blur(22px);
 
 border-bottom:1px solid rgba(255,255,255,.06);
 
@@ -151,68 +309,73 @@ z-index:9999;
 transition:.35s;
 }
 
-/* SCROLL */
-
 .main-header.scrolled{
-
 height:70px;
 
 background:rgba(5,7,20,.88);
 
 box-shadow:
 0 10px 30px rgba(0,0,0,.35);
-
 }
 
-/* LOGO */
+body.light-theme .main-header{
+background:rgba(244,247,252,.78);
+border-bottom:1px solid rgba(15,23,42,.08);
+}
+
+body.light-theme .main-header.scrolled{
+background:rgba(244,247,252,.94);
+
+box-shadow:
+0 10px 30px rgba(20,30,60,.10);
+}
+
+
+/* ==========================================
+   LOGO
+========================================== */
 
 .logo{
-
 display:flex;
 align-items:center;
 gap:14px;
-
 text-decoration:none;
-
 }
 
 .logo img{
-
 width:42px;
 height:42px;
-
 object-fit:contain;
-
 }
 
 .logo span{
-
 font-size:1.15rem;
 font-weight:800;
 
-background:linear-gradient(
+background:
+linear-gradient(
 90deg,
 var(--blue),
 var(--purple-soft),
-var(--purple));
+var(--purple)
+);
 
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-
 }
 
-/* MENU DESKTOP */
+
+/* ==========================================
+   MENU DESKTOP
+========================================== */
 
 .desktop-menu{
-
 display:flex;
 align-items:center;
 gap:34px;
-
 }
 
 .desktop-menu a{
-
 position:relative;
 
 text-decoration:none;
@@ -222,17 +385,13 @@ font-weight:500;
 color:var(--muted);
 
 transition:.3s;
-
 }
 
 .desktop-menu a:hover{
-
-color:white;
-
+color:var(--text);
 }
 
 .desktop-menu a::after{
-
 content:"";
 
 position:absolute;
@@ -245,25 +404,201 @@ height:2px;
 
 border-radius:10px;
 
-background:linear-gradient(
+background:
+linear-gradient(
 90deg,
 var(--blue),
-var(--purple));
+var(--purple)
+);
 
 transition:.3s;
-
 }
 
 .desktop-menu a:hover::after{
-
 width:100%;
-
 }
 
-/* BOTÃO MENU */
+
+/* ==========================================
+   CONFIGURAÇÕES
+========================================== */
+
+.settings{
+position:relative;
+display:inline-block;
+}
+
+.settings-btn{
+width:48px;
+height:48px;
+
+border:none;
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:#fff;
+
+font-size:18px;
+
+transition:.3s;
+}
+
+.settings-btn:hover{
+background:rgba(255,255,255,.10);
+transform:rotate(45deg);
+}
+
+body.light-theme .settings-btn{
+background:rgba(15,23,42,.05);
+border-color:rgba(15,23,42,.08);
+color:var(--text);
+}
+
+body.light-theme .settings-btn:hover{
+background:rgba(15,23,42,.08);
+}
+
+.settings-menu{
+position:absolute;
+
+top:60px;
+right:0;
+
+width:260px;
+
+background:rgba(15,18,35,.98);
+
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:18px;
+
+padding:10px;
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.35);
+
+z-index:9999;
+
+display:none;
+}
+
+.settings-menu.active{
+display:block;
+
+animation:fadeMenu .25s ease;
+}
+
+body.light-theme .settings-menu{
+background:rgba(255,255,255,.97);
+border-color:rgba(15,23,42,.08);
+
+box-shadow:
+0 20px 50px rgba(20,30,60,.15);
+}
+
+.settings-menu a,
+.settings-action{
+width:100%;
+
+display:flex;
+align-items:center;
+
+gap:12px;
+
+padding:12px 15px;
+
+border:none;
+border-radius:12px;
+
+background:transparent;
+
+color:#fff;
+
+text-decoration:none;
+
+font-family:"Inter",sans-serif;
+font-size:.95rem;
+
+cursor:pointer;
+
+transition:.25s;
+}
+
+body.light-theme .settings-menu a,
+body.light-theme .settings-action{
+color:var(--text);
+}
+
+.settings-menu a:hover,
+.settings-action:hover{
+background:rgba(255,255,255,.07);
+}
+
+body.light-theme .settings-menu a:hover,
+body.light-theme .settings-action:hover{
+background:rgba(15,23,42,.05);
+}
+
+.settings-menu i{
+width:20px;
+text-align:center;
+}
+
+.settings-menu hr{
+border:none;
+height:1px;
+
+background:rgba(255,255,255,.08);
+
+margin:8px 0;
+}
+
+body.light-theme .settings-menu hr{
+background:rgba(15,23,42,.08);
+}
+
+.settings-action .theme-icon{
+color:var(--purple-soft);
+}
+
+.logout{
+color:#ff6b6b !important;
+}
+
+.logout:hover{
+background:rgba(255,0,0,.08) !important;
+}
+
+@keyframes fadeMenu{
+from{
+opacity:0;
+transform:translateY(-10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+
+/* ==========================================
+   MENU MOBILE
+========================================== */
 
 .menu-toggle{
-
 display:none;
 
 width:48px;
@@ -276,16 +611,15 @@ cursor:pointer;
 
 justify-content:center;
 align-items:center;
+
 flex-direction:column;
 
 gap:6px;
 
 z-index:10002;
-
 }
 
 .menu-toggle span{
-
 width:26px;
 height:2px;
 
@@ -294,15 +628,14 @@ border-radius:999px;
 background:white;
 
 transition:.35s;
-
 }
 
-/* OVERLAY */
+body.light-theme .menu-toggle span{
+background:var(--text);
+}
 
 .menu-overlay{
-
 position:fixed;
-
 inset:0;
 
 background:rgba(0,0,0,.55);
@@ -315,20 +648,14 @@ visibility:hidden;
 transition:.35s;
 
 z-index:9997;
-
 }
 
 .menu-overlay.active{
-
 opacity:1;
 visibility:visible;
-
 }
 
-/* MENU */
-
 .mobile-menu{
-
 position:fixed;
 
 top:0;
@@ -353,35 +680,30 @@ transition:.45s cubic-bezier(.22,.61,.36,1);
 z-index:9998;
 
 overflow-y:auto;
-
 }
 
 .mobile-menu.active{
-
 right:0;
-
 }
 
-/* TOPO */
+body.light-theme .mobile-menu{
+background:#F4F7FC;
+border-left-color:rgba(15,23,42,.08);
+}
 
 .mobile-top{
-
 display:flex;
 justify-content:space-between;
 align-items:center;
 
 margin-bottom:40px;
-
 }
 
 .mobile-top img{
-
 width:48px;
-
 }
 
 .close-menu{
-
 background:none;
 border:none;
 
@@ -389,23 +711,17 @@ cursor:pointer;
 
 font-size:1.8rem;
 
-color:white;
-
+color:var(--text);
 }
-
-/* LINKS */
 
 .mobile-links{
-
 display:flex;
 flex-direction:column;
-
 gap:8px;
-
 }
 
-.mobile-links a{
-
+.mobile-links a,
+.mobile-links button{
 display:flex;
 align-items:center;
 
@@ -419,55 +735,68 @@ text-decoration:none;
 
 font-weight:600;
 
-color:white;
+color:var(--text);
 
 transition:.3s;
-
 }
 
-.mobile-links a i{
+.mobile-links button{
+width:100%;
 
+border:none;
+
+background:transparent;
+
+font-family:"Inter",sans-serif;
+
+font-size:1rem;
+
+cursor:pointer;
+
+text-align:left;
+}
+
+.mobile-links a i,
+.mobile-links button i{
 width:24px;
 
 font-size:1.1rem;
 
 color:var(--purple-soft);
-
 }
 
-.mobile-links a:hover{
-
+.mobile-links a:hover,
+.mobile-links button:hover{
 background:rgba(255,255,255,.05);
 
 transform:translateX(6px);
-
 }
 
-/* DIVISOR */
+body.light-theme .mobile-links a:hover,
+body.light-theme .mobile-links button:hover{
+background:rgba(15,23,42,.05);
+}
 
 .mobile-divider{
-
 margin:35px 0;
 
 height:1px;
 
 background:rgba(255,255,255,.08);
-
 }
 
-/* REDES */
+body.light-theme .mobile-divider{
+background:rgba(15,23,42,.08);
+}
 
 .mobile-social{
-
 display:flex;
 flex-direction:column;
 
 gap:12px;
-
 }
 
 .mobile-social a{
-
 display:flex;
 align-items:center;
 
@@ -480,19 +809,13 @@ color:var(--muted);
 padding:10px 0;
 
 transition:.3s;
-
 }
 
 .mobile-social a:hover{
-
-color:white;
-
+color:var(--text);
 }
 
-/* BOTÃO */
-
 .mobile-button{
-
 margin-top:auto;
 
 display:flex;
@@ -507,105 +830,129 @@ text-decoration:none;
 
 font-weight:700;
 
-color:white;
+color:#fff;
 
-background:linear-gradient(
+background:
+linear-gradient(
 135deg,
 var(--blue),
-var(--purple));
+var(--purple)
+);
 
 transition:.35s;
-
 }
 
 .mobile-button:hover{
-
 transform:translateY(-3px);
 
 box-shadow:
 0 10px 25px rgba(139,44,255,.35);
-
 }
 
-/* RESPONSIVO */
 
-@media(max-width:900px){
-
-.desktop-menu{
-
-display:none;
-
-}
-
-.menu-toggle{
-
-display:flex;
-
-}
-
-.logo span{
-
-font-size:1rem;
-
-}
-
-}
-
-/* DESKTOP */
-
-@media(min-width:901px){
-
-.mobile-menu,
-.menu-overlay{
-
-display:none;
-
-}
-
-}
-
-/* ===================================
-HERO
-=================================== */
+/* ==========================================
+   HERO
+========================================== */
 
 .hero{
-padding-top:180px;
-padding-bottom:120px;
+position:relative;
+
+overflow:hidden;
+
+padding:170px 0 120px;
+}
+
+.hero::before{
+content:"";
+
+position:absolute;
+
+top:-250px;
+right:-180px;
+
+width:650px;
+height:650px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(139,44,255,.25),
+transparent 70%
+);
+
+filter:blur(70px);
+}
+
+.hero::after{
+content:"";
+
+position:absolute;
+
+bottom:-220px;
+left:-220px;
+
+width:550px;
+height:550px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(0,191,255,.18),
+transparent 70%
+);
+
+filter:blur(70px);
 }
 
 .hero-wrap{
+position:relative;
+
+z-index:2;
+
 display:grid;
-grid-template-columns:1.1fr .9fr;
-gap:80px;
+
+grid-template-columns:1.2fr .8fr;
+
+gap:70px;
+
 align-items:center;
 }
 
 .tag{
-
 display:inline-flex;
+align-items:center;
 
-padding:12px 18px;
+padding:12px 22px;
 
 border-radius:999px;
 
-background:rgba(255,255,255,.04);
+background:rgba(255,255,255,.05);
 
 border:1px solid rgba(255,255,255,.08);
 
-margin-bottom:25px;
+color:var(--text);
+
+font-size:.9rem;
+font-weight:600;
+
+margin-bottom:30px;
+
+backdrop-filter:blur(12px);
 }
 
 .hero h1{
+font-size:clamp(3rem,6vw,5.5rem);
 
-font-size:clamp(3rem,6vw,6rem);
+line-height:1;
 
-line-height:.95;
-
-margin-bottom:25px;
+margin-bottom:28px;
 }
 
 .hero h1 span{
-
 background:
 linear-gradient(
 90deg,
@@ -618,43 +965,45 @@ var(--purple)
 -webkit-text-fill-color:transparent;
 }
 
-.hero p{
-
-font-size:1.1rem;
-
-line-height:1.8;
+.hero-wrap>div:first-child p{
+max-width:640px;
 
 color:var(--muted);
 
-margin-bottom:35px;
+line-height:1.9;
 
-max-width:650px;
+font-size:1.08rem;
+
+margin-bottom:40px;
 }
 
 .hero-buttons{
 display:flex;
-gap:15px;
+
+gap:18px;
+
 flex-wrap:wrap;
 }
 
 .btn{
-
 display:inline-flex;
-justify-content:center;
-align-items:center;
 
-padding:15px 28px;
+align-items:center;
+justify-content:center;
+
+padding:17px 34px;
 
 border-radius:999px;
 
-font-weight:600;
-
 text-decoration:none;
 
-transition:.3s;
+font-weight:700;
+
+transition:.35s;
 }
 
 .btn-primary{
+color:#fff;
 
 background:
 linear-gradient(
@@ -663,111 +1012,234 @@ var(--blue),
 var(--purple)
 );
 
-color:white;
-
 box-shadow:
-0 0 30px rgba(0,191,255,.18),
-0 0 40px rgba(139,44,255,.18);
+0 0 30px rgba(139,44,255,.25);
 }
 
 .btn-primary:hover{
-transform:translateY(-3px);
+transform:translateY(-4px);
 }
 
 .btn-secondary{
+color:var(--text);
 
-background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.10);
 
-border:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,.05);
 
-color:white;
+backdrop-filter:blur(10px);
 }
 
-span{
-background:linear-gradient(90deg,var(--blue),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+.btn-secondary:hover{
+border-color:var(--purple);
+
+background:rgba(255,255,255,.08);
+
+transform:translateY(-4px);
 }
 
-/* ===================================
-HERO VISUAL
-=================================== */
+body.light-theme .btn-secondary{
+border-color:rgba(15,23,42,.10);
+
+background:rgba(255,255,255,.65);
+}
+
+body.light-theme .btn-secondary:hover{
+background:rgba(255,255,255,.92);
+}
+
+
+/* ==========================================
+   HERO CARD
+========================================== */
 
 .hero-card{
-
-background:rgba(255,255,255,.04);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:32px;
-
-padding:40px;
-
 position:relative;
+
+width:100%;
+max-width:430px;
+
+padding:45px 38px;
+
+text-align:center;
+
+background:var(--hero-card-bg);
+
+border:1px solid var(--hero-card-border);
+
+border-radius:30px;
+
+box-shadow:var(--hero-card-shadow);
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
 
 overflow:hidden;
 
-backdrop-filter:blur(20px);
+transition:
+background .35s ease,
+border-color .35s ease,
+box-shadow .35s ease,
+transform .35s ease;
 }
 
 .hero-card::before{
-
 content:"";
 
 position:absolute;
-inset:0;
+
+width:240px;
+height:240px;
+
+top:-120px;
+right:-100px;
 
 background:
-radial-gradient(circle at top right,
-rgba(0,191,255,.08),
-transparent 40%),
+radial-gradient(
+circle,
+rgba(139,44,255,.16),
+transparent 70%
+);
 
-radial-gradient(circle at bottom left,
-rgba(139,44,255,.15),
-transparent 50%);
+filter:blur(25px);
+
+pointer-events:none;
 }
 
-.hero-logo{
+.hero-card::after{
+content:"";
+
+position:absolute;
 
 width:220px;
+height:220px;
+
+bottom:-130px;
+left:-100px;
+
+background:
+radial-gradient(
+circle,
+rgba(0,191,255,.12),
+transparent 70%
+);
+
+filter:blur(25px);
+
+pointer-events:none;
+}
+
+.hero-card .hero-logo{
+position:relative;
+
+z-index:2;
 
 display:block;
 
-margin:0 auto 35px;
+width:150px;
 
-filter:drop-shadow(0 0 25px rgba(139,44,255,.6));
+max-width:100%;
+
+height:auto;
+
+margin:0 auto 28px;
+
+filter:
+drop-shadow(
+0 8px 20px
+var(--hero-logo-shadow)
+);
 
 animation:float 4s ease-in-out infinite;
+
+transition:
+transform .35s ease,
+filter .35s ease;
 }
 
 .hero-card h3{
-font-size:2rem;
-margin-bottom:18px;
+position:relative;
+
+z-index:2;
+
+margin:0 0 16px;
+
+color:var(--hero-card-title);
+
+font-size:1.55rem;
+
+line-height:1.25;
+
+font-weight:750;
+
+letter-spacing:-.5px;
 }
 
 .hero-card p{
-color:var(--muted);
+position:relative;
+
+z-index:2;
+
+max-width:350px;
+
+margin:0 auto;
+
+color:var(--hero-card-text);
+
+font-size:.98rem;
+
 line-height:1.8;
 }
 
-/* ===================================
-ESTATÍSTICAS
-=================================== */
+.hero-card:hover{
+transform:translateY(-8px);
+
+border-color:var(--hero-card-hover-border);
+
+box-shadow:var(--hero-card-hover-shadow);
+}
+
+.hero-card:hover .hero-logo{
+transform:
+translateY(-5px)
+scale(1.03);
+
+filter:
+drop-shadow(
+0 12px 25px
+var(--hero-logo-hover-shadow)
+);
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+}
+
+
+/* ==========================================
+   ESTATÍSTICAS
+========================================== */
 
 .stats{
-padding:20px 0 120px;
+padding:40px 0 100px;
 }
 
 .stats-grid{
-
 display:grid;
+
 grid-template-columns:repeat(4,1fr);
-gap:24px;
+
+gap:20px;
 }
 
 .stat-card{
-
-padding:35px;
+padding:30px;
 
 text-align:center;
 
@@ -775,21 +1247,19 @@ background:var(--card);
 
 border:1px solid var(--border);
 
-border-radius:28px;
+border-radius:25px;
 
 transition:.35s;
 }
 
 .stat-card:hover{
-
 transform:translateY(-8px);
 
-border-color:rgba(139,44,255,.35);
+border-color:rgba(139,44,255,.4);
 }
 
 .stat-card h2{
-
-font-size:3rem;
+font-size:2rem;
 
 background:
 linear-gradient(
@@ -804,79 +1274,56 @@ var(--purple)
 
 .stat-card p{
 color:var(--muted);
-margin-top:12px;
+
+margin-top:10px;
 }
 
-/* ===================================
-TÍTULOS
-=================================== */
+
+/* ==========================================
+   TÍTULOS
+========================================== */
 
 .section-title{
-
 text-align:center;
 
-max-width:850px;
+max-width:750px;
 
-margin:0 auto 70px;
+margin:0 auto 60px;
 }
 
 .section-title span{
-
 display:inline-block;
 
-margin-bottom:14px;
+margin-bottom:12px;
+
+color:var(--blue);
 
 font-size:.9rem;
 
 font-weight:700;
 
 letter-spacing:2px;
-
-color:var(--blue);
 }
 
 .section-title h2{
+font-size:clamp(2.3rem,4vw,4rem);
 
-font-size:clamp(2.5rem,4vw,4rem);
-
-margin-bottom:18px;
+margin-bottom:15px;
 }
 
 .section-title p{
 color:var(--muted);
+
+line-height:1.8;
 }
 
-@media(max-width:980px){
 
-.hero-wrap{
-grid-template-columns:1fr;
-}
+/* ==========================================
+   SERVIÇOS
+========================================== */
 
-.stats-grid{
-grid-template-columns:1fr 1fr;
-}
-
-}
-
-@media(max-width:768px){
-
-.nav-menu{
-display:none;
-}
-
-.stats-grid{
-grid-template-columns:1fr;
-}
-
-.hero{
-padding-top:160px;
-}
-
-}
-
-/* CSS DOS CARDS*/
 .services{
-padding:120px 0;
+padding:100px 0;
 }
 
 .service-category{
@@ -884,48 +1331,41 @@ margin-bottom:90px;
 }
 
 .category-title{
-
 font-size:2rem;
 
 margin-bottom:35px;
 
 display:flex;
 align-items:center;
+
 gap:12px;
 }
 
 .services-grid{
-
 display:grid;
+
 grid-template-columns:repeat(3,1fr);
 
 gap:25px;
 }
 
 .service-card{
-
-padding:35px;
-
-background:
-linear-gradient(
-180deg,
-rgba(255,255,255,.05),
-rgba(255,255,255,.02)
-);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:30px;
-
-transition:.35s;
-
 position:relative;
 
 overflow:hidden;
+
+padding:35px;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:28px;
+
+transition:.35s;
 }
 
 .service-card::before{
-
 content:"";
 
 position:absolute;
@@ -942,16 +1382,19 @@ transparent 40%
 opacity:0;
 
 transition:.35s;
+
+pointer-events:none;
 }
 
 .service-card:hover{
+transform:
+translateY(-8px)
+rotateX(4deg);
 
-transform:translateY(-10px);
-
-border-color:rgba(139,44,255,.35);
+border-color:rgba(139,44,255,.4);
 
 box-shadow:
-0 0 35px rgba(139,44,255,.12);
+0 0 30px rgba(139,44,255,.15);
 }
 
 .service-card:hover::before{
@@ -959,8 +1402,11 @@ opacity:1;
 }
 
 .service-card i{
+position:relative;
 
-font-size:2rem;
+z-index:2;
+
+font-size:2.3rem;
 
 margin-bottom:20px;
 
@@ -976,11 +1422,19 @@ var(--purple)
 }
 
 .service-card h3{
-margin-bottom:15px;
+position:relative;
+
+z-index:2;
+
+margin-bottom:12px;
+
 font-size:1.25rem;
 }
 
 .service-card p{
+position:relative;
+
+z-index:2;
 
 color:var(--muted);
 
@@ -990,6 +1444,9 @@ line-height:1.8;
 }
 
 .price{
+position:relative;
+
+z-index:2;
 
 font-size:1.8rem;
 
@@ -1009,6 +1466,9 @@ var(--purple)
 }
 
 .price-note{
+position:relative;
+
+z-index:2;
 
 display:inline-block;
 
@@ -1027,8 +1487,18 @@ border:1px solid rgba(255,255,255,.08);
 color:var(--muted);
 }
 
-.full-nexa{
+body.light-theme .price-note{
+background:rgba(15,23,42,.04);
 
+border-color:rgba(15,23,42,.08);
+}
+
+.service-card .btn{
+position:relative;
+z-index:2;
+}
+
+.full-nexa{
 background:
 linear-gradient(
 180deg,
@@ -1043,62 +1513,76 @@ border:1px solid rgba(139,44,255,.25);
 font-size:2.2rem;
 }
 
-@media(max-width:1100px){
+.service-badge{
+position:relative;
 
-.services-grid{
-grid-template-columns:1fr 1fr;
+z-index:3;
+
+display:inline-flex;
+
+padding:8px 14px;
+
+margin-bottom:20px;
+
+border-radius:999px;
+
+background:
+linear-gradient(
+135deg,
+var(--blue),
+var(--purple)
+);
+
+color:#fff;
+
+font-size:.75rem;
+
+font-weight:800;
+
+letter-spacing:1px;
 }
 
-}
 
-@media(max-width:768px){
-
-.services-grid{
-grid-template-columns:1fr;
-}
-
-}
-
-
-/* ===================================
-PROCESSO NEXA
-=================================== */
+/* ==========================================
+   PROCESSO NEXA
+========================================== */
 
 .process{
-padding:130px 0;
+padding:120px 0;
 }
 
 .process-grid{
-
 display:grid;
+
 grid-template-columns:repeat(4,1fr);
 
 gap:25px;
 }
 
 .process-card{
-
 padding:35px;
 
+background:var(--card);
+
+border:1px solid var(--border);
+
 border-radius:28px;
-
-background:rgba(255,255,255,.03);
-
-border:1px solid rgba(255,255,255,.08);
 
 transition:.35s;
 }
 
 .process-card:hover{
-
 transform:translateY(-8px);
 
-border-color:rgba(139,44,255,.35);
+border-color:rgba(139,44,255,.4);
+
+box-shadow:
+0 0 30px rgba(139,44,255,.12);
 }
 
 .process-number{
-
 font-size:3rem;
+
 font-weight:800;
 
 margin-bottom:20px;
@@ -1114,43 +1598,42 @@ var(--purple)
 -webkit-text-fill-color:transparent;
 }
 
+.process-card h3{
+margin-bottom:8px;
+}
+
 .process-card p{
 color:var(--muted);
+
 margin-top:12px;
-}
 
-@media(max-width:980px){
-
-.process-grid{
-grid-template-columns:1fr 1fr;
-}
-
-}
-
-@media(max-width:768px){
-
-.process-grid{
-grid-template-columns:1fr;
-}
-
+line-height:1.8;
 }
 
 
-/* ===================================
-MEGA CTA
-=================================== */
+/* ==========================================
+   ESTATÍSTICAS FINAIS
+========================================== */
+
+.stats-section{
+padding:100px 0;
+}
+
+
+/* ==========================================
+   MEGA CTA
+========================================== */
 
 .mega-cta{
 padding:140px 0;
 }
 
 .mega-box{
-
 position:relative;
 
 overflow:hidden;
 
-padding:90px;
+padding:80px;
 
 text-align:center;
 
@@ -1160,14 +1643,24 @@ background:
 linear-gradient(
 180deg,
 rgba(0,191,255,.06),
-rgba(139,44,255,.12)
+rgba(139,44,255,.10)
 );
 
 border:1px solid rgba(255,255,255,.08);
 }
 
-.mega-glow{
+body.light-theme .mega-box{
+background:
+linear-gradient(
+180deg,
+rgba(14,165,233,.06),
+rgba(37,99,235,.08)
+);
 
+border-color:rgba(15,23,42,.08);
+}
+
+.mega-glow{
 position:absolute;
 
 width:500px;
@@ -1184,9 +1677,14 @@ transparent 70%
 
 top:-250px;
 right:-250px;
+
+pointer-events:none;
 }
 
 .mega-box span{
+position:relative;
+
+z-index:2;
 
 color:var(--blue);
 
@@ -1196,6 +1694,9 @@ letter-spacing:2px;
 }
 
 .mega-box h2{
+position:relative;
+
+z-index:2;
 
 font-size:clamp(2.5rem,5vw,5rem);
 
@@ -1203,6 +1704,9 @@ margin:25px 0;
 }
 
 .mega-box p{
+position:relative;
+
+z-index:2;
 
 max-width:750px;
 
@@ -1213,51 +1717,72 @@ color:var(--muted);
 line-height:1.8;
 }
 
-/* =========================
-FOOTER PREMIUM
-========================= */
+.mega-box .hero-buttons{
+position:relative;
+z-index:2;
 
-footer{
-margin-top:80px;
-padding:80px 0 30px;
-
-background:
-radial-gradient(
-circle at top center,
-rgba(139,44,255,.14),
-transparent 35%
-),
-linear-gradient(
-180deg,
-rgba(10,12,24,.95),
-rgba(5,7,18,1)
-);
-
-border-top:1px solid rgba(255,255,255,.06);
+justify-content:center;
 }
 
-/* GRID */
+
+/* ==========================================
+   FOOTER PREMIUM
+========================================== */
+
+footer{
+margin-top:60px;
+
+padding:70px 0 30px;
+
+background:var(--footer-bg);
+
+border-top:1px solid var(--footer-border);
+
+color:var(--footer-text);
+
+transition:
+background .35s ease,
+border-color .35s ease,
+color .35s ease;
+}
+
+footer .container{
+width:100%;
+
+max-width:1400px;
+
+margin:0 auto;
+
+padding:0 40px;
+}
 
 .footer-grid{
 display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:60px;
-align-items:start;
-margin-bottom:60px;
-}
 
-/* LOGO */
+grid-template-columns:2fr 1fr 1fr 1fr;
+
+gap:60px;
+
+align-items:start;
+
+margin-top:20px;
+}
 
 .footer-brand{
 max-width:500px;
 }
 
 .footer-logo{
-font-size:2rem;
+font-size:2.2rem;
+
 font-weight:800;
+
+line-height:1.1;
+
 margin-bottom:18px;
 
-background:linear-gradient(
+background:
+linear-gradient(
 90deg,
 var(--blue),
 var(--purple)
@@ -1268,23 +1793,32 @@ var(--purple)
 }
 
 .footer-description{
-color:var(--muted);
-line-height:1.8;
-}
+color:var(--footer-text);
 
-/* TÍTULOS */
+font-size:1rem;
+
+line-height:1.8;
+
+max-width:420px;
+
+transition:color .35s ease;
+}
 
 .footer-grid h4{
-font-size:1.1rem;
-font-weight:700;
-margin-bottom:20px;
-color:#fff;
-}
+font-size:1.15rem;
 
-/* LINKS */
+font-weight:700;
+
+margin-bottom:22px;
+
+color:var(--footer-title);
+
+transition:color .35s ease;
+}
 
 .footer-links{
 list-style:none;
+
 padding:0;
 margin:0;
 }
@@ -1295,48 +1829,65 @@ margin-bottom:14px;
 
 .footer-links a{
 text-decoration:none;
-color:var(--muted);
-transition:.3s;
+
+color:var(--footer-link);
+
+font-size:.95rem;
+
+transition:
+color .3s ease,
+padding-left .3s ease;
 }
 
 .footer-links a:hover{
-color:#fff;
+color:var(--footer-link-hover);
+
 padding-left:6px;
 }
 
-/* FOOTER BOTTOM */
-
 .footer-bottom{
 display:flex;
+
 justify-content:space-between;
+
 align-items:flex-end;
 
 width:100%;
 
-margin-top:30px;
+margin-top:50px;
+
 padding-top:25px;
 
-border-top:1px solid rgba(255,255,255,.06);
+border-top:1px solid var(--footer-border);
+
+transition:border-color .35s ease;
 }
 
 .footer-bottom p{
 margin:0;
-color:var(--muted);
+
+color:var(--footer-text);
+
+transition:color .35s ease;
 }
 
-.footer-bottom > p:first-child{
-max-width:400px;
-}
+.footer-bottom>p:first-child{
+max-width:300px;
 
-/* ASSINATURA */
+text-align:left;
+}
 
 .footer-signature{
-margin-left:auto;
 text-align:right;
+
+margin-left:auto;
+
+color:var(--footer-text);
 }
 
 .footer-signature a{
-background:linear-gradient(
+background:
+linear-gradient(
 90deg,
 var(--blue),
 var(--purple-soft),
@@ -1347,32 +1898,169 @@ var(--purple)
 -webkit-text-fill-color:transparent;
 
 text-decoration:none;
+
 font-weight:600;
-transition:.3s;
+
+transition:
+filter .3s ease,
+letter-spacing .3s ease;
 }
 
 .footer-signature a:hover{
 filter:brightness(1.2);
+
 letter-spacing:.5px;
 }
 
-/* RESPONSIVO */
 
-@media(max-width:1000px){
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media(max-width:1100px){
+
+.services-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:980px){
+
+.hero-wrap{
+grid-template-columns:1fr;
+
+gap:60px;
+}
+
+.hero-card{
+margin:auto;
+}
+
+.stats-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.process-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:900px){
+
+.desktop-menu{
+display:none;
+}
+
+.menu-toggle{
+display:flex;
+}
+
+.logo span{
+font-size:1rem;
+}
 
 .footer-grid{
 grid-template-columns:1fr 1fr;
+
 gap:40px;
+}
+
+}
+
+@media(min-width:901px){
+
+.mobile-menu,
+.menu-overlay{
+display:none;
 }
 
 }
 
 @media(max-width:768px){
 
+.hero{
+padding:150px 0 90px;
+}
+
+.hero h1{
+font-size:clamp(2.8rem,12vw,4.5rem);
+}
+
+.hero-wrap>div:first-child p{
+font-size:1rem;
+}
+
+.hero-card{
+padding:38px 28px;
+}
+
+.hero-card .hero-logo{
+width:135px;
+}
+
+.stats{
+padding:20px 0 80px;
+}
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.services{
+padding:90px 0;
+}
+
+.service-category{
+margin-bottom:70px;
+}
+
+.services-grid{
+grid-template-columns:1fr;
+}
+
+.category-title{
+font-size:1.7rem;
+}
+
+.process{
+padding:90px 0;
+}
+
+.process-grid{
+grid-template-columns:1fr;
+}
+
+.stats-section{
+padding:80px 0;
+}
+
+.mega-cta{
+padding:90px 0;
+}
+
+.mega-box{
+padding:55px 25px;
+border-radius:30px;
+}
+
+footer{
+margin-top:50px;
+
+padding-top:60px;
+}
+
+footer .container{
+padding:0 24px;
+}
+
 .footer-grid{
 grid-template-columns:1fr;
-text-align:center;
+
 gap:35px;
+
+text-align:center;
 }
 
 .footer-brand{
@@ -1381,190 +2069,385 @@ max-width:100%;
 
 .footer-description{
 max-width:100%;
+
+margin:0 auto;
+}
+
+.footer-links a:hover{
+padding-left:0;
 }
 
 .footer-bottom{
 flex-direction:column;
+
 align-items:center;
+
 text-align:center;
+
 gap:15px;
+}
+
+.footer-bottom>p:first-child{
+max-width:100%;
+
+text-align:center;
 }
 
 .footer-signature{
 margin-left:0;
+
 text-align:center;
+}
+
+}
+
+@media(max-width:500px){
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.hero-buttons .btn{
+width:100%;
+}
+
+.mega-box .hero-buttons{
+align-items:center;
+}
+
+.mega-box .hero-buttons .btn{
+width:100%;
+}
+
+.logo span{
+font-size:.9rem;
+}
+
+.mobile-menu{
+width:340px;
+padding:25px;
+}
+
+}
+
+
+/* ==========================================
+   MOBILE THEME
+========================================== */
+
+.mobile-theme-toggle{
+display:flex;
+}
+
+@media(min-width:901px){
+
+.mobile-theme-toggle{
+display:none;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="loader" id="loader">
-
-<img src="nexalogo-removebg-preview.png">
-
-<p>CARREGANDO NEXA...</p>
-
-</div>
-
-<!-- ===========================
-     HEADER PREMIUM NEXA
-=========================== -->
+<!-- ==========================================
+     HEADER
+========================================== -->
 
 <header class="main-header" id="header">
 
-    <a href="inicio.html" class="logo">
+<a href="inicio.html" class="logo">
 
-        <img src="navicon.png" alt="Nexa">
+<img src="navicon.png" alt="Nexa">
 
-        <span>Nexa Agency Enterprises</span>
+<span>Nexa Agency Enterprises</span>
 
-    </a>
+</a>
 
-    <!-- MENU DESKTOP -->
+<nav class="desktop-menu">
 
-    <nav class="desktop-menu">
+<a href="inicio.html">Início</a>
 
-        <a href="inicio.html">Início</a>
+<a href="3serviços.html">Serviços</a>
 
-        <a href="3serviços.html">Serviços</a>
+<a href="2portfolio.html">Portfólio</a>
 
-        <a href="2portfolio.html">Portfólio</a>
+<a href="readme.html">Sobre</a>
 
-        <a href="readme.html">Sobre</a>
+<a href="nexa IA.html">Nexa IA</a>
 
-        <a href="https://typebot.co/my-typebot-lyx2eqn">NexaBot</a>
+<div class="settings">
 
-    </nav>
+<button
+type="button"
+class="settings-btn"
+id="settingsBtn"
+aria-label="Abrir configurações"
+aria-expanded="false">
 
-    <!-- BOTÃO MOBILE -->
+<i class="fa-solid fa-gear"></i>
 
-    <button class="menu-toggle" id="menuToggle">
+</button>
 
-        <span></span>
-        <span></span>
-        <span></span>
+<div class="settings-menu" id="settingsMenu">
 
-    </button>
+<a href="dashboard.html">
+
+<i class="fa-solid fa-user"></i>
+
+<span>Minha conta</span>
+
+</a>
+
+<a href="404.html">
+
+<i class="fa-solid fa-bell"></i>
+
+<span>Notificações</span>
+
+</a>
+
+<button
+type="button"
+class="settings-action"
+id="themeToggle">
+
+<i
+class="fa-solid fa-paintbrush theme-icon"
+id="themeIcon">
+</i>
+
+<span id="themeText">
+Tema
+</span>
+
+</button>
+
+<a href="404.html">
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+<span>Histórico</span>
+
+</a>
+
+<a href="404.html">
+
+<i class="fa-solid fa-star"></i>
+
+<span>Favoritos</span>
+
+</a>
+
+<a href="ajuda.html">
+
+<i class="fa-solid fa-circle-question"></i>
+
+<span>Ajuda</span>
+
+</a>
+
+<hr>
+
+<a href="index.html">
+
+<i class="fa-solid fa-right-left"></i>
+
+<span>Trocar conta</span>
+
+</a>
+
+<a href="index.html">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+<span>Login</span>
+
+</a>
+
+<a
+href="index.html"
+class="logout"
+id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+<span>Sair</span>
+
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<button
+type="button"
+class="menu-toggle"
+id="menuToggle"
+aria-label="Abrir menu">
+
+<span></span>
+<span></span>
+<span></span>
+
+</button>
 
 </header>
 
-<!-- ===========================
+
+<!-- ==========================================
      OVERLAY
-=========================== -->
+========================================== -->
 
-<div class="menu-overlay" id="menuOverlay"></div>
+<div
+class="menu-overlay"
+id="menuOverlay">
+</div>
 
-<!-- ===========================
+
+<!-- ==========================================
      MENU MOBILE
-=========================== -->
+========================================== -->
 
-<aside class="mobile-menu" id="mobileMenu">
+<aside
+class="mobile-menu"
+id="mobileMenu">
 
-    <div class="mobile-top">
+<div class="mobile-top">
 
-        <img src="navicon.png" alt="Nexa">
+<img
+src="navicon.png"
+alt="Nexa">
 
-        <button class="close-menu" id="closeMenu">
+<button
+type="button"
+class="close-menu"
+id="closeMenu"
+aria-label="Fechar menu">
 
-            <i class="fa-solid fa-xmark"></i>
+<i class="fa-solid fa-xmark"></i>
 
-        </button>
+</button>
 
-    </div>
+</div>
 
-    <nav class="mobile-links">
+<nav class="mobile-links">
 
-        <a href="inicio.html">
+<a href="inicio.html">
 
-            <i class="fa-solid fa-house"></i>
+<i class="fa-solid fa-house"></i>
 
-            <span>Início</span>
+<span>Início</span>
 
-        </a>
+</a>
 
-        <a href="3serviços.html">
+<a href="3serviços.html">
 
-            <i class="fa-solid fa-briefcase"></i>
+<i class="fa-solid fa-briefcase"></i>
 
-            <span>Serviços</span>
+<span>Serviços</span>
 
-        </a>
+</a>
 
-        <a href="2portfolio.html">
+<a href="2portfolio.html">
 
-            <i class="fa-solid fa-layer-group"></i>
+<i class="fa-solid fa-layer-group"></i>
 
-            <span>Portfólio</span>
+<span>Portfólio</span>
 
-        </a>
+</a>
 
-        <a href="readme.html">
+<a href="readme.html">
 
-            <i class="fa-solid fa-user"></i>
+<i class="fa-solid fa-user"></i>
 
-            <span>Sobre</span>
+<span>Sobre</span>
 
-        </a>
+</a>
 
-        <a href="https://typebot.co/my-typebot-lyx2eqn">
+<a href="nexa IA.html">
 
-            <i class="fa-solid fa-robot"></i>
+<i class="fa-solid fa-robot"></i>
 
-            <span>NexaBot</span>
+<span>Nexa IA</span>
 
-        </a>
+</a>
 
-    </nav>
+<button
+type="button"
+class="settings-action mobile-theme-toggle"
+id="mobileThemeToggle">
 
-    <div class="mobile-divider"></div>
+<i
+class="fa-solid fa-paintbrush theme-icon"
+id="mobileThemeIcon">
+</i>
 
-    <div class="mobile-social">
+<span id="mobileThemeText">
+Tema
+</span>
 
-        <a href="https://wa.me/5511981332616">
+</button>
 
-            <i class="fab fa-whatsapp"></i>
+</nav>
 
-            WhatsApp
+<div class="mobile-divider"></div>
 
-        </a>
+<div class="mobile-social">
 
-        <a href="https://www.instagram.com/agencynexaenterprises/">
+<a href="https://wa.me/5511981332616">
 
-            <i class="fab fa-instagram"></i>
+<i class="fab fa-whatsapp"></i>
 
-            Instagram
+WhatsApp
 
-        </a>
+</a>
 
-        <a href="https://www.tiktok.com/@agencynexaenterprises">
+<a href="https://www.instagram.com/agencynexaenterprises/">
 
-            <i class="fab fa-tiktok"></i>
+<i class="fab fa-instagram"></i>
 
-            TikTok
+Instagram
 
-        </a>
+</a>
 
-        <a href="https://www.youtube.com/channel/UCBvGm-pfP3e_h4zDxUQ309Q">
+<a href="https://www.tiktok.com/@agencynexaenterprises">
 
-            <i class="fab fa-youtube"></i>
+<i class="fab fa-tiktok"></i>
 
-            YouTube
+TikTok
 
-        </a>
+</a>
 
-    </div>
+<a href="https://www.youtube.com/channel/UCBvGm-pfP3e_h4zDxUQ309Q">
 
-    <a href="3serviços.html" class="mobile-button">
+<i class="fab fa-youtube"></i>
 
-        Solicitar orçamento
+YouTube
 
-    </a>
+</a>
+
+</div>
+
+<a
+href="3serviços.html"
+class="mobile-button">
+
+Solicitar orçamento
+
+</a>
 
 </aside>
+
+
+<!-- ==========================================
+     HERO
+========================================== -->
 
 <section class="hero">
 
@@ -1575,45 +2458,65 @@ text-align:center;
 <div>
 
 <div class="tag">
+
 🚀 Soluções Estratégicas para Empresas
+
 </div>
 
 <h1>
+
 Estratégia.
 Tecnologia.
 <span>Resultado.</span>
+
 </h1>
 
 <p>
+
 A Nexa desenvolve soluções completas para empresas que desejam crescer com inteligência, construir autoridade e transformar presença digital em resultados reais. Cada serviço é planejado para gerar impacto, posicionamento e evolução sustentável.
+
 </p>
 
 <div class="hero-buttons">
 
-<a href="#servicos" class="btn btn-primary">
+<a
+href="#servicos"
+class="btn btn-primary">
+
 Explorar Serviços
+
 </a>
 
-<a href="https://wa.me/5511981332616"
+<a
+href="https://wa.me/5511981332616"
 class="btn btn-secondary">
+
 Falar com Especialista
+
 </a>
 
 </div>
 
 </div>
+
 
 <div class="hero-card">
 
-<img src="nexalogo-removebg-preview.png"
-class="hero-logo">
+<img
+src="nexalogo-removebg-preview.png"
+class="hero-logo"
+alt="Nexa">
 
 <h3>
+
 Ecossistema Nexa
+
 </h3>
 
 <p>
+
 Marketing, branding, desenvolvimento, automação e inteligência artificial trabalhando juntos para criar uma estrutura sólida, moderna e preparada para escalar.
+
 </p>
 
 </div>
@@ -1623,6 +2526,11 @@ Marketing, branding, desenvolvimento, automação e inteligência artificial tra
 </div>
 
 </section>
+
+
+<!-- ==========================================
+     ESTATÍSTICAS
+========================================== -->
 
 <section class="stats">
 
@@ -1631,23 +2539,43 @@ Marketing, branding, desenvolvimento, automação e inteligência artificial tra
 <div class="stats-grid">
 
 <div class="stat-card">
+
 <h2>15+</h2>
-<p>Serviços Especializados</p>
+
+<p>
+Serviços Especializados
+</p>
+
 </div>
 
 <div class="stat-card">
+
 <h2>100%</h2>
-<p>Personalizado</p>
+
+<p>
+Personalizado
+</p>
+
 </div>
 
 <div class="stat-card">
+
 <h2>24/7</h2>
-<p>Suporte Estratégico</p>
+
+<p>
+Suporte Estratégico
+</p>
+
 </div>
 
 <div class="stat-card">
+
 <h2>∞</h2>
-<p>Possibilidades de Crescimento</p>
+
+<p>
+Possibilidades de Crescimento
+</p>
+
 </div>
 
 </div>
@@ -1656,29 +2584,22 @@ Marketing, branding, desenvolvimento, automação e inteligência artificial tra
 
 </section>
 
-<script>
 
-window.addEventListener("load",()=>{
+<!-- ==========================================
+     SERVIÇOS
+========================================== -->
 
-document
-.getElementById("loader")
-.classList.add("hide");
-
-});
-
-</script>
-
-<!-- ===================================
-SERVIÇOS
-=================================== -->
-
-<section class="services" id="servicos">
+<section
+class="services"
+id="servicos">
 
 <div class="container">
 
 <div class="section-title">
 
-<span>NOSSAS SOLUÇÕES</span>
+<span>
+NOSSAS SOLUÇÕES
+</span>
 
 <h2>
 Serviços desenvolvidos para gerar crescimento.
@@ -1690,21 +2611,27 @@ Cada solução foi criada para fortalecer posicionamento, aumentar autoridade e 
 
 </div>
 
+
 <!-- MARKETING -->
 
 <div class="service-category">
 
 <h2 class="category-title">
+
 🚀 Marketing & Crescimento
+
 </h2>
 
 <div class="services-grid">
+
 
 <div class="service-card">
 
 <i class="fas fa-hashtag"></i>
 
-<h3>Social Media</h3>
+<h3>
+Social Media
+</h3>
 
 <p>
 Gestão estratégica de redes sociais com planejamento, posicionamento e crescimento contínuo.
@@ -1714,22 +2641,28 @@ Gestão estratégica de redes sociais com planejamento, posicionamento e crescim
 A partir de R$ 750/mês
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Social%20Media"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Social%20Media"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-bullhorn"></i>
 
-<h3>Tráfego Pago</h3>
+<h3>
+Tráfego Pago
+</h3>
 
 <p>
 Campanhas estratégicas focadas em alcance, geração de leads e vendas.
@@ -1739,22 +2672,28 @@ Campanhas estratégicas focadas em alcance, geração de leads e vendas.
 A partir de R$ 950/mês
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Tráfego%20Pago"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Tráfego%20Pago"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-chart-line"></i>
 
-<h3>Gestão de Tráfego</h3>
+<h3>
+Gestão de Tráfego
+</h3>
 
 <p>
 Monitoramento, otimização e escalonamento inteligente de campanhas.
@@ -1764,22 +2703,28 @@ Monitoramento, otimização e escalonamento inteligente de campanhas.
 A partir de R$ 1.100/mês
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Gestão%20de%20Tráfego"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Gestão%20de%20Tráfego"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-search"></i>
 
-<h3>SEO</h3>
+<h3>
+SEO
+</h3>
 
 <p>
 Otimização para mecanismos de busca e crescimento orgânico sustentável.
@@ -1789,22 +2734,28 @@ Otimização para mecanismos de busca e crescimento orgânico sustentável.
 A partir de R$ 700/mês
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20SEO"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20SEO"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-envelope"></i>
 
-<h3>Email Marketing</h3>
+<h3>
+Email Marketing
+</h3>
 
 <p>
 Campanhas automatizadas para relacionamento, recuperação e fidelização.
@@ -1814,13 +2765,16 @@ Campanhas automatizadas para relacionamento, recuperação e fidelização.
 A partir de R$ 450
 </div>
 
-<a   class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Email%20Marketing"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Email%20Marketing"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
@@ -1828,22 +2782,28 @@ Solicitar
 </div>
 
 </div>
+
 
 <!-- BRANDING -->
 
 <div class="service-category">
 
 <h2 class="category-title">
+
 🎨 Branding & Conteúdo
+
 </h2>
 
 <div class="services-grid">
+
 
 <div class="service-card">
 
 <i class="fas fa-palette"></i>
 
-<h3>Design Gráfico</h3>
+<h3>
+Design Gráfico
+</h3>
 
 <p>
 Artes profissionais para campanhas, redes sociais e comunicação visual.
@@ -1853,22 +2813,28 @@ Artes profissionais para campanhas, redes sociais e comunicação visual.
 A partir de R$ 500
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Design%20Gráfico"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Design%20Gráfico"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-crown"></i>
 
-<h3>Branding</h3>
+<h3>
+Branding
+</h3>
 
 <p>
 Posicionamento, identidade visual e construção estratégica de marca.
@@ -1878,22 +2844,28 @@ Posicionamento, identidade visual e construção estratégica de marca.
 A partir de R$ 1.500
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Branding"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Branding"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-pen-fancy"></i>
 
-<h3>Copywriting</h3>
+<h3>
+Copywriting
+</h3>
 
 <p>
 Textos persuasivos para anúncios, páginas de venda e campanhas.
@@ -1903,22 +2875,28 @@ Textos persuasivos para anúncios, páginas de venda e campanhas.
 A partir de R$ 600
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Copywriting"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Copywriting"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-video"></i>
 
-<h3>Audiovisual</h3>
+<h3>
+Audiovisual
+</h3>
 
 <p>
 Produção e edição de vídeos institucionais, promocionais e cinematográficos.
@@ -1928,13 +2906,16 @@ Produção e edição de vídeos institucionais, promocionais e cinematográfico
 A partir de R$ 1.200
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Audiovisual"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Audiovisual"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
@@ -1942,22 +2923,28 @@ Solicitar
 </div>
 
 </div>
+
 
 <!-- TECNOLOGIA -->
 
 <div class="service-category">
 
 <h2 class="category-title">
+
 💻 Tecnologia & Inovação
+
 </h2>
 
 <div class="services-grid">
+
 
 <div class="service-card">
 
 <i class="fas fa-code"></i>
 
-<h3>Programação Web</h3>
+<h3>
+Programação Web
+</h3>
 
 <p>
 Sites, landing pages e sistemas modernos preparados para escalar.
@@ -1967,22 +2954,28 @@ Sites, landing pages e sistemas modernos preparados para escalar.
 A partir de R$ 2.300
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="dev.html"
+<a
+href="dev.html"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-brain"></i>
 
-<h3>Marketing com IA</h3>
+<h3>
+Marketing com IA
+</h3>
 
 <p>
 Inteligência artificial aplicada à automação, análise e crescimento.
@@ -1992,22 +2985,28 @@ Inteligência artificial aplicada à automação, análise e crescimento.
 A partir de R$ 1.500
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Marketing%20com%20IA"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Marketing%20com%20IA"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-robot"></i>
 
-<h3>Automações Empresariais</h3>
+<h3>
+Automações Empresariais
+</h3>
 
 <p>
 Processos inteligentes para aumentar produtividade e reduzir custos.
@@ -2017,22 +3016,28 @@ Processos inteligentes para aumentar produtividade e reduzir custos.
 A partir de R$ 2.000
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Automações%20Empresariais"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Automações%20Empresariais"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
+
 
 <div class="service-card">
 
 <i class="fas fa-sitemap"></i>
 
-<h3>Funis de Venda</h3>
+<h3>
+Funis de Venda
+</h3>
 
 <p>
 Estrutura completa de captação, nutrição e conversão de clientes.
@@ -2042,13 +3047,16 @@ Estrutura completa de captação, nutrição e conversão de clientes.
 A partir de R$ 1.300
 </div>
 
-<a class="price-note">
+<div class="price-note">
 Sob Consulta
-</a>
+</div>
 
-<a href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Funis%20de%20Venda"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Funis%20de%20Venda"
 class="btn btn-primary">
+
 Solicitar
+
 </a>
 
 </div>
@@ -2056,26 +3064,31 @@ Solicitar
 </div>
 
 </div>
+
 
 <!-- ESTRATÉGIA -->
 
 <div class="service-category">
 
 <h2 class="category-title">
+
 🧠 Estratégia
+
 </h2>
 
 <div class="services-grid">
+
 
 <div class="service-card">
 
 <i class="fas fa-chess-king"></i>
 
-<h3>Consultoria Estratégica</h3>
+<h3>
+Consultoria Estratégica
+</h3>
 
 <p>
-Diagnóstico completo da sua empresa, 
-posicionamento e plano de crescimento.
+Diagnóstico completo da sua empresa, posicionamento e plano de crescimento.
 </p>
 
 <div class="price">
@@ -2086,14 +3099,18 @@ A partir de R$ 500,00
 Valor final sob consulta
 </div>
 
-<a href="#" class="btn btn-primary">
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20em%20Consultoria%20Estratégica"
+class="btn btn-primary">
+
 Solicitar Serviço
+
 </a>
 
 </div>
 
 
-<div class="service-card featured full-nexa">
+<div class="service-card full-nexa">
 
 <div class="service-badge">
 MAIS COMPLETO
@@ -2101,12 +3118,12 @@ MAIS COMPLETO
 
 <i class="fas fa-crown"></i>
 
-<h3>Pacote Full Nexa</h3>
+<h3>
+Pacote Full Nexa
+</h3>
 
 <p>
-Operação completa da presença digital
-da sua marca com todos os serviços
-integrados pela equipe Nexa.
+Operação completa da presença digital da sua marca com todos os serviços integrados pela equipe Nexa.
 </p>
 
 <div class="price">
@@ -2117,9 +3134,17 @@ Sob Consulta
 Projeto totalmente personalizado
 </div>
 
-<a href="#" class="btn btn-primary">
+<a
+href="https://wa.me/5511981332616?text=Olá,%20tenho%20interesse%20no%20Pacote%20Full%20Nexa"
+class="btn btn-primary">
+
 Solicitar Proposta
+
 </a>
+
+</div>
+
+</div>
 
 </div>
 
@@ -2128,9 +3153,9 @@ Solicitar Proposta
 </section>
 
 
-<!-- ===================================
-COMO TRABALHAMOS
-=================================== -->
+<!-- ==========================================
+     PROCESSO
+========================================== -->
 
 <section class="process">
 
@@ -2138,20 +3163,22 @@ COMO TRABALHAMOS
 
 <div class="section-title">
 
-<span>NOSSO PROCESSO</span>
+<span>
+NOSSO PROCESSO
+</span>
 
 <h2>
 Metodologia baseada em estratégia.
 </h2>
 
 <p>
-Toda empresa possui objetivos diferentes.
-Por isso cada projeto passa por um processo estruturado para garantir crescimento consistente.
+Toda empresa possui objetivos diferentes. Por isso cada projeto passa por um processo estruturado para garantir crescimento consistente.
 </p>
 
 </div>
 
 <div class="process-grid">
+
 
 <div class="process-card">
 
@@ -2159,7 +3186,9 @@ Por isso cada projeto passa por um processo estruturado para garantir cresciment
 01
 </div>
 
-<h3>Diagnóstico</h3>
+<h3>
+Diagnóstico
+</h3>
 
 <p>
 Estudamos sua empresa, concorrentes, público-alvo e posicionamento atual.
@@ -2167,13 +3196,16 @@ Estudamos sua empresa, concorrentes, público-alvo e posicionamento atual.
 
 </div>
 
+
 <div class="process-card">
 
 <div class="process-number">
 02
 </div>
 
-<h3>Planejamento</h3>
+<h3>
+Planejamento
+</h3>
 
 <p>
 Definimos objetivos, estratégias, canais e oportunidades de crescimento.
@@ -2181,13 +3213,16 @@ Definimos objetivos, estratégias, canais e oportunidades de crescimento.
 
 </div>
 
+
 <div class="process-card">
 
 <div class="process-number">
 03
 </div>
 
-<h3>Execução</h3>
+<h3>
+Execução
+</h3>
 
 <p>
 Marketing, design, tecnologia e conteúdo atuando de forma integrada.
@@ -2195,13 +3230,16 @@ Marketing, design, tecnologia e conteúdo atuando de forma integrada.
 
 </div>
 
+
 <div class="process-card">
 
 <div class="process-number">
 04
 </div>
 
-<h3>Otimização</h3>
+<h3>
+Otimização
+</h3>
 
 <p>
 Acompanhamento contínuo de métricas, resultados e melhorias.
@@ -2215,9 +3253,10 @@ Acompanhamento contínuo de métricas, resultados e melhorias.
 
 </section>
 
-<!-- ===================================
-ESTATÍSTICAS
-=================================== -->
+
+<!-- ==========================================
+     ESTATÍSTICAS FINAIS
+========================================== -->
 
 <section class="stats-section">
 
@@ -2225,7 +3264,9 @@ ESTATÍSTICAS
 
 <div class="section-title">
 
-<span>NEXA EM NÚMEROS</span>
+<span>
+NEXA EM NÚMEROS
+</span>
 
 <h2>
 Estrutura preparada para crescer.
@@ -2236,23 +3277,51 @@ Estrutura preparada para crescer.
 <div class="stats-grid">
 
 <div class="stat-card">
-<h2>15+</h2>
-<p>Serviços Especializados</p>
+
+<h2>
+15+
+</h2>
+
+<p>
+Serviços Especializados
+</p>
+
 </div>
 
 <div class="stat-card">
-<h2>100%</h2>
-<p>Projetos Personalizados</p>
+
+<h2>
+100%
+</h2>
+
+<p>
+Projetos Personalizados
+</p>
+
 </div>
 
 <div class="stat-card">
-<h2>24/7</h2>
-<p>Mentalidade de Evolução</p>
+
+<h2>
+24/7
+</h2>
+
+<p>
+Mentalidade de Evolução
+</p>
+
 </div>
 
 <div class="stat-card">
-<h2>∞</h2>
-<p>Potencial de Crescimento</p>
+
+<h2>
+∞
+</h2>
+
+<p>
+Potencial de Crescimento
+</p>
+
 </div>
 
 </div>
@@ -2261,9 +3330,10 @@ Estrutura preparada para crescer.
 
 </section>
 
-<!-- ===================================
-CTA FINAL
-=================================== -->
+
+<!-- ==========================================
+     CTA FINAL
+========================================== -->
 
 <section class="mega-cta">
 
@@ -2273,27 +3343,34 @@ CTA FINAL
 
 <div class="mega-glow"></div>
 
-<span>NEXA ENTERPRISES</span>
+<span>
+NEXA ENTERPRISES
+</span>
 
 <h2>
 Pronto para transformar sua marca?
 </h2>
 
 <p>
-Posicionamento, autoridade, tecnologia, branding e crescimento.
-Tudo conectado em uma única estratégia para levar sua empresa ao próximo nível.
+Posicionamento, autoridade, tecnologia, branding e crescimento. Tudo conectado em uma única estratégia para levar sua empresa ao próximo nível.
 </p>
 
 <div class="hero-buttons">
 
-<a href="https://wa.me/5511981332616?text=Olá,%20gostaria%20de%20solicitar%20uma%20proposta"
+<a
+href="https://wa.me/5511981332616?text=Olá,%20gostaria%20de%20solicitar%20uma%20proposta"
 class="btn btn-primary">
+
 Solicitar Proposta
+
 </a>
 
-<a href="1contratação.html"
+<a
+href="1contratação.html"
 class="btn btn-secondary">
-trabalhar na Nexa
+
+Trabalhar na Nexa
+
 </a>
 
 </div>
@@ -2304,15 +3381,17 @@ trabalhar na Nexa
 
 </section>
 
-<!-- ===================================
-FOOTER PREMIUM
-=================================== -->
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
 
 <footer>
 
 <div class="container">
 
 <div class="footer-grid">
+
 
 <div class="footer-brand">
 
@@ -2326,46 +3405,119 @@ Conectando estratégia, tecnologia e criatividade para construir marcas fortes, 
 
 </div>
 
+
 <div>
 
-<h4>Navegação</h4>
+<h4>
+Navegação
+</h4>
 
 <ul class="footer-links">
-<li><a href="inicio.html">Início</a></li>
-<li><a href="3serviços.html">Serviços</a></li>
-<li><a href="2portfolio.html">Portfólio</a></li>
-<li><a href="readme.html">Sobre</a></li>
+
+<li>
+<a href="inicio.html">
+Início
+</a>
+</li>
+
+<li>
+<a href="3serviços.html">
+Serviços
+</a>
+</li>
+
+<li>
+<a href="2portfolio.html">
+Portfólio
+</a>
+</li>
+
+<li>
+<a href="readme.html">
+Sobre
+</a>
+</li>
+
 </ul>
 
 </div>
 
+
 <div>
 
-<h4>Serviços</h4>
+<h4>
+Serviços
+</h4>
 
 <ul class="footer-links">
-<li><a href="#">Marketing Digital</a></li>
-<li><a href="#">Branding</a></li>
-<li><a href="#">Programação Web</a></li>
-<li><a href="#">Consultoria</a></li>
+
+<li>
+<a href="#servicos">
+Marketing Digital
+</a>
+</li>
+
+<li>
+<a href="#servicos">
+Branding
+</a>
+</li>
+
+<li>
+<a href="dev.html">
+Programação Web
+</a>
+</li>
+
+<li>
+<a href="#servicos">
+Consultoria
+</a>
+</li>
+
 </ul>
 
 </div>
 
+
 <div>
 
-<h4>Contato</h4>
+<h4>
+Contato
+</h4>
 
 <ul class="footer-links">
-<li><a href="mailto:nexaenterprisesadm@gmail.com">Email Comercial</a></li>
-<li><a href="https://wa.me/5511981332616?text=Olá,%20gostaria%20de%20solicitar%20os%20serviços%20da%20Nexa">WhatsApp</a></li>
-<li><a href="https://www.instagram.com/agencynexaenterprises/">Instagram</a></li>
-<li><a href="https://typebot.co/my-typebot-lyx2eqn">NexaBot</a></li>
+
+<li>
+<a href="mailto:nexaenterprisesadm@gmail.com">
+Email Comercial
+</a>
+</li>
+
+<li>
+<a href="https://wa.me/5511981332616?text=Olá,%20gostaria%20de%20solicitar%20os%20serviços%20da%20Nexa">
+WhatsApp
+</a>
+</li>
+
+<li>
+<a href="https://www.instagram.com/agencynexaenterprises/">
+Instagram
+</a>
+</li>
+
+<li>
+<a href="nexa IA.html">
+Nexa IA
+</a>
+</li>
+
 </ul>
 
 </div>
 
 </div>
+
 
 <div class="footer-bottom">
 
@@ -2375,10 +3527,13 @@ Todos os direitos reservados.
 </p>
 
 <p class="footer-signature">
+
 Fundada por
+
 <a href="https://contatoceonexaenterprises.carrd.co/">
 Vinícios Santana
 </a>
+
 </p>
 
 </div>
@@ -2387,27 +3542,63 @@ Vinícios Santana
 
 </footer>
 
+
 <script>
 
-/* ============================
-   HEADER PREMIUM NEXA
-============================ */
+/* ==========================================
+   LOADER
+========================================== */
 
-const header = document.querySelector(".main-header");
+window.addEventListener("load",()=>{
 
-const menu = document.getElementById("mobileMenu");
+setTimeout(()=>{
 
-const overlay = document.getElementById("menuOverlay");
+const loader=
+document.getElementById("loader");
 
-const openBtn = document.getElementById("menuToggle");
+if(loader){
 
-const closeBtn = document.getElementById("closeMenu");
+loader.classList.add("hidden");
 
-const body = document.body;
+}
 
-/* ABRIR */
+},2800);
+
+});
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+const header=
+document.querySelector(".main-header");
+
+const menu=
+document.getElementById("mobileMenu");
+
+const overlay=
+document.getElementById("menuOverlay");
+
+const openBtn=
+document.getElementById("menuToggle");
+
+const closeBtn=
+document.getElementById("closeMenu");
+
+const body=
+document.body;
+
+
+/* ==========================================
+   MENU MOBILE
+========================================== */
 
 function openMenu(){
+
+if(!menu || !overlay){
+return;
+}
 
 menu.classList.add("active");
 
@@ -2417,55 +3608,79 @@ body.style.overflow="hidden";
 
 }
 
-/* FECHAR */
-
 function closeMenu(){
 
+if(menu){
 menu.classList.remove("active");
+}
 
+if(overlay){
 overlay.classList.remove("active");
+}
 
 body.style.overflow="";
 
 }
 
-/* BOTÕES */
+if(openBtn){
 
-openBtn.addEventListener("click",openMenu);
-
-closeBtn.addEventListener("click",closeMenu);
-
-overlay.addEventListener("click",closeMenu);
-
-/* FECHAR AO CLICAR EM UM LINK */
-
-document.querySelectorAll(".mobile-links a").forEach(link=>{
-
-link.addEventListener("click",closeMenu);
-
-});
-
-document.querySelectorAll(".mobile-social a").forEach(link=>{
-
-link.addEventListener("click",closeMenu);
-
-});
-
-/* ESC */
-
-document.addEventListener("keydown",function(e){
-
-if(e.key==="Escape"){
-
-closeMenu();
+openBtn.addEventListener(
+"click",
+openMenu
+);
 
 }
 
+if(closeBtn){
+
+closeBtn.addEventListener(
+"click",
+closeMenu
+);
+
+}
+
+if(overlay){
+
+overlay.addEventListener(
+"click",
+closeMenu
+);
+
+}
+
+document
+.querySelectorAll(".mobile-links a")
+.forEach(link=>{
+
+link.addEventListener(
+"click",
+closeMenu
+);
+
 });
 
-/* HEADER MENOR AO ROLAR */
+document
+.querySelectorAll(".mobile-social a")
+.forEach(link=>{
+
+link.addEventListener(
+"click",
+closeMenu
+);
+
+});
+
+
+/* ==========================================
+   HEADER AO ROLAR
+========================================== */
 
 window.addEventListener("scroll",()=>{
+
+if(!header){
+return;
+}
 
 if(window.scrollY>40){
 
@@ -2474,6 +3689,352 @@ header.classList.add("scrolled");
 }else{
 
 header.classList.remove("scrolled");
+
+}
+
+});
+
+
+/* ==========================================
+   CONFIGURAÇÕES
+========================================== */
+
+const settingsBtn=
+document.getElementById("settingsBtn");
+
+const settingsMenu=
+document.getElementById("settingsMenu");
+
+
+function openSettings(){
+
+if(!settingsMenu){
+return;
+}
+
+settingsMenu.classList.add("active");
+
+if(settingsBtn){
+
+settingsBtn.setAttribute(
+"aria-expanded",
+"true"
+);
+
+}
+
+}
+
+
+function closeSettings(){
+
+if(!settingsMenu){
+return;
+}
+
+settingsMenu.classList.remove("active");
+
+if(settingsBtn){
+
+settingsBtn.setAttribute(
+"aria-expanded",
+"false"
+);
+
+}
+
+}
+
+
+if(settingsBtn){
+
+settingsBtn.addEventListener(
+"click",
+e=>{
+
+e.stopPropagation();
+
+if(
+settingsMenu &&
+settingsMenu.classList.contains("active")
+){
+
+closeSettings();
+
+}else{
+
+openSettings();
+
+}
+
+});
+
+}
+
+
+if(settingsMenu){
+
+settingsMenu.addEventListener(
+"click",
+e=>{
+
+e.stopPropagation();
+
+});
+
+}
+
+
+document.addEventListener(
+"click",
+()=>{
+
+closeSettings();
+
+});
+
+
+/* ==========================================
+   ESC
+========================================== */
+
+document.addEventListener(
+"keydown",
+e=>{
+
+if(e.key==="Escape"){
+
+closeMenu();
+
+closeSettings();
+
+}
+
+});
+
+
+/* ==========================================
+   TEMA GLOBAL NEXA
+========================================== */
+
+const themeToggle=
+document.getElementById("themeToggle");
+
+const mobileThemeToggle=
+document.getElementById("mobileThemeToggle");
+
+
+function updateThemeInterface(){
+
+const isLight=
+document.body.classList.contains(
+"light-theme"
+);
+
+const themeIcon=
+document.getElementById(
+"themeIcon"
+);
+
+const themeText=
+document.getElementById(
+"themeText"
+);
+
+const mobileThemeIcon=
+document.getElementById(
+"mobileThemeIcon"
+);
+
+const mobileThemeText=
+document.getElementById(
+"mobileThemeText"
+);
+
+
+if(themeIcon){
+
+themeIcon.className=
+isLight
+?
+"fa-solid fa-sun theme-icon"
+:
+"fa-solid fa-moon theme-icon";
+
+}
+
+
+if(themeText){
+
+themeText.textContent=
+isLight
+?
+"Tema"
+:
+"Tema";
+
+}
+
+
+if(mobileThemeIcon){
+
+mobileThemeIcon.className=
+isLight
+?
+"fa-solid fa-sun theme-icon"
+:
+"fa-solid fa-moon theme-icon";
+
+}
+
+
+if(mobileThemeText){
+
+mobileThemeText.textContent=
+isLight
+?
+"Tema "
+:
+"Tema ";
+
+}
+
+}
+
+
+function applyTheme(theme){
+
+if(theme==="light"){
+
+document.body.classList.add(
+"light-theme"
+);
+
+}else{
+
+document.body.classList.remove(
+"light-theme"
+);
+
+}
+
+localStorage.setItem(
+"theme",
+theme
+);
+
+updateThemeInterface();
+
+}
+
+
+/* ==========================================
+   TEMA SALVO
+========================================== */
+
+const savedTheme=
+localStorage.getItem("theme");
+
+if(savedTheme==="light"){
+
+document.body.classList.add(
+"light-theme"
+);
+
+}else{
+
+document.body.classList.remove(
+"light-theme"
+);
+
+}
+
+updateThemeInterface();
+
+
+/* ==========================================
+   TEMA DESKTOP
+========================================== */
+
+if(themeToggle){
+
+themeToggle.addEventListener(
+"click",
+e=>{
+
+e.preventDefault();
+
+e.stopPropagation();
+
+const isLight=
+document.body.classList.contains(
+"light-theme"
+);
+
+applyTheme(
+isLight
+?
+"dark"
+:
+"light"
+);
+
+closeSettings();
+
+});
+
+}
+
+
+/* ==========================================
+   TEMA MOBILE
+========================================== */
+
+if(mobileThemeToggle){
+
+mobileThemeToggle.addEventListener(
+"click",
+e=>{
+
+e.preventDefault();
+
+e.stopPropagation();
+
+const isLight=
+document.body.classList.contains(
+"light-theme"
+);
+
+applyTheme(
+isLight
+?
+"dark"
+:
+"light"
+);
+
+});
+
+}
+
+
+/* ==========================================
+   SINCRONIZAÇÃO ENTRE ABAS
+========================================== */
+
+window.addEventListener(
+"storage",
+e=>{
+
+if(e.key==="theme"){
+
+applyTheme(
+e.newValue==="light"
+?
+"light"
+:
+"dark"
+);
 
 }
 
