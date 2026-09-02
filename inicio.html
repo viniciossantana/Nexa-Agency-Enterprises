@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nexa Agency Enterprises</title>
+<title>Inicio • Nexa Agency Enterprises</title>
 
 <link rel="icon" href="navicon.png" type="image/png">
 
@@ -3518,7 +3518,7 @@ transform:translateY(0);
         <a href="3serviços.html">Serviços</a>
         <a href="2portfolio.html">Portfólio</a>
         <a href="readme.html">Sobre</a>
-        <a href="IAnexa.html">IA Nexa</a>
+        <a href="nexa IA.html">Nexa IA</a>
         <div class="settings">
 
     <button id="settingsBtn" class="settings-btn">
@@ -3660,11 +3660,11 @@ transform:translateY(0);
     <span>Sair</span>
 </button>
 
-        <a href="IAnexa.html">
+        <a href="nexa IA.html">
 
             <i class="fa-solid fa-robot"></i>
 
-            <span>NexaBot</span>
+            <span>Nexa IA</span>
 
         </a>
 
@@ -4701,11 +4701,11 @@ Explorar Serviços
         <div class="social-left">
           <i class="fas fa-robot"></i>
           <div class="social-info">
-            <h4>NexaBot</h4>
+            <h4>Nexa IA</h4>
             <p>Atendimento automatizado e eficiente</p>
           </div>
         </div>
-        <a href="https://typebot.co/my-typebot-lyx2eqn" target="_blank">Acessar</a>
+        <a href="nexa IA.html" target="_blank">Acessar</a>
         </div>
 
       <!-- DISCORD -->
@@ -4800,7 +4800,7 @@ Todos os direitos reservados.
 
 <p class="footer-signature">
 Fundada por
-<a href="https://viniciossantana.github.io/Vinicios-Santana-Portfolio/">
+<a href="https://contatoceonexaenterprises.carrd.co/">
 Vinícios Santana
 </a>
 </p>
@@ -4812,19 +4812,24 @@ Vinícios Santana
 </footer>
 
 <script>
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
 
-window.addEventListener("load",()=>{
+    if (!loader) return;
 
-setTimeout(()=>{
+    const loaderJaFoiExibido = sessionStorage.getItem("nexaLoaderShown");
 
-document
-.getElementById("loader")
-.classList.add("hidden");
+    if (loaderJaFoiExibido === "true") {
+        loader.classList.add("hidden");
+        return;
+    }
 
-},2800);
+    sessionStorage.setItem("nexaLoaderShown", "true");
 
+    setTimeout(() => {
+        loader.classList.add("hidden");
+    }, 2800);
 });
-
 </script>
 
 <script>
