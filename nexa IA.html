@@ -1836,6 +1836,285 @@ button {
         padding: 11px;
     }
 }
+
+
+/* ==========================================
+   TEMA CLARO
+========================================== */
+
+body.light-theme{
+
+    --bg:#F4F7FC;
+    --bg-secondary:#E9EEF8;
+    --sidebar:#F8FAFD;
+
+    --card:rgba(255,255,255,.92);
+    --card-hover:rgba(255,255,255,1);
+
+    --purple:#2563EB;
+    --purple-light:#60A5FA;
+    --blue:#0EA5E9;
+
+    --text:#1E293B;
+    --text-secondary:#64748B;
+    --text-muted:#94A3B8;
+
+    --border:rgba(15,23,42,.08);
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--bg),
+            var(--bg-secondary)
+        );
+}
+
+/* SIDEBAR */
+
+body.light-theme .sidebar{
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f4f7fc
+        );
+
+}
+
+/* HEADER */
+
+body.light-theme .nexa-header{
+
+    background:rgba(255,255,255,.82);
+
+}
+
+/* TEXTOS */
+
+body.light-theme .sidebar-brand-text span,
+body.light-theme .header-title-text span{
+
+    color:#64748B;
+
+}
+
+body.light-theme .history-title{
+
+    color:#64748B;
+
+}
+
+body.light-theme .history-item{
+
+    color:#475569;
+
+}
+
+body.light-theme .history-item:hover{
+
+    background:rgba(15,23,42,.045);
+    color:#0F172A;
+
+}
+
+body.light-theme .history-item.active{
+
+    background:rgba(37,99,235,.08);
+    border-color:rgba(37,99,235,.13);
+    color:#0F172A;
+
+}
+
+body.light-theme .sidebar-option{
+
+    color:#64748B;
+
+}
+
+body.light-theme .sidebar-option:hover{
+
+    background:rgba(15,23,42,.045);
+    color:#0F172A;
+
+}
+
+/* PESQUISA */
+
+body.light-theme .search-box{
+
+    background:rgba(15,23,42,.035);
+
+}
+
+body.light-theme .search-box input{
+
+    color:#1E293B;
+
+}
+
+body.light-theme .search-box input::placeholder{
+
+    color:#94A3B8;
+
+}
+
+/* NOVA CONVERSA */
+
+body.light-theme .new-chat{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,99,235,.09),
+            rgba(14,165,233,.05)
+        );
+
+    border-color:rgba(37,99,235,.18);
+
+    color:#1E293B;
+
+}
+
+/* OPÇÕES */
+
+body.light-theme .quick-option{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.95),
+            rgba(241,245,249,.8)
+        );
+
+    border-color:rgba(15,23,42,.08);
+
+    color:#1E293B;
+
+}
+
+body.light-theme .quick-option:hover{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37,99,235,.08),
+            rgba(14,165,233,.04)
+        );
+
+    border-color:rgba(37,99,235,.25);
+
+}
+
+body.light-theme .quick-option span{
+
+    color:#64748B;
+
+}
+
+/* MODAL */
+
+body.light-theme .modal{
+
+    background:#ffffff;
+    border-color:rgba(15,23,42,.08);
+    box-shadow:0 25px 70px rgba(15,23,42,.18);
+
+}
+
+body.light-theme .modal-header{
+
+    border-bottom-color:rgba(15,23,42,.08);
+
+}
+
+body.light-theme .modal-header h2{
+
+    color:#0F172A;
+
+}
+
+body.light-theme .modal-close{
+
+    color:#475569;
+
+}
+
+body.light-theme .setting{
+
+    border-color:rgba(15,23,42,.08);
+
+}
+
+body.light-theme .setting strong{
+
+    color:#1E293B;
+
+}
+
+body.light-theme .setting span{
+
+    color:#64748B;
+
+}
+
+/* TOGGLE */
+
+.toggle{
+
+    width:42px;
+    height:24px;
+
+    position:relative;
+
+    flex-shrink:0;
+
+    border:none;
+    border-radius:999px;
+
+    background:#475569;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.toggle span{
+
+    position:absolute;
+
+    top:3px;
+    left:3px;
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    transition:.3s;
+
+}
+
+.toggle.active{
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563EB,
+            #60A5FA
+        );
+
+}
+
+.toggle.active span{
+
+    transform:translateX(18px);
+
+}
+
 </style>
 </head>
 
@@ -5493,6 +5772,7 @@ document
         }
     );
 
+
 /* ==========================================
    CONFIGURAÇÕES
 ========================================== */
@@ -5505,6 +5785,11 @@ document
         "click",
         () => {
 
+            const isLight =
+                document.body.classList.contains(
+                    "light-theme"
+                );
+
             openModal(
                 "Configurações",
                 `
@@ -5512,25 +5797,29 @@ document
                 <div class="setting">
 
                     <div>
-
                         <strong>
-                            Tema
+                            Tema Claro
                         </strong>
 
                         <span>
-                            Interface escura da NEXA
+                            Alterar aparência da NEXA IA
                         </span>
-
                     </div>
 
-                    <div class="toggle"></div>
+                    <button
+                        type="button"
+                        class="toggle ${isLight ? "active" : ""}"
+                        id="themeModalToggle"
+                        aria-label="Alterar tema"
+                    >
+                        <span></span>
+                    </button>
 
                 </div>
 
                 <div class="setting">
 
                     <div>
-
                         <strong>
                             Histórico
                         </strong>
@@ -5538,17 +5827,17 @@ document
                         <span>
                             Conversas salvas neste navegador
                         </span>
-
                     </div>
 
-                    <div class="toggle"></div>
+                    <div class="toggle active">
+                        <span></span>
+                    </div>
 
                 </div>
 
                 <div class="setting">
 
                     <div>
-
                         <strong>
                             Conversação
                         </strong>
@@ -5556,18 +5845,72 @@ document
                         <span>
                             Sistema de caminhos interativos
                         </span>
-
                     </div>
 
-                    <div class="toggle"></div>
+                    <div class="toggle active">
+                        <span></span>
+                    </div>
 
                 </div>
 
                 `
             );
 
+            const themeModalToggle =
+                document.getElementById(
+                    "themeModalToggle"
+                );
+
+            if(themeModalToggle){
+
+                themeModalToggle.addEventListener(
+                    "click",
+                    () => {
+
+                        document.body.classList.toggle(
+                            "light-theme"
+                        );
+
+                        const light =
+                            document.body.classList.contains(
+                                "light-theme"
+                            );
+
+                        localStorage.setItem(
+                            "theme",
+                            light
+                                ? "light"
+                                : "dark"
+                        );
+
+                        themeModalToggle.classList.toggle(
+                            "active",
+                            light
+                        );
+
+                    }
+                );
+
+            }
+
         }
     );
+
+
+/* ==========================================
+   TEMA
+========================================== */
+
+const savedTheme =
+    localStorage.getItem("theme");
+
+if(savedTheme === "light"){
+
+    document.body.classList.add(
+        "light-theme"
+    );
+
+}
 
 /* ==========================================
    AJUDA
