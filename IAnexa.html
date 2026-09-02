@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>Nexa IA • Nexa Agency Enterprises</title>
 
@@ -15,7 +15,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 * {
     margin: 0;
     padding: 0;
@@ -27,19 +26,18 @@
     --bg-secondary: #0d0d14;
     --sidebar: #09090f;
 
-    --card: rgba(17,17,27,0.82);
-    --card-hover: rgba(25,25,38,0.95);
+    --card: rgba(17,17,27,.82);
+    --card-hover: rgba(25,25,38,.95);
 
     --purple: #9d00ff;
     --purple-light: #bd5cff;
     --blue: #00d4ff;
 
-    --text: #ffffff;
+    --text: #fff;
     --text-secondary: #a9a9b8;
     --text-muted: #6f6f80;
 
-    --border: rgba(255,255,255,0.08);
-
+    --border: rgba(255,255,255,.08);
     --danger: #ff5367;
 
     --radius: 18px;
@@ -49,21 +47,24 @@ html,
 body {
     width: 100%;
     height: 100%;
+    min-height: 100%;
 }
 
 body {
     font-family: "Inter", sans-serif;
-
+    color: var(--text);
     background:
         radial-gradient(
             circle at 55% -10%,
-            rgba(157,0,255,0.16),
+            rgba(157,0,255,.16),
             transparent 38%
         ),
+        radial-gradient(
+            circle at 90% 100%,
+            rgba(0,212,255,.035),
+            transparent 30%
+        ),
         var(--bg);
-
-    color: var(--text);
-
     overflow: hidden;
 }
 
@@ -73,14 +74,18 @@ input {
     font-family: inherit;
 }
 
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
 /* ==========================================
    APP
 ========================================== */
 
 .nexa-app {
     width: 100%;
-    height: 100vh;
-
+    height: 100dvh;
+    min-height: 100vh;
     display: flex;
 }
 
@@ -90,8 +95,8 @@ input {
 
 .sidebar {
     width: 270px;
-    height: 100vh;
-
+    height: 100dvh;
+    min-height: 100vh;
     flex-shrink: 0;
 
     display: flex;
@@ -100,8 +105,8 @@ input {
     background:
         linear-gradient(
             180deg,
-            rgba(12,12,19,0.98),
-            rgba(7,7,11,0.98)
+            rgba(12,12,19,.98),
+            rgba(7,7,11,.98)
         );
 
     border-right: 1px solid var(--border);
@@ -112,6 +117,7 @@ input {
 
 .sidebar-header {
     height: 72px;
+    flex-shrink: 0;
 
     display: flex;
     align-items: center;
@@ -145,7 +151,7 @@ input {
         );
 
     box-shadow:
-        0 0 25px rgba(157,0,255,0.28);
+        0 0 25px rgba(157,0,255,.28);
 
     font-size: 16px;
     font-weight: 800;
@@ -158,14 +164,11 @@ input {
 
 .sidebar-brand-text strong {
     font-size: 14px;
-    letter-spacing: -0.2px;
 }
 
 .sidebar-brand-text span {
     margin-top: 2px;
-
     color: var(--text-muted);
-
     font-size: 10px;
 }
 
@@ -177,23 +180,22 @@ input {
     margin: 17px 14px 12px;
 
     height: 44px;
+    flex-shrink: 0;
 
-    border: 1px solid rgba(157,0,255,0.22);
-
+    border: 1px solid rgba(157,0,255,.22);
     border-radius: 13px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(157,0,255,0.13),
-            rgba(0,212,255,0.05)
+            rgba(157,0,255,.13),
+            rgba(0,212,255,.05)
         );
 
     color: white;
 
     display: flex;
     align-items: center;
-
     gap: 10px;
 
     padding: 0 14px;
@@ -201,21 +203,20 @@ input {
     cursor: pointer;
 
     transition:
-        background 0.2s,
-        border-color 0.2s,
-        transform 0.2s;
+        background .2s,
+        border-color .2s,
+        transform .2s;
 }
 
 .new-chat:hover {
     background:
         linear-gradient(
             135deg,
-            rgba(157,0,255,0.23),
-            rgba(0,212,255,0.08)
+            rgba(157,0,255,.23),
+            rgba(0,212,255,.08)
         );
 
-    border-color: rgba(157,0,255,0.42);
-
+    border-color: rgba(157,0,255,.42);
     transform: translateY(-1px);
 }
 
@@ -241,31 +242,27 @@ input {
 
     display: flex;
     align-items: center;
-
     gap: 8px;
 
     padding: 0 11px;
 
     border-radius: 11px;
 
-    background: rgba(255,255,255,0.035);
-
+    background: rgba(255,255,255,.035);
     border: 1px solid var(--border);
 
     transition:
-        border-color 0.2s,
-        background 0.2s;
+        border-color .2s,
+        background .2s;
 }
 
 .search-box:focus-within {
-    border-color: rgba(157,0,255,0.35);
-
-    background: rgba(157,0,255,0.045);
+    border-color: rgba(157,0,255,.35);
+    background: rgba(157,0,255,.045);
 }
 
 .search-icon {
     color: var(--text-muted);
-
     font-size: 15px;
 }
 
@@ -276,7 +273,6 @@ input {
     outline: none;
 
     background: transparent;
-
     color: white;
 
     font-size: 11px;
@@ -296,19 +292,14 @@ input {
     color: #666678;
 
     font-size: 10px;
-
     text-transform: uppercase;
-
-    letter-spacing: 0.8px;
-
+    letter-spacing: .8px;
     font-weight: 700;
 }
 
 .history {
     flex: 1;
-
     overflow-y: auto;
-
     padding: 0 9px 12px;
 }
 
@@ -317,84 +308,64 @@ input {
 }
 
 .history::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.1);
-
+    background: rgba(255,255,255,.1);
     border-radius: 10px;
 }
 
 .history-empty {
     color: #555564;
-
     text-align: center;
-
     padding: 25px 15px;
-
     font-size: 11px;
-
     line-height: 1.6;
 }
 
-/* ==========================================
-   ITEM DO HISTÓRICO
-========================================== */
-
 .history-item {
     width: 100%;
-
     min-height: 43px;
 
     display: flex;
     align-items: center;
-
     gap: 9px;
 
     padding: 8px 42px 8px 10px;
-
     margin-bottom: 3px;
 
     border-radius: 10px;
 
     background: transparent;
-
     border: 1px solid transparent;
 
     color: #a7a7b5;
 
     cursor: pointer;
-
     text-align: left;
 
     position: relative;
 
     transition:
-        background 0.2s,
-        color 0.2s,
-        border-color 0.2s;
+        background .2s,
+        color .2s,
+        border-color .2s;
 }
 
 .history-item:hover {
-    background: rgba(255,255,255,0.045);
-
+    background: rgba(255,255,255,.045);
     color: white;
 }
 
 .history-item.active {
-    background: rgba(157,0,255,0.1);
-
-    border-color: rgba(157,0,255,0.13);
-
+    background: rgba(157,0,255,.1);
+    border-color: rgba(157,0,255,.13);
     color: white;
 }
 
 .history-icon {
     width: 24px;
-
     flex-shrink: 0;
 
     color: #777789;
-
     font-size: 13px;
-
     text-align: center;
 }
 
@@ -404,16 +375,13 @@ input {
 
 .history-name {
     overflow: hidden;
-
     white-space: nowrap;
-
     text-overflow: ellipsis;
-
     font-size: 11px;
 }
 
 /* ==========================================
-   TRÊS PONTINHOS
+   MENU
 ========================================== */
 
 .history-menu-button {
@@ -432,11 +400,9 @@ input {
     justify-content: center;
 
     border: none;
-
     border-radius: 8px;
 
     background: transparent;
-
     color: #737383;
 
     cursor: pointer;
@@ -444,9 +410,9 @@ input {
     opacity: 0;
 
     transition:
-        opacity 0.18s ease,
-        background 0.18s ease,
-        color 0.18s ease;
+        opacity .18s,
+        background .18s,
+        color .18s;
 }
 
 .history-item:hover .history-menu-button,
@@ -456,28 +422,20 @@ input {
 
 .history-menu-button:hover,
 .history-menu-button.open {
-    background: rgba(255,255,255,0.08);
-
+    background: rgba(255,255,255,.08);
     color: white;
 }
 
 .history-menu-button span {
     font-size: 10px;
-
     line-height: 1;
-
     transform: translateY(-2px);
 }
-
-/* ==========================================
-   MENU DA CONVERSA
-========================================== */
 
 .conversation-menu {
     position: absolute;
 
     right: 7px;
-
     top: calc(100% - 4px);
 
     min-width: 145px;
@@ -487,22 +445,21 @@ input {
     background:
         linear-gradient(
             145deg,
-            rgba(28,28,40,0.98),
-            rgba(13,13,20,0.98)
+            rgba(28,28,40,.98),
+            rgba(13,13,20,.98)
         );
 
-    border: 1px solid rgba(255,255,255,0.09);
-
+    border: 1px solid rgba(255,255,255,.09);
     border-radius: 11px;
 
     box-shadow:
-        0 15px 45px rgba(0,0,0,0.5);
+        0 15px 45px rgba(0,0,0,.5);
 
     z-index: 100;
 
     display: none;
 
-    animation: menuIn 0.15s ease;
+    animation: menuIn .15s ease;
 }
 
 .conversation-menu.active {
@@ -523,52 +480,39 @@ input {
 
 .conversation-menu button {
     width: 100%;
-
     height: 35px;
 
     display: flex;
     align-items: center;
-
     gap: 9px;
 
     padding: 0 10px;
 
     border: none;
-
     border-radius: 8px;
 
     background: transparent;
-
     color: #c5c5d0;
 
     font-size: 11px;
 
     cursor: pointer;
-
     text-align: left;
-
-    transition:
-        background 0.18s,
-        color 0.18s;
 }
 
 .conversation-menu button:hover {
-    background: rgba(255,255,255,0.06);
-
+    background: rgba(255,255,255,.06);
     color: white;
 }
 
 .conversation-menu button.delete:hover {
-    background: rgba(255,83,103,0.1);
-
+    background: rgba(255,83,103,.1);
     color: var(--danger);
 }
 
 .conversation-menu svg {
     width: 15px;
     height: 15px;
-
-    flex-shrink: 0;
 }
 
 /* ==========================================
@@ -577,50 +521,42 @@ input {
 
 .sidebar-footer {
     border-top: 1px solid var(--border);
-
     padding: 10px;
+    flex-shrink: 0;
 }
 
 .sidebar-option {
     width: 100%;
-
     height: 40px;
 
     display: flex;
     align-items: center;
-
     gap: 11px;
 
     padding: 0 11px;
 
     border: none;
-
     background: transparent;
-
     border-radius: 10px;
 
     color: #9696a6;
 
     cursor: pointer;
-
     text-align: left;
 
     transition:
-        background 0.2s,
-        color 0.2s;
+        background .2s,
+        color .2s;
 }
 
 .sidebar-option:hover {
-    background: rgba(255,255,255,0.045);
-
+    background: rgba(255,255,255,.045);
     color: white;
 }
 
 .sidebar-option-icon {
     width: 20px;
-
     text-align: center;
-
     font-size: 15px;
 }
 
@@ -630,17 +566,13 @@ input {
 
 .profile-mini {
     margin-top: 6px;
-
-    padding: 9px 10px;
+    padding: 12px 10px 9px;
 
     display: flex;
     align-items: center;
-
     gap: 9px;
 
-    border-top: 1px solid rgba(255,255,255,0.05);
-
-    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,.05);
 }
 
 .profile-avatar {
@@ -661,14 +593,12 @@ input {
         );
 
     font-size: 11px;
-
     font-weight: 700;
 }
 
 .profile-info {
     display: flex;
     flex-direction: column;
-
     min-width: 0;
 }
 
@@ -676,17 +606,13 @@ input {
     font-size: 10px;
 
     overflow: hidden;
-
     text-overflow: ellipsis;
-
     white-space: nowrap;
 }
 
 .profile-info span {
     margin-top: 2px;
-
     color: #606070;
-
     font-size: 9px;
 }
 
@@ -696,13 +622,14 @@ input {
 
 .main-area {
     flex: 1;
-
     min-width: 0;
 
-    height: 100vh;
+    height: 100dvh;
 
     display: flex;
     flex-direction: column;
+
+    position: relative;
 }
 
 /* ==========================================
@@ -711,22 +638,22 @@ input {
 
 .nexa-header {
     height: 72px;
-
     flex-shrink: 0;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 25px;
+    padding: 0 30px;
 
     border-bottom: 1px solid var(--border);
 
-    background: rgba(7,7,11,0.76);
+    background: rgba(7,7,11,.76);
 
     backdrop-filter: blur(20px);
-
     -webkit-backdrop-filter: blur(20px);
+
+    z-index: 10;
 }
 
 .mobile-menu {
@@ -737,8 +664,7 @@ input {
 
     border: 1px solid var(--border);
 
-    background: rgba(255,255,255,0.04);
-
+    background: rgba(255,255,255,.04);
     color: white;
 
     border-radius: 10px;
@@ -749,7 +675,6 @@ input {
 .header-title {
     display: flex;
     align-items: center;
-
     gap: 10px;
 }
 
@@ -763,8 +688,7 @@ input {
 
     border-radius: 9px;
 
-    background: rgba(157,0,255,0.12);
-
+    background: rgba(157,0,255,.12);
     color: var(--purple-light);
 
     font-size: 14px;
@@ -781,20 +705,16 @@ input {
 
 .header-title-text span {
     margin-top: 2px;
-
     color: #666677;
-
     font-size: 9px;
 }
 
 .status {
     display: flex;
     align-items: center;
-
     gap: 7px;
 
     color: #8f8f9f;
-
     font-size: 10px;
 }
 
@@ -807,19 +727,18 @@ input {
     background: #47e88b;
 
     box-shadow:
-        0 0 10px rgba(71,232,139,0.8);
+        0 0 10px rgba(71,232,139,.8);
 }
 
 /* ==========================================
-   CHAT
+   CHAT AREA
 ========================================== */
 
 .chat-area {
     flex: 1;
 
     width: 100%;
-
-    max-width: 920px;
+    max-width: 1080px;
 
     margin: 0 auto;
 
@@ -834,13 +753,17 @@ input {
 
     overflow-y: auto;
 
-    padding: 35px 24px 25px;
+    padding:
+        42px
+        42px
+        30px;
 
     scrollbar-width: thin;
-
     scrollbar-color:
-        rgba(255,255,255,0.12)
+        rgba(255,255,255,.12)
         transparent;
+
+    scroll-behavior: smooth;
 }
 
 .messages::-webkit-scrollbar {
@@ -848,8 +771,7 @@ input {
 }
 
 .messages::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.12);
-
+    background: rgba(255,255,255,.12);
     border-radius: 20px;
 }
 
@@ -862,24 +784,23 @@ input {
 
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
 
     text-align: center;
 
-    padding: 20px 15px 70px;
+    padding: 20px 15px 80px;
 }
 
 .welcome-icon {
-    width: 72px;
-    height: 72px;
+    width: 76px;
+    height: 76px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 
     background: transparent;
     border: none;
@@ -889,33 +810,31 @@ input {
 }
 
 .welcome-icon img {
-    width: 120px;
-    height: 120px;
+    width: 112px;
+    height: 112px;
 
     object-fit: contain;
-
     display: block;
 
     filter:
-        drop-shadow(0 0 5px rgba(47, 0, 255, 0.18))
-        drop-shadow(0 0 12px rgba(109, 0, 252, 0.356));
+        drop-shadow(0 0 5px rgba(47,0,255,.18))
+        drop-shadow(0 0 12px rgba(109,0,252,.30));
 
     transition:
-        transform 0.3s ease,
-        filter 0.3s ease;
+        transform .3s ease,
+        filter .3s ease;
 }
 
 .welcome-icon:hover img {
     transform: scale(1.04);
 
-     filter:
-        drop-shadow(0 0 5px rgba(47, 0, 255, 0.18))
-        drop-shadow(0 0 12px rgba(109, 0, 252, 0.356));
+    filter:
+        drop-shadow(0 0 7px rgba(47,0,255,.22))
+        drop-shadow(0 0 15px rgba(109,0,252,.38));
 }
 
 .welcome h1 {
-    font-size: clamp(30px,5vw,46px);
-
+    font-size: clamp(32px,5vw,48px);
     font-weight: 800;
 
     letter-spacing: -1.8px;
@@ -923,28 +842,26 @@ input {
     background:
         linear-gradient(
             90deg,
-            #ffffff,
+            #fff,
             #c98aff,
             #72e8ff
         );
 
     -webkit-background-clip: text;
-
     background-clip: text;
 
     color: transparent;
 
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .welcome p {
-    max-width: 550px;
+    max-width: 620px;
 
     color: var(--text-secondary);
 
     font-size: 13px;
-
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 /* ==========================================
@@ -952,44 +869,60 @@ input {
 ========================================== */
 
 .quick-options {
-    width: min(650px,100%);
+    width: min(720px,100%);
 
     display: grid;
 
     grid-template-columns: repeat(2,1fr);
 
-    gap: 10px;
+    gap: 12px;
 
-    margin-top: 28px;
+    margin-top: 32px;
 }
 
 .quick-option {
-    padding: 15px;
+    min-height: 92px;
+
+    padding: 17px;
 
     text-align: left;
 
-    border-radius: 14px;
+    border-radius: 15px;
 
     border: 1px solid var(--border);
 
-    background: rgba(255,255,255,0.035);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
 
     color: white;
 
     cursor: pointer;
 
     transition:
-        transform 0.2s,
-        background 0.2s,
-        border-color 0.2s;
+        transform .2s,
+        background .2s,
+        border-color .2s,
+        box-shadow .2s;
 }
 
 .quick-option:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 
-    background: rgba(157,0,255,0.08);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(157,0,255,.10),
+            rgba(0,212,255,.035)
+        );
 
-    border-color: rgba(157,0,255,0.3);
+    border-color: rgba(157,0,255,.30);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.18);
 }
 
 .quick-option strong {
@@ -997,7 +930,7 @@ input {
 
     font-size: 12px;
 
-    margin-bottom: 5px;
+    margin-bottom: 7px;
 }
 
 .quick-option span {
@@ -1005,7 +938,7 @@ input {
 
     font-size: 10px;
 
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 /* ==========================================
@@ -1014,10 +947,22 @@ input {
 
 .message {
     display: flex;
-
     width: 100%;
+    margin-bottom: 24px;
 
-    margin-bottom: 23px;
+    animation: messageIn .22s ease;
+}
+
+@keyframes messageIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .message.user {
@@ -1029,18 +974,16 @@ input {
 }
 
 .message-content {
-    max-width: min(720px,82%);
+    max-width: min(760px,88%);
 
-    padding: 13px 16px;
+    padding: 15px 18px;
 
-    border-radius: 16px;
+    border-radius: 17px;
 
     font-size: 13px;
-
-    line-height: 1.65;
+    line-height: 1.72;
 
     white-space: pre-wrap;
-
     word-break: break-word;
 }
 
@@ -1048,18 +991,23 @@ input {
     background:
         linear-gradient(
             135deg,
-            rgba(157,0,255,0.88),
-            rgba(111,0,190,0.88)
+            rgba(157,0,255,.88),
+            rgba(111,0,190,.88)
         );
 
     border-bottom-right-radius: 5px;
 
     box-shadow:
-        0 8px 30px rgba(157,0,255,0.12);
+        0 8px 30px rgba(157,0,255,.12);
 }
 
 .message.ai .message-content {
-    background: rgba(255,255,255,0.045);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.048),
+            rgba(255,255,255,.025)
+        );
 
     border: 1px solid var(--border);
 
@@ -1079,19 +1027,28 @@ input {
 
     gap: 8px;
 
-    margin-top: 12px;
+    margin-top: 14px;
 
-    max-width: 520px;
+    max-width: 600px;
 }
 
 .ai-option {
+    width: 100%;
+
+    min-height: 43px;
+
     padding: 11px 14px;
 
-    border-radius: 11px;
+    border-radius: 12px;
 
-    border: 1px solid rgba(157,0,255,0.18);
+    border: 1px solid rgba(157,0,255,.18);
 
-    background: rgba(157,0,255,0.06);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(157,0,255,.065),
+            rgba(0,212,255,.025)
+        );
 
     color: #e7e7ef;
 
@@ -1102,17 +1059,109 @@ input {
     font-size: 11px;
 
     transition:
-        background 0.2s,
-        border-color 0.2s,
-        transform 0.2s;
+        background .2s,
+        border-color .2s,
+        transform .2s;
 }
 
 .ai-option:hover {
-    background: rgba(157,0,255,0.14);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(157,0,255,.14),
+            rgba(0,212,255,.04)
+        );
 
-    border-color: rgba(157,0,255,0.35);
+    border-color: rgba(157,0,255,.35);
 
     transform: translateX(3px);
+}
+
+.ai-option:disabled {
+    opacity: .45;
+    cursor: default;
+    transform: none;
+}
+
+/* ==========================================
+   TÍTULO DE SEÇÃO DA CONVERSA
+========================================== */
+
+.conversation-heading {
+    margin-bottom: 7px;
+
+    color: #fff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.conversation-subheading {
+    color: #858595;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+
+    margin-bottom: 3px;
+}
+
+/* ==========================================
+   TYPING
+========================================== */
+
+.typing {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 15px 18px;
+
+    width: fit-content;
+
+    background: rgba(255,255,255,.045);
+
+    border: 1px solid var(--border);
+
+    border-radius: 17px;
+    border-bottom-left-radius: 5px;
+}
+
+.typing span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #999;
+
+    animation:
+        typingAnimation 1.1s infinite;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: .3s;
+}
+
+@keyframes typingAnimation {
+    0%,
+    60%,
+    100% {
+        opacity: .25;
+        transform: translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
 }
 
 /* ==========================================
@@ -1122,7 +1171,10 @@ input {
 .input-wrapper {
     width: 100%;
 
-    padding: 10px 24px 22px;
+    padding:
+        10px
+        42px
+        24px;
 }
 
 .input-box {
@@ -1130,46 +1182,47 @@ input {
 
     display: flex;
     align-items: flex-end;
-
     gap: 9px;
 
     padding: 9px;
 
-    background: rgba(18,18,27,0.9);
+    background:
+        rgba(18,18,27,.92);
 
     border: 1px solid var(--border);
 
     border-radius: 19px;
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,0.25);
+        0 20px 50px rgba(0,0,0,.25);
 
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
+        border-color .2s,
+        box-shadow .2s;
 }
 
 .input-box:focus-within {
-    border-color: rgba(157,0,255,0.42);
+    border-color: rgba(157,0,255,.42);
 
     box-shadow:
-        0 0 0 3px rgba(157,0,255,0.07),
-        0 20px 50px rgba(0,0,0,0.25);
+        0 0 0 3px rgba(157,0,255,.07),
+        0 20px 50px rgba(0,0,0,.25);
 }
 
 #messageInput {
     flex: 1;
 
-    min-height: 43px;
+    width: 100%;
 
+    min-height: 43px;
     max-height: 150px;
 
     resize: none;
 
     border: none;
-
     outline: none;
 
     background: transparent;
@@ -1177,10 +1230,11 @@ input {
     color: white;
 
     font-size: 13px;
-
     line-height: 1.5;
 
     padding: 12px 8px;
+
+    overflow-y: auto;
 }
 
 #messageInput::placeholder {
@@ -1194,7 +1248,6 @@ input {
     flex-shrink: 0;
 
     border: none;
-
     border-radius: 13px;
 
     display: flex;
@@ -1215,20 +1268,20 @@ input {
     font-size: 17px;
 
     transition:
-        transform 0.2s,
-        opacity 0.2s,
-        box-shadow 0.2s;
+        transform .2s,
+        opacity .2s,
+        box-shadow .2s;
 }
 
 .send-button:hover {
     transform: translateY(-2px);
 
     box-shadow:
-        0 8px 25px rgba(157,0,255,0.28);
+        0 8px 25px rgba(157,0,255,.28);
 }
 
 .send-button:active {
-    transform: scale(0.95);
+    transform: scale(.95);
 }
 
 .send-button svg {
@@ -1264,10 +1317,9 @@ input {
 
     padding: 20px;
 
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,.7);
 
     backdrop-filter: blur(8px);
-
     -webkit-backdrop-filter: blur(8px);
 }
 
@@ -1292,26 +1344,20 @@ input {
     padding: 23px;
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,0.55);
+        0 30px 100px rgba(0,0,0,.55);
 
-    animation: modalIn 0.2s ease;
+    animation: modalIn .2s ease;
 }
 
 @keyframes modalIn {
     from {
         opacity: 0;
-
-        transform:
-            translateY(10px)
-            scale(0.97);
+        transform: translateY(10px) scale(.97);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -1319,7 +1365,6 @@ input {
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
 
     margin-bottom: 18px;
@@ -1334,10 +1379,9 @@ input {
     height: 30px;
 
     border: none;
-
     border-radius: 9px;
 
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,.05);
 
     color: #aaa;
 
@@ -1357,12 +1401,12 @@ input {
 .setting {
     padding: 13px 0;
 
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
 
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
 }
 
@@ -1416,7 +1460,7 @@ input {
 }
 
 /* ==========================================
-   MODAL DE EXCLUSÃO
+   DELETE MODAL
 ========================================== */
 
 .delete-modal {
@@ -1433,55 +1477,46 @@ input {
 
     padding: 20px;
 
-    background: rgba(0,0,0,0.68);
+    background: rgba(0,0,0,.68);
 
     backdrop-filter: blur(10px);
-
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .delete-modal-content {
     width: 100%;
-
     max-width: 380px;
 
     padding: 26px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 
     border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(24,24,35,0.98),
-            rgba(12,12,19,0.98)
+            rgba(24,24,35,.98),
+            rgba(12,12,19,.98)
         );
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,0.5);
+        0 30px 80px rgba(0,0,0,.5);
 
     text-align: center;
 
-    animation: deleteModalIn 0.2s ease;
+    animation: deleteModalIn .2s ease;
 }
 
 @keyframes deleteModalIn {
-
     from {
         opacity: 0;
-
-        transform:
-            translateY(10px)
-            scale(0.97);
+        transform: translateY(10px) scale(.97);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -1492,15 +1527,15 @@ input {
     margin: 0 auto 16px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     border-radius: 16px;
 
-    background: rgba(255,83,103,0.1);
+    background: rgba(255,83,103,.1);
 
-    border: 1px solid rgba(255,83,103,0.16);
+    border:
+        1px solid rgba(255,83,103,.16);
 
     color: var(--danger);
 }
@@ -1516,8 +1551,6 @@ input {
     color: #fff;
 
     font-size: 17px;
-
-    font-weight: 700;
 }
 
 .delete-modal-content p {
@@ -1532,7 +1565,6 @@ input {
 
 .delete-modal-actions {
     display: flex;
-
     gap: 10px;
 }
 
@@ -1552,41 +1584,35 @@ input {
     font-weight: 600;
 
     cursor: pointer;
-
-    transition:
-        transform 0.2s,
-        opacity 0.2s;
-}
-
-.delete-modal-actions button:hover {
-    transform: translateY(-1px);
 }
 
 .delete-cancel {
-    background: rgba(255,255,255,0.07);
-
+    background: rgba(255,255,255,.07);
     color: #ddd;
 }
 
 .delete-confirm {
     background: var(--danger);
-
     color: white;
 }
 
-.delete-confirm:hover {
-    opacity: 0.9;
-}
-
 /* ==========================================
-   MOBILE
+   SIDEBAR MOBILE
 ========================================== */
 
 .sidebar-overlay {
     display: none;
 }
 
+/* ==========================================
+   MOBILE
+========================================== */
+
 @media (max-width: 850px) {
+
+    body {
+        overflow: hidden;
+    }
 
     .sidebar {
         position: fixed;
@@ -1597,10 +1623,10 @@ input {
         transform: translateX(-100%);
 
         transition:
-            transform 0.25s ease;
+            transform .25s ease;
 
         box-shadow:
-            20px 0 60px rgba(0,0,0,0.4);
+            20px 0 60px rgba(0,0,0,.4);
     }
 
     .sidebar.open {
@@ -1614,7 +1640,7 @@ input {
 
         z-index: 15;
 
-        background: rgba(0,0,0,0.55);
+        background: rgba(0,0,0,.55);
 
         display: none;
     }
@@ -1631,7 +1657,11 @@ input {
     }
 
     .nexa-header {
-        padding: 0 15px;
+        height: 64px;
+
+        padding:
+            0
+            15px;
 
         gap: 12px;
     }
@@ -1643,47 +1673,126 @@ input {
     .chat-area {
         max-width: none;
     }
+
+    .messages {
+        padding:
+            25px
+            18px
+            20px;
+    }
+
+    .input-wrapper {
+        padding:
+            8px
+            18px
+            calc(15px + env(safe-area-inset-bottom));
+    }
 }
 
 @media (max-width: 600px) {
 
     .messages {
-        padding: 22px 14px 20px;
+        padding:
+            20px
+            13px
+            15px;
     }
 
     .welcome {
-        padding: 15px 8px 55px;
+        padding:
+            10px
+            5px
+            55px;
     }
 
     .welcome-icon {
         width: 58px;
         height: 58px;
 
-        border-radius: 18px;
+        margin-bottom: 17px;
+    }
 
-        font-size: 24px;
+    .welcome-icon img {
+        width: 92px;
+        height: 92px;
     }
 
     .welcome h1 {
-        font-size: 31px;
+        font-size: 30px;
+        letter-spacing: -1.2px;
     }
 
     .welcome p {
         font-size: 12px;
+        line-height: 1.65;
     }
 
     .quick-options {
         grid-template-columns: 1fr;
+
+        gap: 9px;
+
+        margin-top: 25px;
+    }
+
+    .quick-option {
+        min-height: 76px;
+        padding: 14px;
+    }
+
+    .message {
+        margin-bottom: 18px;
     }
 
     .message-content {
-        max-width: 90%;
+        max-width: 94%;
+
+        padding: 13px 14px;
 
         font-size: 12.5px;
+
+        line-height: 1.65;
+    }
+
+    .ai-options {
+        margin-top: 11px;
+    }
+
+    .ai-option {
+        min-height: 44px;
+
+        padding:
+            10px
+            12px;
+
+        font-size: 11px;
     }
 
     .input-wrapper {
-        padding: 8px 12px 15px;
+        padding:
+            7px
+            10px
+            calc(12px + env(safe-area-inset-bottom));
+    }
+
+    .input-box {
+        border-radius: 17px;
+        padding: 7px;
+    }
+
+    #messageInput {
+        min-height: 42px;
+
+        font-size: 13px;
+
+        padding:
+            11px
+            7px;
+    }
+
+    .send-button {
+        width: 42px;
+        height: 42px;
     }
 
     .status {
@@ -1694,11 +1803,39 @@ input {
         font-size: 12px;
     }
 
+    .header-title-text span {
+        font-size: 8px;
+    }
+
     .history-menu-button {
         opacity: 1;
     }
 }
 
+@media (max-height: 650px) and (max-width: 600px) {
+
+    .welcome {
+        justify-content: flex-start;
+        padding-top: 25px;
+    }
+
+    .welcome-icon {
+        margin-bottom: 10px;
+    }
+
+    .welcome h1 {
+        font-size: 26px;
+    }
+
+    .quick-options {
+        margin-top: 17px;
+    }
+
+    .quick-option {
+        min-height: 62px;
+        padding: 11px;
+    }
+}
 </style>
 </head>
 
@@ -1788,7 +1925,7 @@ input {
     </div>
 
     <div class="sidebar-footer">
-        
+
         <button
             class="sidebar-option"
             id="homeButton"
@@ -1797,11 +1934,11 @@ input {
         >
 
             <span class="sidebar-option-icon">
-            ⌂
+                ⌂
             </span>
 
             <span>
-            Início
+                Início
             </span>
 
         </button>
@@ -1853,8 +1990,6 @@ input {
             </span>
 
         </button>
-
-        
 
         <div class="profile-mini">
 
@@ -1949,51 +2084,25 @@ input {
 >
 
     <div class="welcome-icon">
-        <img src="navicon.png" alt="">
+
+        <img
+            src="navicon.png"
+            alt=""
+        >
+
     </div>
 
     <h1>
-        Olá, eu sou a NEXA.
+        Olá, eu sou a NEXA IA.
     </h1>
 
     <p>
         Sua inteligência artificial da Nexa Agency Enterprises.
-        Escolha uma opção abaixo ou escreva sua própria pergunta.
+        Explore a Nexa, conheça nossas soluções, descubra como
+        trabalhamos ou simplesmente tire suas dúvidas.
     </p>
 
     <div class="quick-options">
-
-        <button
-            class="quick-option"
-            data-path="tecnologia"
-            type="button"
-        >
-
-            <strong>
-                💻 Tecnologia
-            </strong>
-
-            <span>
-                Programação, sistemas, sites e tecnologia.
-            </span>
-
-        </button>
-
-        <button
-            class="quick-option"
-            data-path="ia"
-            type="button"
-        >
-
-            <strong>
-                🤖 Inteligência Artificial
-            </strong>
-
-            <span>
-                IA, automações, agentes e soluções inteligentes.
-            </span>
-
-        </button>
 
         <button
             class="quick-option"
@@ -2006,39 +2115,42 @@ input {
             </strong>
 
             <span>
-                Saiba mais sobre a empresa e suas soluções.
+                Descubra quem somos, por que existimos,
+                como pensamos e o que fazemos.
             </span>
 
         </button>
 
         <button
             class="quick-option"
-            data-path="marketing"
+            data-path="solucoes"
             type="button"
         >
 
             <strong>
-                📈 Marketing
+                ✦ Conhecer nossas soluções
             </strong>
 
             <span>
-                Estratégia, branding, conteúdo e crescimento.
+                Explore tecnologia, IA, desenvolvimento,
+                marketing e soluções personalizadas.
             </span>
 
         </button>
 
         <button
             class="quick-option"
-            data-path="criatividade"
+            data-path="projetos"
             type="button"
         >
 
             <strong>
-                🎨 Criatividade
+                🧭 Como funciona um projeto?
             </strong>
 
             <span>
-                Música, escrita, ideias e criação.
+                Entenda como uma ideia pode se transformar
+                em uma solução desenvolvida pela Nexa.
             </span>
 
         </button>
@@ -2050,11 +2162,46 @@ input {
         >
 
             <strong>
-                💡 Preciso de ajuda
+                💡 Como a Nexa pode me ajudar?
             </strong>
 
             <span>
-                Não sei exatamente por onde começar.
+                Conte o que você precisa e descubra
+                possibilidades para o seu caso.
+            </span>
+
+        </button>
+
+        <button
+            class="quick-option"
+            data-path="duvidas"
+            type="button"
+        >
+
+            <strong>
+                ❓ Tenho uma dúvida
+            </strong>
+
+            <span>
+                Pergunte sobre a Nexa, nossos serviços,
+                IA, tecnologia ou projetos.
+            </span>
+
+        </button>
+
+        <button
+            class="quick-option"
+            data-path="ia"
+            type="button"
+        >
+
+            <strong>
+                🤖 Quero entender IA
+            </strong>
+
+            <span>
+                Descubra aplicações, automações,
+                agentes e possibilidades de IA.
             </span>
 
         </button>
@@ -2078,6 +2225,7 @@ input {
             placeholder="Digite sua mensagem..."
             rows="1"
             autocomplete="off"
+            enterkeyhint="send"
         ></textarea>
 
         <button
@@ -2203,9 +2351,11 @@ const modalClose =
    ESTADO
 ========================================== */
 
+let conversations = [];
+
 let currentConversation = null;
 
-let conversations = [];
+let processing = false;
 
 try {
 
@@ -2220,14 +2370,15 @@ try {
         conversations = [];
     }
 
-} catch (erro) {
+} catch (error) {
 
     console.error(
         "Erro ao carregar histórico:",
-        erro
+        error
     );
 
     conversations = [];
+
 }
 
 /* ==========================================
@@ -2237,10 +2388,10 @@ try {
 function generateId() {
 
     return (
-        Date.now().toString() +
+        Date.now().toString(36) +
         Math.random()
-            .toString(16)
-            .slice(2)
+            .toString(36)
+            .substring(2,9)
     );
 
 }
@@ -2255,14 +2406,16 @@ function saveConversations() {
 
         localStorage.setItem(
             "nexa_conversations",
-            JSON.stringify(conversations)
+            JSON.stringify(
+                conversations
+            )
         );
 
-    } catch (erro) {
+    } catch (error) {
 
         console.error(
-            "Erro ao salvar conversas:",
-            erro
+            "Erro ao salvar:",
+            error
         );
 
     }
@@ -2270,7 +2423,1256 @@ function saveConversations() {
 }
 
 /* ==========================================
-   NOVA CONVERSA
+   DEFINIÇÃO DOS CAMINHOS
+========================================== */
+
+const flows = {
+
+    inicio: {
+
+        text:
+`Olá! 👋
+
+Eu sou a NEXA, a inteligência artificial da Nexa Agency Enterprises.
+
+Meu objetivo aqui não é simplesmente te entregar respostas rápidas. Quero te ajudar a entender a Nexa, nossas soluções, nossa forma de trabalhar e também esclarecer suas dúvidas.
+
+Você pode explorar livremente os assuntos abaixo.`,
+
+        options: [
+
+            {
+                text: "🚀 Conhecer a Nexa",
+                next: "nexa"
+            },
+
+            {
+                text: "✦ Conhecer nossas soluções",
+                next: "solucoes"
+            },
+
+            {
+                text: "🧭 Como funciona um projeto?",
+                next: "projetos"
+            },
+
+            {
+                text: "🤖 Quero entender IA",
+                next: "ia"
+            },
+
+            {
+                text: "❓ Tenho uma dúvida",
+                next: "duvidas"
+            },
+
+            {
+                text: "💡 Como a Nexa pode me ajudar?",
+                next: "ajuda"
+            }
+
+        ]
+
+    },
+
+    /* ======================================
+       NEXA
+    ====================================== */
+
+    nexa: {
+
+        title: "Conhecendo a Nexa",
+
+        text:
+`Vamos começar pela Nexa. 🚀
+
+A Nexa Agency Enterprises é uma empresa construída em torno de uma ideia central: tecnologia não deve existir apenas por ser tecnologia.
+
+Ela precisa resolver problemas, criar possibilidades e gerar valor.
+
+Por isso, nossa atuação combina diferentes áreas que podem trabalhar juntas dependendo da necessidade de cada projeto.
+
+Podemos aprofundar essa visão por diferentes caminhos.`,
+
+        options: [
+
+            {
+                text: "🎯 Por que a Nexa existe?",
+                next: "nexa_proposito"
+            },
+
+            {
+                text: "🧠 Como a Nexa pensa?",
+                next: "nexa_pensamento"
+            },
+
+            {
+                text: "🚀 O que a Nexa faz?",
+                next: "nexa_oque"
+            },
+
+            {
+                text: "✨ O que torna a Nexa diferente?",
+                next: "nexa_diferencial"
+            }
+
+        ]
+
+    },
+
+    nexa_proposito: {
+
+        text:
+`A ideia por trás da Nexa é aproximar empresas e pessoas das possibilidades que a tecnologia oferece.
+
+Muitas vezes existe uma dificuldade, uma ideia ou uma oportunidade, mas falta transformar isso em algo concreto.
+
+É justamente aí que entra a Nexa.
+
+O ponto de partida não precisa ser uma tecnologia específica. Pode ser simplesmente uma pergunta:
+
+"Existe uma maneira melhor de fazer isso?"
+
+A partir dessa pergunta, podemos investigar o problema, entender o objetivo e pensar em uma solução.`,
+
+        options: [
+
+            {
+                text: "🧠 Quero entender como a Nexa pensa",
+                next: "nexa_pensamento"
+            },
+
+            {
+                text: "🚀 Quero conhecer o que a Nexa faz",
+                next: "nexa_oque"
+            },
+
+            {
+                text: "💡 Tenho uma situação que quero analisar",
+                next: "ajuda"
+            }
+
+        ]
+
+    },
+
+    nexa_pensamento: {
+
+        text:
+`A Nexa procura pensar primeiro no problema e depois na ferramenta.
+
+Isso significa que não faz sentido utilizar IA apenas porque IA está em alta, criar um sistema apenas porque é possível ou fazer marketing apenas para "estar presente".
+
+A pergunta precisa ser:
+
+"O que estamos tentando alcançar?"
+
+Depois disso podemos escolher as ferramentas, tecnologias e estratégias mais adequadas.
+
+Essa visão também influencia a forma como pensamos nossos projetos.`,
+
+        options: [
+
+            {
+                text: "🧭 Como funciona um projeto?",
+                next: "projetos"
+            },
+
+            {
+                text: "🚀 O que a Nexa faz?",
+                next: "nexa_oque"
+            },
+
+            {
+                text: "❓ Tenho uma dúvida sobre isso",
+                next: "duvidas"
+            }
+
+        ]
+
+    },
+
+    nexa_oque: {
+
+        text:
+`A atuação da Nexa pode envolver diferentes frentes.
+
+Entre elas estão:
+
+• Inteligência Artificial
+• Desenvolvimento de sites e sistemas
+• Automação e soluções digitais
+• Marketing e estratégia
+• Branding e presença digital
+• Soluções personalizadas
+
+O mais importante é que essas áreas não precisam funcionar isoladamente.
+
+Um projeto pode envolver tecnologia e marketing. Outro pode envolver IA e desenvolvimento. Outro pode precisar apenas de uma solução digital específica.
+
+Tudo depende do objetivo.`,
+
+        options: [
+
+            {
+                text: "🤖 Explorar Inteligência Artificial",
+                next: "ia"
+            },
+
+            {
+                text: "💻 Explorar Desenvolvimento",
+                next: "desenvolvimento"
+            },
+
+            {
+                text: "📈 Explorar Marketing",
+                next: "marketing"
+            },
+
+            {
+                text: "🧭 Entender projetos",
+                next: "projetos"
+            }
+
+        ]
+
+    },
+
+    nexa_diferencial: {
+
+        text:
+`Um dos pontos centrais da Nexa é não tratar tecnologia como uma solução automática para qualquer problema.
+
+Uma boa solução precisa fazer sentido para quem vai utilizá-la.
+
+Por isso, buscamos combinar:
+
+• entendimento do problema;
+• estratégia;
+• tecnologia;
+• criatividade;
+• execução;
+• evolução.
+
+A solução final deve existir por uma razão clara, e não simplesmente porque uma determinada ferramenta estava disponível.`,
+
+        options: [
+
+            {
+                text: "🧭 Quero entender o processo",
+                next: "projetos"
+            },
+
+            {
+                text: "✦ Conhecer as soluções",
+                next: "solucoes"
+            },
+
+            {
+                text: "❓ Tenho uma dúvida",
+                next: "duvidas"
+            }
+
+        ]
+
+    },
+
+    /* ======================================
+       SOLUÇÕES
+    ====================================== */
+
+    solucoes: {
+
+        text:
+`Vamos explorar as soluções da Nexa. ✦
+
+Como cada projeto pode ter necessidades diferentes, nossas soluções podem assumir formatos diferentes.
+
+Escolha uma área para conhecer melhor.`,
+
+        options: [
+
+            {
+                text: "🤖 Inteligência Artificial",
+                next: "ia"
+            },
+
+            {
+                text: "💻 Desenvolvimento",
+                next: "desenvolvimento"
+            },
+
+            {
+                text: "📈 Marketing e estratégia",
+                next: "marketing"
+            },
+
+            {
+                text: "⚙️ Soluções personalizadas",
+                next: "personalizado"
+            }
+
+        ]
+
+    },
+
+    /* ======================================
+       IA
+    ====================================== */
+
+    ia: {
+
+        text:
+`Inteligência Artificial é uma das áreas mais amplas dentro da tecnologia atual.
+
+Na Nexa, podemos pensar em IA não apenas como um chatbot, mas como uma ferramenta integrada a uma operação.
+
+Por exemplo, uma solução pode auxiliar atendimento, organização de informações, automação de tarefas, análise de dados ou processos internos.
+
+Mas existe muito mais para explorar.`,
+
+        options: [
+
+            {
+                text: "💬 Atendimento com IA",
+                next: "ia_atendimento"
+            },
+
+            {
+                text: "⚙️ Automação com IA",
+                next: "ia_automacao"
+            },
+
+            {
+                text: "🧠 Agentes de IA",
+                next: "ia_agentes"
+            },
+
+            {
+                text: "🏢 IA personalizada para empresas",
+                next: "ia_personalizada"
+            }
+
+        ]
+
+    },
+
+    ia_atendimento: {
+
+        text:
+`Uma IA de atendimento pode funcionar como uma primeira camada de relacionamento com clientes.
+
+Ela pode orientar pessoas, responder perguntas frequentes, coletar informações e conduzir determinados fluxos.
+
+O ponto importante é definir previamente o que a IA deve fazer e em quais situações uma pessoa precisa assumir o atendimento.
+
+Isso transforma o chatbot em parte de uma experiência maior, em vez de simplesmente colocá-lo em uma página.`,
+
+        options: [
+
+            {
+                text: "🤖 Quero entender agentes de IA",
+                next: "ia_agentes"
+            },
+
+            {
+                text: "⚙️ Quero conhecer automações",
+                next: "ia_automacao"
+            },
+
+            {
+                text: "💡 Como isso poderia funcionar no meu caso?",
+                next: "ajuda"
+            }
+
+        ]
+
+    },
+
+    ia_automacao: {
+
+        text:
+`Automação significa fazer com que determinadas etapas de um processo aconteçam de maneira estruturada, reduzindo tarefas manuais.
+
+Quando IA entra nesse processo, ela pode interpretar informações, classificar conteúdos, gerar respostas ou auxiliar decisões.
+
+Porém, uma boa automação começa pelo mapeamento do processo.
+
+Antes de perguntar "qual IA usar?", precisamos perguntar:
+
+"O que acontece hoje e onde está o desperdício de tempo ou esforço?"`,
+
+        options: [
+
+            {
+                text: "🧠 Agentes de IA",
+                next: "ia_agentes"
+            },
+
+            {
+                text: "🏢 IA personalizada",
+                next: "ia_personalizada"
+            },
+
+            {
+                text: "💡 Quero analisar um processo",
+                next: "ajuda"
+            }
+
+        ]
+
+    },
+
+    ia_agentes: {
+
+        text:
+`Agentes de IA são sistemas capazes de trabalhar com objetivos e etapas.
+
+Dependendo da arquitetura, um agente pode interpretar uma solicitação, consultar informações, utilizar ferramentas e executar diferentes partes de um processo.
+
+Isso abre possibilidades maiores do que uma conversa tradicional.
+
+Mas agentes também exigem planejamento: precisamos definir responsabilidades, limites, ferramentas disponíveis e critérios de funcionamento.`,
+
+        options: [
+
+            {
+                text: "🏢 Quero IA personalizada",
+                next: "ia_personalizada"
+            },
+
+            {
+                text: "⚙️ Explorar automação",
+                next: "ia_automacao"
+            },
+
+            {
+                text: "🧭 Como um projeto desses é desenvolvido?",
+                next: "projetos"
+            }
+
+        ]
+
+    },
+
+    ia_personalizada: {
+
+        text:
+`Uma IA personalizada é pensada de acordo com uma necessidade específica.
+
+Em vez de oferecer exatamente a mesma experiência para qualquer pessoa, podemos definir comportamento, informações, regras, interface e integrações de acordo com o contexto do projeto.
+
+É nesse ponto que IA deixa de ser apenas uma ferramenta genérica e passa a fazer parte de uma solução construída para uma finalidade.`,
+
+        options: [
+
+            {
+                text: "🧭 Quero entender como seria um projeto",
+                next: "projetos"
+            },
+
+            {
+                text: "💡 Quero descobrir se isso serviria para mim",
+                next: "ajuda"
+            },
+
+            {
+                text: "❓ Tenho uma dúvida sobre IA",
+                next: "duvidas"
+            }
+
+        ]
+
+    },
+
+    /* ======================================
+       DESENVOLVIMENTO
+    ====================================== */
+
+    desenvolvimento: {
+
+        text:
+`No desenvolvimento, a Nexa pode trabalhar na construção de experiências e soluções digitais.
+
+Isso pode envolver desde uma página institucional até sistemas e plataformas mais complexas.
+
+A tecnologia utilizada depende do problema e da arquitetura necessária.`,
+
+        options: [
+
+            {
+                text: "🌐 Sites",
+                next: "dev_sites"
+            },
+
+            {
+                text: "🖥️ Sistemas e plataformas",
+                next: "dev_sistemas"
+            },
+
+            {
+                text: "⚙️ Funcionalidades personalizadas",
+                next: "dev_personalizado"
+            },
+
+            {
+                text: "🧭 Como um projeto é desenvolvido?",
+                next: "projetos"
+            }
+
+        ]
+
+    },
+
+    dev_sites: {
+
+        text:
+`Um site pode ser muito mais do que uma página bonita.
+
+Dependendo do objetivo, podemos pensar em estrutura, experiência do usuário, responsividade, identidade visual, conteúdo, formulários, integrações e funcionalidades.
+
+O projeto precisa começar pelo propósito do site.
+
+É uma apresentação? Captação? Venda? Atendimento? Plataforma? Cada resposta muda a arquitetura.`,
+
+        options: [
+
+            {
+                text: "🖥️ Quero conhecer sistemas",
+                next: "dev_sistemas"
+            },
+
+            {
+                text: "💡 Tenho uma ideia de site",
+                next: "ajuda"
+            },
+
+            {
+                text: "🧭 Ver como funciona um projeto",
+                next: "projetos"
+            }
+
+        ]
+
+    },
+
+    dev_sistemas: {
+
+        text:
+`Sistemas e plataformas normalmente exigem uma estrutura mais completa.
+
+Podem envolver:
+
+• interface;
+• autenticação;
+• banco de dados;
+• regras de negócio;
+• APIs;
+• armazenamento;
+• permissões;
+• painéis administrativos;
+• integrações.
+
+O primeiro passo é entender o que o sistema precisa fazer e quem irá utilizá-lo.`,
+
+        options: [
+
+            {
+                text: "⚙️ Funcionalidades personalizadas",
+                next: "dev_personalizado"
+            },
+
+            {
+                text: "💡 Quero explicar minha ideia",
+                next: "ajuda"
+            },
+
+            {
+                text: "🧭 Como vocês desenvolvem?",
+                next: "projetos"
+            }
+
+        ]
+
+    },
+
+    dev_personalizado: {
+
+        text:
+`Uma funcionalidade personalizada pode ser pequena ou fazer parte de uma plataforma inteira.
+
+O importante é definir claramente:
+
+1. Qual problema ela resolve?
+2. Quem utiliza?
+3. O que precisa acontecer?
+4. Quais dados estão envolvidos?
+5. Como ela se conecta ao restante do projeto?
+
+Com essas respostas conseguimos transformar uma ideia abstrata em uma especificação concreta.`,
+
+        options: [
+
+            {
+                text: "💡 Quero analisar uma ideia",
+                next: "ajuda"
+            },
+
+            {
+                text: "🧭 Quero conhecer o processo",
+                next: "projetos"
+            },
+
+            {
+                text: "❓ Tenho outra dúvida",
+                next: "duvidas"
+            }
+
+        ]
+
+    },
+
+    /* ======================================
+       MARKETING
+    ====================================== */
+
+    marketing: {
+
+        text:
+`Marketing também pode assumir diferentes funções.
+
+Para a Nexa, marketing não precisa ser simplesmente publicar conteúdo.
+
+Ele pode envolver posicionamento, estratégia, comunicação, identidade, presença digital e crescimento.
+
+Vamos explorar cada uma dessas possibilidades.`,
+
+        options: [
+
+            {
+                text: "🎯 Estratégia",
+                next: "marketing_estrategia"
+            },
+
+            {
+                text: "✨ Branding",
+                next: "marketing_branding"
+            },
+
+            {
+                text: "📱 Redes sociais",
+                next: "marketing_social"
+            },
+
+            {
+                text: "📊 Crescimento",
+                next: "marketing_crescimento"
+            }
+
+        ]
+
+    },
+
+    marketing_estrategia: {
+
+        text:
+`Estratégia começa antes da publicação.
+
+Precisamos compreender:
+
+• quem é o público;
+• qual problema existe;
+• qual é a proposta;
+• como a marca quer ser percebida;
+• quais canais fazem sentido;
+• qual resultado precisa ser alcançado.
+
+Depois disso podemos definir ações.`,
+
+        options: [
+
+            {
+                text: "✨ Quero entender branding",
+                next: "marketing_branding"
+            },
+
+            {
+                text: "📱 Quero falar de redes sociais",
+                next: "marketing_social"
+            },
+
+            {
+                text: "📊 Quero entender crescimento",
+                next: "marketing_crescimento"
+            }
+
+        ]
+
+    },
+
+    marketing_branding: {
+
+        text:
+`Branding está relacionado à construção de percepção.
+
+Uma marca não é apenas seu logotipo.
+
+Ela também envolve posicionamento, identidade visual, linguagem, experiência e consistência.
+
+Quando esses elementos trabalham juntos, a empresa passa a construir uma presença reconhecível.`,
+
+        options: [
+
+            {
+                text: "🎯 Estratégia",
+                next: "marketing_estrategia"
+            },
+
+            {
+                text: "📱 Redes sociais",
+                next: "marketing_social"
+            },
+
+            {
+                text: "💡 Quero analisar minha marca",
+                next: "ajuda"
+            }
+
+        ]
+
+    },
+
+    marketing_social: {
+
+        text:
+`Redes sociais podem ser uma ferramenta importante de comunicação, mas publicar por publicar raramente é suficiente.
+
+É necessário pensar em conteúdo, posicionamento, identidade, frequência, distribuição e objetivo.
+
+A estratégia depende do público e do estágio atual da marca.`,
+
+        options: [
+
+            {
+                text: "🎯 Voltar para estratégia",
+                next: "marketing_estrategia"
+            },
+
+            {
+                text: "✨ Branding",
+                next: "marketing_branding"
+            },
+
+            {
+                text: "📊 Crescimento",
+                next: "marketing_crescimento"
+            }
+
+        ]
+
+    },
+
+    marketing_crescimento: {
+
+        text:
+`Crescimento precisa ser observado como um processo.
+
+Podemos analisar aquisição, conversão, retenção, oferta, comunicação e experiência.
+
+O objetivo não é simplesmente aumentar números, mas entender quais ações realmente contribuem para o resultado desejado.`,
+
+        options: [
+
+            {
+                text: "🎯 Quero entender estratégia",
+                next: "marketing_estrategia"
+            },
+
+            {
+                text: "💡 Quero analisar meu cenário",
+                next: "ajuda"
+            },
+
+            {
+                text: "❓ Tenho uma dúvida",
+                next: "duvidas"
+            }
+
+        ]
+
+    },
+
+    /* ======================================
+       PERSONALIZADO
+    ====================================== */
+
+    personalizado: {
+
+        text:
+`Nem todo problema cabe perfeitamente dentro de uma categoria.
+
+É por isso que soluções personalizadas existem.
+
+Talvez você tenha uma ideia de sistema, uma automação específica, uma necessidade de IA ou uma combinação de diferentes áreas.
+
+Nesse caso, o primeiro passo é entender o problema.`,
+
+        options: [
+
+            {
+                text: "💡 Quero explicar minha necessidade",
+                next: "ajuda"
+            },
+
+            {
+                text: "🧭 Quero entender como vocês trabalham",
+                next: "projetos"
+            },
+
+            {
+                text: "❓ Tenho uma dúvida",
+                next: "duvidas"
+            }
+
+        ]
+
+    },
+
+    /* ======================================
+       PROJETOS
+    ====================================== */
+
+    projetos: {
+
+        text:
+`Um projeto começa muito antes do código.
+
+A ideia normalmente passa por algumas etapas:
+
+1. Entendimento
+2. Definição do objetivo
+3. Planejamento
+4. Construção
+5. Testes
+6. Implementação
+7. Evolução
+
+O processo pode variar de acordo com o tamanho e a natureza do projeto.`,
+
+        options: [
+
+            {
+                text: "🔎 1. Entendimento",
+                next: "projeto_entendimento"
+            },
+
+            {
+                text: "📐 2. Planejamento",
+                next: "projeto_planejamento"
+            },
+
+            {
+                text: "💻 3. Construção",
+                next: "projeto_construcao"
+            },
+
+            {
+                text: "🚀 4. Implementação e evolução",
+                next: "projeto_implementacao"
+            }
+
+        ]
+
+    },
+
+    projeto_entendimento: {
+
+        text:
+`O entendimento é uma das etapas mais importantes.
+
+Antes de construir, precisamos descobrir o que realmente precisa ser resolvido.
+
+Isso significa entender o contexto, os usuários, os objetivos e as restrições.
+
+Quanto melhor compreendemos o problema, maiores são as chances de construir algo que realmente faça sentido.`,
+
+        options: [
+
+            {
+                text: "📐 Quero entender o planejamento",
+                next: "projeto_planejamento"
+            },
+
+            {
+                text: "💻 Quero saber como acontece a construção",
+                next: "projeto_construcao"
+            },
+
+            {
+                text: "💡 Quero aplicar isso à minha ideia",
+                next: "ajuda"
+            }
+
+        ]
+
+    },
+
+    projeto_planejamento: {
+
+        text:
+`Depois de compreender o problema, transformamos as ideias em estrutura.
+
+Definimos funcionalidades, prioridades, tecnologias, arquitetura e etapas.
+
+Esse planejamento ajuda a evitar que o projeto cresça de maneira desorganizada.
+
+Também permite que a construção aconteça de forma progressiva.`,
+
+        options: [
+
+            {
+                text: "💻 Quero conhecer a construção",
+                next: "projeto_construcao"
+            },
+
+            {
+                text: "🚀 Quero conhecer a implementação",
+                next: "projeto_implementacao"
+            },
+
+            {
+                text: "💡 Quero planejar uma ideia",
+                next: "ajuda"
+            }
+
+        ]
+
+    },
+
+    projeto_construcao: {
+
+        text:
+`É aqui que o planejamento começa a se transformar em produto.
+
+Dependendo do projeto, isso pode envolver design, frontend, backend, banco de dados, APIs, IA, integrações e testes.
+
+A construção acontece em etapas para que cada parte possa ser validada antes de avançar.`,
+
+        options: [
+
+            {
+                text: "🚀 Implementação",
+                next: "projeto_implementacao"
+            },
+
+            {
+                text: "🤖 Como IA entra nesse processo?",
+                next: "ia_personalizada"
+            },
+
+            {
+                text: "💡 Quero falar sobre meu projeto",
+                next: "ajuda"
+            }
+
+        ]
+
+    },
+
+    projeto_implementacao: {
+
+        text:
+`Depois da construção vem a implementação.
+
+Mas um projeto não precisa necessariamente terminar no momento em que é entregue.
+
+Dependendo da solução, podem existir melhorias, manutenção, novas funcionalidades, ajustes e evolução.
+
+A tecnologia muda, e uma solução também pode evoluir com o tempo.`,
+
+        options: [
+
+            {
+                text: "💡 Quero analisar meu projeto",
+                next: "ajuda"
+            },
+
+            {
+                text: "❓ Tenho uma dúvida",
+                next: "duvidas"
+            },
+
+            {
+                text: "🚀 Quero conhecer as soluções",
+                next: "solucoes"
+            }
+
+        ]
+
+    },
+
+    /* ======================================
+       AJUDA
+    ====================================== */
+
+    ajuda: {
+
+        text:
+`Vamos descobrir isso juntos. 💡
+
+Você não precisa saber exatamente qual serviço da Nexa precisa.
+
+Pode simplesmente explicar o que está tentando fazer.
+
+Por exemplo:
+
+"Quero automatizar o atendimento da minha empresa."
+
+"Preciso de um sistema."
+
+"Tenho uma ideia para um aplicativo."
+
+"Minha empresa precisa melhorar sua presença digital."
+
+"Quero descobrir onde IA poderia ajudar."
+
+A partir da sua situação, podemos identificar possibilidades.`,
+
+        options: [
+
+            {
+                text: "🤖 Quero usar IA",
+                next: "ia"
+            },
+
+            {
+                text: "💻 Quero desenvolver algo",
+                next: "desenvolvimento"
+            },
+
+            {
+                text: "📈 Quero melhorar minha presença digital",
+                next: "marketing"
+            },
+
+            {
+                text: "❓ Ainda não sei",
+                next: "ajuda_nao_sei"
+            }
+
+        ]
+
+    },
+
+    ajuda_nao_sei: {
+
+        text:
+`Tudo bem.
+
+Nesse caso, não precisamos começar pela solução.
+
+Começamos pelo problema.
+
+Conte, com suas próprias palavras:
+
+"O que você gostaria que fosse diferente?"
+
+Não precisa usar termos técnicos. Explique como explicaria para outra pessoa.`,
+
+        options: [
+
+            {
+                text: "🧭 Quero entender primeiro como a Nexa trabalha",
+                next: "projetos"
+            },
+
+            {
+                text: "❓ Tenho uma dúvida antes",
+                next: "duvidas"
+            },
+
+            {
+                text: "🚀 Quero conhecer a Nexa",
+                next: "nexa"
+            }
+
+        ]
+
+    },
+
+    /* ======================================
+       DÚVIDAS
+    ====================================== */
+
+    duvidas: {
+
+        text:
+`Claro. Pode perguntar. ❓
+
+Você pode escrever sua dúvida diretamente no campo abaixo.
+
+Se preferir, também posso te direcionar por assunto.`,
+
+        options: [
+
+            {
+                text: "🚀 Dúvidas sobre a Nexa",
+                next: "duvidas_nexa"
+            },
+
+            {
+                text: "🤖 Dúvidas sobre IA",
+                next: "duvidas_ia"
+            },
+
+            {
+                text: "💻 Dúvidas sobre tecnologia",
+                next: "duvidas_tecnologia"
+            },
+
+            {
+                text: "📈 Dúvidas sobre marketing",
+                next: "duvidas_marketing"
+            }
+
+        ]
+
+    },
+
+    duvidas_nexa: {
+
+        text:
+`Sobre a Nexa, você pode perguntar sobre nossa proposta, áreas de atuação, forma de trabalho, projetos e soluções.
+
+Escreva sua dúvida diretamente ou escolha um assunto para continuar.`,
+
+        options: [
+
+            {
+                text: "🧠 Como a Nexa pensa?",
+                next: "nexa_pensamento"
+            },
+
+            {
+                text: "🚀 O que a Nexa faz?",
+                next: "nexa_oque"
+            },
+
+            {
+                text: "🧭 Como funciona um projeto?",
+                next: "projetos"
+            },
+
+            {
+                text: "❓ Fazer outra pergunta",
+                next: "duvidas"
+            }
+
+        ]
+
+    },
+
+    duvidas_ia: {
+
+        text:
+`Sobre IA, podemos conversar sobre aplicações, automações, agentes, assistentes, soluções personalizadas e como essas tecnologias podem fazer parte de um projeto.`,
+
+        options: [
+
+            {
+                text: "🤖 IA personalizada",
+                next: "ia_personalizada"
+            },
+
+            {
+                text: "⚙️ Automação",
+                next: "ia_automacao"
+            },
+
+            {
+                text: "🧠 Agentes",
+                next: "ia_agentes"
+            },
+
+            {
+                text: "❓ Fazer outra pergunta",
+                next: "duvidas"
+            }
+
+        ]
+
+    },
+
+    duvidas_tecnologia: {
+
+        text:
+`Podemos conversar sobre sites, programação, sistemas, plataformas, APIs, bancos de dados, arquitetura e outros assuntos relacionados ao desenvolvimento.
+
+Se sua dúvida for sobre um erro específico, você também pode descrevê-lo diretamente.`,
+
+        options: [
+
+            {
+                text: "🌐 Sites",
+                next: "dev_sites"
+            },
+
+            {
+                text: "🖥️ Sistemas",
+                next: "dev_sistemas"
+            },
+
+            {
+                text: "⚙️ Desenvolvimento personalizado",
+                next: "dev_personalizado"
+            },
+
+            {
+                text: "❓ Fazer outra pergunta",
+                next: "duvidas"
+            }
+
+        ]
+
+    },
+
+    duvidas_marketing: {
+
+        text:
+`Marketing pode envolver estratégia, branding, redes sociais, comunicação e crescimento.
+
+Se quiser, podemos aprofundar qualquer uma dessas áreas.`,
+
+        options: [
+
+            {
+                text: "🎯 Estratégia",
+                next: "marketing_estrategia"
+            },
+
+            {
+                text: "✨ Branding",
+                next: "marketing_branding"
+            },
+
+            {
+                text: "📱 Redes sociais",
+                next: "marketing_social"
+            },
+
+            {
+                text: "❓ Fazer outra pergunta",
+                next: "duvidas"
+            }
+
+        ]
+
+    }
+
+};
+
+/* ==========================================
+   CRIAR CONVERSA
 ========================================== */
 
 function createConversation() {
@@ -2281,9 +3683,17 @@ function createConversation() {
 
         title: "Nova conversa",
 
+        state: "inicio",
+
+        status: "active",
+
         messages: [],
 
-        createdAt: Date.now()
+        visitedStates: [],
+
+        createdAt: Date.now(),
+
+        updatedAt: Date.now()
 
     };
 
@@ -2298,132 +3708,493 @@ function createConversation() {
 
     renderHistory();
 
-    resetChat();
+    renderConversationStart();
+
+    closeSidebar();
 
 }
 
 /* ==========================================
-   RESET CHAT
+   CONVERSA ATUAL
 ========================================== */
 
-function resetChat() {
+function getCurrentConversation() {
 
-    messages.innerHTML = "";
+    return conversations.find(
+        conversation =>
+            conversation.id ===
+            currentConversation
+    );
 
-    const welcome =
-        document.createElement("section");
+}
 
-    welcome.className = "welcome";
+/* ==========================================
+   REGISTRAR MENSAGEM
+========================================== */
 
-    welcome.id = "welcome";
+function saveMessage(
+    text,
+    type
+) {
 
-    welcome.innerHTML = `
+    const conversation =
+        getCurrentConversation();
 
-        <div class="welcome-icon">
-            ✦
+    if (!conversation) {
+        return;
+    }
+
+    if (!Array.isArray(conversation.messages)) {
+        conversation.messages = [];
+    }
+
+    conversation.messages.push({
+
+        text: String(text),
+
+        type: type,
+
+        time: Date.now()
+
+    });
+
+    conversation.updatedAt =
+        Date.now();
+
+    if (
+        type === "user" &&
+        conversation.title === "Nova conversa"
+    ) {
+
+        const cleanText =
+            String(text).trim();
+
+        conversation.title =
+            cleanText.length > 38
+                ? cleanText.substring(0,38) + "..."
+                : cleanText;
+
+    }
+
+    saveConversations();
+
+    renderHistory();
+
+}
+
+/* ==========================================
+   ADICIONAR MENSAGEM
+========================================== */
+
+function addMessage(
+    text,
+    type,
+    save = true
+) {
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        `message ${type}`;
+
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "message-content";
+
+    content.textContent =
+        text;
+
+    message.appendChild(
+        content
+    );
+
+    messages.appendChild(
+        message
+    );
+
+    if (save) {
+
+        saveMessage(
+            text,
+            type
+        );
+
+    }
+
+    scrollToBottom();
+
+    return message;
+
+}
+
+/* ==========================================
+   TYPING
+========================================== */
+
+function showTyping() {
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message ai";
+
+    message.id =
+        "typingMessage";
+
+    message.innerHTML = `
+
+        <div class="typing">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
         </div>
 
-        <h1>
-            Olá, eu sou a NEXA.
-        </h1>
-
-        <p>
-            Sua inteligência artificial da Nexa Agency Enterprises.
-            Escolha uma opção abaixo ou escreva sua própria pergunta.
-        </p>
-
-        <div class="quick-options">
-
-            <button
-                class="quick-option"
-                data-path="tecnologia"
-                type="button"
-            >
-                <strong>💻 Tecnologia</strong>
-                <span>
-                    Programação, sistemas, sites e tecnologia.
-                </span>
-            </button>
-
-            <button
-                class="quick-option"
-                data-path="ia"
-                type="button"
-            >
-                <strong>🤖 Inteligência Artificial</strong>
-                <span>
-                    IA, automações, agentes e soluções inteligentes.
-                </span>
-            </button>
-
-            <button
-                class="quick-option"
-                data-path="nexa"
-                type="button"
-            >
-                <strong>🚀 Conhecer a Nexa</strong>
-                <span>
-                    Saiba mais sobre a empresa e suas soluções.
-                </span>
-            </button>
-
-            <button
-                class="quick-option"
-                data-path="marketing"
-                type="button"
-            >
-                <strong>📈 Marketing</strong>
-                <span>
-                    Estratégia, branding, conteúdo e crescimento.
-                </span>
-            </button>
-
-            <button
-                class="quick-option"
-                data-path="criatividade"
-                type="button"
-            >
-                <strong>🎨 Criatividade</strong>
-                <span>
-                    Música, escrita, ideias e criação.
-                </span>
-            </button>
-
-            <button
-                class="quick-option"
-                data-path="ajuda"
-                type="button"
-            >
-                <strong>💡 Preciso de ajuda</strong>
-                <span>
-                    Não sei exatamente por onde começar.
-                </span>
-            </button>
-
-        </div>
     `;
 
     messages.appendChild(
-        welcome
+        message
     );
 
-    bindQuickOptions();
+    scrollToBottom();
 
 }
 
 /* ==========================================
-   ESCAPAR HTML
+   REMOVER TYPING
 ========================================== */
 
-function escapeHtml(text) {
+function removeTyping() {
 
-    const div =
+    const typing =
+        document.getElementById(
+            "typingMessage"
+        );
+
+    if (typing) {
+        typing.remove();
+    }
+
+}
+
+/* ==========================================
+   SCROLL
+========================================== */
+
+function scrollToBottom() {
+
+    requestAnimationFrame(
+        () => {
+
+            messages.scrollTo({
+
+                top:
+                    messages.scrollHeight,
+
+                behavior:
+                    "smooth"
+
+            });
+
+        }
+    );
+
+}
+
+/* ==========================================
+   MOSTRAR ESTADO
+========================================== */
+
+function showState(
+    state,
+    saveBotMessage = true
+) {
+
+    const flow =
+        flows[state];
+
+    if (!flow) {
+        return;
+    }
+
+    removeTyping();
+
+    const message =
         document.createElement("div");
 
-    div.textContent =
-        String(text);
+    message.className =
+        "message ai";
 
-    return div.innerHTML;
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "message-content";
+
+    if (flow.title) {
+
+        const heading =
+            document.createElement("div");
+
+        heading.className =
+            "conversation-heading";
+
+        heading.textContent =
+            flow.title;
+
+        content.appendChild(
+            heading
+        );
+
+    }
+
+    const text =
+        document.createElement("div");
+
+    text.textContent =
+        flow.text;
+
+    content.appendChild(
+        text
+    );
+
+    if (
+        Array.isArray(
+            flow.options
+        ) &&
+        flow.options.length
+    ) {
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "ai-options";
+
+        flow.options.forEach(
+            option => {
+
+                const button =
+                    document.createElement("button");
+
+                button.className =
+                    "ai-option";
+
+                button.type =
+                    "button";
+
+                button.textContent =
+                    option.text;
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        if (processing) {
+                            return;
+                        }
+
+                        handleOption(
+                            option
+                        );
+
+                    }
+                );
+
+                wrapper.appendChild(
+                    button
+                );
+
+            }
+        );
+
+        content.appendChild(
+            wrapper
+        );
+
+    }
+
+    message.appendChild(
+        content
+    );
+
+    messages.appendChild(
+        message
+    );
+
+    if (saveBotMessage) {
+
+        saveMessage(
+            flow.text,
+            "ai"
+        );
+
+    }
+
+    scrollToBottom();
+
+}
+
+/* ==========================================
+   OPÇÃO
+========================================== */
+
+function handleOption(
+    option
+) {
+
+    const conversation =
+        getCurrentConversation();
+
+    if (!conversation) {
+        return;
+    }
+
+    if (!option.next) {
+        return;
+    }
+
+    processing = true;
+
+    addMessage(
+        option.text,
+        "user"
+    );
+
+    conversation.visitedStates =
+        Array.isArray(
+            conversation.visitedStates
+        )
+            ? conversation.visitedStates
+            : [];
+
+    conversation.visitedStates.push(
+        conversation.state
+    );
+
+    conversation.state =
+        option.next;
+
+    conversation.updatedAt =
+        Date.now();
+
+    saveConversations();
+
+    showTyping();
+
+    setTimeout(
+        () => {
+
+            showState(
+                option.next
+            );
+
+            processing = false;
+
+        },
+        380
+    );
+
+}
+
+/* ==========================================
+   INÍCIO DA CONVERSA
+========================================== */
+
+function renderConversationStart() {
+
+    messages.innerHTML = "";
+
+    const conversation =
+        getCurrentConversation();
+
+    if (!conversation) {
+        return;
+    }
+
+    conversation.state =
+        conversation.state || "inicio";
+
+    showState(
+        conversation.state
+    );
+
+}
+
+/* ==========================================
+   NOVA CONVERSA
+========================================== */
+
+function startNewConversation() {
+
+    createConversation();
+
+}
+
+/* ==========================================
+   CARREGAR CONVERSA
+========================================== */
+
+function loadConversation(
+    id
+) {
+
+    const conversation =
+        conversations.find(
+            item =>
+                item.id === id
+        );
+
+    if (!conversation) {
+        return;
+    }
+
+    currentConversation =
+        id;
+
+    messages.innerHTML = "";
+
+    if (
+        Array.isArray(
+            conversation.messages
+        ) &&
+        conversation.messages.length
+    ) {
+
+        conversation.messages.forEach(
+            message => {
+
+                addMessage(
+                    message.text,
+                    message.type,
+                    false
+                );
+
+            }
+        );
+
+    } else {
+
+        conversation.state =
+            conversation.state ||
+            "inicio";
+
+        showState(
+            conversation.state
+        );
+
+    }
+
+    renderHistory();
+
+    closeSidebar();
+
+    scrollToBottom();
 
 }
 
@@ -2437,7 +4208,7 @@ function renderHistory(
 
     history.innerHTML = "";
 
-    const termo =
+    const term =
         filter
             .trim()
             .toLowerCase();
@@ -2451,8 +4222,24 @@ function renderHistory(
                         conversation.title || ""
                     ).toLowerCase();
 
-                return title.includes(
-                    termo
+                const content =
+                    Array.isArray(
+                        conversation.messages
+                    )
+                        ? conversation.messages
+                            .map(
+                                message =>
+                                    String(
+                                        message.text || ""
+                                    )
+                            )
+                            .join(" ")
+                            .toLowerCase()
+                        : "";
+
+                return (
+                    title.includes(term) ||
+                    content.includes(term)
                 );
 
             }
@@ -2467,7 +4254,7 @@ function renderHistory(
             "history-empty";
 
         empty.textContent =
-            termo
+            term
                 ? "Nenhuma conversa encontrada."
                 : "Suas conversas aparecerão aqui.";
 
@@ -2513,7 +4300,7 @@ function renderHistory(
                 <button
                     class="history-menu-button"
                     type="button"
-                    aria-label="Opções da conversa"
+                    aria-label="Opções"
                 >
                     <span>•••</span>
                 </button>
@@ -2561,6 +4348,7 @@ function renderHistory(
                     </button>
 
                 </div>
+
             `;
 
             const menuButton =
@@ -2611,44 +4399,37 @@ function renderHistory(
                             ".conversation-menu.active"
                         )
                         .forEach(
-                            otherMenu => {
+                            other => {
 
-                                if (
-                                    otherMenu !== menu
-                                ) {
-
-                                    otherMenu.classList.remove(
-                                        "active"
-                                    );
-
-                                    const otherButton =
-                                        otherMenu
-                                            .parentElement
-                                            .querySelector(
-                                                ".history-menu-button"
-                                            );
-
-                                    if (otherButton) {
-
-                                        otherButton.classList.remove(
-                                            "open"
-                                        );
-
-                                    }
-
-                                }
+                                other.classList.remove(
+                                    "active"
+                                );
 
                             }
                         );
 
-                    const aberto =
+                    document
+                        .querySelectorAll(
+                            ".history-menu-button.open"
+                        )
+                        .forEach(
+                            other => {
+
+                                other.classList.remove(
+                                    "open"
+                                );
+
+                            }
+                        );
+
+                    const open =
                         menu.classList.toggle(
                             "active"
                         );
 
                     menuButton.classList.toggle(
                         "open",
-                        aberto
+                        open
                     );
 
                 }
@@ -2659,14 +4440,6 @@ function renderHistory(
                 event => {
 
                     event.stopPropagation();
-
-                    menu.classList.remove(
-                        "active"
-                    );
-
-                    menuButton.classList.remove(
-                        "open"
-                    );
 
                     abrirConfirmacaoExclusao(
                         conversation.id
@@ -2685,801 +4458,20 @@ function renderHistory(
 }
 
 /* ==========================================
-   FECHAR MENUS AO CLICAR FORA
+   ESCAPAR HTML
 ========================================== */
 
-document.addEventListener(
-    "click",
-    event => {
-
-        if (
-            !event.target.closest(
-                ".history-item"
-            )
-        ) {
-
-            document
-                .querySelectorAll(
-                    ".conversation-menu.active"
-                )
-                .forEach(
-                    menu => {
-
-                        menu.classList.remove(
-                            "active"
-                        );
-
-                        const button =
-                            menu.parentElement
-                                .querySelector(
-                                    ".history-menu-button"
-                                );
-
-                        if (button) {
-
-                            button.classList.remove(
-                                "open"
-                            );
-
-                        }
-
-                    }
-                );
-
-        }
-
-    }
-);
-
-/* ==========================================
-   CARREGAR CONVERSA
-========================================== */
-
-function loadConversation(id) {
-
-    const conversation =
-        conversations.find(
-            item =>
-                item.id === id
-        );
-
-    if (!conversation) {
-        return;
-    }
-
-    currentConversation =
-        id;
-
-    messages.innerHTML = "";
-
-    if (
-        Array.isArray(
-            conversation.messages
-        )
-    ) {
-
-        conversation.messages.forEach(
-            message => {
-
-                addMessage(
-                    message.text,
-                    message.type,
-                    false
-                );
-
-            }
-        );
-
-    }
-
-    if (
-        !conversation.messages ||
-        conversation.messages.length === 0
-    ) {
-
-        resetChat();
-
-    }
-
-    renderHistory();
-
-    closeSidebar();
-
-    scrollToBottom();
-
-}
-
-/* ==========================================
-   ADICIONAR MENSAGEM
-========================================== */
-
-function addMessage(
-    text,
-    type,
-    save = true
+function escapeHtml(
+    text
 ) {
 
-    const message =
+    const div =
         document.createElement("div");
 
-    message.className =
-        `message ${type}`;
+    div.textContent =
+        String(text);
 
-    const content =
-        document.createElement("div");
-
-    content.className =
-        "message-content";
-
-    content.textContent =
-        text;
-
-    message.appendChild(
-        content
-    );
-
-    messages.appendChild(
-        message
-    );
-
-    if (
-        save &&
-        currentConversation
-    ) {
-
-        const conversation =
-            conversations.find(
-                item =>
-                    item.id ===
-                    currentConversation
-            );
-
-        if (conversation) {
-
-            if (
-                !Array.isArray(
-                    conversation.messages
-                )
-            ) {
-
-                conversation.messages = [];
-
-            }
-
-            conversation.messages.push({
-
-                text: text,
-
-                type: type,
-
-                time: Date.now()
-
-            });
-
-            if (
-                type === "user" &&
-                conversation.title ===
-                    "Nova conversa"
-            ) {
-
-                conversation.title =
-                    text.length > 30
-                        ? text.substring(0,30) + "..."
-                        : text;
-
-            }
-
-            saveConversations();
-
-            renderHistory();
-
-        }
-
-    }
-
-    scrollToBottom();
-
-    return message;
-
-}
-
-/* ==========================================
-   SCROLL
-========================================== */
-
-function scrollToBottom() {
-
-    messages.scrollTo({
-
-        top:
-            messages.scrollHeight,
-
-        behavior:
-            "smooth"
-
-    });
-
-}
-
-/* ==========================================
-   CAMINHOS
-========================================== */
-
-const paths = {
-
-    tecnologia: {
-
-        question:
-            "Perfeito. O que você quer resolver na área de tecnologia?",
-
-        options: [
-
-            {
-                text:
-                    "🌐 Criar um site",
-
-                response:
-                    "Posso te ajudar a estruturar um site completo: arquitetura, HTML, CSS, JavaScript, responsividade, identidade visual e funcionalidades."
-            },
-
-            {
-                text:
-                    "💻 Programação",
-
-                response:
-                    "Boa. Podemos trabalhar com HTML, CSS, JavaScript, Node.js, bancos de dados, APIs, Firebase e arquitetura de sistemas."
-            },
-
-            {
-                text:
-                    "🖥️ Sistema ou plataforma",
-
-                response:
-                    "Nesse caso, o ideal é começar definindo objetivo, usuários, funcionalidades, autenticação, banco de dados e arquitetura. Depois construímos por etapas."
-            },
-
-            {
-                text:
-                    "🔧 Resolver um erro",
-
-                response:
-                    "Mande o erro exatamente como aparece no terminal ou navegador. Se possível, envie também o trecho do código relacionado. Assim conseguimos atacar a causa, não apenas o sintoma."
-            }
-
-        ]
-
-    },
-
-    ia: {
-
-        question:
-            "Excelente. Qual área de Inteligência Artificial interessa mais a você?",
-
-        options: [
-
-            {
-                text:
-                    "🤖 Criar uma IA",
-
-                response:
-                    "Podemos estruturar uma IA própria com interface, backend, modelo, memória, banco de dados e regras de comportamento."
-            },
-
-            {
-                text:
-                    "⚙️ Automação",
-
-                response:
-                    "Automação é onde a IA começa a ficar realmente interessante: atendimento, classificação, geração de conteúdo, análise de dados e processos internos."
-            },
-
-            {
-                text:
-                    "🧠 Agentes de IA",
-
-                response:
-                    "Agentes podem receber objetivos, utilizar ferramentas, consultar dados e executar etapas de um processo. A arquitetura precisa ser bem definida para evitar resultados inconsistentes."
-            },
-
-            {
-                text:
-                    "💡 Aprender sobre IA",
-
-                response:
-                    "Posso explicar IA desde os fundamentos até APIs, LLMs, embeddings, RAG, agentes, fine-tuning e arquitetura de aplicações."
-            }
-
-        ]
-
-    },
-
-    nexa: {
-
-        question:
-            "Claro. O que você deseja conhecer sobre a Nexa?",
-
-        options: [
-
-            {
-                text:
-                    "🚀 O que é a Nexa?",
-
-                response:
-                    "A Nexa Agency Enterprises é uma empresa voltada para tecnologia, inteligência artificial, marketing, soluções digitais e desenvolvimento de projetos."
-            },
-
-            {
-                text:
-                    "🤖 Soluções de IA",
-
-                response:
-                    "A Nexa pode desenvolver soluções de inteligência artificial especializadas para diferentes necessidades, desde assistentes até sistemas integrados."
-            },
-
-            {
-                text:
-                    "📈 Marketing e estratégia",
-
-                response:
-                    "A proposta é ir além de simplesmente publicar conteúdo. Estratégia, posicionamento, identidade, comunicação e tecnologia precisam trabalhar juntos."
-            },
-
-            {
-                text:
-                    "💼 Quero falar com a Nexa",
-
-                response:
-                    "Perfeito. Para falar diretamente com a equipe da Nexa, utilize o canal oficial de atendimento disponibilizado pela empresa."
-            }
-
-        ]
-
-    },
-
-    marketing: {
-
-        question:
-            "Marketing pode significar muita coisa. Qual caminho você quer seguir?",
-
-        options: [
-
-            {
-                text:
-                    "📱 Redes sociais",
-
-                response:
-                    "Uma estratégia de redes sociais começa pelo posicionamento. Depois vêm conteúdo, frequência, identidade visual, distribuição e análise de resultados."
-            },
-
-            {
-                text:
-                    "🎯 Estratégia",
-
-                response:
-                    "Estratégia significa saber para quem você vende, qual problema resolve, por que alguém deveria escolher você e como comunicar isso com clareza."
-            },
-
-            {
-                text:
-                    "✨ Branding",
-
-                response:
-                    "Branding é construir percepção. Logo é apenas uma peça. Marca envolve posicionamento, identidade, linguagem, experiência e consistência."
-            },
-
-            {
-                text:
-                    "📊 Crescimento",
-
-                response:
-                    "Para crescer de forma consistente, precisamos entender aquisição, conversão, retenção, oferta, público e métricas."
-            }
-
-        ]
-
-    },
-
-    criatividade: {
-
-        question:
-            "Bora criar. Qual área criativa você quer explorar?",
-
-        options: [
-
-            {
-                text:
-                    "🎵 Música",
-
-                response:
-                    "Posso ajudar com composição, estrutura musical, harmonia, letras, conceitos, arranjos e desenvolvimento de ideias."
-            },
-
-            {
-                text:
-                    "✍️ Escrita",
-
-                response:
-                    "Podemos trabalhar narrativa, poesia, textos institucionais, roteiros, conceitos e desenvolvimento de ideias."
-            },
-
-            {
-                text:
-                    "🎨 Design",
-
-                response:
-                    "Podemos construir conceitos visuais, identidade de marca, paleta, tipografia, composição e direção criativa."
-            },
-
-            {
-                text:
-                    "💡 Brainstorm",
-
-                response:
-                    "Manda a ideia, mesmo que esteja bagunçada. A gente desmonta, encontra o núcleo interessante e transforma aquilo em algo concreto."
-            }
-
-        ]
-
-    },
-
-    ajuda: {
-
-        question:
-            "Sem problema. Vamos descobrir juntos. O que você precisa fazer?",
-
-        options: [
-
-            {
-                text:
-                    "💻 Algo relacionado a computador",
-
-                response:
-                    "Ótimo. Explique o que você está tentando fazer e o que aconteceu. Se houver uma mensagem de erro, copie exatamente."
-            },
-
-            {
-                text:
-                    "📚 Quero estudar",
-
-                response:
-                    "Posso montar explicações, resumos, exercícios, perguntas e planos de estudo de acordo com o assunto."
-            },
-
-            {
-                text:
-                    "🚀 Quero criar um projeto",
-
-                response:
-                    "Excelente. Me diga a ideia e podemos transformar em objetivo, funcionalidades, estrutura, tecnologias e etapas de desenvolvimento."
-            },
-
-            {
-                text:
-                    "❓ Não sei explicar",
-
-                response:
-                    "Tudo bem. Comece contando o que você quer alcançar. Não precisa saber os termos técnicos — eu ajudo a organizar o problema."
-            }
-
-        ]
-
-    }
-
-};
-
-/* ==========================================
-   MOSTRAR CAMINHO
-========================================== */
-
-function showPath(
-    pathName
-) {
-
-    const path =
-        paths[pathName];
-
-    if (!path) {
-        return;
-    }
-
-    if (!currentConversation) {
-        createConversation();
-    }
-
-    const message =
-        document.createElement("div");
-
-    message.className =
-        "message ai";
-
-    const content =
-        document.createElement("div");
-
-    content.className =
-        "message-content";
-
-    const question =
-        document.createElement("div");
-
-    question.textContent =
-        path.question;
-
-    content.appendChild(
-        question
-    );
-
-    const wrapper =
-        document.createElement("div");
-
-    wrapper.className =
-        "ai-options";
-
-    path.options.forEach(
-        option => {
-
-            const button =
-                document.createElement("button");
-
-            button.className =
-                "ai-option";
-
-            button.type =
-                "button";
-
-            button.textContent =
-                option.text;
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    addMessage(
-                        option.text,
-                        "user"
-                    );
-
-                    button.disabled =
-                        true;
-
-                    setTimeout(
-                        () => {
-
-                            addMessage(
-                                option.response,
-                                "ai"
-                            );
-
-                            addBackButton();
-
-                        },
-                        250
-                    );
-
-                }
-            );
-
-            wrapper.appendChild(
-                button
-            );
-
-        }
-    );
-
-    content.appendChild(
-        wrapper
-    );
-
-    message.appendChild(
-        content
-    );
-
-    messages.appendChild(
-        message
-    );
-
-    scrollToBottom();
-
-}
-
-/* ==========================================
-   BOTÃO VOLTAR
-========================================== */
-
-function addBackButton() {
-
-    const message =
-        document.createElement("div");
-
-    message.className =
-        "message ai";
-
-    const content =
-        document.createElement("div");
-
-    content.className =
-        "message-content";
-
-    content.textContent =
-        "Posso continuar te ajudando. Escolha outro caminho:";
-
-    const wrapper =
-        document.createElement("div");
-
-    wrapper.className =
-        "ai-options";
-
-    const button =
-        document.createElement("button");
-
-    button.className =
-        "ai-option";
-
-    button.type =
-        "button";
-
-    button.textContent =
-        "↩ Voltar para o menu principal";
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            addMessage(
-                "↩ Voltar para o menu principal",
-                "user"
-            );
-
-            setTimeout(
-                () => {
-
-                    showMainOptions();
-
-                },
-                250
-            );
-
-        }
-    );
-
-    wrapper.appendChild(
-        button
-    );
-
-    content.appendChild(
-        wrapper
-    );
-
-    message.appendChild(
-        content
-    );
-
-    messages.appendChild(
-        message
-    );
-
-    scrollToBottom();
-
-}
-
-/* ==========================================
-   MENU PRINCIPAL
-========================================== */
-
-function showMainOptions() {
-
-    const message =
-        document.createElement("div");
-
-    message.className =
-        "message ai";
-
-    const content =
-        document.createElement("div");
-
-    content.className =
-        "message-content";
-
-    content.textContent =
-        "Claro. O que você deseja fazer agora?";
-
-    const wrapper =
-        document.createElement("div");
-
-    wrapper.className =
-        "ai-options";
-
-    const options = [
-
-        [
-            "💻 Tecnologia",
-            "tecnologia"
-        ],
-
-        [
-            "🤖 Inteligência Artificial",
-            "ia"
-        ],
-
-        [
-            "🚀 Conhecer a Nexa",
-            "nexa"
-        ],
-
-        [
-            "📈 Marketing",
-            "marketing"
-        ],
-
-        [
-            "🎨 Criatividade",
-            "criatividade"
-        ],
-
-        [
-            "💡 Preciso de ajuda",
-            "ajuda"
-        ]
-
-    ];
-
-    options.forEach(
-        ([text,path]) => {
-
-            const button =
-                document.createElement("button");
-
-            button.className =
-                "ai-option";
-
-            button.type =
-                "button";
-
-            button.textContent =
-                text;
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    addMessage(
-                        text,
-                        "user"
-                    );
-
-                    setTimeout(
-                        () => {
-
-                            showPath(
-                                path
-                            );
-
-                        },
-                        250
-                    );
-
-                }
-            );
-
-            wrapper.appendChild(
-                button
-            );
-
-        }
-    );
-
-    content.appendChild(
-        wrapper
-    );
-
-    message.appendChild(
-        content
-    );
-
-    messages.appendChild(
-        message
-    );
-
-    scrollToBottom();
+    return div.innerHTML;
 
 }
 
@@ -3492,172 +4484,286 @@ function handleFreeMessage(
 ) {
 
     const lower =
-        text.toLowerCase();
+        text
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(
+                /[\u0300-\u036f]/g,
+                ""
+            );
+
+    /*
+       NEXA
+    */
 
     if (
-        lower.includes("tecnologia") ||
-        lower.includes("programação") ||
+        lower.includes("quem e a nexa") ||
+        lower.includes("o que e a nexa") ||
+        lower.includes("sobre a nexa") ||
+        lower.includes("empresa nexa") ||
+        lower.includes("conhecer a nexa")
+    ) {
+
+        respondToFreeMessage(
+            "Entendi. Vamos conhecer melhor a Nexa.",
+            "nexa"
+        );
+
+        return;
+
+    }
+
+    /*
+       IA
+    */
+
+    if (
+        lower === "ia" ||
+        lower.includes("inteligencia artificial") ||
+        lower.includes("inteligencia") ||
+        lower.includes("chatbot") ||
+        lower.includes("agente de ia") ||
+        lower.includes("agentes de ia") ||
+        lower.includes("automacao com ia")
+    ) {
+
+        respondToFreeMessage(
+            "Claro. Vamos explorar Inteligência Artificial.",
+            "ia"
+        );
+
+        return;
+
+    }
+
+    /*
+       DESENVOLVIMENTO
+    */
+
+    if (
         lower.includes("programacao") ||
-        lower.includes("site") ||
-        lower.includes("código") ||
+        lower.includes("programar") ||
+        lower.includes("desenvolvimento") ||
         lower.includes("codigo") ||
+        lower.includes("site") ||
+        lower.includes("sistema") ||
+        lower.includes("plataforma") ||
         lower.includes("javascript") ||
         lower.includes("html") ||
         lower.includes("css")
     ) {
 
-        addMessage(
-            "Entendi. Vamos seguir pelo caminho de Tecnologia.",
-            "ai"
-        );
-
-        setTimeout(
-            () => {
-
-                showPath(
-                    "tecnologia"
-                );
-
-            },
-            250
+        respondToFreeMessage(
+            "Entendi. Vamos explorar a área de desenvolvimento.",
+            "desenvolvimento"
         );
 
         return;
+
     }
 
-    if (
-        lower.includes("inteligência artificial") ||
-        lower.includes("inteligencia artificial") ||
-        lower === "ia" ||
-        lower.includes("chatbot") ||
-        lower.includes("automação") ||
-        lower.includes("automacao") ||
-        lower.includes("agente de ia")
-    ) {
-
-        addMessage(
-            "Perfeito. Vamos falar de Inteligência Artificial.",
-            "ai"
-        );
-
-        setTimeout(
-            () => {
-
-                showPath(
-                    "ia"
-                );
-
-            },
-            250
-        );
-
-        return;
-    }
-
-    if (
-        lower.includes("nexa") ||
-        lower.includes("empresa") ||
-        lower.includes("agência") ||
-        lower.includes("agencia")
-    ) {
-
-        addMessage(
-            "Claro. Vamos falar sobre a Nexa.",
-            "ai"
-        );
-
-        setTimeout(
-            () => {
-
-                showPath(
-                    "nexa"
-                );
-
-            },
-            250
-        );
-
-        return;
-    }
+    /*
+       MARKETING
+    */
 
     if (
         lower.includes("marketing") ||
         lower.includes("branding") ||
         lower.includes("instagram") ||
+        lower.includes("redes sociais") ||
         lower.includes("social media") ||
-        lower.includes("redes sociais")
+        lower.includes("marca")
     ) {
 
-        addMessage(
-            "Vamos seguir pelo caminho de Marketing.",
-            "ai"
-        );
-
-        setTimeout(
-            () => {
-
-                showPath(
-                    "marketing"
-                );
-
-            },
-            250
+        respondToFreeMessage(
+            "Vamos explorar Marketing e estratégia.",
+            "marketing"
         );
 
         return;
+
     }
+
+    /*
+       PROJETOS
+    */
 
     if (
-        lower.includes("música") ||
-        lower.includes("musica") ||
-        lower.includes("composição") ||
-        lower.includes("composicao") ||
-        lower.includes("letra") ||
-        lower.includes("design") ||
-        lower.includes("criatividade") ||
-        lower.includes("brainstorm")
+        lower.includes("projeto") ||
+        lower.includes("como funciona") ||
+        lower.includes("processo") ||
+        lower.includes("como voces trabalham") ||
+        lower.includes("como a nexa trabalha")
+    ) {
+
+        respondToFreeMessage(
+            "Ótima pergunta. Vamos entender como funciona um projeto da Nexa.",
+            "projetos"
+        );
+
+        return;
+
+    }
+
+    /*
+       PREÇO
+    */
+
+    if (
+        lower.includes("preco") ||
+        lower.includes("preço") ||
+        lower.includes("quanto custa") ||
+        lower.includes("valor") ||
+        lower.includes("orcamento") ||
+        lower.includes("orçamento")
     ) {
 
         addMessage(
-            "Boa. Vamos para o caminho criativo.",
+            "Entendi. Você quer saber sobre valores.",
             "ai"
         );
 
         setTimeout(
             () => {
 
-                showPath(
-                    "criatividade"
+                addMessage(
+`O valor de uma solução não é definido apenas pelo tipo de serviço.
+
+Ele depende do escopo, complexidade, funcionalidades, integrações e objetivos do projeto.
+
+Por isso, antes de apresentar um valor responsável, precisamos entender o que precisa ser construído.
+
+Se quiser, podemos começar entendendo sua necessidade.`,
+                    "ai"
+                );
+
+                setTimeout(
+                    () => {
+
+                        showState(
+                            "ajuda"
+                        );
+
+                    },
+                    300
                 );
 
             },
-            250
+            350
         );
 
         return;
+
     }
 
+    /*
+       AJUDA
+    */
+
+    if (
+        lower.includes("preciso de ajuda") ||
+        lower.includes("nao sei") ||
+        lower.includes("não sei") ||
+        lower.includes("me ajude") ||
+        lower.includes("quero ajuda") ||
+        lower.includes("tenho uma ideia")
+    ) {
+
+        respondToFreeMessage(
+            "Sem problema. Vamos descobrir juntos o que pode fazer sentido para você.",
+            "ajuda"
+        );
+
+        return;
+
+    }
+
+    /*
+       DÚVIDA
+    */
+
+    if (
+        lower.includes("duvida") ||
+        lower.includes("dúvida") ||
+        lower.includes("pergunta") ||
+        lower.includes("posso perguntar")
+    ) {
+
+        respondToFreeMessage(
+            "Claro. Pode perguntar. Vamos direcionar sua dúvida.",
+            "duvidas"
+        );
+
+        return;
+
+    }
+
+    /*
+       FALLBACK
+    */
+
     addMessage(
-        "Entendi sua mensagem. Ainda estou trabalhando com caminhos específicos de atendimento. Escolha uma das categorias abaixo para eu te direcionar melhor.",
+`Entendi o que você escreveu.
+
+Como ainda não tenho uma IA generativa conectada a esta interface, não vou fingir que compreendi algo que o sistema não conseguiu classificar.
+
+Mas podemos continuar de forma guiada.
+
+Você pode perguntar sobre a Nexa, IA, desenvolvimento, marketing ou projetos.`,
         "ai"
     );
 
     setTimeout(
         () => {
 
-            showMainOptions();
+            showState(
+                "inicio"
+            );
 
         },
-        250
+        350
     );
 
 }
 
 /* ==========================================
-   ENVIAR
+   RESPOSTA LIVRE
+========================================== */
+
+function respondToFreeMessage(
+    intro,
+    state
+) {
+
+    addMessage(
+        intro,
+        "ai"
+    );
+
+    showTyping();
+
+    setTimeout(
+        () => {
+
+            showState(
+                state
+            );
+
+        },
+        420
+    );
+
+}
+
+/* ==========================================
+   ENVIAR MENSAGEM
 ========================================== */
 
 function sendMessage() {
+
+    if (processing) {
+        return;
+    }
 
     const text =
         messageInput.value.trim();
@@ -3681,15 +4787,23 @@ function sendMessage() {
     messageInput.style.height =
         "auto";
 
+    processing = true;
+
+    showTyping();
+
     setTimeout(
         () => {
+
+            removeTyping();
 
             handleFreeMessage(
                 text
             );
 
+            processing = false;
+
         },
-        300
+        450
     );
 
 }
@@ -3711,18 +4825,20 @@ function bindQuickOptions() {
                     "click",
                     () => {
 
+                        if (processing) {
+                            return;
+                        }
+
                         const path =
                             button.dataset.path;
 
-                        const strong =
+                        const text =
                             button.querySelector(
                                 "strong"
-                            );
-
-                        const text =
-                            strong
-                                ? strong.textContent
-                                : button.textContent;
+                            )
+                                ?.textContent
+                                .trim() ||
+                            button.textContent.trim();
 
                         if (!currentConversation) {
                             createConversation();
@@ -3733,15 +4849,44 @@ function bindQuickOptions() {
                             "user"
                         );
 
+                        const conversation =
+                            getCurrentConversation();
+
+                        conversation.visitedStates =
+                            Array.isArray(
+                                conversation.visitedStates
+                            )
+                                ? conversation.visitedStates
+                                : [];
+
+                        conversation.visitedStates.push(
+                            conversation.state
+                        );
+
+                        conversation.state =
+                            path;
+
+                        saveConversations();
+
+                        messages.innerHTML =
+                            "";
+
+                        showTyping();
+
+                        processing = true;
+
                         setTimeout(
                             () => {
 
-                                showPath(
+                                showState(
                                     path
                                 );
 
+                                processing =
+                                    false;
+
                             },
-                            250
+                            400
                         );
 
                     }
@@ -3758,23 +4903,21 @@ function bindQuickOptions() {
 
 newChatButton.addEventListener(
     "click",
-    () => {
-
-        createConversation();
-
-        closeSidebar();
-
-    }
+    startNewConversation
 );
 
 /* ==========================================
-   ENTER
+   ENVIAR
 ========================================== */
 
 sendButton.addEventListener(
     "click",
     sendMessage
 );
+
+/* ==========================================
+   TECLADO
+========================================== */
 
 messageInput.addEventListener(
     "keydown",
@@ -3948,6 +5091,7 @@ function abrirConfirmacaoExclusao(
             </div>
 
         </div>
+
     `;
 
     document.body.appendChild(
@@ -4004,6 +5148,10 @@ function abrirConfirmacaoExclusao(
 
 }
 
+/* ==========================================
+   EXCLUIR CONVERSA
+========================================== */
+
 function excluirConversa(
     conversaId
 ) {
@@ -4035,11 +5183,157 @@ function excluirConversa(
         currentConversation =
             null;
 
-        resetChat();
+        resetToWelcome();
 
     }
 
     renderHistory();
+
+}
+
+/* ==========================================
+   RESET PARA WELCOME
+========================================== */
+
+function resetToWelcome() {
+
+    messages.innerHTML = `
+
+        <section
+            class="welcome"
+            id="welcome"
+        >
+
+            <div class="welcome-icon">
+
+                <img
+                    src="navicon.png"
+                    alt=""
+                >
+
+            </div>
+
+            <h1>
+                Olá, eu sou a NEXA.
+            </h1>
+
+            <p>
+                Sua inteligência artificial da Nexa Agency Enterprises.
+                Explore a Nexa, conheça nossas soluções, descubra como
+                trabalhamos ou simplesmente tire suas dúvidas.
+            </p>
+
+            <div class="quick-options">
+
+                <button
+                    class="quick-option"
+                    data-path="nexa"
+                    type="button"
+                >
+
+                    <strong>
+                        🚀 Conhecer a Nexa
+                    </strong>
+
+                    <span>
+                        Descubra quem somos, por que existimos,
+                        como pensamos e o que fazemos.
+                    </span>
+
+                </button>
+
+                <button
+                    class="quick-option"
+                    data-path="solucoes"
+                    type="button"
+                >
+
+                    <strong>
+                        ✦ Conhecer nossas soluções
+                    </strong>
+
+                    <span>
+                        Explore tecnologia, IA, desenvolvimento,
+                        marketing e soluções personalizadas.
+                    </span>
+
+                </button>
+
+                <button
+                    class="quick-option"
+                    data-path="projetos"
+                    type="button"
+                >
+
+                    <strong>
+                        🧭 Como funciona um projeto?
+                    </strong>
+
+                    <span>
+                        Entenda como uma ideia pode se transformar
+                        em uma solução desenvolvida pela Nexa.
+                    </span>
+
+                </button>
+
+                <button
+                    class="quick-option"
+                    data-path="ajuda"
+                    type="button"
+                >
+
+                    <strong>
+                        💡 Como a Nexa pode me ajudar?
+                    </strong>
+
+                    <span>
+                        Conte o que você precisa e descubra
+                        possibilidades para o seu caso.
+                    </span>
+
+                </button>
+
+                <button
+                    class="quick-option"
+                    data-path="duvidas"
+                    type="button"
+                >
+
+                    <strong>
+                        ❓ Tenho uma dúvida
+                    </strong>
+
+                    <span>
+                        Pergunte sobre a Nexa, nossos serviços,
+                        IA, tecnologia ou projetos.
+                    </span>
+
+                </button>
+
+                <button
+                    class="quick-option"
+                    data-path="ia"
+                    type="button"
+                >
+
+                    <strong>
+                        🤖 Quero entender IA
+                    </strong>
+
+                    <span>
+                        Descubra aplicações, automações,
+                        agentes e possibilidades de IA.
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+    `;
+
+    bindQuickOptions();
 
 }
 
@@ -4182,11 +5476,11 @@ document
                     <div>
 
                         <strong>
-                            Plano
+                            Sistema
                         </strong>
 
                         <span>
-                            NEXA IA
+                            Conversação interativa
                         </span>
 
                     </div>
@@ -4256,11 +5550,11 @@ document
                     <div>
 
                         <strong>
-                            Respostas automáticas
+                            Conversação
                         </strong>
 
                         <span>
-                            Sistema de caminhos da NEXA
+                            Sistema de caminhos interativos
                         </span>
 
                     </div>
@@ -4292,38 +5586,37 @@ document
                 `
 
                 <p>
-                    Bem-vindo à NEXA IA.
+                    A NEXA IA foi criada para permitir
+                    que você explore a Nexa de maneira
+                    interativa.
                 </p>
 
                 <br>
 
                 <p>
-                    Você pode escolher uma categoria
-                    na tela inicial ou simplesmente
-                    escrever sua pergunta.
+                    Você pode escolher uma opção ou
+                    escrever sua própria pergunta.
                 </p>
 
                 <br>
 
                 <p>
-                    O sistema identifica alguns assuntos
-                    automaticamente e direciona você para
-                    caminhos específicos.
+                    No celular, toque no campo de mensagem
+                    para abrir o teclado e converse normalmente.
                 </p>
 
                 <br>
 
                 <p>
-                    Suas conversas ficam salvas
-                    neste navegador.
+                    Pressione Enter para enviar.
+                    Use Shift + Enter para criar uma nova linha.
                 </p>
 
                 <br>
 
                 <p>
-                    Para excluir uma conversa,
-                    passe o mouse sobre ela no histórico
-                    e clique nos três pontinhos.
+                    Suas conversas são armazenadas
+                    localmente neste navegador.
                 </p>
 
                 `
@@ -4333,7 +5626,7 @@ document
     );
 
 /* ==========================================
-   ESC FECHA MODAIS
+   FECHAR COM ESC
 ========================================== */
 
 document.addEventListener(
@@ -4355,6 +5648,53 @@ document.addEventListener(
 
                         menu.classList.remove(
                             "active"
+                        );
+
+                    }
+                );
+
+        }
+
+    }
+);
+
+/* ==========================================
+   FECHAR MENU AO CLICAR FORA
+========================================== */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        if (
+            !event.target.closest(
+                ".history-item"
+            )
+        ) {
+
+            document
+                .querySelectorAll(
+                    ".conversation-menu.active"
+                )
+                .forEach(
+                    menu => {
+
+                        menu.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+            document
+                .querySelectorAll(
+                    ".history-menu-button.open"
+                )
+                .forEach(
+                    button => {
+
+                        button.classList.remove(
+                            "open"
                         );
 
                     }
